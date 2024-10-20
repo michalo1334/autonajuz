@@ -8,8 +8,9 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up Git repository
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Extract branch info
@@ -26,7 +27,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          base: dev  # or the target branch
-          head: ${{ env.BRANCH_NAME }}
+          base: main  # or the target branch
+          branch: ${{ env.BRANCH_NAME }}  # Source branch (this replaces 'head')
           title: "${{ env.TICKET_NO }} ${{ env.SHORT_NAME }}"
           body: "Auto-generated pull request for branch: ${{ env.BRANCH_NAME }}"
