@@ -1,0 +1,32 @@
+name: Auto PR on Branch Creation
+
+on:
+  create:
+    branches:
+      - '*'
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+
+      - name: Extract branch info
+        run: |
+          BRANCH_NAME=${{ github.ref_name }}
+          TICKET_NO=$(echo "$BRANCH_NAME" | cut -d'_' -f1)
+          SHORT_NAME=$(echo "$BRANCH_NAME" | cut -d'_' -f2-)
+
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          echo "TICKET_NO=$TICKET_NO" >> $GITHUB_ENV
+          echo "SHORT_NAME=$SHORT_NAME" >> $GITHUB_ENV
+
+      - name: Create a Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: dev  # or the target branch
+          head: ${{ env.BRANCH_NAME }}
+          title: "${{ env.TICKET_NO }} ${{ env.SHORT_NAME }}"
+          body: "Auto-generated pull request for branch: ${{ env.BRANCH_NAME }}"
