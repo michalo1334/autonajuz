@@ -22,16 +22,21 @@ jobs:
     - name: Set up Graphviz
       run: sudo apt-get install -y graphviz
 
-    - name: Set up LaTeX
-      run: sudo apt-get install -y texlive-full
+    - name: Set up LaTeX (minimal)
+      run: sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
     - name: Generate Doxygen documentation
       run: doxygen Doxyfile
 
     - name: Generate PDF from LaTeX
       run: |
-        cd latex
-        make
+        if [ -d "docs/latex" ]; then
+          cd docs/latex
+          make
+        else
+          echo "LaTeX directory not found!"
+          exit 1
+        fi
 
     - name: Upload Doxygen documentation
       uses: actions/upload-artifact@v4
@@ -43,4 +48,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: doxygen-pdf
-        path: latex/refman.pdf
+        path: docs/latex/refman.pdf
