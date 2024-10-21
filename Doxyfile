@@ -1,0 +1,103 @@
+# Doxyfile 1.9.3
+# This file describes the settings to be used by the documentation system
+# Doxygen (www.doxygen.org) for a C# project.
+
+# Project related settings
+
+PROJECT_NAME           = "AutoNaJuz"
+PROJECT_BRIEF          = ""
+PROJECT_LOGO           = ""
+OUTPUT_DIRECTORY       = ./docs
+
+# If the value of the INPUT tag contains directories, you can use the FILE_PATTERNS
+# tag to specify one or more wildcard patterns (like *.cpp and *.h) to filter out
+# the source-files in the directories.
+INPUT = ./AutoNaJuz.Api ./AutoNaJuz.DAL ./AutoNaJuz.Model ./AutoNaJuz.Services
+FILE_PATTERNS          = *.cs
+
+# If the EXCLUDE tag is set to a comma-separated list of directories or
+# files, those files or directories will be excluded from the input.
+EXCLUDE                =
+
+# The RECURSIVE tag can be used to specify whether or not subdirectories should
+# be searched for input files as well.
+RECURSIVE              = YES
+
+# Options related to source browsing
+
+SOURCE_BROWSER         = YES
+INLINE_SOURCES         = YES
+
+# Options related to documentation layout
+
+# The QUIET tag can be used to turn on/off the messages that are generated to
+# standard output by doxygen.
+QUIET                  = NO
+
+# Options related to the output formats
+
+# The GENERATE_HTML tag is used to enable or disable the generation of HTML output.
+GENERATE_HTML          = YES
+
+# The HTML_OUTPUT tag is used to specify where the HTML docs will be put.
+HTML_OUTPUT            = html
+
+# The GENERATE_LATEX tag is used to enable or disable the generation of LaTeX output.
+GENERATE_LATEX         = YES
+
+# The LATEX_OUTPUT tag is used to specify where the LaTeX docs will be put.
+LATEX_OUTPUT           = latex
+
+# Options related to language settings
+
+# The EXTRACT_ALL tag is used to control whether all entities in the source code
+# should be documented.
+EXTRACT_ALL            = YES
+
+# The EXTRACT_PRIVATE tag is used to specify whether private class members should be included in the documentation.
+EXTRACT_PRIVATE        = NO
+
+# The EXTRACT_STATIC tag can be used to control whether static members of a class
+# will be included in the documentation.
+EXTRACT_STATIC         = NO
+
+# The EXTRACT_LOCAL_CLASSES tag can be used to control whether classes (and structs)
+# defined locally in source files will be included in the documentation.
+EXTRACT_LOCAL_CLASSES  = YES
+
+# Options related to C# specifics
+
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+OPTIMIZE_FOR_CSHARP    = YES
+OPTIMIZE_OUTPUT_FOR_CSHARP = YES
+
+# The SHOW_FILES tag can be used to enable or disable the list of files generated
+# at the beginning of the HTML documentation.
+SHOW_FILES             = YES
+
+# The SHOW_NAMESPACES tag can be used to enable or disable the generation of a
+# list of all namespaces found in the code.
+SHOW_NAMESPACES        = YES
+
+# Configuration options related to diagrams
+
+# The HAVE_DOT tag can be used to specify whether or not the dot tool (part of the
+# Graphviz package) is available in your path.
+HAVE_DOT               = YES
+
+# The DOT_PATH tag can be used to specify the directory where the dot tool resides.
+DOT_PATH               = /usr/local/bin/dot
+
+# The CALL_GRAPH and CALLER_GRAPH tags are used to generate call and caller graphs.
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+
+# The DOT_GRAPH_MAX_NODES tag can be used to set the maximum number of nodes that will
+# be shown in a graph.
+DOT_GRAPH_MAX_NODES    = 100
+
+# Other options
+
+# The WARNINGS tag controls whether warnings should be generated.
+WARNINGS               = YES
