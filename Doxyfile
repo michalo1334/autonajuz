@@ -4,15 +4,15 @@
 
 # Project related settings
 
-PROJECT_NAME           = "Your C# Project"
-PROJECT_BRIEF          = "Short description of your project"
+PROJECT_NAME           = "AutoNaJuz"
+PROJECT_BRIEF          = ""
 PROJECT_LOGO           = ""
 OUTPUT_DIRECTORY       = ./docs
 
 # If the value of the INPUT tag contains directories, you can use the FILE_PATTERNS
 # tag to specify one or more wildcard patterns (like *.cpp and *.h) to filter out
 # the source-files in the directories.
-INPUT                  = ./src
+INPUT = ./AutoNaJuz.Api ./AutoNaJuz.DAL ./AutoNaJuz.Model ./AutoNaJuz.Services
 FILE_PATTERNS          = *.cs
 
 # If the EXCLUDE tag is set to a comma-separated list of directories or
