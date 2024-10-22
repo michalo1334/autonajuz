@@ -1,33 +1,46 @@
-name: Auto PR on Branch Creation
+name: Auto Create Pull Request
 
 on:
-  create:
+  push:
     branches:
-      - '*'
+      - '**'
 
 jobs:
-  create-pr:
+  create-pull-request:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Extract branch info
+      - name: Get branch name
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
+
+      - name: Check if branch matches pattern
+        id: check_branch
+        shell: bash
         run: |
-          BRANCH_NAME=${{ github.ref_name }}
-          TICKET_NO=$(echo "$BRANCH_NAME" | cut -d'_' -f1)
-          SHORT_NAME=$(echo "$BRANCH_NAME" | cut -d'_' -f2-)
+          echo "Branch name: ${{ env.BRANCH_NAME }}"
+          if [[ "${{ env.BRANCH_NAME }}" =~ ^([0-9]+)_(.+)$ ]]; then
+            echo "MATCH=1" >> $GITHUB_ENV
+            echo "TICKET_NO=${BASH_REMATCH[1]}" >> $GITHUB_ENV
+            echo "SHORT_NAME=${BASH_REMATCH[2]}" >> $GITHUB_ENV
+          else
+            echo "MATCH=0" >> $GITHUB_ENV
+          fi
 
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-          echo "TICKET_NO=$TICKET_NO" >> $GITHUB_ENV
-          echo "SHORT_NAME=$SHORT_NAME" >> $GITHUB_ENV
-
-      - name: Create a Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: main  # or the target branch
-          branch: ${{ env.BRANCH_NAME }}  # Source branch (this replaces 'head')
-          title: "${{ env.TICKET_NO }} ${{ env.SHORT_NAME }}"
-          body: "Auto-generated pull request for branch: ${{ env.BRANCH_NAME }}"
+      - name: Create pull request
+        if: env.MATCH == '1'
+        run: |
+          echo "Ticket number: ${{ env.TICKET_NO }}"
+          echo "Short name: ${{ env.SHORT_NAME }}"
+          if gh pr view --head "${{ env.BRANCH_NAME }}" --base publish > /dev/null 2>&1; then
+            echo "Pull request already exists."
+          else
+            gh pr create \
+              --base publish \
+              --head "${{ env.BRANCH_NAME }}" \
+              --title "#${{ env.TICKET_NO }} ${{ env.SHORT_NAME }}" \
+              --body "Automatically created pull request."
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
