@@ -3,10 +3,12 @@ name: Generate Doxygen Documentation
 on:
   push:
     branches:
-      - '*'
+      - 'main'
+      - 'dev'
   pull_request:
     branches:
       - '*'
+    types: [synchronize]
 
 jobs:
   generate-docs:
