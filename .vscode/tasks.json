@@ -9,6 +9,20 @@
                 "cwd": "${workspaceFolder}/AutoNaJuz.Api"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "build AutoNaJuz.Api",
+            "type": "process",
+            "command": "dotnet",
+            "args": ["build", "${workspaceFolder}/AutoNaJuz.Api/AutoNaJuz.Api.csproj"],
+            "problemMatcher": ["$msCompile"]
+        },
+        {
+            "label": "build AutoNaJuz.Web",
+            "type": "process",
+            "command": "dotnet",
+            "args": ["build", "${workspaceFolder}/AutoNaJuz.Web/AutoNaJuz.Web.csproj"],
+            "problemMatcher": ["$msCompile"]
         }
     ]
 }
