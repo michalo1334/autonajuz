@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <Target Name="PreBuild" BeforeTargets="Build">
+    <Exec Command="gulp buildFavicons" />
+  </Target>
+
+
 </Project>
