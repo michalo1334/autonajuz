@@ -21,6 +21,12 @@ jobs:
         with:
           dotnet-version: '8.0.x' # Set the required .NET version for your project
 
+      # Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22.x' # Set the required Node.js version for your project
+
       # Restore dependencies
       - name: Restore dependencies
         run: dotnet restore
