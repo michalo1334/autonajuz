@@ -15,4 +15,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AutoNaJuz.Model\AutoNaJuz.Model.csproj" />
+  </ItemGroup>
+
 </Project>

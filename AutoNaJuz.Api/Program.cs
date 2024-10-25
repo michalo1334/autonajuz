@@ -1,4 +1,7 @@
+using System.Reflection;
 using AutoNaJuz.DAL.Data;
+using AutoNaJuz.Services.Interfaces;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>();
+
+builder.Services.AddControllers();
+builder.Services.AddFluentValidationAutoValidation();
+
+var services = builder.Services;
+
+services.AddTransient<ICarsService, CarsService>();
+services.AddTransient<ICarRentalsService, CarRentalsService>();
 
 var app = builder.Build();
 
