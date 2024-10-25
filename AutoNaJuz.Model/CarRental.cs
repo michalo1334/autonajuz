@@ -7,6 +7,6 @@ namespace AutoNaJuz.Model
 {
     public class CarRental
     {
-        
+        public int Id { get; set; }
     }
 }
