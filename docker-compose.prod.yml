@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  autonajuzapi:
+    build:
+      args:
+        - configuration=Release
+    profiles:
+      - release
+
+  autonajuzweb:
+    build:
+      args:
+        - configuration=Release
+    profiles:
+      - release
+
+  sqlserver:
+    profiles:
+      - release
