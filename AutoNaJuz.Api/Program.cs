@@ -1,5 +1,6 @@
 using System.Reflection;
 using AutoNaJuz.DAL.Data;
+using AutoNaJuz.Services;
 using AutoNaJuz.Services.Interfaces;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
