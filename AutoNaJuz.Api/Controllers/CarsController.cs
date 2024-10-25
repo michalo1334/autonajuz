@@ -13,7 +13,7 @@ namespace AutoNaJuz.Api.Controllers
     {
         // GET: api/cars
         [HttpGet]
-        public ActionResult<IEnumerable<Car>> Get(string search, string byBrand, string byType)
+        public ActionResult<IEnumerable<Car>> GetAll(string search, string byBrand, string byType)
         {
             // Replace with actual data retrieval logic
             var cars = new List<Car>();
