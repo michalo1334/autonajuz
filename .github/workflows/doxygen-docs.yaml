@@ -46,3 +46,11 @@ jobs:
       with:
         name: doxygen-pdf
         path: docs/latex/refman.pdf
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/html
+        publish_branch: docs
+        keep_files: true  # Optional: removes existing files in the branch
