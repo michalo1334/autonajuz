@@ -10,7 +10,7 @@ namespace AutoNaJuz.Model
         public int Id { get; set; }
 
         public int CarId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public decimal? PerHourCost { get; set; }
         public decimal? PerDayCost { get; set; }
         public DateTime From { get; set; }
@@ -19,6 +19,6 @@ namespace AutoNaJuz.Model
 
         //Navigation properties
         public Car Car { get; set; }
-        public /*TODO*/ string User { get; set; 
+        public CustomerUser User { get; set; }
     }
 }

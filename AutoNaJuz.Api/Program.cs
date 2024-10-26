@@ -1,5 +1,6 @@
 using System.Reflection;
 using AutoNaJuz.DAL.Data;
+using AutoNaJuz.Model;
 using AutoNaJuz.Services;
 using AutoNaJuz.Services.Interfaces;
 using FluentValidation.AspNetCore;
@@ -12,15 +13,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("MsSql")));
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<AppDbContext>();
 
 builder.Services.AddControllers();
 builder.Services.AddFluentValidationAutoValidation();
 
 var services = builder.Services;
 
-services.AddTransient<ICarsService, CarsService>();
-services.AddTransient<ICarRentalsService, CarRentalsService>();
+services.AddScoped<ICarsService, CarsService>();
+services.AddScoped<ICarRentalsService, CarRentalsService>();
 
 var app = builder.Build();
 

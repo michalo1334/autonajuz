@@ -24,11 +24,11 @@ namespace AutoNaJuz.DAL.Configuration
             builder.Property(e => e.BodyType);
 
             builder.HasMany(e => e.Features)
-            .WithMany(e => e.Cars);
+                .WithMany(e => e.Cars);
 
             builder.HasMany(e => e.Rentals)
-            .WithOne(e => e.Car)
-            .HasForeignKey(e => e.CarId);
+                .WithOne(e => e.Car)
+                .HasForeignKey(e => e.CarId);
         }
     }
 }

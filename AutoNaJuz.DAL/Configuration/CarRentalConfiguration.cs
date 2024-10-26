@@ -14,20 +14,21 @@ namespace AutoNaJuz.DAL.Configuration
             builder.HasKey(e => e.Id);
             
             builder.Property(e => e.PerHourCost)
-            .HasPrecision(8);
+                .HasPrecision(18, 2);
             builder.Property(e => e.PerDayCost)
-            .HasPrecision(8);
+                .HasPrecision(18, 2);
             builder.Property(e => e.From);
             builder.Property(e => e.To);
             builder.Property(e => e.Notes)
-            .HasMaxLength(3000);
+                .HasMaxLength(3000);
 
             builder.HasOne(e => e.Car)
-            .WithMany(e => e.Rentals)
-            .HasForeignKey(e => e.CarId);
+                .WithMany(e => e.Rentals)
+                .HasForeignKey(e => e.CarId);
 
             builder.HasOne(e => e.User)
-            .WithMany(e => e.UserId)
+                .WithMany()
+                .HasForeignKey(e => e.UserId);
         }
     }
 }

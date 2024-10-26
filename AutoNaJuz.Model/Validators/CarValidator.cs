@@ -6,10 +6,19 @@ namespace AutoNaJuz.Model.Validators
     {
         public CarValidator()
         {
-            // RuleFor(car => car.Make).NotEmpty().WithMessage("Make is required.");
-            // RuleFor(car => car.Model).NotEmpty().WithMessage("Model is required.");
-            // RuleFor(car => car.Year).InclusiveBetween(1886, 9999).WithMessage("Year must be between 1886 and 9999.");
-            // RuleFor(car => car.VIN).Length(17).WithMessage("VIN must be 17 characters long.");
+            RuleFor(x => x.Title)
+                .NotEmpty()
+                .MaximumLength(256);
+
+            RuleFor(x => x.ProductionYear)
+                .NotEmpty()
+                .LessThan(DateTime.Now);
+
+            RuleFor(x => x.SeatCount)
+                .GreaterThan(0);
+
+            RuleFor(x => x.DoorCount)
+                .GreaterThan(0);
         }
     }
 }

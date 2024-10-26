@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace AutoNaJuz.DAL.Data
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         private readonly IConfiguration _configuration;
 
@@ -22,10 +22,12 @@ namespace AutoNaJuz.DAL.Data
             _configuration = configuration;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var connectionString = _configuration.GetConnectionString("MsSql");
-            options.UseSqlServer(connectionString);
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+                
         }
     }
 }

@@ -7,6 +7,26 @@ namespace AutoNaJuz.Model
 {
     public class Car
     {
+        public Car(
+            int id, 
+            string title, 
+            TransmissionType transmission, 
+            DateTime productionYear, 
+            FuelType fuelType, 
+            int seatCount, 
+            int doorCount, 
+            CarBodyType bodyType) 
+        {
+            Id = id;
+            Title = title;
+            Transmission = transmission;
+            ProductionYear = productionYear;
+            FuelType = fuelType;
+            SeatCount = seatCount;
+            DoorCount = doorCount;
+            BodyType = bodyType;
+        }
+        
         public int Id { get; set; }
 
         public string Title { get; set;} 

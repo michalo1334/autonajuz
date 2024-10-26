@@ -60,5 +60,14 @@ namespace AutoNaJuz.Api.Controllers
             // Replace with actual data deletion logic
             return NoContent();
         }
+
+        // POST: api/cars/seed
+        //[Authorize("Roles = manager")]
+        [HttpPost("seed")]
+        public IActionResult Seed()
+        {
+            // Replace with actual data seeding logic
+            return NoContent();
+        }
     }
 }
