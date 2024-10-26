@@ -10,5 +10,8 @@ namespace AutoNaJuz.Model
         public int Id { get; set; }
         
         public string Title { get; set; }
+
+        //Navigation properties
+        public IList<Car> Cars { get; set; } = [];
     }
 }
