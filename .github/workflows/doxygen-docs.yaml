@@ -23,7 +23,7 @@ jobs:
       run: sudo apt-get install -y texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
 
     - name: Generate Doxygen documentation
-      run: doxygen Doxyfile
+      run: doxygen ./docsgen/Doxyfile
 
     - name: Generate PDF from LaTeX
       run: |
