@@ -3,19 +3,21 @@ name: Generate Doxygen Documentation
 on:
   push:
     branches:
-      - main
-      - dev
+      - '*'
 
 jobs:
   generate-docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 
+    - name: Update apt-get
+      run: sudo apt-get update
+
     - name: Set up Doxygen
-      run: sudo apt-get install -y doxygen
+      run: sudo apt install doxygen
 
     - name: Set up Graphviz
       run: sudo apt-get install -y graphviz
@@ -36,7 +38,7 @@ jobs:
           exit 1
         fi
 
-    - name: Upload Doxygen documentation
+    - name: Upload Doxygen documentationb 
       uses: actions/upload-artifact@v4
       with:
         name: doxygen-docs
@@ -47,18 +49,11 @@ jobs:
       with:
         name: doxygen-pdf
         path: docs/latex/refman.pdf
-
-    - name: Prepare GitHub Pages directory
-      run: |
-        BRANCH_NAME="${GITHUB_REF#refs/heads/}"
-        mkdir -p "gh-pages/$BRANCH_NAME"
-        rm -rf "gh-pages/$BRANCH_NAME/*"
-        cp -r docs "gh-pages/$BRANCH_NAME/"
-
+        
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: gh-pages
+        publish_dir: ./docs/html
         publish_branch: docs
-        keep_files: true
+        keep_files: false  # Optional: removes existing files in the branch
