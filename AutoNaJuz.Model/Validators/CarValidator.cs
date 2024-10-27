@@ -2,7 +2,7 @@ using FluentValidation;
 
 namespace AutoNaJuz.Model.Validators
 {
-    public class CarValidator : AbstractValidator<Car>
+    public class CarValidator : AbstractValidator<Car.Car>
     {
         public CarValidator()
         {

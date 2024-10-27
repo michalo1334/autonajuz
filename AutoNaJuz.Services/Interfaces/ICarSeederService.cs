@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AutoNaJuz.Model;
+using AutoNaJuz.Model.Car;
 
 namespace AutoNaJuz.Services.Interfaces
 {

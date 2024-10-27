@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoNaJuz.DAL.Data;
-using AutoNaJuz.Model;
+using AutoNaJuz.Model.Car;
 using AutoNaJuz.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 

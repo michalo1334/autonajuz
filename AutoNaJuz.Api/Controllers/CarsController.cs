@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using AutoNaJuz.Model;
 using AutoNaJuz.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using AutoNaJuz.Model.Car;
+using AutoNaJuz.ViewModels.Car;
 
 namespace AutoNaJuz.Api.Controllers
 {
@@ -19,10 +20,20 @@ namespace AutoNaJuz.Api.Controllers
         /// <returns>List of cars.</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<Car>>> GetAll(string? search, string? byBrand, string? byType)
+        public async Task<ActionResult<IEnumerable<GetCarVM>>> GetAll(string? search, string? byBrand, string? byType)
         {
-            // Replace with actual data retrieval logic
-            var cars = await carsService.GetAll();
+            var cars = (await carsService.GetAll()).Select(c => new GetCarVM(
+                c.Id,
+                c.Title,
+                c.Transmission,
+                c.ProductionYear,
+                c.FuelType,
+                c.SeatCount,
+                c.DoorCount,
+                c.BodyType,
+                c.Features.Select(f => new GetCarFeatureVM(f.Id, f.Title)),
+                c.Rentals.Select(r => new GetCarRentalVM(r.Id, r.PerHourCost, r.PerDayCost, r.From, r.To, r.Notes))
+            ));
             return Ok(cars);
         }
 
@@ -34,11 +45,29 @@ namespace AutoNaJuz.Api.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Car>> GetAsync(int id)
+        public async Task<ActionResult<GetCarVM>> Get(int id)
         {
             // Replace with actual data retrieval logic
             var car = await carsService.GetById(id);
-            return car == null ? NotFound() : Ok(car);
+            if(car == null)
+            {
+                return NotFound();
+            }
+
+            var carVm = new GetCarVM(
+                car.Id,
+                car.Title,
+                car.Transmission,
+                car.ProductionYear,
+                car.FuelType,
+                car.SeatCount,
+                car.DoorCount,
+                car.BodyType,
+                car.Features.Select(f => new GetCarFeatureVM(f.Id, f.Title)),
+                car.Rentals.Select(r => new GetCarRentalVM(r.Id, r.PerHourCost, r.PerDayCost, r.From, r.To, r.Notes)),
+                null
+            );
+            return Ok(carVm);
         }
 
         /// <summary>

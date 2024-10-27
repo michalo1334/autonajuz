@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using AutoNaJuz.DAL;
-using AutoNaJuz.Model;
+using AutoNaJuz.Model.Car;
 
 namespace AutoNaJuz.DAL.Configuration
 {

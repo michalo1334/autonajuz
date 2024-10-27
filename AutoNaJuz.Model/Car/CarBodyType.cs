@@ -1,4 +1,4 @@
-namespace AutoNaJuz.Model
+namespace AutoNaJuz.Model.Car
 {
     public enum CarBodyType
     {

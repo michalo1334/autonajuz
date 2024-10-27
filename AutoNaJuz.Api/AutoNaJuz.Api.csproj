@@ -23,6 +23,7 @@
     <ProjectReference Include="..\AutoNaJuz.DAL\AutoNaJuz.DAL.csproj" />
     <ProjectReference Include="..\AutoNaJuz.Model\AutoNaJuz.Model.csproj" />
     <ProjectReference Include="..\AutoNaJuz.Services\AutoNaJuz.Services.csproj" />
+    <ProjectReference Include="..\AutoNaJuz.ViewModels\AutoNaJuz.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
