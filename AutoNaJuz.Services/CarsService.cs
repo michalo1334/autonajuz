@@ -11,47 +11,41 @@ using Microsoft.EntityFrameworkCore;
 namespace AutoNaJuz.Services
 {
     public class CarsService(
-        ICarRentalsService carRentalsService,
         AppDbContext context
     ) : ICarsService
     {
-        public async Task Create(Car car)
+        public async Task<int> Create(Car car)
         {
-            context.Cars.Add(car);
+            var id = context.Cars.Add(car).Entity.Id;
+            await context.SaveChangesAsync();
+            return id;
+        }
+
+        public async Task Update(Car car)
+        {
+            context.Cars.Update(car);
             await context.SaveChangesAsync();
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(Car car)
         {
-            context.Cars.Remove(new Car { Id = id });
+            context.Cars.Remove(car);
             await context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Car>> GetAll(Expression<Func<Car, bool>>? predicate) => predicate == null
-                ? await context.Cars.ToListAsync()
-                : await context.Cars.Where(predicate).ToListAsync();
+        public async Task<IEnumerable<Car>> GetAll(Expression<Func<Car, bool>>? predicate = null)
+        {
+            predicate ??= (car) => true;
+
+            return await context.Cars
+                .AsNoTracking()
+                .Where(predicate)
+                .ToListAsync();
+        }
 
         public async Task<Car?> GetById(int id)
         {
-            return await context.Cars.FindAsync(id);
-        }
-
-        public async Task<bool> IsAvailableForRentNow(int id)
-        {
-            return await context.Cars
-                .Include(c => c.Rentals)
-                .Where(c => c.Id == id)
-                .AllAsync(c => c.Rentals.All(cr => cr.To < DateTime.Now));
-        }
-
-        public Task<int> Rent(int carId, int userId, DateTime startDate, DateTime endDate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task Update(Car car)
-        {
-            throw new NotImplementedException();
+            return await context.Cars.FindAsync(id).AsTask();
         }
     }
 }

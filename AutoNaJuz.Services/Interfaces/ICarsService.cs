@@ -9,14 +9,11 @@ namespace AutoNaJuz.Services.Interfaces
 {
     public interface ICarsService
     {
-        Task<IEnumerable<Car>> GetAll(Expression<Func<Car, bool>>? predicate);
+        Task<IEnumerable<Car>> GetAll(Expression<Func<Car, bool>>? predicate = null);
         Task<Car?> GetById(int id);
 
-        Task Create(Car car);
+        Task<int> Create(Car car);
         Task Update(Car car);
-        Task Delete(int id);
-
-        Task<int> Rent(int carId, int userId, DateTime startDate, DateTime endDate);
-        Task<bool> IsAvailableForRentNow(int id);
+        Task Delete(Car car);
     }
 }

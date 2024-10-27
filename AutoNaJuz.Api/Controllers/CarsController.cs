@@ -7,63 +7,100 @@ namespace AutoNaJuz.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController(
-        ICarsService carsService
-    ) : ControllerBase
+    public class CarsController(ICarsService carsService) : ControllerBase
     {
-        // GET: api/cars
+
+        /// <summary>
+        /// Retrieves all cars.
+        /// </summary>
+        /// <param name="search">Search term.</param>
+        /// <param name="byBrand">Filter by brand.</param>
+        /// <param name="byType">Filter by type.</param>
+        /// <returns>List of cars.</returns>
         [HttpGet]
-        public ActionResult<IEnumerable<Car>> GetAll(string search, string byBrand, string byType)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<Car>>> GetAll(string? search, string? byBrand, string? byType)
         {
             // Replace with actual data retrieval logic
-            var cars = new List<Car>();
+            var cars = await carsService.GetAll();
             return Ok(cars);
         }
 
-        // GET: api/cars/5
+        /// <summary>
+        /// Retrieves a car by ID.
+        /// </summary>
+        /// <param name="id">Car ID.</param>
+        /// <returns>Car object.</returns>
         [HttpGet("{id}")]
-        public ActionResult<Car> Get(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Car>> GetAsync(int id)
         {
             // Replace with actual data retrieval logic
-            var car = new Car();
-            return Ok(car);
+            var car = await carsService.GetById(id);
+            return car == null ? NotFound() : Ok(car);
         }
 
-        // POST: api/cars
-        //[Authorize("Roles = manager")]
+        /// <summary>
+        /// Creates a new car.
+        /// </summary>
+        /// <param name="car">Car object.</param>
+        /// <returns>ID of the created car.</returns>
         [HttpPost]
-        public ActionResult<int> New([FromBody] Car car)
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<ActionResult<int>> New([FromBody] Car car)
         {
-            // Replace with actual data saving logic
-            car.Id = 3; // Simulate new ID generation
-            return CreatedAtAction(nameof(New), new { id = car.Id }, car.Id);
+            var id = await carsService.Create(car);
+            return CreatedAtAction(nameof(New), new { id }, car.Id);
         }
 
-        // PUT: api/cars/5
+        /// <summary>
+        /// Updates an existing car.
+        /// </summary>
+        /// <param name="id">Car ID.</param>
+        /// <param name="car">Updated car object.</param>
+        /// <returns>Action result.</returns>
         [HttpPut("{id}")]
-        //[Authorize("Roles = manager")]
-        public IActionResult Update(int id, [FromBody] Car car)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Update(int id, [FromBody] Car car)
         {
-            // Replace with actual data update logic
-            if (id != car.Id)
+            var exists = (await carsService.GetById(id))?.Id != null;
+            if (!exists)
             {
                 return BadRequest();
             }
-            return NoContent();
+
+            await carsService.Update(car);
+            return Ok();
         }
 
-        // DELETE: api/cars/5
-        //[Authorize("Roles = manager")]
+        /// <summary>
+        /// Deletes a car by ID.
+        /// </summary>
+        /// <param name="id">Car ID.</param>
+        /// <returns>Action result.</returns>
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Delete(int id)
         {
-            // Replace with actual data deletion logic
+            var car = await carsService.GetById(id);
+            if (car == null)
+            {
+                return BadRequest();
+            }
+
+            await carsService.Delete(car);
             return NoContent();
         }
 
-        // POST: api/cars/seed
-        //[Authorize("Roles = manager")]
+        /// <summary>
+        /// Seeds the car database.
+        /// </summary>
+        /// <returns>Action result.</returns>
         [HttpPost("seed")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public IActionResult Seed()
         {
             // Replace with actual data seeding logic
