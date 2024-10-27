@@ -46,11 +46,33 @@ jobs:
       with:
         name: doxygen-pdf
         path: docs/latex/refman.pdf
-        
-    - name: Deploy to GitHub Pages
+
+    - name: Prepare GitHub Pages directory (main)
+      if: github.ref == 'refs/heads/main'
+      run: |
+        mkdir -p gh-pages/main
+        cp -r docs/html/* gh-pages/main/
+
+    - name: Deploy to GitHub Pages (main)
+      if: github.ref == 'refs/heads/main'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs/html
+        publish_dir: gh-pages
+        publish_branch: docs
+        keep_files: true  # Optional: removes existing files in the branch
+
+    - name: Prepare GitHub Pages directory (dev)
+      if: github.ref == 'refs/heads/dev'
+      run: |
+        mkdir -p gh-pages/dev
+        cp -r docs/html/* gh-pages/dev/
+
+    - name: Deploy to GitHub Pages (dev)
+      if: github.ref == 'refs/heads/dev'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: gh-pages
         publish_branch: docs
         keep_files: true  # Optional: removes existing files in the branch
