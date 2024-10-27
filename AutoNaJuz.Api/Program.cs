@@ -4,29 +4,41 @@ using AutoNaJuz.Model;
 using AutoNaJuz.Services;
 using AutoNaJuz.Services.Interfaces;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("MsSql")));
-builder.Services.AddIdentityCore<User>()
-    .AddEntityFrameworkStores<AppDbContext>();
-
-builder.Services.AddControllers();
-builder.Services.AddFluentValidationAutoValidation();
-
+// Configure database context
 var services = builder.Services;
 
+services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MsSql")));
+
+// Configure Identity
+services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<AppDbContext>();
+
+// Add controllers and routing
+services.AddControllers();
+services.AddRouting();
+
+// Add FluentValidation
+services.AddFluentValidationAutoValidation();
+
+// Configure Swagger
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen();
+
+// Register application services
 services.AddScoped<ICarsService, CarsService>();
 services.AddScoped<ICarRentalsService, CarRentalsService>();
 
 var app = builder.Build();
 
+// Apply database migrations
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -41,30 +53,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting(); // Ensure routing is configured
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+app.UseAuthentication(); // Enable authentication
+app.UseAuthorization();  // Enable authorization
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
