@@ -1,12 +1,11 @@
 # Doxyfile 1.9.3
 # This file describes the settings to be used by the documentation system
 # Doxygen (www.doxygen.org) for a C# project.
-
 # Project related settings
 
-PROJECT_NAME           = "AutoNaJuz"
+PROJECT_NAME           = "Auto Na Już"
 PROJECT_BRIEF          = ""
-PROJECT_LOGO           = ""
+PROJECT_LOGO           = "AutoNaJuz.Web/wwwroot/logo.png"
 OUTPUT_DIRECTORY       = ./docs
 
 # If the value of the INPUT tag contains directories, you can use the FILE_PATTERNS
@@ -16,8 +15,9 @@ INPUT = ./AutoNaJuz.Api ./AutoNaJuz.DAL ./AutoNaJuz.Model ./AutoNaJuz.Services
 FILE_PATTERNS          = *.cs
 
 # If the EXCLUDE tag is set to a comma-separated list of directories or
+# If the EXCLUDE tag is set to a comma-separated list of directories or
 # files, those files or directories will be excluded from the input.
-EXCLUDE                =
+EXCLUDE                = obj, bin, ./AutoNaJuz.Api/obj, ./AutoNaJuz.Api/bin, ./AutoNaJuz.DAL/obj, ./AutoNaJuz.DAL/bin, ./AutoNaJuz.Model/obj, ./AutoNaJuz.Model/bin, ./AutoNaJuz.Services/obj, ./AutoNaJuz.Services/bin
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
@@ -65,10 +65,12 @@ EXTRACT_STATIC         = NO
 GENERATE_TREEVIEW      = YES # optional. Also works without treeview
 DISABLE_INDEX          = NO
 FULL_SIDEBAR           = NO
-HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css
 HTML_COLORSTYLE        = LIGHT # required with Doxygen >= 1.9.5
+HTML_HEADER            = header.html
 
-HTML_EXTRA_FILES: doxygen-awesome-darkmode-toggle.js doxygen-awesome-fragment-copy-button.js doxygen-awesome-paragraph-link.js doxygen-awesome-interactive-toc.js doxygen-awesome-tabs.js
+HTML_EXTRA_STYLESHEET  = doxygen-awesome.css
+HTML_EXTRA_FILES       = doxygen-awesome-darkmode-toggle.js doxygen-awesome-fragment-copy-button.js doxygen-awesome-paragraph-link.js doxygen-awesome-interactive-toc.js doxygen-awesome-tabs.js
+
 HTML_COPY_CLIPBOARD: NO
 
 # will be included in the documentation.
@@ -114,3 +116,7 @@ DOT_GRAPH_MAX_NODES    = 100
 
 # The WARNINGS tag controls whether warnings should be generated.
 WARNINGS               = YES
+
+SEARCHENGINE           = YES
+SERVER_BASED_SEARCH    = NO
+EXTERNAL_SEARCH        = NO
