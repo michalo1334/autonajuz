@@ -58,6 +58,19 @@ EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = NO
 
 # The EXTRACT_STATIC tag can be used to control whether static members of a class
+EXTRACT_STATIC         = NO
+
+# Options related to the HTML output
+
+GENERATE_TREEVIEW      = YES # optional. Also works without treeview
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = NO
+HTML_EXTRA_STYLESHEET  = doxygen-awesome-css/doxygen-awesome.css
+HTML_COLORSTYLE        = LIGHT # required with Doxygen >= 1.9.5
+
+HTML_EXTRA_FILES: doxygen-awesome-darkmode-toggle.js doxygen-awesome-fragment-copy-button.js doxygen-awesome-paragraph-link.js doxygen-awesome-interactive-toc.js doxygen-awesome-tabs.js
+HTML_COPY_CLIPBOARD: NO
+
 # will be included in the documentation.
 EXTRACT_STATIC         = NO
 
