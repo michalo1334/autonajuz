@@ -11,13 +11,13 @@ OUTPUT_DIRECTORY       = ./docs
 # If the value of the INPUT tag contains directories, you can use the FILE_PATTERNS
 # tag to specify one or more wildcard patterns (like *.cpp and *.h) to filter out
 # the source-files in the directories.
-INPUT = ./AutoNaJuz.Api ./AutoNaJuz.DAL ./AutoNaJuz.Model ./AutoNaJuz.Services
+INPUT = ./AutoNaJuz.Api ./AutoNaJuz.DAL ./AutoNaJuz.Model ./AutoNaJuz.Services ./AutoNaJuz.ViewModels
 FILE_PATTERNS          = *.cs
 
 # If the EXCLUDE tag is set to a comma-separated list of directories or
 # If the EXCLUDE tag is set to a comma-separated list of directories or
 # files, those files or directories will be excluded from the input.
-EXCLUDE                = obj, bin, ./AutoNaJuz.Api/obj, ./AutoNaJuz.Api/bin, ./AutoNaJuz.DAL/obj, ./AutoNaJuz.DAL/bin, ./AutoNaJuz.Model/obj, ./AutoNaJuz.Model/bin, ./AutoNaJuz.Services/obj, ./AutoNaJuz.Services/bin
+EXCLUDE                = obj, bin, ./AutoNaJuz.Api/obj, ./AutoNaJuz.Api/bin, ./AutoNaJuz.DAL/obj, ./AutoNaJuz.DAL/bin, ./AutoNaJuz.Model/obj, ./AutoNaJuz.Model/bin, ./AutoNaJuz.Services/,obj, ./AutoNaJuz.Services/bin, ./AutoNaJuz.ViewModels/bin, ./AutoNaJuz.ViewModels/obj
 
 # The RECURSIVE tag can be used to specify whether or not subdirectories should
 # be searched for input files as well.
