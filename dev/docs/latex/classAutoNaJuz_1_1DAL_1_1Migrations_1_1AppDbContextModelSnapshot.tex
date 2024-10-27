@@ -1,0 +1,314 @@
+\hypertarget{classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot}{}\doxysection{Auto\+Na\+Juz.\+DAL.\+Migrations.\+App\+Db\+Context\+Model\+Snapshot Class Reference}
+\label{classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot}\index{AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot@{AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot}}
+
+
+Inheritance diagram for Auto\+Na\+Juz.\+DAL.\+Migrations.\+App\+Db\+Context\+Model\+Snapshot\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Auto\+Na\+Juz.\+DAL.\+Migrations.\+App\+Db\+Context\+Model\+Snapshot\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot_a65e7456089bca7ddb5368937a6c9b9b3}{Build\+Model}} (Model\+Builder model\+Builder)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 14 of file App\+Db\+Context\+Model\+Snapshot.\+cs.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot_a65e7456089bca7ddb5368937a6c9b9b3}\label{classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot_a65e7456089bca7ddb5368937a6c9b9b3}} 
+\index{AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot@{AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot}!BuildModel@{BuildModel}}
+\index{BuildModel@{BuildModel}!AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot@{AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot}}
+\doxysubsubsection{\texorpdfstring{BuildModel()}{BuildModel()}}
+{\footnotesize\ttfamily override void Auto\+Na\+Juz.\+DAL.\+Migrations.\+App\+Db\+Context\+Model\+Snapshot.\+Build\+Model (\begin{DoxyParamCaption}\item[{Model\+Builder}]{model\+Builder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 16 of file App\+Db\+Context\+Model\+Snapshot.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17         \{}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#pragma warning disable 612, 618}}
+\DoxyCodeLine{19             modelBuilder}
+\DoxyCodeLine{20                 .HasAnnotation(\textcolor{stringliteral}{"{}ProductVersion"{}}, \textcolor{stringliteral}{"{}8.0.10"{}})}
+\DoxyCodeLine{21                 .HasAnnotation(\textcolor{stringliteral}{"{}Relational:MaxIdentifierLength"{}}, 128);}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityRole"{}}, b =>}
+\DoxyCodeLine{26                 \{}
+\DoxyCodeLine{27                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Id"{}})}
+\DoxyCodeLine{28                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{29 }
+\DoxyCodeLine{30                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ConcurrencyStamp"{}})}
+\DoxyCodeLine{31                         .IsConcurrencyToken()}
+\DoxyCodeLine{32                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Name"{}})}
+\DoxyCodeLine{35                         .HasMaxLength(256)}
+\DoxyCodeLine{36                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(256)"{}});}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}NormalizedName"{}})}
+\DoxyCodeLine{39                         .HasMaxLength(256)}
+\DoxyCodeLine{40                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(256)"{}});}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42                     b.HasKey(\textcolor{stringliteral}{"{}Id"{}});}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44                     b.HasIndex(\textcolor{stringliteral}{"{}NormalizedName"{}})}
+\DoxyCodeLine{45                         .IsUnique()}
+\DoxyCodeLine{46                         .HasDatabaseName(\textcolor{stringliteral}{"{}RoleNameIndex"{}})}
+\DoxyCodeLine{47                         .HasFilter(\textcolor{stringliteral}{"{}[NormalizedName] IS NOT NULL"{}});}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49                     b.ToTable(\textcolor{stringliteral}{"{}AspNetRoles"{}}, (\textcolor{keywordtype}{string})\textcolor{keyword}{null});}
+\DoxyCodeLine{50                 \});}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>"{}}, b =>}
+\DoxyCodeLine{53                 \{}
+\DoxyCodeLine{54                     b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}})}
+\DoxyCodeLine{55                         .ValueGeneratedOnAdd()}
+\DoxyCodeLine{56                         .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}}));}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ClaimType"{}})}
+\DoxyCodeLine{61                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ClaimValue"{}})}
+\DoxyCodeLine{64                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}RoleId"{}})}
+\DoxyCodeLine{67                         .IsRequired()}
+\DoxyCodeLine{68                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70                     b.HasKey(\textcolor{stringliteral}{"{}Id"{}});}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72                     b.HasIndex(\textcolor{stringliteral}{"{}RoleId"{}});}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74                     b.ToTable(\textcolor{stringliteral}{"{}AspNetRoleClaims"{}}, (\textcolor{keywordtype}{string})\textcolor{keyword}{null});}
+\DoxyCodeLine{75                 \});}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUser"{}}, b =>}
+\DoxyCodeLine{78                 \{}
+\DoxyCodeLine{79                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Id"{}})}
+\DoxyCodeLine{80                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82                     b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}AccessFailedCount"{}})}
+\DoxyCodeLine{83                         .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ConcurrencyStamp"{}})}
+\DoxyCodeLine{86                         .IsConcurrencyToken()}
+\DoxyCodeLine{87                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{89                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Email"{}})}
+\DoxyCodeLine{90                         .HasMaxLength(256)}
+\DoxyCodeLine{91                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(256)"{}});}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93                     b.Property<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}EmailConfirmed"{}})}
+\DoxyCodeLine{94                         .HasColumnType(\textcolor{stringliteral}{"{}bit"{}});}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96                     b.Property<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}LockoutEnabled"{}})}
+\DoxyCodeLine{97                         .HasColumnType(\textcolor{stringliteral}{"{}bit"{}});}
+\DoxyCodeLine{98 }
+\DoxyCodeLine{99                     b.Property<DateTimeOffset?>(\textcolor{stringliteral}{"{}LockoutEnd"{}})}
+\DoxyCodeLine{100                         .HasColumnType(\textcolor{stringliteral}{"{}datetimeoffset"{}});}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}NormalizedEmail"{}})}
+\DoxyCodeLine{103                         .HasMaxLength(256)}
+\DoxyCodeLine{104                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(256)"{}});}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}NormalizedUserName"{}})}
+\DoxyCodeLine{107                         .HasMaxLength(256)}
+\DoxyCodeLine{108                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(256)"{}});}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{110                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}PasswordHash"{}})}
+\DoxyCodeLine{111                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}PhoneNumber"{}})}
+\DoxyCodeLine{114                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116                     b.Property<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}PhoneNumberConfirmed"{}})}
+\DoxyCodeLine{117                         .HasColumnType(\textcolor{stringliteral}{"{}bit"{}});}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}SecurityStamp"{}})}
+\DoxyCodeLine{120                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122                     b.Property<\textcolor{keywordtype}{bool}>(\textcolor{stringliteral}{"{}TwoFactorEnabled"{}})}
+\DoxyCodeLine{123                         .HasColumnType(\textcolor{stringliteral}{"{}bit"{}});}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}UserName"{}})}
+\DoxyCodeLine{126                         .HasMaxLength(256)}
+\DoxyCodeLine{127                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(256)"{}});}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129                     b.HasKey(\textcolor{stringliteral}{"{}Id"{}});}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131                     b.HasIndex(\textcolor{stringliteral}{"{}NormalizedEmail"{}})}
+\DoxyCodeLine{132                         .HasDatabaseName(\textcolor{stringliteral}{"{}EmailIndex"{}});}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{134                     b.HasIndex(\textcolor{stringliteral}{"{}NormalizedUserName"{}})}
+\DoxyCodeLine{135                         .IsUnique()}
+\DoxyCodeLine{136                         .HasDatabaseName(\textcolor{stringliteral}{"{}UserNameIndex"{}})}
+\DoxyCodeLine{137                         .HasFilter(\textcolor{stringliteral}{"{}[NormalizedUserName] IS NOT NULL"{}});}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139                     b.ToTable(\textcolor{stringliteral}{"{}AspNetUsers"{}}, (\textcolor{keywordtype}{string})\textcolor{keyword}{null});}
+\DoxyCodeLine{140                 \});}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserClaim<string>"{}}, b =>}
+\DoxyCodeLine{143                 \{}
+\DoxyCodeLine{144                     b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}})}
+\DoxyCodeLine{145                         .ValueGeneratedOnAdd()}
+\DoxyCodeLine{146                         .HasColumnType(\textcolor{stringliteral}{"{}int"{}});}
+\DoxyCodeLine{147 }
+\DoxyCodeLine{148                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<\textcolor{keywordtype}{int}>(\textcolor{stringliteral}{"{}Id"{}}));}
+\DoxyCodeLine{149 }
+\DoxyCodeLine{150                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ClaimType"{}})}
+\DoxyCodeLine{151                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ClaimValue"{}})}
+\DoxyCodeLine{154                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{157                         .IsRequired()}
+\DoxyCodeLine{158                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160                     b.HasKey(\textcolor{stringliteral}{"{}Id"{}});}
+\DoxyCodeLine{161 }
+\DoxyCodeLine{162                     b.HasIndex(\textcolor{stringliteral}{"{}UserId"{}});}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164                     b.ToTable(\textcolor{stringliteral}{"{}AspNetUserClaims"{}}, (\textcolor{keywordtype}{string})\textcolor{keyword}{null});}
+\DoxyCodeLine{165                 \});}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserLogin<string>"{}}, b =>}
+\DoxyCodeLine{168                 \{}
+\DoxyCodeLine{169                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}LoginProvider"{}})}
+\DoxyCodeLine{170                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{171 }
+\DoxyCodeLine{172                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ProviderKey"{}})}
+\DoxyCodeLine{173                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}ProviderDisplayName"{}})}
+\DoxyCodeLine{176                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{177 }
+\DoxyCodeLine{178                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{179                         .IsRequired()}
+\DoxyCodeLine{180                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182                     b.HasKey(\textcolor{stringliteral}{"{}LoginProvider"{}}, \textcolor{stringliteral}{"{}ProviderKey"{}});}
+\DoxyCodeLine{183 }
+\DoxyCodeLine{184                     b.HasIndex(\textcolor{stringliteral}{"{}UserId"{}});}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{186                     b.ToTable(\textcolor{stringliteral}{"{}AspNetUserLogins"{}}, (\textcolor{keywordtype}{string})\textcolor{keyword}{null});}
+\DoxyCodeLine{187                 \});}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserRole<string>"{}}, b =>}
+\DoxyCodeLine{190                 \{}
+\DoxyCodeLine{191                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{192                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{193 }
+\DoxyCodeLine{194                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}RoleId"{}})}
+\DoxyCodeLine{195                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197                     b.HasKey(\textcolor{stringliteral}{"{}UserId"{}}, \textcolor{stringliteral}{"{}RoleId"{}});}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199                     b.HasIndex(\textcolor{stringliteral}{"{}RoleId"{}});}
+\DoxyCodeLine{200 }
+\DoxyCodeLine{201                     b.ToTable(\textcolor{stringliteral}{"{}AspNetUserRoles"{}}, (\textcolor{keywordtype}{string})\textcolor{keyword}{null});}
+\DoxyCodeLine{202                 \});}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserToken<string>"{}}, b =>}
+\DoxyCodeLine{205                 \{}
+\DoxyCodeLine{206                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{207                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{209                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}LoginProvider"{}})}
+\DoxyCodeLine{210                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{211 }
+\DoxyCodeLine{212                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Name"{}})}
+\DoxyCodeLine{213                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(450)"{}});}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215                     b.Property<\textcolor{keywordtype}{string}>(\textcolor{stringliteral}{"{}Value"{}})}
+\DoxyCodeLine{216                         .HasColumnType(\textcolor{stringliteral}{"{}nvarchar(max)"{}});}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218                     b.HasKey(\textcolor{stringliteral}{"{}UserId"{}}, \textcolor{stringliteral}{"{}LoginProvider"{}}, \textcolor{stringliteral}{"{}Name"{}});}
+\DoxyCodeLine{219 }
+\DoxyCodeLine{220                     b.ToTable(\textcolor{stringliteral}{"{}AspNetUserTokens"{}}, (\textcolor{keywordtype}{string})\textcolor{keyword}{null});}
+\DoxyCodeLine{221                 \});}
+\DoxyCodeLine{222 }
+\DoxyCodeLine{223             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>"{}}, b =>}
+\DoxyCodeLine{224                 \{}
+\DoxyCodeLine{225                     b.HasOne(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityRole"{}}, \textcolor{keyword}{null})}
+\DoxyCodeLine{226                         .WithMany()}
+\DoxyCodeLine{227                         .HasForeignKey(\textcolor{stringliteral}{"{}RoleId"{}})}
+\DoxyCodeLine{228                         .OnDelete(DeleteBehavior.Cascade)}
+\DoxyCodeLine{229                         .IsRequired();}
+\DoxyCodeLine{230                 \});}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{232             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserClaim<string>"{}}, b =>}
+\DoxyCodeLine{233                 \{}
+\DoxyCodeLine{234                     b.HasOne(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUser"{}}, \textcolor{keyword}{null})}
+\DoxyCodeLine{235                         .WithMany()}
+\DoxyCodeLine{236                         .HasForeignKey(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{237                         .OnDelete(DeleteBehavior.Cascade)}
+\DoxyCodeLine{238                         .IsRequired();}
+\DoxyCodeLine{239                 \});}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserLogin<string>"{}}, b =>}
+\DoxyCodeLine{242                 \{}
+\DoxyCodeLine{243                     b.HasOne(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUser"{}}, \textcolor{keyword}{null})}
+\DoxyCodeLine{244                         .WithMany()}
+\DoxyCodeLine{245                         .HasForeignKey(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{246                         .OnDelete(DeleteBehavior.Cascade)}
+\DoxyCodeLine{247                         .IsRequired();}
+\DoxyCodeLine{248                 \});}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserRole<string>"{}}, b =>}
+\DoxyCodeLine{251                 \{}
+\DoxyCodeLine{252                     b.HasOne(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityRole"{}}, \textcolor{keyword}{null})}
+\DoxyCodeLine{253                         .WithMany()}
+\DoxyCodeLine{254                         .HasForeignKey(\textcolor{stringliteral}{"{}RoleId"{}})}
+\DoxyCodeLine{255                         .OnDelete(DeleteBehavior.Cascade)}
+\DoxyCodeLine{256                         .IsRequired();}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258                     b.HasOne(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUser"{}}, \textcolor{keyword}{null})}
+\DoxyCodeLine{259                         .WithMany()}
+\DoxyCodeLine{260                         .HasForeignKey(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{261                         .OnDelete(DeleteBehavior.Cascade)}
+\DoxyCodeLine{262                         .IsRequired();}
+\DoxyCodeLine{263                 \});}
+\DoxyCodeLine{264 }
+\DoxyCodeLine{265             modelBuilder.Entity(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUserToken<string>"{}}, b =>}
+\DoxyCodeLine{266                 \{}
+\DoxyCodeLine{267                     b.HasOne(\textcolor{stringliteral}{"{}Microsoft.AspNetCore.Identity.IdentityUser"{}}, \textcolor{keyword}{null})}
+\DoxyCodeLine{268                         .WithMany()}
+\DoxyCodeLine{269                         .HasForeignKey(\textcolor{stringliteral}{"{}UserId"{}})}
+\DoxyCodeLine{270                         .OnDelete(DeleteBehavior.Cascade)}
+\DoxyCodeLine{271                         .IsRequired();}
+\DoxyCodeLine{272                 \});}
+\DoxyCodeLine{273 \textcolor{preprocessor}{\#pragma warning restore 612, 618}}
+\DoxyCodeLine{274         \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Auto\+Na\+Juz.\+DAL/\+Migrations/\mbox{\hyperlink{AppDbContextModelSnapshot_8cs}{App\+Db\+Context\+Model\+Snapshot.\+cs}}\end{DoxyCompactItemize}

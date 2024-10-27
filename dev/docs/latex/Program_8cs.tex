@@ -1,0 +1,231 @@
+\hypertarget{Program_8cs}{}\doxysection{Auto\+Na\+Juz.\+Api/\+Program.cs File Reference}
+\label{Program_8cs}\index{AutoNaJuz.Api/Program.cs@{AutoNaJuz.Api/Program.cs}}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{Program_8cs_a2aa2d1217acdc9e6190e08eef476de03}{scope}} = app.\+Services.\+Create\+Scope()) \{ var db=scope.\+Service\+Provider.\+Get\+Required\+Service$<$ \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext}{App\+Db\+Context}} $>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+builder.\+Services. \mbox{\hyperlink{Program_8cs_a0d7859f9cad50e8e9fdf015100780e07}{Add\+Endpoints\+Api\+Explorer}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{Program_8cs_ae0ce43c019a5621d731d0c622c793644}{Add\+Swagger\+Gen}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{Program_8cs_ac658815cabf7120612b6d91bf8c0e373}{Add\+Db\+Context$<$ App\+Db\+Context $>$}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{Program_8cs_abc3694a0e15618f2499e5a540264f833}{Add\+Controllers}} ()
+\item 
+builder.\+Services. \mbox{\hyperlink{Program_8cs_ac90808c62c69de6215dfd9861ce5426b}{Add\+Fluent\+Validation\+Auto\+Validation}} ()
+\item 
+services. \mbox{\hyperlink{Program_8cs_ab1cadedf684f71ea31dc853f94a4e90c}{Add\+Transient$<$ ICars\+Service, Cars\+Service $>$}} ()
+\item 
+services. \mbox{\hyperlink{Program_8cs_ab150e473337144e47efa2a7782756e7f}{Add\+Transient$<$ ICar\+Rentals\+Service, Car\+Rentals\+Service $>$}} ()
+\item 
+db.\+Database. \mbox{\hyperlink{Program_8cs_a1c68c62ca918c5f8fa6c817576d80f6d}{Migrate}} ()
+\item 
+\mbox{\hyperlink{Program_8cs_a79a944c7f0e25196ca3c5a8638b919b9}{if}} (app.\+Environment.\+Is\+Development())
+\item 
+app. \mbox{\hyperlink{Program_8cs_aa4d447fc3129a3aa301d736b8bd04ae9}{Use\+Https\+Redirection}} ()
+\item 
+app. \mbox{\hyperlink{Program_8cs_a50102f10d5a3f9c608225c58eb52d620}{Map\+Get}} (\char`\"{}/weatherforecast\char`\"{},()=$>$ \{ var forecast=Enumerable.\+Range(1, 5).Select(index=$>$ new \mbox{\hyperlink{Program_8cs_ad93e1344caac29dfe0e8ec6ec9833753}{Weather\+Forecast}}(Date\+Only.\+From\+Date\+Time(Date\+Time.\+Now.\+Add\+Days(index)), Random.\+Shared.\+Next(-\/20, 55), \mbox{\hyperlink{Program_8cs_a228eff3516389a410c5795dda18c9b30}{summaries}}\mbox{[}Random.\+Shared.\+Next(summaries.\+Length)\mbox{]})) .To\+Array();return forecast;\}) .With\+Name(\char`\"{}Get\+Weather\+Forecast\char`\"{}) .With\+Open\+Api()
+\item 
+app. \mbox{\hyperlink{Program_8cs_aaa3dbf02e269c3ef7e8546d290c6b3dd}{Run}} ()
+\item 
+record \mbox{\hyperlink{Program_8cs_ad93e1344caac29dfe0e8ec6ec9833753}{Weather\+Forecast}} (Date\+Only Date, int TemperatureC, string? Summary)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+var \mbox{\hyperlink{Program_8cs_a2f78352277081c620fd4cf92a5ce15e5}{builder}} = Web\+Application.\+Create\+Builder(args)
+\item 
+var \mbox{\hyperlink{Program_8cs_ad79fbc5835b5fb29068560ce0db216e8}{services}} = builder.\+Services
+\item 
+var \mbox{\hyperlink{Program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}} = builder.\+Build()
+\item 
+var \mbox{\hyperlink{Program_8cs_a228eff3516389a410c5795dda18c9b30}{summaries}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{Program_8cs_a2aa2d1217acdc9e6190e08eef476de03}\label{Program_8cs_a2aa2d1217acdc9e6190e08eef476de03}} 
+\index{Program.cs@{Program.cs}!scope@{scope}}
+\index{scope@{scope}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{scope}{scope}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{Program_8cs_a2aa2d1217acdc9e6190e08eef476de03}{scope}} =  app.\+Services.\+Create\+Scope()) \{ var db = scope.\+Service\+Provider.\+Get\+Required\+Service$<$\mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext}{App\+Db\+Context}}$>$()}
+
+
+
+Definition at line 27 of file Program.\+cs.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{Program_8cs_abc3694a0e15618f2499e5a540264f833}\label{Program_8cs_abc3694a0e15618f2499e5a540264f833}} 
+\index{Program.cs@{Program.cs}!AddControllers@{AddControllers}}
+\index{AddControllers@{AddControllers}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddControllers()}{AddControllers()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Controllers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_ac658815cabf7120612b6d91bf8c0e373}\label{Program_8cs_ac658815cabf7120612b6d91bf8c0e373}} 
+\index{Program.cs@{Program.cs}!AddDbContext$<$ AppDbContext $>$@{AddDbContext$<$ AppDbContext $>$}}
+\index{AddDbContext$<$ AppDbContext $>$@{AddDbContext$<$ AppDbContext $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddDbContext$<$ AppDbContext $>$()}{AddDbContext< AppDbContext >()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Db\+Context$<$ \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext}{App\+Db\+Context}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_a0d7859f9cad50e8e9fdf015100780e07}\label{Program_8cs_a0d7859f9cad50e8e9fdf015100780e07}} 
+\index{Program.cs@{Program.cs}!AddEndpointsApiExplorer@{AddEndpointsApiExplorer}}
+\index{AddEndpointsApiExplorer@{AddEndpointsApiExplorer}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddEndpointsApiExplorer()}{AddEndpointsApiExplorer()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Endpoints\+Api\+Explorer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_ac90808c62c69de6215dfd9861ce5426b}\label{Program_8cs_ac90808c62c69de6215dfd9861ce5426b}} 
+\index{Program.cs@{Program.cs}!AddFluentValidationAutoValidation@{AddFluentValidationAutoValidation}}
+\index{AddFluentValidationAutoValidation@{AddFluentValidationAutoValidation}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddFluentValidationAutoValidation()}{AddFluentValidationAutoValidation()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Fluent\+Validation\+Auto\+Validation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_ae0ce43c019a5621d731d0c622c793644}\label{Program_8cs_ae0ce43c019a5621d731d0c622c793644}} 
+\index{Program.cs@{Program.cs}!AddSwaggerGen@{AddSwaggerGen}}
+\index{AddSwaggerGen@{AddSwaggerGen}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddSwaggerGen()}{AddSwaggerGen()}}
+{\footnotesize\ttfamily builder.\+Services. Add\+Swagger\+Gen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_ab150e473337144e47efa2a7782756e7f}\label{Program_8cs_ab150e473337144e47efa2a7782756e7f}} 
+\index{Program.cs@{Program.cs}!AddTransient$<$ ICarRentalsService, CarRentalsService $>$@{AddTransient$<$ ICarRentalsService, CarRentalsService $>$}}
+\index{AddTransient$<$ ICarRentalsService, CarRentalsService $>$@{AddTransient$<$ ICarRentalsService, CarRentalsService $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddTransient$<$ ICarRentalsService, CarRentalsService $>$()}{AddTransient< ICarRentalsService, CarRentalsService >()}}
+{\footnotesize\ttfamily services. Add\+Transient$<$ \mbox{\hyperlink{interfaceAutoNaJuz_1_1Services_1_1Interfaces_1_1ICarRentalsService}{ICar\+Rentals\+Service}}, \mbox{\hyperlink{classAutoNaJuz_1_1Services_1_1CarRentalsService}{Car\+Rentals\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_ab1cadedf684f71ea31dc853f94a4e90c}\label{Program_8cs_ab1cadedf684f71ea31dc853f94a4e90c}} 
+\index{Program.cs@{Program.cs}!AddTransient$<$ ICarsService, CarsService $>$@{AddTransient$<$ ICarsService, CarsService $>$}}
+\index{AddTransient$<$ ICarsService, CarsService $>$@{AddTransient$<$ ICarsService, CarsService $>$}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{AddTransient$<$ ICarsService, CarsService $>$()}{AddTransient< ICarsService, CarsService >()}}
+{\footnotesize\ttfamily services. Add\+Transient$<$ \mbox{\hyperlink{interfaceAutoNaJuz_1_1Services_1_1Interfaces_1_1ICarsService}{ICars\+Service}}, \mbox{\hyperlink{classAutoNaJuz_1_1Services_1_1CarsService}{Cars\+Service}} $>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_a79a944c7f0e25196ca3c5a8638b919b9}\label{Program_8cs_a79a944c7f0e25196ca3c5a8638b919b9}} 
+\index{Program.cs@{Program.cs}!if@{if}}
+\index{if@{if}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{if()}{if()}}
+{\footnotesize\ttfamily if (\begin{DoxyParamCaption}\item[{app.\+Environment.}]{Is\+Development() }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file Program.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{36     \mbox{\hyperlink{Program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwagger();}
+\DoxyCodeLine{37     \mbox{\hyperlink{Program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}{app}}.UseSwaggerUI();}
+\DoxyCodeLine{38 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{Program_8cs_a50102f10d5a3f9c608225c58eb52d620}\label{Program_8cs_a50102f10d5a3f9c608225c58eb52d620}} 
+\index{Program.cs@{Program.cs}!MapGet@{MapGet}}
+\index{MapGet@{MapGet}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{MapGet()}{MapGet()}}
+{\footnotesize\ttfamily app. Map\+Get (\begin{DoxyParamCaption}\item[{\char`\"{}/weatherforecast\char`\"{}}]{,  }\item[{()}]{,  }\item[{\{ var forecast=Enumerable.\+Range(1, 5).Select(index=$>$ new \mbox{\hyperlink{Program_8cs_ad93e1344caac29dfe0e8ec6ec9833753}{Weather\+Forecast}}(Date\+Only.\+From\+Date\+Time(Date\+Time.\+Now.\+Add\+Days(index)), Random.\+Shared.\+Next(-\/20, 55), \mbox{\hyperlink{Program_8cs_a228eff3516389a410c5795dda18c9b30}{summaries}}\mbox{[}Random.\+Shared.\+Next(summaries.\+Length)\mbox{]})) .To\+Array();return forecast;\}}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{Program_8cs_a50102f10d5a3f9c608225c58eb52d620_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{Program_8cs_a1c68c62ca918c5f8fa6c817576d80f6d}\label{Program_8cs_a1c68c62ca918c5f8fa6c817576d80f6d}} 
+\index{Program.cs@{Program.cs}!Migrate@{Migrate}}
+\index{Migrate@{Migrate}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{Migrate()}{Migrate()}}
+{\footnotesize\ttfamily db.\+Database. Migrate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_aaa3dbf02e269c3ef7e8546d290c6b3dd}\label{Program_8cs_aaa3dbf02e269c3ef7e8546d290c6b3dd}} 
+\index{Program.cs@{Program.cs}!Run@{Run}}
+\index{Run@{Run}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily app. Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_aa4d447fc3129a3aa301d736b8bd04ae9}\label{Program_8cs_aa4d447fc3129a3aa301d736b8bd04ae9}} 
+\index{Program.cs@{Program.cs}!UseHttpsRedirection@{UseHttpsRedirection}}
+\index{UseHttpsRedirection@{UseHttpsRedirection}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{UseHttpsRedirection()}{UseHttpsRedirection()}}
+{\footnotesize\ttfamily app. Use\+Https\+Redirection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{Program_8cs_ad93e1344caac29dfe0e8ec6ec9833753}\label{Program_8cs_ad93e1344caac29dfe0e8ec6ec9833753}} 
+\index{Program.cs@{Program.cs}!WeatherForecast@{WeatherForecast}}
+\index{WeatherForecast@{WeatherForecast}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{WeatherForecast()}{WeatherForecast()}}
+{\footnotesize\ttfamily record Weather\+Forecast (\begin{DoxyParamCaption}\item[{Date\+Only}]{Date,  }\item[{int}]{TemperatureC,  }\item[{string?}]{Summary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 64 of file Program.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65 \{}
+\DoxyCodeLine{66     \textcolor{keyword}{public} \textcolor{keywordtype}{int} TemperatureF => 32 + (int)(TemperatureC / 0.5556);}
+\DoxyCodeLine{67 \}}
+
+\end{DoxyCode}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{Program_8cs_ad93e1344caac29dfe0e8ec6ec9833753_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{Program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}\label{Program_8cs_a7b225fcb720e4d5ed2bbf60e28a25e6d}} 
+\index{Program.cs@{Program.cs}!app@{app}}
+\index{app@{app}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{app}{app}}
+{\footnotesize\ttfamily var app = builder.\+Build()}
+
+
+
+Definition at line 25 of file Program.\+cs.
+
+\mbox{\Hypertarget{Program_8cs_a2f78352277081c620fd4cf92a5ce15e5}\label{Program_8cs_a2f78352277081c620fd4cf92a5ce15e5}} 
+\index{Program.cs@{Program.cs}!builder@{builder}}
+\index{builder@{builder}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{builder}{builder}}
+{\footnotesize\ttfamily var builder = Web\+Application.\+Create\+Builder(args)}
+
+
+
+Definition at line 8 of file Program.\+cs.
+
+\mbox{\Hypertarget{Program_8cs_ad79fbc5835b5fb29068560ce0db216e8}\label{Program_8cs_ad79fbc5835b5fb29068560ce0db216e8}} 
+\index{Program.cs@{Program.cs}!services@{services}}
+\index{services@{services}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{services}{services}}
+{\footnotesize\ttfamily var services = builder.\+Services}
+
+
+
+Definition at line 20 of file Program.\+cs.
+
+\mbox{\Hypertarget{Program_8cs_a228eff3516389a410c5795dda18c9b30}\label{Program_8cs_a228eff3516389a410c5795dda18c9b30}} 
+\index{Program.cs@{Program.cs}!summaries@{summaries}}
+\index{summaries@{summaries}!Program.cs@{Program.cs}}
+\doxysubsubsection{\texorpdfstring{summaries}{summaries}}
+{\footnotesize\ttfamily var summaries}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new}[]}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"{}Freezing"{}}, \textcolor{stringliteral}{"{}Bracing"{}}, \textcolor{stringliteral}{"{}Chilly"{}}, \textcolor{stringliteral}{"{}Cool"{}}, \textcolor{stringliteral}{"{}Mild"{}}, \textcolor{stringliteral}{"{}Warm"{}}, \textcolor{stringliteral}{"{}Balmy"{}}, \textcolor{stringliteral}{"{}Hot"{}}, \textcolor{stringliteral}{"{}Sweltering"{}}, \textcolor{stringliteral}{"{}Scorching"{}}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line 42 of file Program.\+cs.
+

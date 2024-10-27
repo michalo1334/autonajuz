@@ -1,0 +1,126 @@
+\hypertarget{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext}{}\doxysection{Auto\+Na\+Juz.\+DAL.\+Data.\+App\+Db\+Context Class Reference}
+\label{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext}\index{AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}}
+
+
+Inheritance diagram for Auto\+Na\+Juz.\+DAL.\+Data.\+App\+Db\+Context\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Auto\+Na\+Juz.\+DAL.\+Data.\+App\+Db\+Context\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a128c604c78b59d9cac6aab1dd14890c1}{App\+Db\+Context}} (Db\+Context\+Options$<$ \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext}{App\+Db\+Context}} $>$ options, IConfiguration configuration)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a605eeb5834c23581ce4c8c558c24b26d}{On\+Configuring}} (Db\+Context\+Options\+Builder options)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Db\+Set$<$ \mbox{\hyperlink{classAutoNaJuz_1_1Model_1_1Car}{Car}} $>$ \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_afeb4b16082bd61dbc171689cf1a5d5b5}{Cars}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Db\+Set$<$ \mbox{\hyperlink{classAutoNaJuz_1_1Model_1_1CarRental}{Car\+Rental}} $>$ \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a3c9d8a4253c79a3a8ed836c77c1a375a}{Car\+Rentals}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 12 of file App\+Db\+Context.\+cs.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a128c604c78b59d9cac6aab1dd14890c1}\label{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a128c604c78b59d9cac6aab1dd14890c1}} 
+\index{AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}!AppDbContext@{AppDbContext}}
+\index{AppDbContext@{AppDbContext}!AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}}
+\doxysubsubsection{\texorpdfstring{AppDbContext()}{AppDbContext()}}
+{\footnotesize\ttfamily Auto\+Na\+Juz.\+DAL.\+Data.\+App\+Db\+Context.\+App\+Db\+Context (\begin{DoxyParamCaption}\item[{Db\+Context\+Options$<$ \mbox{\hyperlink{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext}{App\+Db\+Context}} $>$}]{options,  }\item[{IConfiguration}]{configuration }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line 19 of file App\+Db\+Context.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{20             : base(options)}
+\DoxyCodeLine{21         \{}
+\DoxyCodeLine{22             \_configuration = configuration;}
+\DoxyCodeLine{23         \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a605eeb5834c23581ce4c8c558c24b26d}\label{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a605eeb5834c23581ce4c8c558c24b26d}} 
+\index{AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}!OnConfiguring@{OnConfiguring}}
+\index{OnConfiguring@{OnConfiguring}!AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}}
+\doxysubsubsection{\texorpdfstring{OnConfiguring()}{OnConfiguring()}}
+{\footnotesize\ttfamily override void Auto\+Na\+Juz.\+DAL.\+Data.\+App\+Db\+Context.\+On\+Configuring (\begin{DoxyParamCaption}\item[{Db\+Context\+Options\+Builder}]{options }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line 25 of file App\+Db\+Context.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{26         \{}
+\DoxyCodeLine{27             var connectionString = \_configuration.GetConnectionString(\textcolor{stringliteral}{"{}MsSql"{}});}
+\DoxyCodeLine{28             options.UseSqlServer(connectionString);}
+\DoxyCodeLine{29         \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a3c9d8a4253c79a3a8ed836c77c1a375a}\label{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_a3c9d8a4253c79a3a8ed836c77c1a375a}} 
+\index{AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}!CarRentals@{CarRentals}}
+\index{CarRentals@{CarRentals}!AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}}
+\doxysubsubsection{\texorpdfstring{CarRentals}{CarRentals}}
+{\footnotesize\ttfamily Db\+Set$<$\mbox{\hyperlink{classAutoNaJuz_1_1Model_1_1CarRental}{Car\+Rental}}$>$ Auto\+Na\+Juz.\+DAL.\+Data.\+App\+Db\+Context.\+Car\+Rentals\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 17 of file App\+Db\+Context.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{17 \{ \textcolor{keyword}{get}; \textcolor{keyword}{set}; \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_afeb4b16082bd61dbc171689cf1a5d5b5}\label{classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_afeb4b16082bd61dbc171689cf1a5d5b5}} 
+\index{AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}!Cars@{Cars}}
+\index{Cars@{Cars}!AutoNaJuz.DAL.Data.AppDbContext@{AutoNaJuz.DAL.Data.AppDbContext}}
+\doxysubsubsection{\texorpdfstring{Cars}{Cars}}
+{\footnotesize\ttfamily Db\+Set$<$\mbox{\hyperlink{classAutoNaJuz_1_1Model_1_1Car}{Car}}$>$ Auto\+Na\+Juz.\+DAL.\+Data.\+App\+Db\+Context.\+Cars\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Definition at line 16 of file App\+Db\+Context.\+cs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{16 \{ \textcolor{keyword}{get}; \textcolor{keyword}{set}; \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Auto\+Na\+Juz.\+DAL/\+Data/\mbox{\hyperlink{AppDbContext_8cs}{App\+Db\+Context.\+cs}}\end{DoxyCompactItemize}

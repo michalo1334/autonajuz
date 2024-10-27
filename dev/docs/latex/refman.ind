@@ -1,0 +1,195 @@
+\begin{theindex}
+
+  \item {AddControllers}
+    \subitem {Program.cs}, \hyperpage{38}
+  \item {AddDbContext$<$ AppDbContext $>$}
+    \subitem {Program.cs}, \hyperpage{38}
+  \item {AddEndpointsApiExplorer}
+    \subitem {Program.cs}, \hyperpage{39}
+  \item {AddFluentValidationAutoValidation}
+    \subitem {Program.cs}, \hyperpage{39}
+  \item {AddSwaggerGen}
+    \subitem {Program.cs}, \hyperpage{39}
+  \item {AddTransient$<$ ICarRentalsService, CarRentalsService $>$}
+    \subitem {Program.cs}, \hyperpage{39}
+  \item {AddTransient$<$ ICarsService, CarsService $>$}
+    \subitem {Program.cs}, \hyperpage{39}
+  \item {app}
+    \subitem {Program.cs}, \hyperpage{41}
+  \item {AppDbContext}
+    \subitem {AutoNaJuz.DAL.Data.AppDbContext}, \hyperpage{14}
+  \item {AutoNaJuz}, \hyperpage{9}
+  \item {AutoNaJuz.Api}, \hyperpage{9}
+  \item {AutoNaJuz.Api.Controllers}, \hyperpage{9}
+  \item {AutoNaJuz.Api.Controllers.CarRentalsController}, 
+		\hyperpage{22}
+    \subitem {CarRentalsController}, \hyperpage{23}
+    \subitem {Error}, \hyperpage{23}
+    \subitem {Index}, \hyperpage{23}
+  \item {AutoNaJuz.Api/Controllers/CarRentalsController.cs}, 
+		\hyperpage{37}
+  \item {AutoNaJuz.Api/Controllers/CarsController.cs}, \hyperpage{37}
+  \item {AutoNaJuz.Api/Program.cs}, \hyperpage{37}
+  \item {AutoNaJuz.DAL}, \hyperpage{9}
+  \item {AutoNaJuz.DAL.Configuration}, \hyperpage{10}
+  \item {AutoNaJuz.DAL.Configuration.CarConfiguration}, \hyperpage{20}
+    \subitem {Configure}, \hyperpage{21}
+  \item {AutoNaJuz.DAL.Data}, \hyperpage{10}
+  \item {AutoNaJuz.DAL.Data.AppDbContext}, \hyperpage{13}
+    \subitem {AppDbContext}, \hyperpage{14}
+    \subitem {CarRentals}, \hyperpage{15}
+    \subitem {Cars}, \hyperpage{15}
+    \subitem {OnConfiguring}, \hyperpage{14}
+  \item {AutoNaJuz.DAL.Migrations}, \hyperpage{10}
+  \item {AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot}, 
+		\hyperpage{15}
+    \subitem {BuildModel}, \hyperpage{16}
+  \item {AutoNaJuz.DAL.Migrations.InitialCreate}, \hyperpage{28}
+    \subitem {BuildTargetModel}, \hyperpage{29}
+    \subitem {Down}, \hyperpage{32}
+    \subitem {Up}, \hyperpage{33}
+  \item {AutoNaJuz.DAL/Configuration/CarConfiguration.cs}, 
+		\hyperpage{42}
+  \item {AutoNaJuz.DAL/Data/AppDbContext.cs}, \hyperpage{42}
+  \item {AutoNaJuz.DAL/Migrations/20241020182104\_InitialCreate.cs}, 
+		\hyperpage{42}
+  \item {AutoNaJuz.DAL/Migrations/20241020182104\_InitialCreate.Designer.cs}, 
+		\hyperpage{43}
+  \item {AutoNaJuz.DAL/Migrations/AppDbContextModelSnapshot.cs}, 
+		\hyperpage{43}
+  \item {AutoNaJuz.Model}, \hyperpage{10}
+  \item {AutoNaJuz.Model.Car}, \hyperpage{19}
+    \subitem {Id}, \hyperpage{20}
+  \item {AutoNaJuz.Model.CarRental}, \hyperpage{21}
+    \subitem {Id}, \hyperpage{21}
+  \item {AutoNaJuz.Model.User}, \hyperpage{35}
+  \item {AutoNaJuz.Model.Validators}, \hyperpage{10}
+  \item {AutoNaJuz.Model.Validators.CarValidator}, \hyperpage{26}
+    \subitem {CarValidator}, \hyperpage{26}
+  \item {AutoNaJuz.Model/Car.cs}, \hyperpage{43}
+  \item {AutoNaJuz.Model/CarRental.cs}, \hyperpage{43}
+  \item {AutoNaJuz.Model/User.cs}, \hyperpage{44}
+  \item {AutoNaJuz.Model/Validators/CarValidator.cs}, \hyperpage{44}
+  \item {AutoNaJuz.Services}, \hyperpage{10}
+  \item {AutoNaJuz.Services.CarRentalsService}, \hyperpage{24}
+  \item {AutoNaJuz.Services.CarsService}, \hyperpage{25}
+  \item {AutoNaJuz.Services.Interfaces}, \hyperpage{11}
+  \item {AutoNaJuz.Services.Interfaces.ICarRentalsService}, 
+		\hyperpage{27}
+  \item {AutoNaJuz.Services.Interfaces.ICarsService}, \hyperpage{28}
+  \item {AutoNaJuz.Services/CarRentalsService.cs}, \hyperpage{44}
+  \item {AutoNaJuz.Services/CarsService.cs}, \hyperpage{44}
+  \item {AutoNaJuz.Services/Interfaces/ICarRentalsService.cs}, 
+		\hyperpage{45}
+  \item {AutoNaJuz.Services/Interfaces/ICarsService.cs}, \hyperpage{45}
+
+  \indexspace
+
+  \item {builder}
+    \subitem {Program.cs}, \hyperpage{41}
+  \item {BuildModel}
+    \subitem {AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot}, 
+		\hyperpage{16}
+  \item {BuildTargetModel}
+    \subitem {AutoNaJuz.DAL.Migrations.InitialCreate}, \hyperpage{29}
+
+  \indexspace
+
+  \item {CarRentals}
+    \subitem {AutoNaJuz.DAL.Data.AppDbContext}, \hyperpage{15}
+  \item {CarRentalsController}
+    \subitem {AutoNaJuz.Api.Controllers.CarRentalsController}, 
+		\hyperpage{23}
+  \item {Cars}
+    \subitem {AutoNaJuz.DAL.Data.AppDbContext}, \hyperpage{15}
+  \item {CarValidator}
+    \subitem {AutoNaJuz.Model.Validators.CarValidator}, \hyperpage{26}
+  \item {Configure}
+    \subitem {AutoNaJuz.DAL.Configuration.CarConfiguration}, 
+		\hyperpage{21}
+
+  \indexspace
+
+  \item {Down}
+    \subitem {AutoNaJuz.DAL.Migrations.InitialCreate}, \hyperpage{32}
+
+  \indexspace
+
+  \item {Error}
+    \subitem {AutoNaJuz.Api.Controllers.CarRentalsController}, 
+		\hyperpage{23}
+
+  \indexspace
+
+  \item {Id}
+    \subitem {AutoNaJuz.Model.Car}, \hyperpage{20}
+    \subitem {AutoNaJuz.Model.CarRental}, \hyperpage{21}
+  \item {if}
+    \subitem {Program.cs}, \hyperpage{39}
+  \item {Index}
+    \subitem {AutoNaJuz.Api.Controllers.CarRentalsController}, 
+		\hyperpage{23}
+
+  \indexspace
+
+  \item {MapGet}
+    \subitem {Program.cs}, \hyperpage{39}
+  \item {Migrate}
+    \subitem {Program.cs}, \hyperpage{40}
+
+  \indexspace
+
+  \item {OnConfiguring}
+    \subitem {AutoNaJuz.DAL.Data.AppDbContext}, \hyperpage{14}
+
+  \indexspace
+
+  \item {Program.cs}
+    \subitem {AddControllers}, \hyperpage{38}
+    \subitem {AddDbContext$<$ AppDbContext $>$}, \hyperpage{38}
+    \subitem {AddEndpointsApiExplorer}, \hyperpage{39}
+    \subitem {AddFluentValidationAutoValidation}, \hyperpage{39}
+    \subitem {AddSwaggerGen}, \hyperpage{39}
+    \subitem {AddTransient$<$ ICarRentalsService, CarRentalsService $>$}, 
+		\hyperpage{39}
+    \subitem {AddTransient$<$ ICarsService, CarsService $>$}, 
+		\hyperpage{39}
+    \subitem {app}, \hyperpage{41}
+    \subitem {builder}, \hyperpage{41}
+    \subitem {if}, \hyperpage{39}
+    \subitem {MapGet}, \hyperpage{39}
+    \subitem {Migrate}, \hyperpage{40}
+    \subitem {Run}, \hyperpage{40}
+    \subitem {scope}, \hyperpage{38}
+    \subitem {services}, \hyperpage{41}
+    \subitem {summaries}, \hyperpage{41}
+    \subitem {UseHttpsRedirection}, \hyperpage{40}
+    \subitem {WeatherForecast}, \hyperpage{40}
+
+  \indexspace
+
+  \item {Run}
+    \subitem {Program.cs}, \hyperpage{40}
+
+  \indexspace
+
+  \item {scope}
+    \subitem {Program.cs}, \hyperpage{38}
+  \item {services}
+    \subitem {Program.cs}, \hyperpage{41}
+  \item {summaries}
+    \subitem {Program.cs}, \hyperpage{41}
+
+  \indexspace
+
+  \item {Up}
+    \subitem {AutoNaJuz.DAL.Migrations.InitialCreate}, \hyperpage{33}
+  \item {UseHttpsRedirection}
+    \subitem {Program.cs}, \hyperpage{40}
+
+  \indexspace
+
+  \item {WeatherForecast}
+    \subitem {Program.cs}, \hyperpage{40}
+
+\end{theindex}
