@@ -1,4 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,92,39"/>
-<area shape="rect" id="node2" href="$classAutoNaJuz_1_1Api_1_1Controllers_1_1CarRentalsController.html" title=" " alt="" coords="140,5,333,47"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,13,140,38"/>
+<area shape="rect" id="Node000001" href="$classAutoNaJuz_1_1Model_1_1Validators_1_1CarValidator.html" title=" " alt="" coords="188,5,395,45"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="154,23,188,23,188,28,154,28"/>
 </map>
