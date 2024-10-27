@@ -66,10 +66,10 @@ GENERATE_TREEVIEW      = YES # optional. Also works without treeview
 DISABLE_INDEX          = NO
 FULL_SIDEBAR           = NO
 HTML_COLORSTYLE        = LIGHT # required with Doxygen >= 1.9.5
-HTML_HEADER            = header.html
+HTML_HEADER            = ./docsgen/header.html
 
-HTML_EXTRA_STYLESHEET  = doxygen-awesome.css
-HTML_EXTRA_FILES       = doxygen-awesome-darkmode-toggle.js doxygen-awesome-fragment-copy-button.js doxygen-awesome-paragraph-link.js doxygen-awesome-interactive-toc.js doxygen-awesome-tabs.js
+HTML_EXTRA_STYLESHEET  = ./docsgen/doxygen-awesome.css
+HTML_EXTRA_FILES       = ./docsgen/doxygen-awesome-darkmode-toggle.js ./docsgen/doxygen-awesome-fragment-copy-button.js ./docsgen/doxygen-awesome-paragraph-link.js ./docsgen/doxygen-awesome-interactive-toc.js ./docsgen/doxygen-awesome-tabs.js
 
 HTML_COPY_CLIPBOARD: NO
 
