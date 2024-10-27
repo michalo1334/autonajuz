@@ -46,8 +46,9 @@ jobs:
       with:
         name: doxygen-pdf
         path: docs/latex/refman.pdf
-        
+
     - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
