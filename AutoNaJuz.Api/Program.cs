@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text.Json.Serialization;
 using AutoNaJuz.DAL.Data;
 using AutoNaJuz.Model;
 using AutoNaJuz.Services;
@@ -22,11 +23,19 @@ services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<AppDbContext>();
 
 // Add controllers and routing
-services.AddControllers();
+services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+    
 services.AddRouting();
 
 // Add FluentValidation
 services.AddFluentValidationAutoValidation();
+
+// Add AutoMapper
+services.AddAutoMapper(opt => opt.AddProfile<AutoNaJuz.Services.Mappers.MapperConfigurationProfile>());
 
 // Configure Swagger
 services.AddEndpointsApiExplorer();

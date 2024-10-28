@@ -29,6 +29,16 @@ namespace AutoNaJuz.Model.Car
             BodyType = bodyType;
         }
 
+        public Car(
+            string title,
+            TransmissionType transmission,
+            DateTime productionYear,
+            FuelType fuelType,
+            int seatCount,
+            int doorCount,
+            CarBodyType bodyType)
+            : this(default, title, transmission, productionYear, fuelType, seatCount, doorCount, bodyType) {}
+
         public static Car Create(
             int id,
             string title,

@@ -22,18 +22,7 @@ namespace AutoNaJuz.Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<GetCarVM>>> GetAll(string? search, string? byBrand, string? byType)
         {
-            var cars = (await carsService.GetAll()).Select(c => new GetCarVM(
-                c.Id,
-                c.Title,
-                c.Transmission,
-                c.ProductionYear,
-                c.FuelType,
-                c.SeatCount,
-                c.DoorCount,
-                c.BodyType,
-                c.Features.Select(f => new GetCarFeatureVM(f.Id, f.Title)),
-                c.Rentals.Select(r => new GetCarRentalVM(r.Id, r.PerHourCost, r.PerDayCost, r.From, r.To, r.Notes))
-            ));
+            var cars = await carsService.GetAll();
             return Ok(cars);
         }
 
@@ -48,25 +37,11 @@ namespace AutoNaJuz.Api.Controllers
         public async Task<ActionResult<GetCarVM>> Get(int id)
         {
             // Replace with actual data retrieval logic
-            var car = await carsService.GetById(id);
-            if(car == null)
+            var carVm = await carsService.GetById(id);
+            if(carVm == null)
             {
                 return NotFound();
             }
-
-            var carVm = new GetCarVM(
-                car.Id,
-                car.Title,
-                car.Transmission,
-                car.ProductionYear,
-                car.FuelType,
-                car.SeatCount,
-                car.DoorCount,
-                car.BodyType,
-                car.Features.Select(f => new GetCarFeatureVM(f.Id, f.Title)),
-                car.Rentals.Select(r => new GetCarRentalVM(r.Id, r.PerHourCost, r.PerDayCost, r.From, r.To, r.Notes)),
-                null
-            );
             return Ok(carVm);
         }
 
@@ -77,10 +52,10 @@ namespace AutoNaJuz.Api.Controllers
         /// <returns>ID of the created car.</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
-        public async Task<ActionResult<int>> New([FromBody] Car car)
+        public async Task<ActionResult<int>> New([FromBody] CreateOrEditCarVM request)
         {
-            var id = await carsService.Create(car);
-            return CreatedAtAction(nameof(New), new { id }, car.Id);
+            var id = await carsService.Create(request);
+            return CreatedAtAction(nameof(New), new { id }, id);
         }
 
         /// <summary>
@@ -92,7 +67,7 @@ namespace AutoNaJuz.Api.Controllers
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Update(int id, [FromBody] Car car)
+        public async Task<IActionResult> Update(int id, [FromBody] CreateOrEditCarVM request)
         {
             var exists = (await carsService.GetById(id))?.Id != null;
             if (!exists)
@@ -100,7 +75,7 @@ namespace AutoNaJuz.Api.Controllers
                 return BadRequest();
             }
 
-            await carsService.Update(car);
+            await carsService.Update(id, request);
             return Ok();
         }
 
@@ -114,13 +89,13 @@ namespace AutoNaJuz.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Delete(int id)
         {
-            var car = await carsService.GetById(id);
-            if (car == null)
+            var carVm = await carsService.GetById(id);
+            if (carVm == null)
             {
                 return BadRequest();
             }
 
-            await carsService.Delete(car);
+            await carsService.Delete(id);
             return NoContent();
         }
 

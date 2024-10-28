@@ -6,16 +6,13 @@ using AutoNaJuz.Model.Car;
 
 namespace AutoNaJuz.ViewModels.Car
 {
-    public sealed record GetCarVM(
-        int Id,
+    public sealed record CreateOrEditCarVM(
         string Title,
         TransmissionType Transmission,
         DateTime ProductionYear,
         FuelType FuelType,
         int SeatCount,
         int DoorCount,
-        CarBodyType BodyType,
-        IEnumerable<GetCarFeatureVM> Features,
-        IEnumerable<GetCarRentalVM> Rentals
+        CarBodyType BodyType
     );
 }

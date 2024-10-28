@@ -3,6 +3,11 @@
   <ItemGroup>
     <ProjectReference Include="..\AutoNaJuz.Model\AutoNaJuz.Model.csproj" />
     <ProjectReference Include="..\AutoNaJuz.DAL\AutoNaJuz.DAL.csproj" />
+    <ProjectReference Include="..\AutoNaJuz.ViewModels\AutoNaJuz.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
   <PropertyGroup>

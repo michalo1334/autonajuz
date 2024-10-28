@@ -1,19 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using AutoNaJuz.Model.Car;
+using AutoNaJuz.ViewModels.Car;
 
 namespace AutoNaJuz.Services.Interfaces
 {
     public interface ICarsService
     {
-        Task<IEnumerable<Car>> GetAll(Expression<Func<Car, bool>>? predicate = null);
-        Task<Car?> GetById(int id);
+        Task<IEnumerable<GetCarVM>> GetAll(Expression<Func<Car, bool>>? predicate = null);
+        Task<GetCarVM?> GetById(int id);
 
-        Task<int> Create(Car car);
-        Task Update(Car car);
-        Task Delete(Car car);
+        Task<int> Create(CreateOrEditCarVM car);
+        Task Update(int id, CreateOrEditCarVM car);
+        Task Delete(int id);
     }
 }
