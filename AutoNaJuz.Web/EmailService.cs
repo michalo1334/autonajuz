@@ -19,16 +19,24 @@ namespace AutoNaJuz.Web
 
         public async Task SendEmailAsync(string toEmail, string subject, string body)
         {
-            var mailMessage = new MailMessage
-            {
-                From = new MailAddress((_smtpClient.Credentials as NetworkCredential)?.UserName ?? "default@example.com"), // Domyślna wartość, jeśli rzutowanie nie powiedzie się
-                Subject = subject,
-                Body = body,
-                IsBodyHtml = true
-            };
-            mailMessage.To.Add(toEmail);
+             try
+    {
+        var mailMessage = new MailMessage
+        {
+            From = new MailAddress((_smtpClient.Credentials as NetworkCredential)?.UserName ?? "default@example.com"),
+            Subject = subject,
+            Body = body,
+            IsBodyHtml = true
+        };
+        mailMessage.To.Add(toEmail);
 
-            await _smtpClient.SendMailAsync(mailMessage);
+        await _smtpClient.SendMailAsync(mailMessage);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error sending email: {ex.Message}");
+        throw new InvalidOperationException("Wystąpił błąd podczas wysyłania e-maila.", ex);
+    }
         }
     }
 }

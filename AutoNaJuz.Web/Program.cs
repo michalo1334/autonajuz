@@ -6,13 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Konfiguracja EmailService
 var smtpSettings = builder.Configuration.GetSection("SmtpSettings");
-builder.Services.AddSingleton(new EmailService(
+builder.Services.AddSingleton<EmailService>(provider => new EmailService(
     smtpSettings["Host"],
     int.Parse(smtpSettings["Port"]),
     bool.Parse(smtpSettings["EnableSsl"]),
     smtpSettings["Username"],
     smtpSettings["Password"]));
-
+    
 // Dodaj inne usługi
 builder.Services.AddControllers(); // Rejestracja kontrolerów
 
