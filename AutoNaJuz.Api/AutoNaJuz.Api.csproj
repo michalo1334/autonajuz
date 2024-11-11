@@ -27,4 +27,8 @@
     <ProjectReference Include="..\AutoNaJuz.ViewModels\AutoNaJuz.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="AutoNaJuz.Api.http" />
+  </ItemGroup>
+
 </Project>

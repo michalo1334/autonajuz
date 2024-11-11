@@ -1,8 +1,7 @@
-namespace AutoNaJuz.Model.Car
+namespace AutoNaJuz.Model.Car;
+
+public enum TransmissionType
 {
-    public enum TransmissionType
-    {
-        Manual,
-        Automatic
-    }
+    Manual,
+    Automatic
 }

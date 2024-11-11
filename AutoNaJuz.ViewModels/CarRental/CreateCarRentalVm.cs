@@ -1,11 +1,10 @@
 namespace AutoNaJuz.ViewModels.CarRental;
 
-public sealed record GetCarRentalVm(
-    int Id,
+public record CreateCarRentalVm(
     int CarId,
     int RenterId,
-    decimal? PerHourCost,
-    decimal? PerDayCost,
+    decimal PerHourCost,
+    decimal PerDayCost,
     DateTime From,
     DateTime To,
     string? Notes

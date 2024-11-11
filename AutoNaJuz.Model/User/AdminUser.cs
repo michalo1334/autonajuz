@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+namespace AutoNaJuz.Model.User;
 
-namespace AutoNaJuz.Model
+public class AdminUser : User
 {
-    public class AdminUser : User
-    {
-        
-    }
 }

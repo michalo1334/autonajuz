@@ -1,34 +1,32 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using AutoNaJuz.DAL;
 using AutoNaJuz.Model.CarRental;
 
-namespace AutoNaJuz.DAL.Configuration
+namespace AutoNaJuz.DAL.Configuration;
+
+public class CarRentalConfiguration : IEntityTypeConfiguration<CarRental>
 {
-    public class CarRentalConfiguration : IEntityTypeConfiguration<CarRental>
+    public void Configure(EntityTypeBuilder<CarRental> builder)
     {
-        public void Configure(EntityTypeBuilder<CarRental> builder)
-        {
-            builder.ToTable("Car_Rentals");
+        builder.ToTable("Car_Rentals");
 
-            builder.HasKey(e => e.Id);
-            
-            builder.Property(e => e.PerHourCost)
-                .HasPrecision(18, 2);
-            builder.Property(e => e.PerDayCost)
-                .HasPrecision(18, 2);
-            builder.Property(e => e.From);
-            builder.Property(e => e.To);
-            builder.Property(e => e.Notes)
-                .HasMaxLength(3000);
+        builder.HasKey(e => e.Id);
 
-            builder.HasOne(e => e.Car)
-                .WithMany(e => e.Rentals)
-                .HasForeignKey(e => e.CarId);
+        builder.Property(e => e.PerHourCost)
+            .HasPrecision(18, 2);
+        builder.Property(e => e.PerDayCost)
+            .HasPrecision(18, 2);
+        builder.Property(e => e.From);
+        builder.Property(e => e.To);
+        builder.Property(e => e.Notes)
+            .HasMaxLength(3000);
 
-            builder.HasOne(e => e.User)
-                .WithMany()
-                .HasForeignKey(e => e.UserId);
-        }
+        builder.HasOne(e => e.Car)
+            .WithMany(e => e.Rentals)
+            .HasForeignKey(e => e.CarId);
+
+        builder.HasOne(e => e.Renter)
+            .WithMany()
+            .HasForeignKey(e => e.RenterId);
     }
 }

@@ -1,7 +1,6 @@
-namespace AutoNaJuz.ViewModels.Car
-{
-    public sealed record GetCarFeatureVM(
-        int Id,
-        string Title
-    );
-}
+namespace AutoNaJuz.ViewModels.Car;
+
+public sealed record GetCarFeatureVm(
+    int Id,
+    string Title
+);

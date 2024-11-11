@@ -1,6 +1,6 @@
 namespace AutoNaJuz.ViewModels.CarRental;
 
-public sealed record GetCarRentalVm(
+public sealed record EditCarRentalVm(
     int Id,
     int CarId,
     int RenterId,

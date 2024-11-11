@@ -1,12 +1,11 @@
-namespace AutoNaJuz.Model.Car
+namespace AutoNaJuz.Model.Car;
+
+public enum CarBodyType
 {
-    public enum CarBodyType
-    {
-        Hatchback,
-        Pickup,
-        Sedan,
-        SUV,
-        Van,
-        Combi
-    }
+    Hatchback,
+    Pickup,
+    Sedan,
+    Suv,
+    Van,
+    Combi
 }

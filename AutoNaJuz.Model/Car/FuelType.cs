@@ -1,13 +1,12 @@
-namespace AutoNaJuz.Model.Car
+namespace AutoNaJuz.Model.Car;
+
+public enum FuelType
 {
-    public enum FuelType
-    {
-        Gas,
-        Diesel,
-        Lpg,
-        Electric,
-        HybridGasEV,
-        HybridDieselEV,
-        HybridLpgEV
-    }
+    Gas,
+    Diesel,
+    Lpg,
+    Electric,
+    HybridGasEv,
+    HybridDieselEv,
+    HybridLpgEv
 }
