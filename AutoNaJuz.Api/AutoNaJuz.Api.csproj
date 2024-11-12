@@ -12,6 +12,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
@@ -19,6 +24,11 @@
     <ProjectReference Include="..\AutoNaJuz.DAL\AutoNaJuz.DAL.csproj" />
     <ProjectReference Include="..\AutoNaJuz.Model\AutoNaJuz.Model.csproj" />
     <ProjectReference Include="..\AutoNaJuz.Services\AutoNaJuz.Services.csproj" />
+    <ProjectReference Include="..\AutoNaJuz.ViewModels\AutoNaJuz.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="AutoNaJuz.Api.http" />
   </ItemGroup>
 
 </Project>

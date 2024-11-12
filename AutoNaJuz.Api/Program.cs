@@ -1,29 +1,101 @@
-using System.Reflection;
+using System.Text.Json.Serialization;
 using AutoNaJuz.DAL.Data;
+using AutoNaJuz.Model.User;
 using AutoNaJuz.Services;
+using AutoNaJuz.Services.ConcreteServices;
 using AutoNaJuz.Services.Interfaces;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDbContext<AppDbContext>();
-
-builder.Services.AddControllers();
-builder.Services.AddFluentValidationAutoValidation();
-
 var services = builder.Services;
 
-services.AddTransient<ICarsService, CarsService>();
-services.AddTransient<ICarRentalsService, CarRentalsService>();
+// Configure database context
+services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"));
+    options.EnableSensitiveDataLogging();
+});
+
+// Configure Identity with disabled password requirements
+services.AddIdentity<User, IdentityRole>(options =>
+    {
+        // Disable password requirements
+        options.Password.RequireDigit = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequiredLength = 1; // Minimum length set to 1
+        options.User.RequireUniqueEmail = true;
+    })
+    .AddEntityFrameworkStores<AppDbContext>();
+
+// Add controllers and routing
+services.AddControllers()
+    .AddJsonOptions(options => { options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); });
+
+services.AddRouting();
+
+// Add FluentValidation
+services.AddFluentValidationAutoValidation();
+
+// Add AutoMapper
+services.AddAutoMapper(opt => opt.AddProfile<AutoNaJuz.Services.Mappers.MapperConfigurationProfile>());
+
+// Configure Swagger
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "AutoNaJuzAPI", Version = "v1" });
+    c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "basic",
+        In = ParameterLocation.Cookie,
+        Description = "Basic Authorization header using the Bearer scheme."
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "basic"
+                }
+            },
+            []
+        }
+    });
+});
+
+//Add cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "_apiOrigins",
+        policy  =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+        });
+});
+
+// Register application services
+services.AddScoped<ICarsService, CarsService>();
+services.AddScoped<ICarRentalsService, CarRentalsService>();
+services.AddScoped<IRenterInfoService, RenterInfoService>();
 
 var app = builder.Build();
 
+// Apply database migrations
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
@@ -34,34 +106,35 @@ using (var scope = app.Services.CreateScope())
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+        c.ConfigObject.TryItOutEnabled = true;
+    });
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+//Enable CORS
+app.UseCors("_apiOrigins");
 
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+
+app.UseAuthorization(); // Enable authentication
+
+app.MapControllers();
+
+app.UseStaticFiles();
+MapSimpleUI();
 
 app.Run();
+return;
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+void MapSimpleUI()
 {
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    app.MapGet("/", async context =>
+    {
+        context.Response.ContentType = "text/html";
+        await context.Response.SendFileAsync("wwwroot/simple_ui.html");
+    });
 }
