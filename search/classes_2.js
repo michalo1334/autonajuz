@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['initialcreate_0',['InitialCreate',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1InitialCreate.html',1,'AutoNaJuz::DAL::Migrations']]]
+  ['emaildto_0',['EmailDto',['../classAutoNaJuz_1_1Web_1_1EmailDto.html',1,'AutoNaJuz::Web']]]
 ];

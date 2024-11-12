@@ -32,6 +32,9 @@ var annotated_dup =
           [ "RenterInfoValidatior", "classAutoNaJuz_1_1Model_1_1Validators_1_1RenterInfoValidatior.html", "classAutoNaJuz_1_1Model_1_1Validators_1_1RenterInfoValidatior" ]
         ] ],
         [ "RenterInfo", "classAutoNaJuz_1_1Model_1_1RenterInfo.html", "classAutoNaJuz_1_1Model_1_1RenterInfo" ]
+      ] ],
+      [ "Web", "namespaceAutoNaJuz_1_1Web.html", [
+        [ "EmailDto", "classAutoNaJuz_1_1Web_1_1EmailDto.html", "classAutoNaJuz_1_1Web_1_1EmailDto" ]
       ] ]
     ] ]
 ];

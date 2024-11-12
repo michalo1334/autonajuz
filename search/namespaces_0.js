@@ -15,5 +15,6 @@ var searchData=
   ['autonajuz_3a_3aviewmodels_12',['ViewModels',['../namespaceAutoNaJuz_1_1ViewModels.html',1,'AutoNaJuz']]],
   ['autonajuz_3a_3aviewmodels_3a_3acar_13',['Car',['../namespaceAutoNaJuz_1_1ViewModels_1_1Car.html',1,'AutoNaJuz::ViewModels']]],
   ['autonajuz_3a_3aviewmodels_3a_3acarrental_14',['CarRental',['../namespaceAutoNaJuz_1_1ViewModels_1_1CarRental.html',1,'AutoNaJuz::ViewModels']]],
-  ['autonajuz_3a_3aviewmodels_3a_3arenterinfo_15',['RenterInfo',['../namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html',1,'AutoNaJuz::ViewModels']]]
+  ['autonajuz_3a_3aviewmodels_3a_3arenterinfo_15',['RenterInfo',['../namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html',1,'AutoNaJuz::ViewModels']]],
+  ['autonajuz_3a_3aweb_16',['Web',['../namespaceAutoNaJuz_1_1Web.html',1,'AutoNaJuz']]]
 ];

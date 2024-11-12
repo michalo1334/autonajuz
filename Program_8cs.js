@@ -12,6 +12,7 @@ var Program_8cs =
     [ "AddScoped< ICarRentalsService, CarRentalsService >", "Program_8cs.html#a598c3bca9c39cb29de14989cdebcfe51", null ],
     [ "AddScoped< ICarsService, CarsService >", "Program_8cs.html#ad614c2a51779c6df58f62fe994267a53", null ],
     [ "AddScoped< IRenterInfoService, RenterInfoService >", "Program_8cs.html#a5f39322dc1b6875c8eca2f7e8b4b4dd5", null ],
+    [ "AddSingleton< EmailService >", "Program_8cs.html#a08c4021b4433d5c6f9c84a9e0353e37a", null ],
     [ "AddSwaggerGen", "Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20", null ],
     [ "if", "Program_8cs.html#a79a944c7f0e25196ca3c5a8638b919b9", null ],
     [ "MapControllers", "Program_8cs.html#a9e2ee3170aa6279b68eefd1651f7d96c", null ],
@@ -26,5 +27,6 @@ var Program_8cs =
     [ "app", "Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d", null ],
     [ "builder", "Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5", null ],
     [ "return", "Program_8cs.html#a9717e7bbecb906637e86cef6da3d83c2", null ],
-    [ "services", "Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8", null ]
+    [ "services", "Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8", null ],
+    [ "smtpSettings", "Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7", null ]
 ];

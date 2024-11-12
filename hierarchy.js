@@ -8,6 +8,7 @@ var hierarchy =
     [ "AutoNaJuz.Model.Car.Car", "classAutoNaJuz_1_1Model_1_1Car_1_1Car.html", null ],
     [ "AutoNaJuz.Model.Car.CarFeature", "classAutoNaJuz_1_1Model_1_1Car_1_1CarFeature.html", null ],
     [ "AutoNaJuz.Model.CarRental.CarRental", "classAutoNaJuz_1_1Model_1_1CarRental_1_1CarRental.html", null ],
+    [ "AutoNaJuz.Web.EmailDto", "classAutoNaJuz_1_1Web_1_1EmailDto.html", null ],
     [ "IdentityUser", null, [
       [ "AutoNaJuz.Model.User.User", "classAutoNaJuz_1_1Model_1_1User_1_1User.html", [
         [ "AutoNaJuz.Model.User.AdminUser", "classAutoNaJuz_1_1Model_1_1User_1_1AdminUser.html", null ]

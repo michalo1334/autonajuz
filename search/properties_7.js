@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notes_0',['Notes',['../classAutoNaJuz_1_1Model_1_1CarRental_1_1CarRental.html#a409c2fa0dd1cb886a1954ccbdf08c302',1,'AutoNaJuz::Model::CarRental::CarRental']]]
+  ['message_0',['Message',['../classAutoNaJuz_1_1Web_1_1EmailDto.html#a63cd592f8d90e932eb28dc839085dfee',1,'AutoNaJuz::Web::EmailDto']]]
 ];
