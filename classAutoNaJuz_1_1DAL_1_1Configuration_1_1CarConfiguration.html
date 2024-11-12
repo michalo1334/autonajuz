@@ -141,12 +141,12 @@ Collaboration diagram for AutoNaJuz.DAL.Configuration.CarConfiguration:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7a7144871afbebf78214cdbdd4774f7a" id="r_a7a7144871afbebf78214cdbdd4774f7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">Configure</a> (EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1Car.html">Car</a> &gt; <a class="el" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>)</td></tr>
+<tr class="memitem:a7a7144871afbebf78214cdbdd4774f7a" id="r_a7a7144871afbebf78214cdbdd4774f7a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">Configure</a> (EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1Car_1_1Car.html">Car</a> &gt; <a class="el" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>)</td></tr>
 <tr class="separator:a7a7144871afbebf78214cdbdd4774f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="CarConfiguration_8cs_source.html#l00008">8</a> of file <a class="el" href="CarConfiguration_8cs_source.html">CarConfiguration.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="CarConfiguration_8cs_source.html#l00007">7</a> of file <a class="el" href="CarConfiguration_8cs_source.html">CarConfiguration.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7a7144871afbebf78214cdbdd4774f7a" name="a7a7144871afbebf78214cdbdd4774f7a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7a7144871afbebf78214cdbdd4774f7a">&#9670;&#160;</a></span>Configure()</h2>
@@ -160,7 +160,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void AutoNaJuz.DAL.Configuration.CarConfiguration.Configure </td>
           <td>(</td>
-          <td class="paramtype">EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1Car.html">Car</a> &gt;&#160;</td>
+          <td class="paramtype">EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1Car_1_1Car.html">Car</a> &gt;&#160;</td>
           <td class="paramname"><em>builder</em></td><td>)</td>
           <td></td>
         </tr>
@@ -172,13 +172,30 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="CarConfiguration_8cs_source.html#l00010">10</a> of file <a class="el" href="CarConfiguration_8cs_source.html">CarConfiguration.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   11</span>        {</div>
-<div class="line"><span class="lineno">   12</span>            <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasKey(c =&gt; c.Id);</div>
-<div class="line"><span class="lineno">   13</span> </div>
-<div class="line"><span class="lineno">   14</span>            <span class="comment">//...</span></div>
-<div class="line"><span class="lineno">   15</span>        }</div>
-<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00008">Program.cs:8</a></div></div>
+<p class="definition">Definition at line <a class="el" href="CarConfiguration_8cs_source.html#l00009">9</a> of file <a class="el" href="CarConfiguration_8cs_source.html">CarConfiguration.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   10</span>    {</div>
+<div class="line"><span class="lineno">   11</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.ToTable(<span class="stringliteral">&quot;Cars&quot;</span>);</div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasKey(e =&gt; e.Id);</div>
+<div class="line"><span class="lineno">   14</span> </div>
+<div class="line"><span class="lineno">   15</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Title)</div>
+<div class="line"><span class="lineno">   16</span>            .HasMaxLength(256);</div>
+<div class="line"><span class="lineno">   17</span> </div>
+<div class="line"><span class="lineno">   18</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Transmission);</div>
+<div class="line"><span class="lineno">   19</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.ProductionYear);</div>
+<div class="line"><span class="lineno">   20</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.FuelType);</div>
+<div class="line"><span class="lineno">   21</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.SeatCount);</div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.DoorCount);</div>
+<div class="line"><span class="lineno">   23</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.BodyType);</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasMany(e =&gt; e.Features)</div>
+<div class="line"><span class="lineno">   26</span>            .WithMany(e =&gt; e.Cars);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasMany(e =&gt; e.Rentals)</div>
+<div class="line"><span class="lineno">   29</span>            .WithOne(e =&gt; e.Car)</div>
+<div class="line"><span class="lineno">   30</span>            .HasForeignKey(e =&gt; e.CarId);</div>
+<div class="line"><span class="lineno">   31</span>    }</div>
+<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00013">Program.cs:13</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

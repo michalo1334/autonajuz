@@ -172,12 +172,21 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="CarValidator_8cs_source.html#l00007">7</a> of file <a class="el" href="CarValidator_8cs_source.html">CarValidator.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    8</span>        {</div>
-<div class="line"><span class="lineno">    9</span>            <span class="comment">// RuleFor(car =&gt; car.Make).NotEmpty().WithMessage(&quot;Make is required.&quot;);</span></div>
-<div class="line"><span class="lineno">   10</span>            <span class="comment">// RuleFor(car =&gt; car.Model).NotEmpty().WithMessage(&quot;Model is required.&quot;);</span></div>
-<div class="line"><span class="lineno">   11</span>            <span class="comment">// RuleFor(car =&gt; car.Year).InclusiveBetween(1886, 9999).WithMessage(&quot;Year must be between 1886 and 9999.&quot;);</span></div>
-<div class="line"><span class="lineno">   12</span>            <span class="comment">// RuleFor(car =&gt; car.VIN).Length(17).WithMessage(&quot;VIN must be 17 characters long.&quot;);</span></div>
-<div class="line"><span class="lineno">   13</span>        }</div>
+<div class="fragment"><div class="line"><span class="lineno">    8</span>    {</div>
+<div class="line"><span class="lineno">    9</span>        RuleFor(x =&gt; x.Title)</div>
+<div class="line"><span class="lineno">   10</span>            .NotEmpty()</div>
+<div class="line"><span class="lineno">   11</span>            .MaximumLength(256);</div>
+<div class="line"><span class="lineno">   12</span> </div>
+<div class="line"><span class="lineno">   13</span>        RuleFor(x =&gt; x.ProductionYear)</div>
+<div class="line"><span class="lineno">   14</span>            .NotEmpty()</div>
+<div class="line"><span class="lineno">   15</span>            .LessThan(DateTime.Now);</div>
+<div class="line"><span class="lineno">   16</span> </div>
+<div class="line"><span class="lineno">   17</span>        RuleFor(x =&gt; x.SeatCount)</div>
+<div class="line"><span class="lineno">   18</span>            .GreaterThan(0);</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>        RuleFor(x =&gt; x.DoorCount)</div>
+<div class="line"><span class="lineno">   21</span>            .GreaterThan(0);</div>
+<div class="line"><span class="lineno">   22</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>

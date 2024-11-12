@@ -26,7 +26,12 @@ var NAVTREE =
 [
   [ "Auto Na Już", "index.html", [
     [ "Namespaces", "namespaces.html", [
-      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Enumerations", "namespacemembers_enum.html", null ]
+      ] ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -52,7 +57,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"20241020182104__InitialCreate_8Designer_8cs.html"
+"20241020182104__InitialCreate_8Designer_8cs.html",
+"classAutoNaJuz_1_1Model_1_1RenterInfo.html#aa4c455a493f8b439ba6b2d92ff88739a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

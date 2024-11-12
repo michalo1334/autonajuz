@@ -1,5 +1,10 @@
 var searchData=
 [
-  ['up_0',['Up',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1InitialCreate.html#a0edd90668e79a2e7c6a4d7198fac70ad',1,'AutoNaJuz::DAL::Migrations::InitialCreate']]],
-  ['usehttpsredirection_1',['UseHttpsRedirection',['../Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9',1,'Program.cs']]]
+  ['up_0',['up',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1InitialCreate.html#a0edd90668e79a2e7c6a4d7198fac70ad',1,'AutoNaJuz.DAL.Migrations.InitialCreate.Up()'],['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity.html#a02ea303831827c08134f27ea428084e7',1,'AutoNaJuz.DAL.Migrations.Added_Car_CarRental_Identity.Up()'],['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__RenterInfo.html#a238dc158a93a337a880e169b3599e572',1,'AutoNaJuz.DAL.Migrations.Added_RenterInfo.Up()']]],
+  ['update_1',['update',['../classAutoNaJuz_1_1Model_1_1Car_1_1Car.html#ac614cb1a88f7dcaf941e68c474b5d42d',1,'AutoNaJuz.Model.Car.Car.Update()'],['../classAutoNaJuz_1_1Model_1_1Car_1_1CarFeature.html#a84d39a7b356ac2a07b246cfe019fe67d',1,'AutoNaJuz.Model.Car.CarFeature.Update()'],['../classAutoNaJuz_1_1Model_1_1CarRental_1_1CarRental.html#a5123060ae378baf909e3ec8a57705b3d',1,'AutoNaJuz.Model.CarRental.CarRental.Update()'],['../classAutoNaJuz_1_1Model_1_1RenterInfo.html#aebd5802a863bedbe46e40cea53f14d26',1,'AutoNaJuz.Model.RenterInfo.Update()']]],
+  ['useauthorization_2',['UseAuthorization',['../Program_8cs.html#af6f72d752b2e73aa0292f74bd13237ab',1,'Program.cs']]],
+  ['usecors_3',['UseCors',['../Program_8cs.html#aed20e48fa1b71ac4dbe22507d1c57216',1,'Program.cs']]],
+  ['usehttpsredirection_4',['UseHttpsRedirection',['../Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9',1,'Program.cs']]],
+  ['userouting_5',['UseRouting',['../Program_8cs.html#a94c810d266751293a2d511a720a5625f',1,'Program.cs']]],
+  ['usestaticfiles_6',['UseStaticFiles',['../Program_8cs.html#a906a3ce545279a7a73941f1d7b64d7cf',1,'Program.cs']]]
 ];

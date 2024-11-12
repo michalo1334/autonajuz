@@ -120,52 +120,41 @@ $(document).ready(function(){initNavTree('AppDbContext_8cs_source.html',''); ini
   <div class="headertitle"><div class="title">AppDbContext.cs</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="AppDbContext_8cs.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System;</div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections.Generic;</div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>System.Linq;</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>System.Threading.Tasks;</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model.html">AutoNaJuz.Model</a>;</div>
+<a href="AppDbContext_8cs.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model.html">AutoNaJuz.Model</a>;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model_1_1Car.html">AutoNaJuz.Model.Car</a>;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model_1_1CarRental.html">AutoNaJuz.Model.CarRental</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model_1_1User.html">AutoNaJuz.Model.User</a>;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>Microsoft.AspNetCore.Identity;</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>Microsoft.AspNetCore.Identity.EntityFrameworkCore;</div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>Microsoft.EntityFrameworkCore;</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>Microsoft.Extensions.Configuration;</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">   10</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">AutoNaJuz.DAL.Data</a></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html">   12</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html">AppDbContext</a> : IdentityDbContext</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keyword">private</span> readonly IConfiguration _configuration;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#afeb4b16082bd61dbc171689cf1a5d5b5">   16</a></span>        <span class="keyword">public</span> DbSet&lt;Car&gt; <a class="code hl_property" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#afeb4b16082bd61dbc171689cf1a5d5b5">Cars</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a3c9d8a4253c79a3a8ed836c77c1a375a">   17</a></span>        <span class="keyword">public</span> DbSet&lt;CarRental&gt; <a class="code hl_property" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a3c9d8a4253c79a3a8ed836c77c1a375a">CarRentals</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">   10</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">AutoNaJuz.DAL.Data</a>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">   12</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_function" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AppDbContext</a>(DbContextOptions options)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    : IdentityDbContext&lt;User&gt;(options)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">public</span> DbSet&lt;Car&gt; Cars { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">public</span> DbSet&lt;CarRental&gt; CarRentals { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">public</span> DbSet&lt;RenterInfo&gt; RenterInfos { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a128c604c78b59d9cac6aab1dd14890c1">   19</a></span>        <span class="keyword">public</span> <a class="code hl_function" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a128c604c78b59d9cac6aab1dd14890c1">AppDbContext</a>(DbContextOptions&lt;AppDbContext&gt; options, IConfiguration configuration) </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            : base(options)</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        {</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            _configuration = configuration;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnModelCreating(ModelBuilder modelBuilder)</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        base.OnModelCreating(modelBuilder);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        modelBuilder.ApplyConfigurationsFromAssembly(typeof(<a class="code hl_function" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AppDbContext</a>).Assembly);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
 </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a605eeb5834c23581ce4c8c558c24b26d">   25</a></span>        <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a605eeb5834c23581ce4c8c558c24b26d">OnConfiguring</a>(DbContextOptionsBuilder options)</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            var connectionString = _configuration.GetConnectionString(<span class="stringliteral">&quot;MsSql&quot;</span>);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            options.UseSqlServer(connectionString);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        }</div>
 </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>}</div>
-</div>
-<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_html"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html">AutoNaJuz.DAL.Data.AppDbContext</a></div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00012">AppDbContext.cs:13</a></div></div>
-<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_html_a128c604c78b59d9cac6aab1dd14890c1"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a128c604c78b59d9cac6aab1dd14890c1">AutoNaJuz.DAL.Data.AppDbContext.AppDbContext</a></div><div class="ttdeci">AppDbContext(DbContextOptions&lt; AppDbContext &gt; options, IConfiguration configuration)</div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00019">AppDbContext.cs:19</a></div></div>
-<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_html_a3c9d8a4253c79a3a8ed836c77c1a375a"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a3c9d8a4253c79a3a8ed836c77c1a375a">AutoNaJuz.DAL.Data.AppDbContext.CarRentals</a></div><div class="ttdeci">DbSet&lt; CarRental &gt; CarRentals</div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00017">AppDbContext.cs:17</a></div></div>
-<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_html_a605eeb5834c23581ce4c8c558c24b26d"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a605eeb5834c23581ce4c8c558c24b26d">AutoNaJuz.DAL.Data.AppDbContext.OnConfiguring</a></div><div class="ttdeci">override void OnConfiguring(DbContextOptionsBuilder options)</div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00025">AppDbContext.cs:25</a></div></div>
-<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext_html_afeb4b16082bd61dbc171689cf1a5d5b5"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#afeb4b16082bd61dbc171689cf1a5d5b5">AutoNaJuz.DAL.Data.AppDbContext.Cars</a></div><div class="ttdeci">DbSet&lt; Car &gt; Cars</div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00016">AppDbContext.cs:16</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Data_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">AutoNaJuz.DAL.Data</a></div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00010">AppDbContext.cs:11</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model.html">AutoNaJuz.Model</a></div><div class="ttdef"><b>Definition</b> <a href="Car_8cs_source.html#l00006">Car.cs:7</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Data_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">AutoNaJuz.DAL.Data</a></div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00010">AppDbContext.cs:10</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Data_html_ac35d412ede8855af7349b7402c3a9292"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AutoNaJuz.DAL.Data.AppDbContext</a></div><div class="ttdeci">class AppDbContext(DbContextOptions options)</div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00012">AppDbContext.cs:12</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1CarRental_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1CarRental.html">AutoNaJuz.Model.CarRental</a></div><div class="ttdef"><b>Definition</b> <a href="CarRental_8cs_source.html#l00004">CarRental.cs:4</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1Car_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1Car.html">AutoNaJuz.Model.Car</a></div><div class="ttdef"><b>Definition</b> <a href="Car_8cs_source.html#l00003">Car.cs:3</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1User_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1User.html">AutoNaJuz.Model.User</a></div><div class="ttdef"><b>Definition</b> <a href="AdminUser_8cs_source.html#l00001">AdminUser.cs:1</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model.html">AutoNaJuz.Model</a></div><div class="ttdef"><b>Definition</b> <a href="Car_8cs_source.html#l00003">Car.cs:3</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

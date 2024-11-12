@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['carrentals_0',['CarRentals',['../classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a3c9d8a4253c79a3a8ed836c77c1a375a',1,'AutoNaJuz::DAL::Data::AppDbContext']]],
-  ['cars_1',['Cars',['../classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#afeb4b16082bd61dbc171689cf1a5d5b5',1,'AutoNaJuz::DAL::Data::AppDbContext']]]
+  ['apartmentnumber_0',['ApartmentNumber',['../classAutoNaJuz_1_1Model_1_1RenterInfo.html#aa721e30c0bdb378b5f00f70227a04365',1,'AutoNaJuz::Model::RenterInfo']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['scope_0',['scope',['../Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03',1,'Program.cs']]],
-  ['services_1',['services',['../Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8',1,'Program.cs']]],
-  ['summaries_2',['summaries',['../Program_8cs.html#a228eff3516389a410c5795dda18c9b30',1,'Program.cs']]]
+  ['manual_0',['Manual',['../namespaceAutoNaJuz_1_1Model_1_1Car.html#ada34322e79d4096b6d2824201948d008ae1ba155a9f2e8c3be94020eef32a0301',1,'AutoNaJuz::Model::Car']]],
+  ['mapcontrollers_1',['MapControllers',['../Program_8cs.html#a9e2ee3170aa6279b68eefd1651f7d96c',1,'Program.cs']]],
+  ['mapsimpleui_2',['MapSimpleUI',['../Program_8cs.html#a52bd06784e6cf5a306b476fd8fe4b28c',1,'Program.cs']]],
+  ['migrate_3',['Migrate',['../Program_8cs.html#a1c68c62ca918c5f8fa6c817576d80f6d',1,'Program.cs']]]
 ];

@@ -1,11 +1,16 @@
 var searchData=
 [
-  ['addcontrollers_0',['AddControllers',['../Program_8cs.html#abc3694a0e15618f2499e5a540264f833',1,'Program.cs']]],
-  ['adddbcontext_3c_20appdbcontext_20_3e_1',['AddDbContext&lt; AppDbContext &gt;',['../Program_8cs.html#ac658815cabf7120612b6d91bf8c0e373',1,'Program.cs']]],
-  ['addendpointsapiexplorer_2',['AddEndpointsApiExplorer',['../Program_8cs.html#a0d7859f9cad50e8e9fdf015100780e07',1,'Program.cs']]],
-  ['addfluentvalidationautovalidation_3',['AddFluentValidationAutoValidation',['../Program_8cs.html#ac90808c62c69de6215dfd9861ce5426b',1,'Program.cs']]],
-  ['addswaggergen_4',['AddSwaggerGen',['../Program_8cs.html#ae0ce43c019a5621d731d0c622c793644',1,'Program.cs']]],
-  ['addtransient_3c_20icarrentalsservice_2c_20carrentalsservice_20_3e_5',['AddTransient&lt; ICarRentalsService, CarRentalsService &gt;',['../Program_8cs.html#ab150e473337144e47efa2a7782756e7f',1,'Program.cs']]],
-  ['addtransient_3c_20icarsservice_2c_20carsservice_20_3e_6',['AddTransient&lt; ICarsService, CarsService &gt;',['../Program_8cs.html#ab1cadedf684f71ea31dc853f94a4e90c',1,'Program.cs']]],
-  ['appdbcontext_7',['AppDbContext',['../classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html#a128c604c78b59d9cac6aab1dd14890c1',1,'AutoNaJuz::DAL::Data::AppDbContext']]]
+  ['addautomapper_0',['AddAutoMapper',['../Program_8cs.html#abdba3bdd34b7fa7dba9c824ac602d630',1,'Program.cs']]],
+  ['addcontrollers_1',['AddControllers',['../Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9',1,'Program.cs']]],
+  ['addcors_2',['AddCors',['../Program_8cs.html#adbef64478008306f976b18de6d1b9e31',1,'Program.cs']]],
+  ['adddbcontext_3c_20appdbcontext_20_3e_3',['AddDbContext&lt; AppDbContext &gt;',['../Program_8cs.html#af55c8cc8a4c2e5d704cc2776bb64a14c',1,'Program.cs']]],
+  ['addendpointsapiexplorer_4',['AddEndpointsApiExplorer',['../Program_8cs.html#ad7398d10169164e4fba8f51316a5fcb9',1,'Program.cs']]],
+  ['addfluentvalidationautovalidation_5',['AddFluentValidationAutoValidation',['../Program_8cs.html#ab314ceea65a37037f7d397101bf9e7ed',1,'Program.cs']]],
+  ['addidentity_3c_20user_2c_20identityrole_20_3e_6',['AddIdentity&lt; User, IdentityRole &gt;',['../Program_8cs.html#a6ed2027617464b5b770cacd3ec2f0eaa',1,'Program.cs']]],
+  ['addrouting_7',['AddRouting',['../Program_8cs.html#aa7170f395e9ff4419b0f521713cd337c',1,'Program.cs']]],
+  ['addscoped_3c_20icarrentalsservice_2c_20carrentalsservice_20_3e_8',['AddScoped&lt; ICarRentalsService, CarRentalsService &gt;',['../Program_8cs.html#a598c3bca9c39cb29de14989cdebcfe51',1,'Program.cs']]],
+  ['addscoped_3c_20icarsservice_2c_20carsservice_20_3e_9',['AddScoped&lt; ICarsService, CarsService &gt;',['../Program_8cs.html#ad614c2a51779c6df58f62fe994267a53',1,'Program.cs']]],
+  ['addscoped_3c_20irenterinfoservice_2c_20renterinfoservice_20_3e_10',['AddScoped&lt; IRenterInfoService, RenterInfoService &gt;',['../Program_8cs.html#a5f39322dc1b6875c8eca2f7e8b4b4dd5',1,'Program.cs']]],
+  ['addswaggergen_11',['AddSwaggerGen',['../Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20',1,'Program.cs']]],
+  ['appdbcontext_12',['AppDbContext',['../namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292',1,'AutoNaJuz::DAL::Data']]]
 ];

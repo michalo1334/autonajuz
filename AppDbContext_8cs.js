@@ -1,4 +1,4 @@
 var AppDbContext_8cs =
 [
-    [ "AutoNaJuz.DAL.Data.AppDbContext", "classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext.html", "classAutoNaJuz_1_1DAL_1_1Data_1_1AppDbContext" ]
+    [ "AppDbContext", "AppDbContext_8cs.html#ac35d412ede8855af7349b7402c3a9292", null ]
 ];

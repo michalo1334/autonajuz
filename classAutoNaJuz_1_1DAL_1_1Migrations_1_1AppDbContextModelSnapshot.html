@@ -181,256 +181,463 @@ Protected Member Functions</h2></td></tr>
 <div class="line"><span class="lineno">   22</span> </div>
 <div class="line"><span class="lineno">   23</span>            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);</div>
 <div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRole&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   25</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AutoNaJuz.Model.Car.Car&quot;</span>, b =&gt;</div>
 <div class="line"><span class="lineno">   26</span>                {</div>
-<div class="line"><span class="lineno">   27</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
-<div class="line"><span class="lineno">   28</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">   29</span> </div>
-<div class="line"><span class="lineno">   30</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ConcurrencyStamp&quot;</span>)</div>
-<div class="line"><span class="lineno">   31</span>                        .IsConcurrencyToken()</div>
-<div class="line"><span class="lineno">   32</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
-<div class="line"><span class="lineno">   33</span> </div>
-<div class="line"><span class="lineno">   34</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Name&quot;</span>)</div>
-<div class="line"><span class="lineno">   35</span>                        .HasMaxLength(256)</div>
-<div class="line"><span class="lineno">   36</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
-<div class="line"><span class="lineno">   37</span> </div>
-<div class="line"><span class="lineno">   38</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;NormalizedName&quot;</span>)</div>
-<div class="line"><span class="lineno">   39</span>                        .HasMaxLength(256)</div>
-<div class="line"><span class="lineno">   40</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">   27</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">   28</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   29</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;BodyType&quot;</span>)</div>
+<div class="line"><span class="lineno">   34</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;DoorCount&quot;</span>)</div>
+<div class="line"><span class="lineno">   37</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;FuelType&quot;</span>)</div>
+<div class="line"><span class="lineno">   40</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
 <div class="line"><span class="lineno">   41</span> </div>
-<div class="line"><span class="lineno">   42</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>                    b.HasIndex(<span class="stringliteral">&quot;NormalizedName&quot;</span>)</div>
-<div class="line"><span class="lineno">   45</span>                        .IsUnique()</div>
-<div class="line"><span class="lineno">   46</span>                        .HasDatabaseName(<span class="stringliteral">&quot;RoleNameIndex&quot;</span>)</div>
-<div class="line"><span class="lineno">   47</span>                        .HasFilter(<span class="stringliteral">&quot;[NormalizedName] IS NOT NULL&quot;</span>);</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetRoles&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">   50</span>                });</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRoleClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">   53</span>                {</div>
-<div class="line"><span class="lineno">   54</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
-<div class="line"><span class="lineno">   55</span>                        .ValueGeneratedOnAdd()</div>
-<div class="line"><span class="lineno">   56</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   42</span>                    b.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;ProductionYear&quot;</span>)</div>
+<div class="line"><span class="lineno">   43</span>                        .HasColumnType(<span class="stringliteral">&quot;datetime2&quot;</span>);</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;SeatCount&quot;</span>)</div>
+<div class="line"><span class="lineno">   46</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Title&quot;</span>)</div>
+<div class="line"><span class="lineno">   49</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   50</span>                        .HasMaxLength(256)</div>
+<div class="line"><span class="lineno">   51</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Transmission&quot;</span>)</div>
+<div class="line"><span class="lineno">   54</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
 <div class="line"><span class="lineno">   57</span> </div>
-<div class="line"><span class="lineno">   58</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimType&quot;</span>)</div>
-<div class="line"><span class="lineno">   61</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
-<div class="line"><span class="lineno">   62</span> </div>
-<div class="line"><span class="lineno">   63</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimValue&quot;</span>)</div>
-<div class="line"><span class="lineno">   64</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
-<div class="line"><span class="lineno">   65</span> </div>
-<div class="line"><span class="lineno">   66</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
-<div class="line"><span class="lineno">   67</span>                        .IsRequired()</div>
-<div class="line"><span class="lineno">   68</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">   69</span> </div>
-<div class="line"><span class="lineno">   70</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>                    b.HasIndex(<span class="stringliteral">&quot;RoleId&quot;</span>);</div>
-<div class="line"><span class="lineno">   73</span> </div>
-<div class="line"><span class="lineno">   74</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetRoleClaims&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">   75</span>                });</div>
-<div class="line"><span class="lineno">   76</span> </div>
-<div class="line"><span class="lineno">   77</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUser&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">   78</span>                {</div>
-<div class="line"><span class="lineno">   79</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
-<div class="line"><span class="lineno">   80</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">   81</span> </div>
-<div class="line"><span class="lineno">   82</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;AccessFailedCount&quot;</span>)</div>
-<div class="line"><span class="lineno">   83</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
-<div class="line"><span class="lineno">   84</span> </div>
-<div class="line"><span class="lineno">   85</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ConcurrencyStamp&quot;</span>)</div>
-<div class="line"><span class="lineno">   86</span>                        .IsConcurrencyToken()</div>
-<div class="line"><span class="lineno">   87</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   58</span>                    b.ToTable(<span class="stringliteral">&quot;Cars&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">   59</span>                });</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AutoNaJuz.Model.Car.CarFeature&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   62</span>                {</div>
+<div class="line"><span class="lineno">   63</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">   64</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   65</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Title&quot;</span>)</div>
+<div class="line"><span class="lineno">   70</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">   71</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>                    b.ToTable(<span class="stringliteral">&quot;CarFeature&quot;</span>);</div>
+<div class="line"><span class="lineno">   76</span>                });</div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AutoNaJuz.Model.CarRental.CarRental&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">   79</span>                {</div>
+<div class="line"><span class="lineno">   80</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">   81</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">   82</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;CarId&quot;</span>)</div>
+<div class="line"><span class="lineno">   87</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
 <div class="line"><span class="lineno">   88</span> </div>
-<div class="line"><span class="lineno">   89</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Email&quot;</span>)</div>
-<div class="line"><span class="lineno">   90</span>                        .HasMaxLength(256)</div>
-<div class="line"><span class="lineno">   91</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
-<div class="line"><span class="lineno">   92</span> </div>
-<div class="line"><span class="lineno">   93</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;EmailConfirmed&quot;</span>)</div>
-<div class="line"><span class="lineno">   94</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
+<div class="line"><span class="lineno">   89</span>                    b.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;From&quot;</span>)</div>
+<div class="line"><span class="lineno">   90</span>                        .HasColumnType(<span class="stringliteral">&quot;datetime2&quot;</span>);</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Notes&quot;</span>)</div>
+<div class="line"><span class="lineno">   93</span>                        .HasMaxLength(3000)</div>
+<div class="line"><span class="lineno">   94</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(3000)&quot;</span>);</div>
 <div class="line"><span class="lineno">   95</span> </div>
-<div class="line"><span class="lineno">   96</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;LockoutEnabled&quot;</span>)</div>
-<div class="line"><span class="lineno">   97</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>                    b.Property&lt;DateTimeOffset?&gt;(<span class="stringliteral">&quot;LockoutEnd&quot;</span>)</div>
-<div class="line"><span class="lineno">  100</span>                        .HasColumnType(<span class="stringliteral">&quot;datetimeoffset&quot;</span>);</div>
-<div class="line"><span class="lineno">  101</span> </div>
-<div class="line"><span class="lineno">  102</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;NormalizedEmail&quot;</span>)</div>
-<div class="line"><span class="lineno">  103</span>                        .HasMaxLength(256)</div>
-<div class="line"><span class="lineno">  104</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
-<div class="line"><span class="lineno">  105</span> </div>
-<div class="line"><span class="lineno">  106</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;NormalizedUserName&quot;</span>)</div>
-<div class="line"><span class="lineno">  107</span>                        .HasMaxLength(256)</div>
-<div class="line"><span class="lineno">  108</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">   96</span>                    b.Property&lt;decimal?&gt;(<span class="stringliteral">&quot;PerDayCost&quot;</span>)</div>
+<div class="line"><span class="lineno">   97</span>                        .HasPrecision(18, 2)</div>
+<div class="line"><span class="lineno">   98</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18,2)&quot;</span>);</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>                    b.Property&lt;decimal?&gt;(<span class="stringliteral">&quot;PerHourCost&quot;</span>)</div>
+<div class="line"><span class="lineno">  101</span>                        .HasPrecision(18, 2)</div>
+<div class="line"><span class="lineno">  102</span>                        .HasColumnType(<span class="stringliteral">&quot;decimal(18,2)&quot;</span>);</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;RenterId&quot;</span>)</div>
+<div class="line"><span class="lineno">  105</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>                    b.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;To&quot;</span>)</div>
+<div class="line"><span class="lineno">  108</span>                        .HasColumnType(<span class="stringliteral">&quot;datetime2&quot;</span>);</div>
 <div class="line"><span class="lineno">  109</span> </div>
-<div class="line"><span class="lineno">  110</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;PasswordHash&quot;</span>)</div>
-<div class="line"><span class="lineno">  111</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
-<div class="line"><span class="lineno">  112</span> </div>
-<div class="line"><span class="lineno">  113</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;PhoneNumber&quot;</span>)</div>
-<div class="line"><span class="lineno">  114</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  110</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>                    b.HasIndex(<span class="stringliteral">&quot;CarId&quot;</span>);</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>                    b.HasIndex(<span class="stringliteral">&quot;RenterId&quot;</span>);</div>
 <div class="line"><span class="lineno">  115</span> </div>
-<div class="line"><span class="lineno">  116</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;PhoneNumberConfirmed&quot;</span>)</div>
-<div class="line"><span class="lineno">  117</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
+<div class="line"><span class="lineno">  116</span>                    b.ToTable(<span class="stringliteral">&quot;Car_Rentals&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  117</span>                });</div>
 <div class="line"><span class="lineno">  118</span> </div>
-<div class="line"><span class="lineno">  119</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;SecurityStamp&quot;</span>)</div>
-<div class="line"><span class="lineno">  120</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
-<div class="line"><span class="lineno">  121</span> </div>
-<div class="line"><span class="lineno">  122</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;TwoFactorEnabled&quot;</span>)</div>
-<div class="line"><span class="lineno">  123</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
+<div class="line"><span class="lineno">  119</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AutoNaJuz.Model.RenterInfo&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  120</span>                {</div>
+<div class="line"><span class="lineno">  121</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">  122</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">  123</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
 <div class="line"><span class="lineno">  124</span> </div>
-<div class="line"><span class="lineno">  125</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserName&quot;</span>)</div>
-<div class="line"><span class="lineno">  126</span>                        .HasMaxLength(256)</div>
-<div class="line"><span class="lineno">  127</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
-<div class="line"><span class="lineno">  128</span> </div>
-<div class="line"><span class="lineno">  129</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
+<div class="line"><span class="lineno">  125</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ApartmentNumber&quot;</span>)</div>
+<div class="line"><span class="lineno">  128</span>                        .HasMaxLength(10)</div>
+<div class="line"><span class="lineno">  129</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(10)&quot;</span>);</div>
 <div class="line"><span class="lineno">  130</span> </div>
-<div class="line"><span class="lineno">  131</span>                    b.HasIndex(<span class="stringliteral">&quot;NormalizedEmail&quot;</span>)</div>
-<div class="line"><span class="lineno">  132</span>                        .HasDatabaseName(<span class="stringliteral">&quot;EmailIndex&quot;</span>);</div>
+<div class="line"><span class="lineno">  131</span>                    b.Property&lt;DateTime&gt;(<span class="stringliteral">&quot;BirthDate&quot;</span>)</div>
+<div class="line"><span class="lineno">  132</span>                        .HasColumnType(<span class="stringliteral">&quot;datetime2&quot;</span>);</div>
 <div class="line"><span class="lineno">  133</span> </div>
-<div class="line"><span class="lineno">  134</span>                    b.HasIndex(<span class="stringliteral">&quot;NormalizedUserName&quot;</span>)</div>
-<div class="line"><span class="lineno">  135</span>                        .IsUnique()</div>
-<div class="line"><span class="lineno">  136</span>                        .HasDatabaseName(<span class="stringliteral">&quot;UserNameIndex&quot;</span>)</div>
-<div class="line"><span class="lineno">  137</span>                        .HasFilter(<span class="stringliteral">&quot;[NormalizedUserName] IS NOT NULL&quot;</span>);</div>
+<div class="line"><span class="lineno">  134</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;BuildingNumber&quot;</span>)</div>
+<div class="line"><span class="lineno">  135</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  136</span>                        .HasMaxLength(10)</div>
+<div class="line"><span class="lineno">  137</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(10)&quot;</span>);</div>
 <div class="line"><span class="lineno">  138</span> </div>
-<div class="line"><span class="lineno">  139</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUsers&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">  140</span>                });</div>
-<div class="line"><span class="lineno">  141</span> </div>
-<div class="line"><span class="lineno">  142</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  143</span>                {</div>
-<div class="line"><span class="lineno">  144</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
-<div class="line"><span class="lineno">  145</span>                        .ValueGeneratedOnAdd()</div>
-<div class="line"><span class="lineno">  146</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">  139</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;City&quot;</span>)</div>
+<div class="line"><span class="lineno">  140</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  141</span>                        .HasMaxLength(50)</div>
+<div class="line"><span class="lineno">  142</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(50)&quot;</span>);</div>
+<div class="line"><span class="lineno">  143</span> </div>
+<div class="line"><span class="lineno">  144</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;DriversLicenseIdent&quot;</span>)</div>
+<div class="line"><span class="lineno">  145</span>                        .HasMaxLength(100)</div>
+<div class="line"><span class="lineno">  146</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(100)&quot;</span>);</div>
 <div class="line"><span class="lineno">  147</span> </div>
-<div class="line"><span class="lineno">  148</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
-<div class="line"><span class="lineno">  149</span> </div>
-<div class="line"><span class="lineno">  150</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimType&quot;</span>)</div>
-<div class="line"><span class="lineno">  151</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  148</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;FirstName&quot;</span>)</div>
+<div class="line"><span class="lineno">  149</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  150</span>                        .HasMaxLength(50)</div>
+<div class="line"><span class="lineno">  151</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(50)&quot;</span>);</div>
 <div class="line"><span class="lineno">  152</span> </div>
-<div class="line"><span class="lineno">  153</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimValue&quot;</span>)</div>
-<div class="line"><span class="lineno">  154</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
-<div class="line"><span class="lineno">  155</span> </div>
-<div class="line"><span class="lineno">  156</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  157</span>                        .IsRequired()</div>
-<div class="line"><span class="lineno">  158</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">  159</span> </div>
-<div class="line"><span class="lineno">  160</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
-<div class="line"><span class="lineno">  161</span> </div>
-<div class="line"><span class="lineno">  162</span>                    b.HasIndex(<span class="stringliteral">&quot;UserId&quot;</span>);</div>
-<div class="line"><span class="lineno">  163</span> </div>
-<div class="line"><span class="lineno">  164</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserClaims&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">  165</span>                });</div>
-<div class="line"><span class="lineno">  166</span> </div>
-<div class="line"><span class="lineno">  167</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserLogin&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  168</span>                {</div>
-<div class="line"><span class="lineno">  169</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;LoginProvider&quot;</span>)</div>
-<div class="line"><span class="lineno">  170</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">  171</span> </div>
-<div class="line"><span class="lineno">  172</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ProviderKey&quot;</span>)</div>
-<div class="line"><span class="lineno">  173</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  153</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;LastName&quot;</span>)</div>
+<div class="line"><span class="lineno">  154</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  155</span>                        .HasMaxLength(50)</div>
+<div class="line"><span class="lineno">  156</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(50)&quot;</span>);</div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Pesel&quot;</span>)</div>
+<div class="line"><span class="lineno">  159</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  160</span>                        .HasMaxLength(11)</div>
+<div class="line"><span class="lineno">  161</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(11)&quot;</span>);</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;PostalCode&quot;</span>)</div>
+<div class="line"><span class="lineno">  164</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  165</span>                        .HasMaxLength(10)</div>
+<div class="line"><span class="lineno">  166</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(10)&quot;</span>);</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Street&quot;</span>)</div>
+<div class="line"><span class="lineno">  169</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  170</span>                        .HasMaxLength(100)</div>
+<div class="line"><span class="lineno">  171</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(100)&quot;</span>);</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
 <div class="line"><span class="lineno">  174</span> </div>
-<div class="line"><span class="lineno">  175</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ProviderDisplayName&quot;</span>)</div>
-<div class="line"><span class="lineno">  176</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  175</span>                    b.ToTable(<span class="stringliteral">&quot;Renter_Info&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  176</span>                });</div>
 <div class="line"><span class="lineno">  177</span> </div>
-<div class="line"><span class="lineno">  178</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  179</span>                        .IsRequired()</div>
-<div class="line"><span class="lineno">  180</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">  181</span> </div>
-<div class="line"><span class="lineno">  182</span>                    b.HasKey(<span class="stringliteral">&quot;LoginProvider&quot;</span>, <span class="stringliteral">&quot;ProviderKey&quot;</span>);</div>
-<div class="line"><span class="lineno">  183</span> </div>
-<div class="line"><span class="lineno">  184</span>                    b.HasIndex(<span class="stringliteral">&quot;UserId&quot;</span>);</div>
+<div class="line"><span class="lineno">  178</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AutoNaJuz.Model.User.User&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  179</span>                {</div>
+<div class="line"><span class="lineno">  180</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">  181</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  182</span> </div>
+<div class="line"><span class="lineno">  183</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;AccessFailedCount&quot;</span>)</div>
+<div class="line"><span class="lineno">  184</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
 <div class="line"><span class="lineno">  185</span> </div>
-<div class="line"><span class="lineno">  186</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserLogins&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">  187</span>                });</div>
-<div class="line"><span class="lineno">  188</span> </div>
-<div class="line"><span class="lineno">  189</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserRole&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  190</span>                {</div>
-<div class="line"><span class="lineno">  191</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  192</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  186</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ConcurrencyStamp&quot;</span>)</div>
+<div class="line"><span class="lineno">  187</span>                        .IsConcurrencyToken()</div>
+<div class="line"><span class="lineno">  188</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  189</span> </div>
+<div class="line"><span class="lineno">  190</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Email&quot;</span>)</div>
+<div class="line"><span class="lineno">  191</span>                        .HasMaxLength(256)</div>
+<div class="line"><span class="lineno">  192</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
 <div class="line"><span class="lineno">  193</span> </div>
-<div class="line"><span class="lineno">  194</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
-<div class="line"><span class="lineno">  195</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  194</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;EmailConfirmed&quot;</span>)</div>
+<div class="line"><span class="lineno">  195</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
 <div class="line"><span class="lineno">  196</span> </div>
-<div class="line"><span class="lineno">  197</span>                    b.HasKey(<span class="stringliteral">&quot;UserId&quot;</span>, <span class="stringliteral">&quot;RoleId&quot;</span>);</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span>                    b.HasIndex(<span class="stringliteral">&quot;RoleId&quot;</span>);</div>
-<div class="line"><span class="lineno">  200</span> </div>
-<div class="line"><span class="lineno">  201</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserRoles&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">  202</span>                });</div>
-<div class="line"><span class="lineno">  203</span> </div>
-<div class="line"><span class="lineno">  204</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserToken&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  205</span>                {</div>
-<div class="line"><span class="lineno">  206</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  207</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">  208</span> </div>
-<div class="line"><span class="lineno">  209</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;LoginProvider&quot;</span>)</div>
-<div class="line"><span class="lineno">  210</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">  211</span> </div>
-<div class="line"><span class="lineno">  212</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Name&quot;</span>)</div>
-<div class="line"><span class="lineno">  213</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
-<div class="line"><span class="lineno">  214</span> </div>
-<div class="line"><span class="lineno">  215</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Value&quot;</span>)</div>
-<div class="line"><span class="lineno">  216</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
-<div class="line"><span class="lineno">  217</span> </div>
-<div class="line"><span class="lineno">  218</span>                    b.HasKey(<span class="stringliteral">&quot;UserId&quot;</span>, <span class="stringliteral">&quot;LoginProvider&quot;</span>, <span class="stringliteral">&quot;Name&quot;</span>);</div>
+<div class="line"><span class="lineno">  197</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;LockoutEnabled&quot;</span>)</div>
+<div class="line"><span class="lineno">  198</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
+<div class="line"><span class="lineno">  199</span> </div>
+<div class="line"><span class="lineno">  200</span>                    b.Property&lt;DateTimeOffset?&gt;(<span class="stringliteral">&quot;LockoutEnd&quot;</span>)</div>
+<div class="line"><span class="lineno">  201</span>                        .HasColumnType(<span class="stringliteral">&quot;datetimeoffset&quot;</span>);</div>
+<div class="line"><span class="lineno">  202</span> </div>
+<div class="line"><span class="lineno">  203</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;NormalizedEmail&quot;</span>)</div>
+<div class="line"><span class="lineno">  204</span>                        .HasMaxLength(256)</div>
+<div class="line"><span class="lineno">  205</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">  206</span> </div>
+<div class="line"><span class="lineno">  207</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;NormalizedUserName&quot;</span>)</div>
+<div class="line"><span class="lineno">  208</span>                        .HasMaxLength(256)</div>
+<div class="line"><span class="lineno">  209</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">  210</span> </div>
+<div class="line"><span class="lineno">  211</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;PasswordHash&quot;</span>)</div>
+<div class="line"><span class="lineno">  212</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  213</span> </div>
+<div class="line"><span class="lineno">  214</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;PhoneNumber&quot;</span>)</div>
+<div class="line"><span class="lineno">  215</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  216</span> </div>
+<div class="line"><span class="lineno">  217</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;PhoneNumberConfirmed&quot;</span>)</div>
+<div class="line"><span class="lineno">  218</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
 <div class="line"><span class="lineno">  219</span> </div>
-<div class="line"><span class="lineno">  220</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserTokens&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
-<div class="line"><span class="lineno">  221</span>                });</div>
+<div class="line"><span class="lineno">  220</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;SecurityStamp&quot;</span>)</div>
+<div class="line"><span class="lineno">  221</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
 <div class="line"><span class="lineno">  222</span> </div>
-<div class="line"><span class="lineno">  223</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRoleClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  224</span>                {</div>
-<div class="line"><span class="lineno">  225</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRole&quot;</span>, <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  226</span>                        .WithMany()</div>
-<div class="line"><span class="lineno">  227</span>                        .HasForeignKey(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
-<div class="line"><span class="lineno">  228</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
-<div class="line"><span class="lineno">  229</span>                        .IsRequired();</div>
-<div class="line"><span class="lineno">  230</span>                });</div>
+<div class="line"><span class="lineno">  223</span>                    b.Property&lt;<span class="keywordtype">bool</span>&gt;(<span class="stringliteral">&quot;TwoFactorEnabled&quot;</span>)</div>
+<div class="line"><span class="lineno">  224</span>                        .HasColumnType(<span class="stringliteral">&quot;bit&quot;</span>);</div>
+<div class="line"><span class="lineno">  225</span> </div>
+<div class="line"><span class="lineno">  226</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserName&quot;</span>)</div>
+<div class="line"><span class="lineno">  227</span>                        .HasMaxLength(256)</div>
+<div class="line"><span class="lineno">  228</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">  229</span> </div>
+<div class="line"><span class="lineno">  230</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
 <div class="line"><span class="lineno">  231</span> </div>
-<div class="line"><span class="lineno">  232</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  233</span>                {</div>
-<div class="line"><span class="lineno">  234</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUser&quot;</span>, <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  235</span>                        .WithMany()</div>
-<div class="line"><span class="lineno">  236</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  237</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
-<div class="line"><span class="lineno">  238</span>                        .IsRequired();</div>
-<div class="line"><span class="lineno">  239</span>                });</div>
-<div class="line"><span class="lineno">  240</span> </div>
-<div class="line"><span class="lineno">  241</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserLogin&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  242</span>                {</div>
-<div class="line"><span class="lineno">  243</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUser&quot;</span>, <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  244</span>                        .WithMany()</div>
-<div class="line"><span class="lineno">  245</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  246</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
-<div class="line"><span class="lineno">  247</span>                        .IsRequired();</div>
-<div class="line"><span class="lineno">  248</span>                });</div>
-<div class="line"><span class="lineno">  249</span> </div>
-<div class="line"><span class="lineno">  250</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserRole&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  251</span>                {</div>
-<div class="line"><span class="lineno">  252</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRole&quot;</span>, <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  253</span>                        .WithMany()</div>
-<div class="line"><span class="lineno">  254</span>                        .HasForeignKey(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
-<div class="line"><span class="lineno">  255</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
-<div class="line"><span class="lineno">  256</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  232</span>                    b.HasIndex(<span class="stringliteral">&quot;NormalizedEmail&quot;</span>)</div>
+<div class="line"><span class="lineno">  233</span>                        .HasDatabaseName(<span class="stringliteral">&quot;EmailIndex&quot;</span>);</div>
+<div class="line"><span class="lineno">  234</span> </div>
+<div class="line"><span class="lineno">  235</span>                    b.HasIndex(<span class="stringliteral">&quot;NormalizedUserName&quot;</span>)</div>
+<div class="line"><span class="lineno">  236</span>                        .IsUnique()</div>
+<div class="line"><span class="lineno">  237</span>                        .HasDatabaseName(<span class="stringliteral">&quot;UserNameIndex&quot;</span>)</div>
+<div class="line"><span class="lineno">  238</span>                        .HasFilter(<span class="stringliteral">&quot;[NormalizedUserName] IS NOT NULL&quot;</span>);</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUsers&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  241</span>                });</div>
+<div class="line"><span class="lineno">  242</span> </div>
+<div class="line"><span class="lineno">  243</span>            modelBuilder.Entity(<span class="stringliteral">&quot;CarCarFeature&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  244</span>                {</div>
+<div class="line"><span class="lineno">  245</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;CarsId&quot;</span>)</div>
+<div class="line"><span class="lineno">  246</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">  247</span> </div>
+<div class="line"><span class="lineno">  248</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;FeaturesId&quot;</span>)</div>
+<div class="line"><span class="lineno">  249</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">  250</span> </div>
+<div class="line"><span class="lineno">  251</span>                    b.HasKey(<span class="stringliteral">&quot;CarsId&quot;</span>, <span class="stringliteral">&quot;FeaturesId&quot;</span>);</div>
+<div class="line"><span class="lineno">  252</span> </div>
+<div class="line"><span class="lineno">  253</span>                    b.HasIndex(<span class="stringliteral">&quot;FeaturesId&quot;</span>);</div>
+<div class="line"><span class="lineno">  254</span> </div>
+<div class="line"><span class="lineno">  255</span>                    b.ToTable(<span class="stringliteral">&quot;CarCarFeature&quot;</span>);</div>
+<div class="line"><span class="lineno">  256</span>                });</div>
 <div class="line"><span class="lineno">  257</span> </div>
-<div class="line"><span class="lineno">  258</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUser&quot;</span>, <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  259</span>                        .WithMany()</div>
-<div class="line"><span class="lineno">  260</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  261</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
-<div class="line"><span class="lineno">  262</span>                        .IsRequired();</div>
-<div class="line"><span class="lineno">  263</span>                });</div>
-<div class="line"><span class="lineno">  264</span> </div>
-<div class="line"><span class="lineno">  265</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserToken&lt;string&gt;&quot;</span>, b =&gt;</div>
-<div class="line"><span class="lineno">  266</span>                {</div>
-<div class="line"><span class="lineno">  267</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUser&quot;</span>, <span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">  268</span>                        .WithMany()</div>
-<div class="line"><span class="lineno">  269</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
-<div class="line"><span class="lineno">  270</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
-<div class="line"><span class="lineno">  271</span>                        .IsRequired();</div>
-<div class="line"><span class="lineno">  272</span>                });</div>
-<div class="line"><span class="lineno">  273</span><span class="preprocessor">#pragma warning restore 612, 618</span></div>
-<div class="line"><span class="lineno">  274</span>        }</div>
+<div class="line"><span class="lineno">  258</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRole&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  259</span>                {</div>
+<div class="line"><span class="lineno">  260</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">  261</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  262</span> </div>
+<div class="line"><span class="lineno">  263</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ConcurrencyStamp&quot;</span>)</div>
+<div class="line"><span class="lineno">  264</span>                        .IsConcurrencyToken()</div>
+<div class="line"><span class="lineno">  265</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  266</span> </div>
+<div class="line"><span class="lineno">  267</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Name&quot;</span>)</div>
+<div class="line"><span class="lineno">  268</span>                        .HasMaxLength(256)</div>
+<div class="line"><span class="lineno">  269</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">  270</span> </div>
+<div class="line"><span class="lineno">  271</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;NormalizedName&quot;</span>)</div>
+<div class="line"><span class="lineno">  272</span>                        .HasMaxLength(256)</div>
+<div class="line"><span class="lineno">  273</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(256)&quot;</span>);</div>
+<div class="line"><span class="lineno">  274</span> </div>
+<div class="line"><span class="lineno">  275</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
+<div class="line"><span class="lineno">  276</span> </div>
+<div class="line"><span class="lineno">  277</span>                    b.HasIndex(<span class="stringliteral">&quot;NormalizedName&quot;</span>)</div>
+<div class="line"><span class="lineno">  278</span>                        .IsUnique()</div>
+<div class="line"><span class="lineno">  279</span>                        .HasDatabaseName(<span class="stringliteral">&quot;RoleNameIndex&quot;</span>)</div>
+<div class="line"><span class="lineno">  280</span>                        .HasFilter(<span class="stringliteral">&quot;[NormalizedName] IS NOT NULL&quot;</span>);</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetRoles&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  283</span>                });</div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRoleClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  286</span>                {</div>
+<div class="line"><span class="lineno">  287</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">  288</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">  289</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">  290</span> </div>
+<div class="line"><span class="lineno">  291</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
+<div class="line"><span class="lineno">  292</span> </div>
+<div class="line"><span class="lineno">  293</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimType&quot;</span>)</div>
+<div class="line"><span class="lineno">  294</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  295</span> </div>
+<div class="line"><span class="lineno">  296</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimValue&quot;</span>)</div>
+<div class="line"><span class="lineno">  297</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  298</span> </div>
+<div class="line"><span class="lineno">  299</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
+<div class="line"><span class="lineno">  300</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  301</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
+<div class="line"><span class="lineno">  304</span> </div>
+<div class="line"><span class="lineno">  305</span>                    b.HasIndex(<span class="stringliteral">&quot;RoleId&quot;</span>);</div>
+<div class="line"><span class="lineno">  306</span> </div>
+<div class="line"><span class="lineno">  307</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetRoleClaims&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  308</span>                });</div>
+<div class="line"><span class="lineno">  309</span> </div>
+<div class="line"><span class="lineno">  310</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  311</span>                {</div>
+<div class="line"><span class="lineno">  312</span>                    b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>)</div>
+<div class="line"><span class="lineno">  313</span>                        .ValueGeneratedOnAdd()</div>
+<div class="line"><span class="lineno">  314</span>                        .HasColumnType(<span class="stringliteral">&quot;int&quot;</span>);</div>
+<div class="line"><span class="lineno">  315</span> </div>
+<div class="line"><span class="lineno">  316</span>                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property&lt;<span class="keywordtype">int</span>&gt;(<span class="stringliteral">&quot;Id&quot;</span>));</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimType&quot;</span>)</div>
+<div class="line"><span class="lineno">  319</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  320</span> </div>
+<div class="line"><span class="lineno">  321</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ClaimValue&quot;</span>)</div>
+<div class="line"><span class="lineno">  322</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  323</span> </div>
+<div class="line"><span class="lineno">  324</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  325</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  326</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  327</span> </div>
+<div class="line"><span class="lineno">  328</span>                    b.HasKey(<span class="stringliteral">&quot;Id&quot;</span>);</div>
+<div class="line"><span class="lineno">  329</span> </div>
+<div class="line"><span class="lineno">  330</span>                    b.HasIndex(<span class="stringliteral">&quot;UserId&quot;</span>);</div>
+<div class="line"><span class="lineno">  331</span> </div>
+<div class="line"><span class="lineno">  332</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserClaims&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  333</span>                });</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserLogin&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  336</span>                {</div>
+<div class="line"><span class="lineno">  337</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;LoginProvider&quot;</span>)</div>
+<div class="line"><span class="lineno">  338</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ProviderKey&quot;</span>)</div>
+<div class="line"><span class="lineno">  341</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  342</span> </div>
+<div class="line"><span class="lineno">  343</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;ProviderDisplayName&quot;</span>)</div>
+<div class="line"><span class="lineno">  344</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  345</span> </div>
+<div class="line"><span class="lineno">  346</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  347</span>                        .IsRequired()</div>
+<div class="line"><span class="lineno">  348</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  349</span> </div>
+<div class="line"><span class="lineno">  350</span>                    b.HasKey(<span class="stringliteral">&quot;LoginProvider&quot;</span>, <span class="stringliteral">&quot;ProviderKey&quot;</span>);</div>
+<div class="line"><span class="lineno">  351</span> </div>
+<div class="line"><span class="lineno">  352</span>                    b.HasIndex(<span class="stringliteral">&quot;UserId&quot;</span>);</div>
+<div class="line"><span class="lineno">  353</span> </div>
+<div class="line"><span class="lineno">  354</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserLogins&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  355</span>                });</div>
+<div class="line"><span class="lineno">  356</span> </div>
+<div class="line"><span class="lineno">  357</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserRole&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  358</span>                {</div>
+<div class="line"><span class="lineno">  359</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  360</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  361</span> </div>
+<div class="line"><span class="lineno">  362</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
+<div class="line"><span class="lineno">  363</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  364</span> </div>
+<div class="line"><span class="lineno">  365</span>                    b.HasKey(<span class="stringliteral">&quot;UserId&quot;</span>, <span class="stringliteral">&quot;RoleId&quot;</span>);</div>
+<div class="line"><span class="lineno">  366</span> </div>
+<div class="line"><span class="lineno">  367</span>                    b.HasIndex(<span class="stringliteral">&quot;RoleId&quot;</span>);</div>
+<div class="line"><span class="lineno">  368</span> </div>
+<div class="line"><span class="lineno">  369</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserRoles&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  370</span>                });</div>
+<div class="line"><span class="lineno">  371</span> </div>
+<div class="line"><span class="lineno">  372</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserToken&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  373</span>                {</div>
+<div class="line"><span class="lineno">  374</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  375</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  376</span> </div>
+<div class="line"><span class="lineno">  377</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;LoginProvider&quot;</span>)</div>
+<div class="line"><span class="lineno">  378</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  379</span> </div>
+<div class="line"><span class="lineno">  380</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Name&quot;</span>)</div>
+<div class="line"><span class="lineno">  381</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(450)&quot;</span>);</div>
+<div class="line"><span class="lineno">  382</span> </div>
+<div class="line"><span class="lineno">  383</span>                    b.Property&lt;<span class="keywordtype">string</span>&gt;(<span class="stringliteral">&quot;Value&quot;</span>)</div>
+<div class="line"><span class="lineno">  384</span>                        .HasColumnType(<span class="stringliteral">&quot;nvarchar(max)&quot;</span>);</div>
+<div class="line"><span class="lineno">  385</span> </div>
+<div class="line"><span class="lineno">  386</span>                    b.HasKey(<span class="stringliteral">&quot;UserId&quot;</span>, <span class="stringliteral">&quot;LoginProvider&quot;</span>, <span class="stringliteral">&quot;Name&quot;</span>);</div>
+<div class="line"><span class="lineno">  387</span> </div>
+<div class="line"><span class="lineno">  388</span>                    b.ToTable(<span class="stringliteral">&quot;AspNetUserTokens&quot;</span>, (<span class="keywordtype">string</span>)<span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  389</span>                });</div>
+<div class="line"><span class="lineno">  390</span> </div>
+<div class="line"><span class="lineno">  391</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AutoNaJuz.Model.CarRental.CarRental&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  392</span>                {</div>
+<div class="line"><span class="lineno">  393</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.Car.Car&quot;</span>, <span class="stringliteral">&quot;Car&quot;</span>)</div>
+<div class="line"><span class="lineno">  394</span>                        .WithMany(<span class="stringliteral">&quot;Rentals&quot;</span>)</div>
+<div class="line"><span class="lineno">  395</span>                        .HasForeignKey(<span class="stringliteral">&quot;CarId&quot;</span>)</div>
+<div class="line"><span class="lineno">  396</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  397</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.RenterInfo&quot;</span>, <span class="stringliteral">&quot;Renter&quot;</span>)</div>
+<div class="line"><span class="lineno">  400</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  401</span>                        .HasForeignKey(<span class="stringliteral">&quot;RenterId&quot;</span>)</div>
+<div class="line"><span class="lineno">  402</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  403</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  404</span> </div>
+<div class="line"><span class="lineno">  405</span>                    b.Navigation(<span class="stringliteral">&quot;Car&quot;</span>);</div>
+<div class="line"><span class="lineno">  406</span> </div>
+<div class="line"><span class="lineno">  407</span>                    b.Navigation(<span class="stringliteral">&quot;Renter&quot;</span>);</div>
+<div class="line"><span class="lineno">  408</span>                });</div>
+<div class="line"><span class="lineno">  409</span> </div>
+<div class="line"><span class="lineno">  410</span>            modelBuilder.Entity(<span class="stringliteral">&quot;CarCarFeature&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  411</span>                {</div>
+<div class="line"><span class="lineno">  412</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.Car.Car&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  413</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  414</span>                        .HasForeignKey(<span class="stringliteral">&quot;CarsId&quot;</span>)</div>
+<div class="line"><span class="lineno">  415</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  416</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  417</span> </div>
+<div class="line"><span class="lineno">  418</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.Car.CarFeature&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  419</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  420</span>                        .HasForeignKey(<span class="stringliteral">&quot;FeaturesId&quot;</span>)</div>
+<div class="line"><span class="lineno">  421</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  422</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  423</span>                });</div>
+<div class="line"><span class="lineno">  424</span> </div>
+<div class="line"><span class="lineno">  425</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRoleClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  426</span>                {</div>
+<div class="line"><span class="lineno">  427</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRole&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  428</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  429</span>                        .HasForeignKey(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
+<div class="line"><span class="lineno">  430</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  431</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  432</span>                });</div>
+<div class="line"><span class="lineno">  433</span> </div>
+<div class="line"><span class="lineno">  434</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserClaim&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  435</span>                {</div>
+<div class="line"><span class="lineno">  436</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.User.User&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  437</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  438</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  439</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  440</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  441</span>                });</div>
+<div class="line"><span class="lineno">  442</span> </div>
+<div class="line"><span class="lineno">  443</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserLogin&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  444</span>                {</div>
+<div class="line"><span class="lineno">  445</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.User.User&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  446</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  447</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  448</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  449</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  450</span>                });</div>
+<div class="line"><span class="lineno">  451</span> </div>
+<div class="line"><span class="lineno">  452</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserRole&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  453</span>                {</div>
+<div class="line"><span class="lineno">  454</span>                    b.HasOne(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityRole&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  455</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  456</span>                        .HasForeignKey(<span class="stringliteral">&quot;RoleId&quot;</span>)</div>
+<div class="line"><span class="lineno">  457</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  458</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  459</span> </div>
+<div class="line"><span class="lineno">  460</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.User.User&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  461</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  462</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  463</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  464</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  465</span>                });</div>
+<div class="line"><span class="lineno">  466</span> </div>
+<div class="line"><span class="lineno">  467</span>            modelBuilder.Entity(<span class="stringliteral">&quot;Microsoft.AspNetCore.Identity.IdentityUserToken&lt;string&gt;&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  468</span>                {</div>
+<div class="line"><span class="lineno">  469</span>                    b.HasOne(<span class="stringliteral">&quot;AutoNaJuz.Model.User.User&quot;</span>, <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  470</span>                        .WithMany()</div>
+<div class="line"><span class="lineno">  471</span>                        .HasForeignKey(<span class="stringliteral">&quot;UserId&quot;</span>)</div>
+<div class="line"><span class="lineno">  472</span>                        .OnDelete(DeleteBehavior.Cascade)</div>
+<div class="line"><span class="lineno">  473</span>                        .IsRequired();</div>
+<div class="line"><span class="lineno">  474</span>                });</div>
+<div class="line"><span class="lineno">  475</span> </div>
+<div class="line"><span class="lineno">  476</span>            modelBuilder.Entity(<span class="stringliteral">&quot;AutoNaJuz.Model.Car.Car&quot;</span>, b =&gt;</div>
+<div class="line"><span class="lineno">  477</span>                {</div>
+<div class="line"><span class="lineno">  478</span>                    b.Navigation(<span class="stringliteral">&quot;Rentals&quot;</span>);</div>
+<div class="line"><span class="lineno">  479</span>                });</div>
+<div class="line"><span class="lineno">  480</span><span class="preprocessor">#pragma warning restore 612, 618</span></div>
+<div class="line"><span class="lineno">  481</span>        }</div>
 </div><!-- fragment -->
 </div>
 </div>

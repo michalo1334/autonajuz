@@ -122,33 +122,47 @@ $(document).ready(function(){initNavTree('CarConfiguration_8cs_source.html','');
 <div class="contents">
 <a href="CarConfiguration_8cs.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>Microsoft.EntityFrameworkCore;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>Microsoft.EntityFrameworkCore.Metadata.Builders;</div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1DAL.html">AutoNaJuz.DAL</a>;</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model.html">AutoNaJuz.Model</a>;</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="foldopen" id="foldopen00006" data-start="{" data-end="}">
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="namespaceAutoNaJuz_1_1DAL.html">    6</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1DAL_1_1Configuration.html">AutoNaJuz.DAL.Configuration</a></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html">    8</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html">CarConfiguration</a> : IEntityTypeConfiguration&lt;Car&gt;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    {</div>
-<div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">   10</a></span>        <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">Configure</a>(EntityTypeBuilder&lt;Car&gt; <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>)</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasKey(c =&gt; c.Id);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            <span class="comment">//...</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        }</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model_1_1Car.html">AutoNaJuz.Model.Car</a>;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="foldopen" id="foldopen00005" data-start="{" data-end="}">
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="namespaceAutoNaJuz_1_1DAL.html">    5</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1DAL_1_1Configuration.html">AutoNaJuz.DAL.Configuration</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html">    7</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html">CarConfiguration</a> : IEntityTypeConfiguration&lt;Car&gt;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="}">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">    9</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">Configure</a>(EntityTypeBuilder&lt;Car&gt; <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    {</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.ToTable(<span class="stringliteral">&quot;Cars&quot;</span>);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasKey(e =&gt; e.Id);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Title)</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            .HasMaxLength(256);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Transmission);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.ProductionYear);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.FuelType);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.SeatCount);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.DoorCount);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.BodyType);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasMany(e =&gt; e.Features)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            .WithMany(e =&gt; e.Cars);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasMany(e =&gt; e.Rentals)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            .WithOne(e =&gt; e.Car)</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            .HasForeignKey(e =&gt; e.CarId);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
 </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
 </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 </div>
-<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00008">Program.cs:8</a></div></div>
-<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration_html"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html">AutoNaJuz.DAL.Configuration.CarConfiguration</a></div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00008">CarConfiguration.cs:9</a></div></div>
-<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration_html_a7a7144871afbebf78214cdbdd4774f7a"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">AutoNaJuz.DAL.Configuration.CarConfiguration.Configure</a></div><div class="ttdeci">void Configure(EntityTypeBuilder&lt; Car &gt; builder)</div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00010">CarConfiguration.cs:10</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Configuration_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Configuration.html">AutoNaJuz.DAL.Configuration</a></div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00006">CarConfiguration.cs:7</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL.html">AutoNaJuz.DAL</a></div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00006">CarConfiguration.cs:7</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model.html">AutoNaJuz.Model</a></div><div class="ttdef"><b>Definition</b> <a href="Car_8cs_source.html#l00006">Car.cs:7</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00013">Program.cs:13</a></div></div>
+<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration_html"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html">AutoNaJuz.DAL.Configuration.CarConfiguration</a></div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00007">CarConfiguration.cs:8</a></div></div>
+<div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration_html_a7a7144871afbebf78214cdbdd4774f7a"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">AutoNaJuz.DAL.Configuration.CarConfiguration.Configure</a></div><div class="ttdeci">void Configure(EntityTypeBuilder&lt; Car &gt; builder)</div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00009">CarConfiguration.cs:9</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Configuration_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Configuration.html">AutoNaJuz.DAL.Configuration</a></div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00005">CarConfiguration.cs:5</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1Car_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1Car.html">AutoNaJuz.Model.Car</a></div><div class="ttdef"><b>Definition</b> <a href="Car_8cs_source.html#l00003">Car.cs:3</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
