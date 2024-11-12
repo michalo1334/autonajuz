@@ -1,31 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoNaJuz.Model;
+using AutoNaJuz.Model.Car;
+using AutoNaJuz.Model.CarRental;
+using AutoNaJuz.Model.User;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace AutoNaJuz.DAL.Data
+namespace AutoNaJuz.DAL.Data;
+
+public class AppDbContext(DbContextOptions options)
+    : IdentityDbContext<User>(options)
 {
-    public class AppDbContext : IdentityDbContext
+    public DbSet<Car> Cars { get; set; }
+    public DbSet<CarRental> CarRentals { get; set; }
+    public DbSet<RenterInfo> RenterInfos { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        private readonly IConfiguration _configuration;
+        base.OnModelCreating(modelBuilder);
 
-        public DbSet<Car> Cars { get; set; }
-        public DbSet<CarRental> CarRentals { get; set; }
-
-        public AppDbContext(DbContextOptions<AppDbContext> options, IConfiguration configuration) 
-            : base(options)
-        {
-            _configuration = configuration;
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            var connectionString = _configuration.GetConnectionString("MsSql");
-            options.UseSqlServer(connectionString);
-        }
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
     }
 }

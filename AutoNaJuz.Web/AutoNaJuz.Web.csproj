@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\app.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\cars.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\rentals.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\renters.js" />
+  </ItemGroup>
+
 </Project>

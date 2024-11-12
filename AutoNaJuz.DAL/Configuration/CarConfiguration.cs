@@ -1,17 +1,32 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using AutoNaJuz.DAL;
-using AutoNaJuz.Model;
+using AutoNaJuz.Model.Car;
 
-namespace AutoNaJuz.DAL.Configuration
+namespace AutoNaJuz.DAL.Configuration;
+
+public class CarConfiguration : IEntityTypeConfiguration<Car>
 {
-    public class CarConfiguration : IEntityTypeConfiguration<Car>
+    public void Configure(EntityTypeBuilder<Car> builder)
     {
-        public void Configure(EntityTypeBuilder<Car> builder)
-        {
-            builder.HasKey(c => c.Id);
+        builder.ToTable("Cars");
 
-            //...
-        }
+        builder.HasKey(e => e.Id);
+
+        builder.Property(e => e.Title)
+            .HasMaxLength(256);
+
+        builder.Property(e => e.Transmission);
+        builder.Property(e => e.ProductionYear);
+        builder.Property(e => e.FuelType);
+        builder.Property(e => e.SeatCount);
+        builder.Property(e => e.DoorCount);
+        builder.Property(e => e.BodyType);
+
+        builder.HasMany(e => e.Features)
+            .WithMany(e => e.Cars);
+
+        builder.HasMany(e => e.Rentals)
+            .WithOne(e => e.Car)
+            .HasForeignKey(e => e.CarId);
     }
 }

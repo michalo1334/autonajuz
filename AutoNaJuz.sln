@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoNaJuz.Model", "AutoNaJu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoNaJuz.Web", "AutoNaJuz.Web\AutoNaJuz.Web.csproj", "{C2C6E047-E26D-47DF-AB1A-EB5836C2115B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoNaJuz.ViewModels", "AutoNaJuz.ViewModels\AutoNaJuz.ViewModels.csproj", "{6B5DBEA3-D027-4716-8291-80365F87E8AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{C2C6E047-E26D-47DF-AB1A-EB5836C2115B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2C6E047-E26D-47DF-AB1A-EB5836C2115B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2C6E047-E26D-47DF-AB1A-EB5836C2115B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5DBEA3-D027-4716-8291-80365F87E8AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5DBEA3-D027-4716-8291-80365F87E8AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5DBEA3-D027-4716-8291-80365F87E8AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5DBEA3-D027-4716-8291-80365F87E8AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
