@@ -76,6 +76,18 @@ services.AddSwaggerGen(c =>
     });
 });
 
+//Add cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "_apiOrigins",
+        policy  =>
+        {
+            policy.AllowAnyOrigin();
+            policy.AllowAnyMethod();
+            policy.AllowAnyHeader();
+        });
+});
+
 // Register application services
 services.AddScoped<ICarsService, CarsService>();
 services.AddScoped<ICarRentalsService, CarRentalsService>();
@@ -104,8 +116,25 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+//Enable CORS
+app.UseCors("_apiOrigins");
+
+
 app.UseAuthorization(); // Enable authentication
 
 app.MapControllers();
 
+app.UseStaticFiles();
+MapSimpleUI();
+
 app.Run();
+return;
+
+void MapSimpleUI()
+{
+    app.MapGet("/", async context =>
+    {
+        context.Response.ContentType = "text/html";
+        await context.Response.SendFileAsync("wwwroot/simple_ui.html");
+    });
+}

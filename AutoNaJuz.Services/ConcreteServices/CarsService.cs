@@ -61,8 +61,8 @@ public class CarsService(
                     e.SeatCount,
                     e.DoorCount,
                     e.BodyType,
-                    Features = e.Features.Select(f => new { f.Id, f.Title }),
-                    Rentals = e.Rentals.Select(r => new { r.Id, r.PerHourCost, r.PerDayCost, r.From, r.To, r.Notes })
+                    e.Features,
+                    e.Rentals
                 })
                 .ToListAsync())
             .Select(c => new GetCarVm(
@@ -74,8 +74,8 @@ public class CarsService(
                 c.SeatCount,
                 c.DoorCount,
                 c.BodyType,
-                c.Features.Select(mapper.Map<GetCarFeatureVm>),
-                c.Rentals.Select(mapper.Map<GetCarRentalVm>)
+                c.Features.Select(e => new GetCarFeatureVm(e.Id, e.Title)),
+                c.Rentals.Select(e => new GetCarRentalVm(e.Id, e.CarId, e.RenterId, e.PerHourCost, e.PerDayCost, e.From, e.To, e.Notes))
             ));
     }
 
