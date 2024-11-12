@@ -22,7 +22,7 @@
 
     <script>
         document.getElementById('emailForm').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Zapobiega domyślnej akcji formularza
+            event.preventDefault();
 
             const formData = new FormData(this);
             const data = {
@@ -32,7 +32,7 @@
             };
 
             try {
-                const response = await fetch('/api/Email/send', {
+                const response = await fetch(`${LOCAL_API_URL}/Emails/send`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -51,5 +51,6 @@
             }
         });
     </script>
+    <script src="apiUrls.js"></script>
 </body>
 </html>
