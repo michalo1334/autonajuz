@@ -1,133 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Car Rental Service</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz wysyłania e-maila</title>
 </head>
 <body>
-<header>
-    <h1>Car Rental Service</h1>
-    <nav>
-        <ul>
-            <li><a href="#" id="nav-cars">Cars</a></li>
-            <li><a href="#" id="nav-renters">Renters</a></li>
-            <li><a href="#" id="nav-rentals">Rentals</a></li>
-        </ul>
-    </nav>
-</header>
-<main id="content">
-    <!-- Content will be injected here -->
-</main>
+    <h1>Wyślij e-mail</h1>
+    <form id="emailForm">
+        <label for="to">Do:</label>
+        <input type="email" id="to" name="to" required><br><br>
 
-<!-- Templates -->
-<!-- Cars Template -->
-<template id="cars-template">
-    <section>
-        <h2>Available Cars</h2>
-        <button id="add-car-button" class="btn">Add New Car</button>
-        <table id="cars-table">
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th>Transmission</th>
-                <th>Fuel Type</th>
-                <th>Production Year</th>
-                <th>Seat Count</th>
-                <th>Door Count</th>
-                <th>Body Type</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Car rows will be injected here -->
-            </tbody>
-        </table>
-    </section>
-</template>
+        <label for="subject">Temat:</label>
+        <input type="text" id="subject" name="subject" required><br><br>
 
-<!-- Renters Template -->
-<template id="renters-template">
-    <section>
-        <h2>Renters</h2>
-        <button id="add-renter-button" class="btn">Add New Renter</button>
-        <table id="renters-table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Driving License ID</th>
-                <th>PESEL</th>
-                <th>Birth Date</th>
-                <th>Address</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Renter rows will be injected here -->
-            </tbody>
-        </table>
-    </section>
-</template>
+        <label for="message">Wiadomość:</label><br>
+        <textarea id="message" name="message" rows="5" required></textarea><br><br>
 
-<!-- Rentals Template -->
-<template id="rentals-template">
-    <section>
-        <h2>Car Rentals</h2>
-        <button id="add-rental-button" class="btn">Add New Rental</button>
-        <table id="rentals-table">
-            <thead>
-            <tr>
-                <th>Car ID</th>
-                <th>Renter ID</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Per Hour Cost</th>
-                <th>Per Day Cost</th>
-                <th>Notes</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Rental rows will be injected here -->
-            </tbody>
-        </table>
-    </section>
-</template>
+        <button type="submit">Wyślij e-mail</button>
+    </form>
 
-<!-- Forms Template -->
-<template id="form-template">
-    <section>
-        <h2 id="form-title"></h2>
-        <form id="data-form">
-            <!-- Form fields will be injected here -->
-        </form>
-    </section>
-</template>
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
 
-<!-- Rental List Template -->
-<template id="rental-list-template">
-    <div class="rental-list">
-        <h3>Rentals</h3>
-        <table class="rental-table">
-            <thead>
-            <tr>
-                <th>Renter ID</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Notes</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Rental rows will be injected here -->
-            </tbody>
-        </table>
-    </div>
-</template>
+            const formData = new FormData(this);
+            const data = {
+                To: formData.get('to'),
+                Subject: formData.get('subject'),
+                Message: formData.get('message')
+            };
 
-<!-- Scripts -->
-<script src="js/app.js"></script>
-<script src="js/cars.js"></script>
-<script src="js/renters.js"></script>
-<script src="js/rentals.js"></script>
+            try {
+                const response = await fetch(`${LOCAL_API_URL}/Emails/send`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    alert('E-mail został wysłany pomyślnie!');
+                } else {
+                    alert('Wystąpił błąd przy wysyłaniu e-maila.');
+                }
+            } catch (error) {
+                console.error('Błąd:', error);
+                alert('Wystąpił błąd przy wysyłaniu e-maila.');
+            }
+        });
+    </script>
+    <script src="apiUrls.js"></script>
 </body>
 </html>

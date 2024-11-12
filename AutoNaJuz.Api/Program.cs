@@ -4,6 +4,7 @@ using AutoNaJuz.Model.User;
 using AutoNaJuz.Services;
 using AutoNaJuz.Services.ConcreteServices;
 using AutoNaJuz.Services.Interfaces;
+using AutoNaJuz.Web;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -92,6 +93,15 @@ builder.Services.AddCors(options =>
 services.AddScoped<ICarsService, CarsService>();
 services.AddScoped<ICarRentalsService, CarRentalsService>();
 services.AddScoped<IRenterInfoService, RenterInfoService>();
+
+// Add Email service
+var smtpSettings = builder.Configuration.GetSection("SmtpSettings");
+builder.Services.AddSingleton<EmailService>(provider => new EmailService(
+    smtpSettings["Host"],
+    int.Parse(smtpSettings["Port"]),
+    bool.Parse(smtpSettings["EnableSsl"]),
+    smtpSettings["Username"],
+    smtpSettings["Password"]));
 
 var app = builder.Build();
 
