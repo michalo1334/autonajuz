@@ -6,7 +6,6 @@ const cars = [
 
 const carList = document.getElementById('cars')
 const filter = document.getElementById('filter')
-const carSelect = document.getElementById('car-select')
 const form = document.getElementById('reservation-form')
 
 // Funkcja do generowania listy samochodów
@@ -16,20 +15,22 @@ function renderCars(category = 'all') {
 	filteredCars.forEach(car => {
 		const carCard = document.createElement('div')
 		carCard.classList.add('car-card')
+		carCard.dataset.carId = car.id // Przypisanie ID samochodu
 		carCard.innerHTML = `
             <h3>${car.name}</h3>
             <p>${car.details}</p>
         `
 		carList.appendChild(carCard)
-	})
 
-	// Aktualizacja opcji w formularzu rezerwacji
-	carSelect.innerHTML = ''
-	filteredCars.forEach(car => {
-		const option = document.createElement('option')
-		option.value = car.id
-		option.textContent = car.name
-		carSelect.appendChild(option)
+		// Dodaj obsługę kliknięcia na kartę samochodu
+		carCard.addEventListener('click', () => {
+			// Usuń poprzednią klasę 'selected' z innych kart
+			document.querySelectorAll('.car-card').forEach(card => card.classList.remove('selected'))
+			// Dodaj klasę 'selected' do klikniętej karty
+			carCard.classList.add('selected')
+			// Ustaw ID wybranego samochodu w ukrytym polu formularza
+			document.getElementById('selected-car-id').value = car.id
+		})
 	})
 }
 
@@ -41,12 +42,12 @@ filter.addEventListener('change', () => {
 // Obsługa formularza rezerwacji
 form.addEventListener('submit', e => {
 	e.preventDefault()
-	const carId = carSelect.value
+	const carId = document.getElementById('selected-car-id').value
 	const startDate = document.getElementById('start-date').value
 	const endDate = document.getElementById('end-date').value
 
 	if (!carId || !startDate || !endDate) {
-		alert('Proszę wypełnić wszystkie pola.')
+		alert('Proszę wypełnić wszystkie pola i wybrać samochód.')
 		return
 	}
 
