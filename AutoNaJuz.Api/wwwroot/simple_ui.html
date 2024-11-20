@@ -2,132 +2,811 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Car Rental Service</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>AutoNaJuzAPI UI</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .tab-content {
+            margin-top: 20px;
+        }
+        .rental-table, .image-container {
+            margin-top: 10px;
+            display: none;
+        }
+        .image-thumbnail {
+            max-width: 150px;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-<header>
-    <h1>Car Rental Service</h1>
-    <nav>
-        <ul>
-            <li><a href="#" id="nav-cars">Cars</a></li>
-            <li><a href="#" id="nav-renters">Renters</a></li>
-            <li><a href="#" id="nav-rentals">Rentals</a></li>
-        </ul>
-    </nav>
-</header>
-<main id="content">
-    <!-- Content will be injected here -->
-</main>
+<div class="container">
+    <h1 class="my-4">AutoNaJuzAPI Management</h1>
+    <!-- Nav Tabs -->
+    <ul class="nav nav-tabs" id="apiTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="cars-tab" data-bs-toggle="tab" data-bs-target="#cars" type="button" role="tab" aria-controls="cars" aria-selected="true">Cars</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="rentals-tab" data-bs-toggle="tab" data-bs-target="#rentals" type="button" role="tab" aria-controls="rentals" aria-selected="false">Rentals</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="renters-tab" data-bs-toggle="tab" data-bs-target="#renters" type="button" role="tab" aria-controls="renters" aria-selected="false">Renters</button>
+        </li>
+    </ul>
 
-<!-- Templates -->
-<!-- Cars Template -->
-<template id="cars-template">
-    <section>
-        <h2>Available Cars</h2>
-        <button id="add-car-button" class="btn">Add New Car</button>
-        <table id="cars-table">
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th>Transmission</th>
-                <th>Fuel Type</th>
-                <th>Production Year</th>
-                <th>Seat Count</th>
-                <th>Door Count</th>
-                <th>Body Type</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Car rows will be injected here -->
-            </tbody>
-        </table>
-    </section>
-</template>
+    <!-- Tab Panes -->
+    <div class="tab-content" id="apiTabsContent">
+        <!-- Cars Tab -->
+        <div class="tab-pane fade show active" id="cars" role="tabpanel" aria-labelledby="cars-tab">
+            <button class="btn btn-primary my-3" onclick="openAddCarModal()">Add Car</button>
+            <table class="table table-bordered" id="carsTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Transmission</th>
+                    <th>Production Year</th>
+                    <th>Fuel Type</th>
+                    <th>Seat Count</th>
+                    <th>Door Count</th>
+                    <th>Body Type</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Car rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
 
-<!-- Renters Template -->
-<template id="renters-template">
-    <section>
-        <h2>Renters</h2>
-        <button id="add-renter-button" class="btn">Add New Renter</button>
-        <table id="renters-table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Driving License ID</th>
-                <th>PESEL</th>
-                <th>Birth Date</th>
-                <th>Address</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Renter rows will be injected here -->
-            </tbody>
-        </table>
-    </section>
-</template>
+        <!-- Rentals Tab -->
+        <div class="tab-pane fade" id="rentals" role="tabpanel" aria-labelledby="rentals-tab">
+            <button class="btn btn-primary my-3" onclick="openAddRentalModal()">Add Rental</button>
+            <table class="table table-bordered" id="rentalsTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Car ID</th>
+                    <th>Renter ID</th>
+                    <th>Per Hour Cost</th>
+                    <th>Per Day Cost</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Rental rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
 
-<!-- Rentals Template -->
-<template id="rentals-template">
-    <section>
-        <h2>Car Rentals</h2>
-        <button id="add-rental-button" class="btn">Add New Rental</button>
-        <table id="rentals-table">
-            <thead>
-            <tr>
-                <th>Car ID</th>
-                <th>Renter ID</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Per Hour Cost</th>
-                <th>Per Day Cost</th>
-                <th>Notes</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Rental rows will be injected here -->
-            </tbody>
-        </table>
-    </section>
-</template>
-
-<!-- Forms Template -->
-<template id="form-template">
-    <section>
-        <h2 id="form-title"></h2>
-        <form id="data-form">
-            <!-- Form fields will be injected here -->
-        </form>
-    </section>
-</template>
-
-<!-- Rental List Template -->
-<template id="rental-list-template">
-    <div class="rental-list">
-        <h3>Rentals</h3>
-        <table class="rental-table">
-            <thead>
-            <tr>
-                <th>Renter ID</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Notes</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!-- Rental rows will be injected here -->
-            </tbody>
-        </table>
+        <!-- Renters Tab -->
+        <div class="tab-pane fade" id="renters" role="tabpanel" aria-labelledby="renters-tab">
+            <button class="btn btn-primary my-3" onclick="openAddRenterModal()">Add Renter</button>
+            <table class="table table-bordered" id="rentersTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Driving License</th>
+                    <th>PESEL</th>
+                    <th>Birth Date</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Street</th>
+                    <th>Building Number</th>
+                    <th>Apartment Number</th>
+                    <th>City</th>
+                    <th>Postal Code</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Renter rows will be populated here -->
+                </tbody>
+            </table>
+        </div>
     </div>
-</template>
+</div>
 
-<!-- Scripts -->
-<script src="js/app.js"></script>
-<script src="js/cars.js"></script>
-<script src="js/renters.js"></script>
-<script src="js/rentals.js"></script>
+<!-- Modals (Add/Edit) -->
+<!-- Add/Edit Car Modal -->
+<div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="carModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="carForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="carModalLabel">Add/Edit Car</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="carId">
+                    <div class="mb-3">
+                        <label for="carTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="carTitle" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carTransmission" class="form-label">Transmission</label>
+                        <select class="form-select" id="carTransmission" required>
+                            <option value="Manual">Manual</option>
+                            <option value="Automatic">Automatic</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carProductionYear" class="form-label">Production Year</label>
+                        <input type="date" class="form-control" id="carProductionYear" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carFuelType" class="form-label">Fuel Type</label>
+                        <select class="form-select" id="carFuelType" required>
+                            <option value="Gas">Gas</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Lpg">Lpg</option>
+                            <option value="Electric">Electric</option>
+                            <option value="HybridGasEv">Hybrid Gas-EV</option>
+                            <option value="HybridDieselEv">Hybrid Diesel-EV</option>
+                            <option value="HybridLpgEv">Hybrid Lpg-EV</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carSeatCount" class="form-label">Seat Count</label>
+                        <input type="number" class="form-control" id="carSeatCount" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carDoorCount" class="form-label">Door Count</label>
+                        <input type="number" class="form-control" id="carDoorCount" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carBodyType" class="form-label">Body Type</label>
+                        <select class="form-select" id="carBodyType" required>
+                            <option value="Hatchback">Hatchback</option>
+                            <option value="Pickup">Pickup</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Suv">SUV</option>
+                            <option value="Van">Van</option>
+                            <option value="Combi">Combi</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="carImages" class="form-label">Images</label>
+                        <input type="file" class="form-control" id="carImages" accept="image/*" multiple>
+                        <small class="form-text text-muted">You can upload multiple images.</small>
+                        <div id="selectedFiles" class="mt-2">No files selected</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Car</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Rental Modal -->
+<div class="modal fade" id="rentalModal" tabindex="-1" aria-labelledby="rentalModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="rentalForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rentalModalLabel">Add/Edit Rental</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="rentalId">
+                    <div class="mb-3">
+                        <label for="rentalCarId" class="form-label">Car ID</label>
+                        <input type="number" class="form-control" id="rentalCarId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentalRenterId" class="form-label">Renter ID</label>
+                        <input type="number" class="form-control" id="rentalRenterId" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentalPerHourCost" class="form-label">Per Hour Cost</label>
+                        <input type="number" step="0.01" class="form-control" id="rentalPerHourCost" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentalPerDayCost" class="form-label">Per Day Cost</label>
+                        <input type="number" step="0.01" class="form-control" id="rentalPerDayCost" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentalFrom" class="form-label">From</label>
+                        <input type="datetime-local" class="form-control" id="rentalFrom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentalTo" class="form-label">To</label>
+                        <input type="datetime-local" class="form-control" id="rentalTo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rentalNotes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="rentalNotes"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Rental</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Renter Modal -->
+<div class="modal fade" id="renterModal" tabindex="-1" aria-labelledby="renterModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="renterForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="renterModalLabel">Add/Edit Renter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="renterId">
+                    <div class="mb-3">
+                        <label for="renterDrivingLicense" class="form-label">Driving License ID</label>
+                        <input type="text" class="form-control" id="renterDrivingLicense" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterPESEL" class="form-label">PESEL</label>
+                        <input type="text" class="form-control" id="renterPESEL" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterBirthDate" class="form-label">Birth Date</label>
+                        <input type="date" class="form-control" id="renterBirthDate" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterFirstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="renterFirstName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterLastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="renterLastName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterStreet" class="form-label">Street</label>
+                        <input type="text" class="form-control" id="renterStreet" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterBuildingNumber" class="form-label">Building Number</label>
+                        <input type="text" class="form-control" id="renterBuildingNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterApartmentNumber" class="form-label">Apartment Number</label>
+                        <input type="text" class="form-control" id="renterApartmentNumber">
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterCity" class="form-label">City</label>
+                        <input type="text" class="form-control" id="renterCity" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="renterPostalCode" class="form-label">Postal Code</label>
+                        <input type="text" class="form-control" id="renterPostalCode" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save Renter</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- JavaScript for handling API interactions -->
+<script>
+    const apiBaseUrl = 'https://localhost:7092'; // Replace with your actual API base URL
+    const authHeader = 'Basic ' + btoa('username:password'); // Replace with actual credentials
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCars();
+        loadRentals();
+        loadRenters();
+
+        // Display selected files
+        const carImagesInput = document.getElementById('carImages');
+        carImagesInput.addEventListener('change', displaySelectedFiles);
+    });
+
+    // Utility function to handle API requests
+    async function apiRequest(endpoint, method = 'GET', data = null, isFormData = false) {
+        const headers = {
+            'Authorization': authHeader
+        };
+        if (!isFormData && method !== 'GET') {
+            headers['Content-Type'] = 'application/json';
+        }
+        const options = {
+            method: method,
+            headers: headers
+        };
+        if (data) {
+            options.body = isFormData ? data : JSON.stringify(data);
+        }
+        try {
+            console.log(`Making ${method} request to ${endpoint} with data:`, data); // Debugging
+            const response = await fetch(apiBaseUrl + endpoint, options);
+            console.log('Response Status:', response.status); // Debugging
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error('API Error:', response.status, response.statusText, errorText);
+                alert('Error: ' + response.status + ' ' + response.statusText + '\n' + errorText);
+                return null;
+            }
+
+            if (response.status !== 204) { // No Content
+                const contentType = response.headers.get('Content-Type');
+                console.log('Content-Type:', contentType); // Debugging
+
+                if (contentType) {
+                    if (contentType.includes('application/json')) {
+                        const jsonResponse = await response.json();
+                        console.log('Parsed JSON:', jsonResponse); // Debugging
+                        return jsonResponse;
+                    } else if (contentType.includes('text/plain')) {
+                        const textResponse = await response.text();
+                        console.log('Parsed Text:', textResponse); // Debugging
+                        return textResponse;
+                    } else if (contentType.startsWith('image/')) {
+                        const blobResponse = await response.blob();
+                        console.log('Received Image Blob'); // Debugging
+                        return blobResponse;
+                    }
+                }
+
+                // If Content-Type is not recognized, return null or handle accordingly
+                console.warn('Unrecognized Content-Type:', contentType);
+                return null;
+            }
+
+            return null;
+        } catch (error) {
+            console.error('Fetch Error:', error);
+            alert('Request failed: ' + error);
+            return null;
+        }
+    }
+
+    // -------------------- Cars --------------------
+    async function loadCars() {
+        const cars = await apiRequest('/api/Cars', 'GET');
+        if (!cars) return;
+        const tbody = document.querySelector('#carsTable tbody');
+        tbody.innerHTML = '';
+        cars.forEach(car => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${car.id}</td>
+                <td>${car.title}</td>
+                <td>${car.transmission}</td>
+                <td>${new Date(car.productionYear).getFullYear()}</td>
+                <td>${car.fuelType}</td>
+                <td>${car.seatCount}</td>
+                <td>${car.doorCount}</td>
+                <td>${car.bodyType}</td>
+                <td>
+                    <button class="btn btn-sm btn-info me-1" onclick="toggleCarRentals(${car.id}, this)">Show Rentals</button>
+                    <button class="btn btn-sm btn-info me-1" onclick="toggleCarImages(${car.id}, this)">Show Images</button>
+                    <button class="btn btn-sm btn-warning me-1" onclick="openEditCarModal(${car.id})">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteCar(${car.id})">Delete</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function openAddCarModal() {
+        const carModal = new bootstrap.Modal(document.getElementById('carModal'));
+        document.getElementById('carForm').reset();
+        document.getElementById('carId').value = '';
+        document.getElementById('selectedFiles').innerHTML = 'No files selected';
+        carModal.show();
+        document.getElementById('carModalLabel').innerText = 'Add Car';
+    }
+
+    async function openEditCarModal(id) {
+        const car = await apiRequest(`/api/Cars/${id}`, 'GET');
+        if (!car) return;
+        const carModal = new bootstrap.Modal(document.getElementById('carModal'));
+        document.getElementById('carId').value = car.id;
+        document.getElementById('carTitle').value = car.title;
+        document.getElementById('carTransmission').value = car.transmission;
+        document.getElementById('carProductionYear').value = car.productionYear.split('T')[0];
+        document.getElementById('carFuelType').value = car.fuelType;
+        document.getElementById('carSeatCount').value = car.seatCount;
+        document.getElementById('carDoorCount').value = car.doorCount;
+        document.getElementById('carBodyType').value = car.bodyType;
+        document.getElementById('selectedFiles').innerHTML = 'No files selected';
+        carModal.show();
+        document.getElementById('carModalLabel').innerText = 'Edit Car';
+    }
+
+    document.getElementById('carForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('carId').value;
+        const imagesInput = document.getElementById('carImages');
+        const imageFiles = imagesInput.files;
+        let imageIds = [];
+
+        // Upload images if any are selected
+        if (imageFiles.length > 0) {
+            for (let file of imageFiles) {
+                const formData = new FormData();
+                formData.append('file', file);
+                const uploadedImage = await apiRequest('/api/Images', 'POST', formData, true);
+                if (uploadedImage && uploadedImage.id) {
+                    imageIds.push(uploadedImage.id);
+                } else {
+                    alert('Failed to upload image: ' + file.name);
+                }
+            }
+        }
+
+        // If editing, preserve existing imageIds
+        if (id) {
+            const existingCar = await apiRequest(`/api/Cars/${id}`, 'GET');
+            if (existingCar && existingCar.imageIds) {
+                imageIds = imageIds.concat(existingCar.imageIds);
+            }
+        }
+
+        const data = {
+            title: document.getElementById('carTitle').value,
+            transmission: document.getElementById('carTransmission').value,
+            productionYear: document.getElementById('carProductionYear').value,
+            fuelType: document.getElementById('carFuelType').value,
+            seatCount: parseInt(document.getElementById('carSeatCount').value),
+            doorCount: parseInt(document.getElementById('carDoorCount').value),
+            bodyType: document.getElementById('carBodyType').value,
+            imageIds: imageIds
+        };
+
+        if (id) {
+            // Edit
+            const result = await apiRequest(`/api/Cars/${id}`, 'PUT', data);
+            if (result !== null) {
+                if (typeof result === 'object' && result.status) {
+                    alert('Car updated successfully.');
+                } else if (typeof result === 'string') {
+                    alert(result);
+                } else {
+                    alert('Car updated successfully.');
+                }
+            }
+        } else {
+            // Add
+            const result = await apiRequest('/api/Cars', 'POST', data);
+            if (result !== null) {
+                alert('Car added successfully. ID: ' + result);
+            }
+        }
+        bootstrap.Modal.getInstance(document.getElementById('carModal')).hide();
+        loadCars();
+    });
+
+    async function deleteCar(id) {
+        if (!confirm('Are you sure you want to delete this car?')) return;
+        await apiRequest(`/api/Cars/${id}`, 'DELETE');
+        alert('Car deleted successfully.');
+        loadCars();
+    }
+
+    // Toggle Rentals for a specific Car
+    async function toggleCarRentals(carId, button) {
+        let rentalTable = button.closest('tr').nextElementSibling;
+        if (rentalTable && rentalTable.classList.contains('rental-table')) {
+            rentalTable.style.display = rentalTable.style.display === 'none' ? 'table-row' : 'none';
+            return;
+        }
+
+        const rentals = await apiRequest(`/api/CarRentals/byCar/${carId}`, 'GET');
+        if (!rentals) return;
+
+        rentalTable = document.createElement('tr');
+        rentalTable.classList.add('rental-table');
+        const td = document.createElement('td');
+        td.colSpan = 9;
+        const innerTable = document.createElement('table');
+        innerTable.className = 'table table-sm table-bordered';
+        innerTable.innerHTML = `
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Car ID</th>
+                    <th>Renter ID</th>
+                    <th>Per Hour Cost</th>
+                    <th>Per Day Cost</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${rentals.map(rental => `
+                    <tr>
+                        <td>${rental.id}</td>
+                        <td>${rental.carId}</td>
+                        <td>${rental.renterId}</td>
+                        <td>${rental.perHourCost}</td>
+                        <td>${rental.perDayCost}</td>
+                        <td>${new Date(rental.from).toLocaleString()}</td>
+                        <td>${new Date(rental.to).toLocaleString()}</td>
+                        <td>${rental.notes}</td>
+                        <td>
+                            <button class="btn btn-sm btn-warning me-1" onclick="openEditRentalModal(${rental.id})">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteRental(${rental.id})">Delete</button>
+                        </td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        `;
+        td.appendChild(innerTable);
+        rentalTable.appendChild(td);
+        button.closest('tr').parentNode.insertBefore(rentalTable, button.closest('tr').nextSibling);
+    }
+
+    // Toggle Images for a specific Car
+    async function toggleCarImages(carId, button) {
+        let imageRow = button.closest('tr').nextElementSibling;
+        if (imageRow && imageRow.classList.contains('image-container')) {
+            imageRow.style.display = imageRow.style.display === 'none' ? 'table-row' : 'none';
+            return;
+        }
+
+        const car = await apiRequest(`/api/Cars/${carId}`, 'GET');
+        if (!car || !car.imageIds || car.imageIds.length === 0) {
+            alert('No images found for this car.');
+            return;
+        }
+
+        imageRow = document.createElement('tr');
+        imageRow.classList.add('image-container');
+        const td = document.createElement('td');
+        td.colSpan = 9;
+        const imageDiv = document.createElement('div');
+        imageDiv.className = 'd-flex flex-wrap';
+        // Fetch and display each image
+        for (let imageId of car.imageIds) {
+            const imageBlob = await apiRequest(`/api/Images/${imageId}/blob`, 'GET');
+            if (imageBlob) {
+                const imageUrl = URL.createObjectURL(imageBlob);
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.className = 'image-thumbnail';
+                img.alt = `Image ${imageId}`;
+                imageDiv.appendChild(img);
+            }
+        }
+        td.appendChild(imageDiv);
+        imageRow.appendChild(td);
+        button.closest('tr').parentNode.insertBefore(imageRow, button.closest('tr').nextSibling);
+    }
+
+    // -------------------- Rentals --------------------
+    async function loadRentals() {
+        const rentals = await apiRequest('/api/CarRentals', 'GET');
+        if (!rentals) return;
+        const tbody = document.querySelector('#rentalsTable tbody');
+        tbody.innerHTML = '';
+        rentals.forEach(rental => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${rental.id}</td>
+                <td>${rental.carId}</td>
+                <td>${rental.renterId}</td>
+                <td>${rental.perHourCost}</td>
+                <td>${rental.perDayCost}</td>
+                <td>${new Date(rental.from).toLocaleString()}</td>
+                <td>${new Date(rental.to).toLocaleString()}</td>
+                <td>${rental.notes}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-1" onclick="openEditRentalModal(${rental.id})">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteRental(${rental.id})">Delete</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function openAddRentalModal() {
+        const rentalModal = new bootstrap.Modal(document.getElementById('rentalModal'));
+        document.getElementById('rentalForm').reset();
+        document.getElementById('rentalId').value = '';
+        rentalModal.show();
+        document.getElementById('rentalModalLabel').innerText = 'Add Rental';
+    }
+
+    async function openEditRentalModal(id) {
+        const rental = await apiRequest(`/api/CarRentals/${id}`, 'GET');
+        if (!rental) return;
+        const rentalModal = new bootstrap.Modal(document.getElementById('rentalModal'));
+        document.getElementById('rentalId').value = rental.id;
+        document.getElementById('rentalCarId').value = rental.carId;
+        document.getElementById('rentalRenterId').value = rental.renterId;
+        document.getElementById('rentalPerHourCost').value = rental.perHourCost;
+        document.getElementById('rentalPerDayCost').value = rental.perDayCost;
+        document.getElementById('rentalFrom').value = rental.from.slice(0,16);
+        document.getElementById('rentalTo').value = rental.to.slice(0,16);
+        document.getElementById('rentalNotes').value = rental.notes;
+        rentalModal.show();
+        document.getElementById('rentalModalLabel').innerText = 'Edit Rental';
+    }
+
+    document.getElementById('rentalForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('rentalId').value;
+        const data = {
+            carId: parseInt(document.getElementById('rentalCarId').value),
+            renterId: parseInt(document.getElementById('rentalRenterId').value),
+            perHourCost: parseFloat(document.getElementById('rentalPerHourCost').value),
+            perDayCost: parseFloat(document.getElementById('rentalPerDayCost').value),
+            from: new Date(document.getElementById('rentalFrom').value).toISOString(),
+            to: new Date(document.getElementById('rentalTo').value).toISOString(),
+            notes: document.getElementById('rentalNotes').value
+        };
+        if (id) {
+            // Edit
+            const result = await apiRequest(`/api/CarRentals/${id}`, 'PUT', data);
+            if (result !== null) {
+                if (typeof result === 'object' && result.status) {
+                    alert('Rental updated successfully.');
+                } else if (typeof result === 'string') {
+                    alert(result);
+                } else {
+                    alert('Rental updated successfully.');
+                }
+            }
+        } else {
+            // Add
+            const result = await apiRequest('/api/CarRentals', 'POST', data);
+            if (result !== null) {
+                alert('Rental added successfully. ID: ' + result);
+            }
+        }
+        bootstrap.Modal.getInstance(document.getElementById('rentalModal')).hide();
+        loadRentals();
+    });
+
+    async function deleteRental(id) {
+        if (!confirm('Are you sure you want to delete this rental?')) return;
+        await apiRequest(`/api/CarRentals/${id}`, 'DELETE');
+        alert('Rental deleted successfully.');
+        loadRentals();
+    }
+
+    // -------------------- Renters --------------------
+    async function loadRenters() {
+        const renters = await apiRequest('/api/RenterInfos', 'GET');
+        if (!renters) return;
+        const tbody = document.querySelector('#rentersTable tbody');
+        tbody.innerHTML = '';
+        renters.forEach(renter => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${renter.id}</td>
+                <td>${renter.drivingLicenseIdent}</td>
+                <td>${renter.pesel}</td>
+                <td>${new Date(renter.birthDate).toLocaleDateString()}</td>
+                <td>${renter.firstName}</td>
+                <td>${renter.lastName}</td>
+                <td>${renter.street}</td>
+                <td>${renter.buildingNumber}</td>
+                <td>${renter.apartmentNumber || '-'}</td>
+                <td>${renter.city}</td>
+                <td>${renter.postalCode}</td>
+                <td>
+                    <button class="btn btn-sm btn-warning me-1" onclick="openEditRenterModal(${renter.id})">Edit</button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteRenter(${renter.id})">Delete</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function openAddRenterModal() {
+        const renterModal = new bootstrap.Modal(document.getElementById('renterModal'));
+        document.getElementById('renterForm').reset();
+        document.getElementById('renterId').value = '';
+        renterModal.show();
+        document.getElementById('renterModalLabel').innerText = 'Add Renter';
+    }
+
+    async function openEditRenterModal(id) {
+        const renter = await apiRequest(`/api/RenterInfos/${id}`, 'GET');
+        if (!renter) return;
+        const renterModal = new bootstrap.Modal(document.getElementById('renterModal'));
+        document.getElementById('renterId').value = renter.id;
+        document.getElementById('renterDrivingLicense').value = renter.drivingLicenseIdent;
+        document.getElementById('renterPESEL').value = renter.pesel;
+        document.getElementById('renterBirthDate').value = renter.birthDate.split('T')[0];
+        document.getElementById('renterFirstName').value = renter.firstName;
+        document.getElementById('renterLastName').value = renter.lastName;
+        document.getElementById('renterStreet').value = renter.street;
+        document.getElementById('renterBuildingNumber').value = renter.buildingNumber;
+        document.getElementById('renterApartmentNumber').value = renter.apartmentNumber;
+        document.getElementById('renterCity').value = renter.city;
+        document.getElementById('renterPostalCode').value = renter.postalCode;
+        renterModal.show();
+        document.getElementById('renterModalLabel').innerText = 'Edit Renter';
+    }
+
+    document.getElementById('renterForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('renterId').value;
+        const data = {
+            drivingLicenseIdent: document.getElementById('renterDrivingLicense').value,
+            pesel: document.getElementById('renterPESEL').value,
+            birthDate: new Date(document.getElementById('renterBirthDate').value).toISOString(),
+            firstName: document.getElementById('renterFirstName').value,
+            lastName: document.getElementById('renterLastName').value,
+            street: document.getElementById('renterStreet').value,
+            buildingNumber: document.getElementById('renterBuildingNumber').value,
+            apartmentNumber: document.getElementById('renterApartmentNumber').value || null,
+            city: document.getElementById('renterCity').value,
+            postalCode: document.getElementById('renterPostalCode').value
+        };
+        if (id) {
+            // Edit
+            const result = await apiRequest(`/api/RenterInfos/${id}`, 'PUT', data);
+            if (result !== null) {
+                if (typeof result === 'object' && result.status) {
+                    alert('Renter updated successfully.');
+                } else if (typeof result === 'string') {
+                    alert(result);
+                } else {
+                    alert('Renter updated successfully.');
+                }
+            }
+        } else {
+            // Add
+            const result = await apiRequest('/api/RenterInfos', 'POST', data);
+            if (result !== null) {
+                alert('Renter added successfully. ID: ' + result);
+            }
+        }
+        bootstrap.Modal.getInstance(document.getElementById('renterModal')).hide();
+        loadRenters();
+    });
+
+    async function deleteRenter(id) {
+        if (!confirm('Are you sure you want to delete this renter?')) return;
+        await apiRequest(`/api/RenterInfos/${id}`, 'DELETE');
+        alert('Renter deleted successfully.');
+        loadRenters();
+    }
+
+    // -------------------- Image Handling --------------------
+    // Display selected file names
+    function displaySelectedFiles() {
+        const imagesInput = document.getElementById('carImages');
+        const selectedFilesDiv = document.getElementById('selectedFiles');
+        const files = imagesInput.files;
+        console.log('Files selected:', files); // Debugging
+        if (files.length === 0) {
+            selectedFilesDiv.innerHTML = 'No files selected';
+            return;
+        }
+        const fileList = document.createElement('ul');
+        fileList.className = 'list-group';
+        for (let file of files) {
+            const listItem = document.createElement('li');
+            listItem.className = 'list-group-item';
+            listItem.textContent = file.name;
+            fileList.appendChild(listItem);
+        }
+        selectedFilesDiv.innerHTML = 'Selected Files:';
+        selectedFilesDiv.appendChild(fileList);
+    }
+
+    // -------------------- Additional Functions --------------------
+    // You can add more functions here if needed
+</script>
 </body>
 </html>
