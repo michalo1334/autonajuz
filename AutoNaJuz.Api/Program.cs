@@ -103,7 +103,20 @@ builder.Services.AddSingleton<EmailService>(provider => new EmailService(
     smtpSettings["Username"],
     smtpSettings["Password"]));
 
+//dodany nowy AddCors pod działanie maila z web
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
 
 // Apply database migrations
 using (var scope = app.Services.CreateScope())
