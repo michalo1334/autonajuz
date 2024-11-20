@@ -2,7 +2,7 @@ var searchData=
 [
   ['addautomapper_0',['AddAutoMapper',['../Program_8cs.html#abdba3bdd34b7fa7dba9c824ac602d630',1,'Program.cs']]],
   ['addcontrollers_1',['AddControllers',['../Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9',1,'Program.cs']]],
-  ['addcors_2',['AddCors',['../Program_8cs.html#adbef64478008306f976b18de6d1b9e31',1,'Program.cs']]],
+  ['addcors_2',['addcors',['../Program_8cs.html#adbef64478008306f976b18de6d1b9e31',1,'AddCors(options=&gt; { options.AddPolicy(name:&quot;_apiOrigins&quot;, policy=&gt; { policy.AllowAnyOrigin();policy.AllowAnyMethod();policy.AllowAnyHeader();});}):&#160;Program.cs'],['../Program_8cs.html#abc0a3fb1c0b7aa6ea898aecab45921fe',1,'AddCors(options=&gt; { options.AddPolicy(&quot;AllowAllOrigins&quot;, policy=&gt; { policy.AllowAnyOrigin() .AllowAnyMethod() .AllowAnyHeader();});}):&#160;Program.cs']]],
   ['adddbcontext_3c_20appdbcontext_20_3e_3',['AddDbContext&lt; AppDbContext &gt;',['../Program_8cs.html#af55c8cc8a4c2e5d704cc2776bb64a14c',1,'Program.cs']]],
   ['addendpointsapiexplorer_4',['AddEndpointsApiExplorer',['../Program_8cs.html#ad7398d10169164e4fba8f51316a5fcb9',1,'Program.cs']]],
   ['addfluentvalidationautovalidation_5',['AddFluentValidationAutoValidation',['../Program_8cs.html#ab314ceea65a37037f7d397101bf9e7ed',1,'Program.cs']]],

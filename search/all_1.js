@@ -2,7 +2,7 @@ var searchData=
 [
   ['addautomapper_0',['AddAutoMapper',['../Program_8cs.html#abdba3bdd34b7fa7dba9c824ac602d630',1,'Program.cs']]],
   ['addcontrollers_1',['AddControllers',['../Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9',1,'Program.cs']]],
-  ['addcors_2',['AddCors',['../Program_8cs.html#adbef64478008306f976b18de6d1b9e31',1,'Program.cs']]],
+  ['addcors_2',['addcors',['../Program_8cs.html#adbef64478008306f976b18de6d1b9e31',1,'AddCors(options=&gt; { options.AddPolicy(name:&quot;_apiOrigins&quot;, policy=&gt; { policy.AllowAnyOrigin();policy.AllowAnyMethod();policy.AllowAnyHeader();});}):&#160;Program.cs'],['../Program_8cs.html#abc0a3fb1c0b7aa6ea898aecab45921fe',1,'AddCors(options=&gt; { options.AddPolicy(&quot;AllowAllOrigins&quot;, policy=&gt; { policy.AllowAnyOrigin() .AllowAnyMethod() .AllowAnyHeader();});}):&#160;Program.cs']]],
   ['adddbcontext_3c_20appdbcontext_20_3e_3',['AddDbContext&lt; AppDbContext &gt;',['../Program_8cs.html#af55c8cc8a4c2e5d704cc2776bb64a14c',1,'Program.cs']]],
   ['added_5fcar_5fcarrental_5fidentity_4',['Added_Car_CarRental_Identity',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity.html',1,'AutoNaJuz::DAL::Migrations']]],
   ['added_5frenterinfo_5',['Added_RenterInfo',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__RenterInfo.html',1,'AutoNaJuz::DAL::Migrations']]],
