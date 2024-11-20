@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5270/api';
+const API_BASE_URL = 'https://localhost:7092/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
