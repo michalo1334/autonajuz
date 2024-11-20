@@ -1,56 +1,57 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formularz wysyłania e-maila</title>
+    <title>AutoNaJuż - Wynajem Samochodów</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>Wyślij e-mail</h1>
-    <form id="emailForm">
-        <label for="to">Do:</label>
-        <input type="email" id="to" name="to" required><br><br>
+    <header>
+        <a href="#"><img src="img/logo.png" alt="Logo firmy AutoNaJuż"></a>
+    </header>
 
-        <label for="subject">Temat:</label>
-        <input type="text" id="subject" name="subject" required><br><br>
+    <main>
 
-        <label for="message">Wiadomość:</label><br>
-        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+        <section id="reservation">
+            <h2>Rezerwacja Samochodu</h2>
+            <form id="reservation-form">
+                <label for="car-select">Wybierz samochód:</label>
+                <select id="car-select" required>
+                    <!-- Opcje dodawane dynamicznie -->
+                </select>
 
-        <button type="submit">Wyślij e-mail</button>
-    </form>
+                <label for="start-date">Data rozpoczęcia:</label>
+                <input type="date" id="start-date" required>
 
-    <script>
-        document.getElementById('emailForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
+                <label for="end-date">Data zakończenia:</label>
+                <input type="date" id="end-date" required>
 
-            const formData = new FormData(this);
-            const data = {
-                To: formData.get('to'),
-                Subject: formData.get('subject'),
-                Message: formData.get('message')
-            };
+                <button type="submit">Zarezerwuj</button>
+            </form>
+        </section>
+        <section id="car-list">
+            <h2>Dostępne Samochody</h2>
+            <label class="filter-label">Filtruj według kategorii:</label>
+            <select class="filter" id="filter">
+                <option value="all">Wszystkie</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="sport">Sportowe</option>
+            </select>
+            <div id="cars">
+                <!-- Lista samochodów generowana dynamicznie -->
+            </div>
+        </section>
+    </main>
 
-            try {
-                const response = await fetch(`${LOCAL_API_URL}/Emails/send`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
+    <footer>
+        <p class="footer">&copy; 2024 AutoNaJuż. Wszystkie prawa zastrzeżone.</p>
+    </footer>
 
-                if (response.ok) {
-                    alert('E-mail został wysłany pomyślnie!');
-                } else {
-                    alert('Wystąpił błąd przy wysyłaniu e-maila.');
-                }
-            } catch (error) {
-                console.error('Błąd:', error);
-                alert('Wystąpił błąd przy wysyłaniu e-maila.');
-            }
-        });
-    </script>
-    <script src="apiUrls.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>
