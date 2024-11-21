@@ -7,6 +7,7 @@ var hierarchy =
     ] ],
     [ "AutoNaJuz.Model.Car.Car", "classAutoNaJuz_1_1Model_1_1Car_1_1Car.html", null ],
     [ "AutoNaJuz.Model.Car.CarFeature", "classAutoNaJuz_1_1Model_1_1Car_1_1CarFeature.html", null ],
+    [ "AutoNaJuz.Model.CarImage.CarImage", "classAutoNaJuz_1_1Model_1_1CarImage_1_1CarImage.html", null ],
     [ "AutoNaJuz.Model.CarRental.CarRental", "classAutoNaJuz_1_1Model_1_1CarRental_1_1CarRental.html", null ],
     [ "AutoNaJuz.Web.EmailDto", "classAutoNaJuz_1_1Web_1_1EmailDto.html", null ],
     [ "IdentityUser", null, [
@@ -16,10 +17,13 @@ var hierarchy =
     ] ],
     [ "IEntityTypeConfiguration", null, [
       [ "AutoNaJuz.DAL.Configuration.CarConfiguration", "classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html", null ],
+      [ "AutoNaJuz.DAL.Configuration.CarFeatureConfiguration", "classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarFeatureConfiguration.html", null ],
+      [ "AutoNaJuz.DAL.Configuration.CarImageConfiguration", "classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarImageConfiguration.html", null ],
       [ "AutoNaJuz.DAL.Configuration.CarRentalConfiguration", "classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarRentalConfiguration.html", null ],
       [ "AutoNaJuz.DAL.Configuration.RenterInfoConfiguration", "classAutoNaJuz_1_1DAL_1_1Configuration_1_1RenterInfoConfiguration.html", null ]
     ] ],
     [ "Migration", null, [
+      [ "AutoNaJuz.DAL.Migrations.Added_CarImage_CarFeature", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__CarImage__CarFeature.html", null ],
       [ "AutoNaJuz.DAL.Migrations.Added_Car_CarRental_Identity", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity.html", null ],
       [ "AutoNaJuz.DAL.Migrations.Added_RenterInfo", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__RenterInfo.html", null ],
       [ "AutoNaJuz.DAL.Migrations.InitialCreate", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1InitialCreate.html", null ]

@@ -123,183 +123,179 @@ $(document).ready(function(){initNavTree('Program_8cs_source.html',''); initResi
 <a href="Program_8cs.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System.Text.Json.Serialization;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">AutoNaJuz.DAL.Data</a>;</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model_1_1User.html">AutoNaJuz.Model.User</a>;</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>AutoNaJuz.Services;</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>AutoNaJuz.Services.ConcreteServices;</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>AutoNaJuz.Services.Interfaces;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Web.html">AutoNaJuz.Web</a>;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>FluentValidation.AspNetCore;</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using </span>Microsoft.AspNetCore.Identity;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">using </span>Microsoft.EntityFrameworkCore;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">using </span>Microsoft.AspNetCore.ResponseCompression;</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">using </span>Microsoft.OpenApi.Models;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">   14</a></span>var <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a> = WebApplication.CreateBuilder(args);</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>AutoNaJuz.Services.ConcreteServices;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>AutoNaJuz.Services.Interfaces;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>FluentValidation.AspNetCore;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>Microsoft.AspNetCore.Identity;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>Microsoft.EntityFrameworkCore;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using </span>Microsoft.OpenApi.Models;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">   11</a></span>var <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a> = WebApplication.CreateBuilder(args);</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// Add services to the container.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">   14</a></span>var <a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a> = <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// Add services to the container.</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">   17</a></span>var <a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a> = <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// Configure database context</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="Program_8cs.html#af55c8cc8a4c2e5d704cc2776bb64a14c">   20</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddDbContext&lt;<a class="code hl_function" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AppDbContext</a>&gt;(options =&gt;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    options.UseSqlServer(<a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Configuration.GetConnectionString(<span class="stringliteral">&quot;MsSql&quot;</span>));</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    options.EnableSensitiveDataLogging();</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>});</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">// Configure Identity with disabled password requirements</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="Program_8cs.html#a6ed2027617464b5b770cacd3ec2f0eaa">   27</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddIdentity&lt;<a class="code hl_class" href="classAutoNaJuz_1_1Model_1_1User_1_1User.html">User</a>, IdentityRole&gt;(options =&gt;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="comment">// Disable password requirements</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        options.Password.RequireDigit = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        options.Password.RequireLowercase = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        options.Password.RequireUppercase = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        options.Password.RequireNonAlphanumeric = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        options.Password.RequiredLength = 1; <span class="comment">// Minimum length set to 1</span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        options.User.RequireUniqueEmail = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    })</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    .AddEntityFrameworkStores&lt;AppDbContext&gt;();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// Add controllers and routing</span></div>
-<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9">   40</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddControllers()</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    .AddJsonOptions(options =&gt; { options.JsonSerializerOptions.Converters.Add(<span class="keyword">new</span> JsonStringEnumConverter()); });</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// Configure database context</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="Program_8cs.html#af55c8cc8a4c2e5d704cc2776bb64a14c">   17</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddDbContext&lt;<a class="code hl_function" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AppDbContext</a>&gt;(options =&gt;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    options.UseSqlServer(<a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Configuration.GetConnectionString(<span class="stringliteral">&quot;MsSql&quot;</span>));</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    options.EnableSensitiveDataLogging();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>});</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">// Configure Identity with disabled password requirements</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="Program_8cs.html#a6ed2027617464b5b770cacd3ec2f0eaa">   24</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddIdentity&lt;<a class="code hl_class" href="classAutoNaJuz_1_1Model_1_1User_1_1User.html">User</a>, IdentityRole&gt;(options =&gt;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="comment">// Disable password requirements</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        options.Password.RequireDigit = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        options.Password.RequireLowercase = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        options.Password.RequireUppercase = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        options.Password.RequireNonAlphanumeric = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        options.Password.RequiredLength = 1; <span class="comment">// Minimum length set to 1</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        options.User.RequireUniqueEmail = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    })</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    .AddEntityFrameworkStores&lt;AppDbContext&gt;();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// Add controllers and routing</span></div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9">   37</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddControllers()</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    .AddJsonOptions(options =&gt; { options.JsonSerializerOptions.Converters.Add(<span class="keyword">new</span> JsonStringEnumConverter()); });</div>
 </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="Program_8cs.html#aa7170f395e9ff4419b0f521713cd337c">   43</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddRouting();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="Program_8cs.html#aa7170f395e9ff4419b0f521713cd337c">   40</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddRouting();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="comment">// Add FluentValidation</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="Program_8cs.html#ab314ceea65a37037f7d397101bf9e7ed">   43</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddFluentValidationAutoValidation();</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Add FluentValidation</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="Program_8cs.html#ab314ceea65a37037f7d397101bf9e7ed">   46</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddFluentValidationAutoValidation();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="comment">// Add AutoMapper</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="Program_8cs.html#abdba3bdd34b7fa7dba9c824ac602d630">   46</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddAutoMapper(opt =&gt; opt.AddProfile&lt;<a class="code hl_namespace" href="namespaceAutoNaJuz.html">AutoNaJuz</a>.Services.Mappers.MapperConfigurationProfile&gt;());</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Add AutoMapper</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="Program_8cs.html#abdba3bdd34b7fa7dba9c824ac602d630">   49</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddAutoMapper(opt =&gt; opt.AddProfile&lt;<a class="code hl_namespace" href="namespaceAutoNaJuz.html">AutoNaJuz</a>.Services.Mappers.MapperConfigurationProfile&gt;());</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="comment">// Configure Swagger</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="Program_8cs.html#ad7398d10169164e4fba8f51316a5fcb9">   52</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddEndpointsApiExplorer();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20">   53</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddSwaggerGen(c =&gt;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>{</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    c.SwaggerDoc(<span class="stringliteral">&quot;v1&quot;</span>, <span class="keyword">new</span> OpenApiInfo { Title = <span class="stringliteral">&quot;AutoNaJuzAPI&quot;</span>, Version = <span class="stringliteral">&quot;v1&quot;</span> });</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    c.AddSecurityDefinition(<span class="stringliteral">&quot;basic&quot;</span>, <span class="keyword">new</span> OpenApiSecurityScheme</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        Name = <span class="stringliteral">&quot;Authorization&quot;</span>,</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        Type = SecuritySchemeType.Http,</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        Scheme = <span class="stringliteral">&quot;basic&quot;</span>,</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        In = ParameterLocation.Cookie,</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        Description = <span class="stringliteral">&quot;Basic Authorization header using the Bearer scheme.&quot;</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    });</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    c.AddSecurityRequirement(<span class="keyword">new</span> OpenApiSecurityRequirement</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        {</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keyword">new</span> OpenApiSecurityScheme</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            {</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                Reference = <span class="keyword">new</span> OpenApiReference</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                    Type = ReferenceType.SecurityScheme,</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    Id = <span class="stringliteral">&quot;basic&quot;</span></div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                }</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            },</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            []</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    });</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>});</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="comment">//Add cors</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="Program_8cs.html#adbef64478008306f976b18de6d1b9e31">   81</a></span><a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services.AddCors(options =&gt;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>{</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    options.AddPolicy(name: <span class="stringliteral">&quot;_apiOrigins&quot;</span>,</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        policy  =&gt;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        {</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            policy.AllowAnyOrigin();</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            policy.AllowAnyMethod();</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            policy.AllowAnyHeader();</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        });</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>});</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="comment">// Register application services</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="Program_8cs.html#ad614c2a51779c6df58f62fe994267a53">   93</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddScoped&lt;ICarsService, CarsService&gt;();</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="Program_8cs.html#a598c3bca9c39cb29de14989cdebcfe51">   94</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddScoped&lt;ICarRentalsService, CarRentalsService&gt;();</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="Program_8cs.html#a5f39322dc1b6875c8eca2f7e8b4b4dd5">   95</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddScoped&lt;IRenterInfoService, RenterInfoService&gt;();</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="comment">// Add Email service</span></div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">   98</a></span>var <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a> = <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Configuration.GetSection(<span class="stringliteral">&quot;SmtpSettings&quot;</span>);</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="Program_8cs.html#a08c4021b4433d5c6f9c84a9e0353e37a">   99</a></span><a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services.AddSingleton&lt;EmailService&gt;(provider =&gt; <span class="keyword">new</span> EmailService(</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Host&quot;</span>],</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="keywordtype">int</span>.Parse(<a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Port&quot;</span>]),</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordtype">bool</span>.Parse(<a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;EnableSsl&quot;</span>]),</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Username&quot;</span>],</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Password&quot;</span>]));</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span><span class="comment">//dodany nowy AddCors pod działanie maila z web</span></div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="Program_8cs.html#abc0a3fb1c0b7aa6ea898aecab45921fe">  107</a></span><a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services.AddCors(options =&gt;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>{</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    options.AddPolicy(<span class="stringliteral">&quot;AllowAllOrigins&quot;</span>, policy =&gt;</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    {</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        policy.AllowAnyOrigin()</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>              .AllowAnyMethod()</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>              .AllowAnyHeader();</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    });</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>});</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="comment">// Configure Swagger</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="Program_8cs.html#ad7398d10169164e4fba8f51316a5fcb9">   49</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddEndpointsApiExplorer();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20">   50</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddSwaggerGen(c =&gt;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>{</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    c.SwaggerDoc(<span class="stringliteral">&quot;v1&quot;</span>, <span class="keyword">new</span> OpenApiInfo { Title = <span class="stringliteral">&quot;AutoNaJuzAPI&quot;</span>, Version = <span class="stringliteral">&quot;v1&quot;</span> });</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    c.AddSecurityDefinition(<span class="stringliteral">&quot;basic&quot;</span>, <span class="keyword">new</span> OpenApiSecurityScheme</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        Name = <span class="stringliteral">&quot;Authorization&quot;</span>,</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        Type = SecuritySchemeType.Http,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        Scheme = <span class="stringliteral">&quot;basic&quot;</span>,</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        In = ParameterLocation.Cookie,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        Description = <span class="stringliteral">&quot;Basic Authorization header using the Bearer scheme.&quot;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    });</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    c.AddSecurityRequirement(<span class="keyword">new</span> OpenApiSecurityRequirement</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        {</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            <span class="keyword">new</span> OpenApiSecurityScheme</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            {</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                Reference = <span class="keyword">new</span> OpenApiReference</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                    Type = ReferenceType.SecurityScheme,</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                    Id = <span class="stringliteral">&quot;basic&quot;</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            },</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            []</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    });</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>});</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span><span class="comment">//Add cors</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="Program_8cs.html#adbef64478008306f976b18de6d1b9e31">   78</a></span><a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services.AddCors(options =&gt;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>{</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    options.AddPolicy(name: <span class="stringliteral">&quot;_apiOrigins&quot;</span>,</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        policy  =&gt;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            policy.AllowAnyOrigin();</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            policy.AllowAnyMethod();</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            policy.AllowAnyHeader();</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        });</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>});</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="comment">// Register application services</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="Program_8cs.html#ad614c2a51779c6df58f62fe994267a53">   90</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddScoped&lt;ICarsService, CarsService&gt;();</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="Program_8cs.html#a598c3bca9c39cb29de14989cdebcfe51">   91</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddScoped&lt;ICarRentalsService, CarRentalsService&gt;();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="Program_8cs.html#a5f39322dc1b6875c8eca2f7e8b4b4dd5">   92</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddScoped&lt;IRenterInfoService, RenterInfoService&gt;();</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="Program_8cs.html#a9cf742619dde93bb4d5f0876aff5f59e">   93</a></span><a class="code hl_variable" href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a>.AddScoped&lt;IImagesService, ImagesService&gt;();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="comment">// Add Email service</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">   96</a></span>var <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a> = <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Configuration.GetSection(<span class="stringliteral">&quot;SmtpSettings&quot;</span>);</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="Program_8cs.html#a36f91f38cde6b7ef751df33ad6db17ae">   97</a></span><a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services.AddSingleton&lt;EmailService&gt;(_ =&gt; <span class="keyword">new</span> EmailService(</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Host&quot;</span>] ?? <span class="keywordtype">string</span>.Empty,</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordtype">int</span>.Parse(<a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Port&quot;</span>] ?? <span class="keywordtype">string</span>.Empty),</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordtype">bool</span>.Parse(<a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;EnableSsl&quot;</span>] ?? <span class="keywordtype">string</span>.Empty),</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Username&quot;</span>],</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <a class="code hl_variable" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[<span class="stringliteral">&quot;Password&quot;</span>] ?? <span class="keywordtype">string</span>.Empty));</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="comment">//dodany nowy AddCors pod działanie maila z web</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="Program_8cs.html#abc0a3fb1c0b7aa6ea898aecab45921fe">  105</a></span><a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Services.AddCors(options =&gt;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>{</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    options.AddPolicy(<span class="stringliteral">&quot;AllowAllOrigins&quot;</span>, policy =&gt;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        policy.AllowAnyOrigin()</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>              .AllowAnyMethod()</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>              .AllowAnyHeader();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    });</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>});</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">  115</a></span>var <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a> = <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Build();</div>
 <div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">  117</a></span>var <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a> = <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Build();</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno"><a class="line" href="Program_8cs.html#aa5090fdb46c526cdd3ab0cfd3914702f">  117</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseCors(<span class="stringliteral">&quot;AllowAllOrigins&quot;</span>);</div>
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="Program_8cs.html#aa5090fdb46c526cdd3ab0cfd3914702f">  119</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseCors(<span class="stringliteral">&quot;AllowAllOrigins&quot;</span>);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">// Apply database migrations</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">  122</a></span><span class="keyword">using</span> (var <a class="code hl_typedef" href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">scope</a> = <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.Services.CreateScope())</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    var db = <a class="code hl_typedef" href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">scope</a>.ServiceProvider.GetRequiredService&lt;<a class="code hl_function" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AppDbContext</a>&gt;();</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno"><a class="line" href="Program_8cs.html#a1c68c62ca918c5f8fa6c817576d80f6d">  125</a></span>    db.Database.Migrate();</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>}</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">// Configure the HTTP request pipeline.</span></div>
-<div class="foldopen" id="foldopen00129" data-start="{" data-end="}">
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno"><a class="line" href="Program_8cs.html#a79a944c7f0e25196ca3c5a8638b919b9">  129</a></span><span class="keywordflow">if</span> (<a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.Environment.IsDevelopment())</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>{</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    {</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    });</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>}</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">// Apply database migrations</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">  120</a></span><span class="keyword">using</span> (var <a class="code hl_typedef" href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">scope</a> = <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.Services.CreateScope())</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>{</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    var db = <a class="code hl_typedef" href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">scope</a>.ServiceProvider.GetRequiredService&lt;<a class="code hl_function" href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AppDbContext</a>&gt;();</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno"><a class="line" href="Program_8cs.html#a1c68c62ca918c5f8fa6c817576d80f6d">  123</a></span>    db.Database.Migrate();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">// Configure the HTTP request pipeline.</span></div>
+<div class="foldopen" id="foldopen00127" data-start="{" data-end="}">
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno"><a class="line" href="Program_8cs.html#a79a944c7f0e25196ca3c5a8638b919b9">  127</a></span><span class="keywordflow">if</span> (<a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.Environment.IsDevelopment())</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>{</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    {</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    });</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>}</div>
 </div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9">  139</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseHttpsRedirection();</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="Program_8cs.html#a94c810d266751293a2d511a720a5625f">  140</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseRouting();</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">//Enable CORS</span></div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno"><a class="line" href="Program_8cs.html#aed20e48fa1b71ac4dbe22507d1c57216">  143</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseCors(<span class="stringliteral">&quot;_apiOrigins&quot;</span>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno"><a class="line" href="Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9">  137</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseHttpsRedirection();</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno"><a class="line" href="Program_8cs.html#a906a3ce545279a7a73941f1d7b64d7cf">  138</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseStaticFiles();</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno"><a class="line" href="Program_8cs.html#a94c810d266751293a2d511a720a5625f">  139</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseRouting();</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">//Enable CORS</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="Program_8cs.html#aed20e48fa1b71ac4dbe22507d1c57216">  142</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseCors(<span class="stringliteral">&quot;_apiOrigins&quot;</span>);</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
 <div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span> </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno"><a class="line" href="Program_8cs.html#af6f72d752b2e73aa0292f74bd13237ab">  146</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseAuthorization(); <span class="comment">// Enable authentication</span></div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="Program_8cs.html#a9e2ee3170aa6279b68eefd1651f7d96c">  148</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapControllers();</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="Program_8cs.html#af6f72d752b2e73aa0292f74bd13237ab">  145</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseAuthorization(); <span class="comment">// Enable authentication</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="Program_8cs.html#a9e2ee3170aa6279b68eefd1651f7d96c">  147</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapControllers();</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><a class="code hl_function" href="Program_8cs.html#ad3e50f5b8b5c93dffa56da37ae656dee">MapSimpleUi</a>();</div>
 <div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="Program_8cs.html#a906a3ce545279a7a73941f1d7b64d7cf">  150</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseStaticFiles();</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><a class="code hl_function" href="Program_8cs.html#a52bd06784e6cf5a306b476fd8fe4b28c">MapSimpleUI</a>();</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="Program_8cs.html#aaa3dbf02e269c3ef7e8546d290c6b3dd">  150</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.Run();</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno"><a class="line" href="Program_8cs.html#a9717e7bbecb906637e86cef6da3d83c2">  151</a></span><span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="Program_8cs.html#aaa3dbf02e269c3ef7e8546d290c6b3dd">  153</a></span><a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.Run();</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="Program_8cs.html#a9717e7bbecb906637e86cef6da3d83c2">  154</a></span><span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
-<div class="foldopen" id="foldopen00156" data-start="{" data-end="}">
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno"><a class="line" href="Program_8cs.html#a52bd06784e6cf5a306b476fd8fe4b28c">  156</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Program_8cs.html#a52bd06784e6cf5a306b476fd8fe4b28c">MapSimpleUI</a>()</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>{</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    {</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    });</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>}</div>
+<div class="foldopen" id="foldopen00153" data-start="{" data-end="}">
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno"><a class="line" href="Program_8cs.html#ad3e50f5b8b5c93dffa56da37ae656dee">  153</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="Program_8cs.html#ad3e50f5b8b5c93dffa56da37ae656dee">MapSimpleUi</a>()</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>{</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>    {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    });</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>}</div>
 </div>
-<div class="ttc" id="aProgram_8cs_html_a215a6ccc78b0c6e360778197851e09b7"><div class="ttname"><a href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a></div><div class="ttdeci">var smtpSettings</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00098">Program.cs:98</a></div></div>
-<div class="ttc" id="aProgram_8cs_html_a2aa2d1217acdc9e6190e08eef476de03"><div class="ttname"><a href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">scope</a></div><div class="ttdeci">app.Services.CreateScope()) { var db=scope.ServiceProvider.GetRequiredService&lt; AppDbContext &gt;() scope</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00122">Program.cs:124</a></div></div>
-<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00014">Program.cs:14</a></div></div>
-<div class="ttc" id="aProgram_8cs_html_a52bd06784e6cf5a306b476fd8fe4b28c"><div class="ttname"><a href="Program_8cs.html#a52bd06784e6cf5a306b476fd8fe4b28c">MapSimpleUI</a></div><div class="ttdeci">MapSimpleUI()</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00156">Program.cs:156</a></div></div>
-<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00117">Program.cs:117</a></div></div>
-<div class="ttc" id="aProgram_8cs_html_ad79fbc5835b5fb29068560ce0db216e8"><div class="ttname"><a href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a></div><div class="ttdeci">var services</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00017">Program.cs:17</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_a215a6ccc78b0c6e360778197851e09b7"><div class="ttname"><a href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a></div><div class="ttdeci">var smtpSettings</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00096">Program.cs:96</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_a2aa2d1217acdc9e6190e08eef476de03"><div class="ttname"><a href="Program_8cs.html#a2aa2d1217acdc9e6190e08eef476de03">scope</a></div><div class="ttdeci">app.Services.CreateScope()) { var db=scope.ServiceProvider.GetRequiredService&lt; AppDbContext &gt;() scope</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00120">Program.cs:122</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00011">Program.cs:11</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00115">Program.cs:115</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_ad3e50f5b8b5c93dffa56da37ae656dee"><div class="ttname"><a href="Program_8cs.html#ad3e50f5b8b5c93dffa56da37ae656dee">MapSimpleUi</a></div><div class="ttdeci">MapSimpleUi()</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00153">Program.cs:153</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_ad79fbc5835b5fb29068560ce0db216e8"><div class="ttname"><a href="Program_8cs.html#ad79fbc5835b5fb29068560ce0db216e8">services</a></div><div class="ttdeci">var services</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00014">Program.cs:14</a></div></div>
 <div class="ttc" id="aclassAutoNaJuz_1_1Model_1_1User_1_1User_html"><div class="ttname"><a href="classAutoNaJuz_1_1Model_1_1User_1_1User.html">AutoNaJuz.Model.User.User</a></div><div class="ttdef"><b>Definition</b> <a href="User_8cs_source.html#l00005">User.cs:6</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Data_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">AutoNaJuz.DAL.Data</a></div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00010">AppDbContext.cs:10</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Data_html_ac35d412ede8855af7349b7402c3a9292"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AutoNaJuz.DAL.Data.AppDbContext</a></div><div class="ttdeci">class AppDbContext(DbContextOptions options)</div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00012">AppDbContext.cs:12</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Data_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Data.html">AutoNaJuz.DAL.Data</a></div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00009">AppDbContext.cs:9</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Data_html_ac35d412ede8855af7349b7402c3a9292"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292">AutoNaJuz.DAL.Data.AppDbContext</a></div><div class="ttdeci">class AppDbContext(DbContextOptions options)</div><div class="ttdef"><b>Definition</b> <a href="AppDbContext_8cs_source.html#l00011">AppDbContext.cs:11</a></div></div>
 <div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1User_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1User.html">AutoNaJuz.Model.User</a></div><div class="ttdef"><b>Definition</b> <a href="AdminUser_8cs_source.html#l00001">AdminUser.cs:1</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1Web_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Web.html">AutoNaJuz.Web</a></div><div class="ttdef"><b>Definition</b> <a href="EmailDto_8cs_source.html#l00006">EmailDto.cs:7</a></div></div>
 <div class="ttc" id="anamespaceAutoNaJuz_html"><div class="ttname"><a href="namespaceAutoNaJuz.html">AutoNaJuz</a></div><div class="ttdef"><b>Definition</b> <a href="CarRentalsController_8cs_source.html#l00006">CarRentalsController.cs:6</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

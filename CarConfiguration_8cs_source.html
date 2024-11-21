@@ -153,16 +153,19 @@ $(document).ready(function(){initNavTree('CarConfiguration_8cs_source.html','');
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasMany(e =&gt; e.Rentals)</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            .WithOne(e =&gt; e.Car)</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            .HasForeignKey(e =&gt; e.CarId);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasMany(e =&gt; e.Images)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            .WithMany(e =&gt; e.Cars);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
 </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
 </div>
 </div>
-<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00014">Program.cs:14</a></div></div>
+<div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00011">Program.cs:11</a></div></div>
 <div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration_html"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html">AutoNaJuz.DAL.Configuration.CarConfiguration</a></div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00007">CarConfiguration.cs:8</a></div></div>
 <div class="ttc" id="aclassAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration_html_a7a7144871afbebf78214cdbdd4774f7a"><div class="ttname"><a href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1CarConfiguration.html#a7a7144871afbebf78214cdbdd4774f7a">AutoNaJuz.DAL.Configuration.CarConfiguration.Configure</a></div><div class="ttdeci">void Configure(EntityTypeBuilder&lt; Car &gt; builder)</div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00009">CarConfiguration.cs:9</a></div></div>
 <div class="ttc" id="anamespaceAutoNaJuz_1_1DAL_1_1Configuration_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1DAL_1_1Configuration.html">AutoNaJuz.DAL.Configuration</a></div><div class="ttdef"><b>Definition</b> <a href="CarConfiguration_8cs_source.html#l00005">CarConfiguration.cs:5</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1Car_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1Car.html">AutoNaJuz.Model.Car</a></div><div class="ttdef"><b>Definition</b> <a href="Car_8cs_source.html#l00003">Car.cs:3</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1Car_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1Car.html">AutoNaJuz.Model.Car</a></div><div class="ttdef"><b>Definition</b> <a href="Car_8cs_source.html#l00001">Car.cs:1</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
