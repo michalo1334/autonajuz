@@ -1,3 +1,5 @@
+// app.js remains largely the same with an addition for the Images navigation
+
 const API_BASE_URL = 'https://localhost:7092/api';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +21,11 @@ function setupNavigation() {
     document.getElementById('nav-rentals').addEventListener('click', (e) => {
         e.preventDefault();
         loadRentals();
+    });
+
+    document.getElementById('nav-images').addEventListener('click', (e) => {
+        e.preventDefault();
+        loadImages();
     });
 }
 

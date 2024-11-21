@@ -1,14 +1,11 @@
 using System.Text.Json.Serialization;
 using AutoNaJuz.DAL.Data;
 using AutoNaJuz.Model.User;
-using AutoNaJuz.Services;
 using AutoNaJuz.Services.ConcreteServices;
 using AutoNaJuz.Services.Interfaces;
-using AutoNaJuz.Web;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -93,15 +90,16 @@ builder.Services.AddCors(options =>
 services.AddScoped<ICarsService, CarsService>();
 services.AddScoped<ICarRentalsService, CarRentalsService>();
 services.AddScoped<IRenterInfoService, RenterInfoService>();
+services.AddScoped<IImagesService, ImagesService>();
 
 // Add Email service
 var smtpSettings = builder.Configuration.GetSection("SmtpSettings");
-builder.Services.AddSingleton<EmailService>(provider => new EmailService(
-    smtpSettings["Host"],
-    int.Parse(smtpSettings["Port"]),
-    bool.Parse(smtpSettings["EnableSsl"]),
+builder.Services.AddSingleton<EmailService>(_ => new EmailService(
+    smtpSettings["Host"] ?? string.Empty,
+    int.Parse(smtpSettings["Port"] ?? string.Empty),
+    bool.Parse(smtpSettings["EnableSsl"] ?? string.Empty),
     smtpSettings["Username"],
-    smtpSettings["Password"]));
+    smtpSettings["Password"] ?? string.Empty));
 
 //dodany nowy AddCors pod działanie maila z web
 builder.Services.AddCors(options =>
@@ -137,6 +135,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseRouting();
 
 //Enable CORS
@@ -146,14 +145,12 @@ app.UseCors("_apiOrigins");
 app.UseAuthorization(); // Enable authentication
 
 app.MapControllers();
-
-app.UseStaticFiles();
-MapSimpleUI();
+MapSimpleUi();
 
 app.Run();
 return;
 
-void MapSimpleUI()
+void MapSimpleUi()
 {
     app.MapGet("/", async context =>
     {

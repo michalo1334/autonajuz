@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoNaJuz.Services.Interfaces;
 using AutoNaJuz.ViewModels.Car;
 using AutoNaJuz.ViewModels.CarRental;
+using AutoNaJuz.ViewModels.Image;
 
 namespace AutoNaJuz.Api.Controllers;
 
@@ -114,30 +115,10 @@ public class CarsController(
         return Ok(rentals);
     }
     
-    [HttpGet("{id}/rentals/{rentalId}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<GetCarRentalVm>> GetRental(int id, int rentalId)
-    {
-        var carVm = await carsService.GetById(id);
-        if (carVm == null)
-        {
-            return NotFound();
-        }
-
-        var rentalVm = await carRentalsService.GetById(rentalId);
-        if (rentalVm == null)
-        {
-            return NotFound();
-        }
-
-        return Ok(rentalVm);
-    }
-    
-    [HttpPost("{id}/rentals")]
+    [HttpPost("{id}/rent")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<int>> NewRental(int id, [FromBody] CreateCarRentalVm request)
+    public async Task<ActionResult<int>> Rent(int id, [FromBody] CreateCarRentalVm request)
     {
         var carVm = await carsService.GetById(id);
         if (carVm == null)
@@ -146,49 +127,24 @@ public class CarsController(
         }
 
         var rentalId = await carRentalsService.Create(request with { CarId = id });
-        return CreatedAtAction(nameof(NewRental), new { id = rentalId }, rentalId);
+        return CreatedAtAction(nameof(Rent), new { id = rentalId }, rentalId);
     }
-    
-    [HttpPut("{id}/rentals/{rentalId}")]
+
+    [HttpGet("{id}/images")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> UpdateRental(int id, int rentalId, [FromBody] EditCarRentalVm request)
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<IEnumerable<ImageVm>>> GetImages(int id)
     {
         var carVm = await carsService.GetById(id);
+        
         if (carVm == null)
         {
-            return BadRequest();
+            return NotFound();
         }
-
-        var rentalExists = (await carRentalsService.GetById(rentalId))?.Id != null;
-        if (!rentalExists)
-        {
-            return BadRequest();
-        }
-
-        await carRentalsService.Update(request with { Id = rentalId });
-        return Ok();
-    }
-    
-    [HttpDelete("{id}/rentals/{rentalId}")]
-    [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> DeleteRental(int id, int rentalId)
-    {
-        var carVm = await carsService.GetById(id);
-        if (carVm == null)
-        {
-            return BadRequest();
-        }
-
-        var rentalVm = await carRentalsService.GetById(rentalId);
-        if (rentalVm == null)
-        {
-            return BadRequest();
-        }
-
-        await carRentalsService.Delete(rentalId);
-        return NoContent();
+        
+        var images = await carsService.GetImagesByCarId(id);
+        
+        return Ok(images);
     }
     
     /// <summary>

@@ -28,5 +28,8 @@ public class CarConfiguration : IEntityTypeConfiguration<Car>
         builder.HasMany(e => e.Rentals)
             .WithOne(e => e.Car)
             .HasForeignKey(e => e.CarId);
+
+        builder.HasMany(e => e.Images)
+            .WithMany(e => e.Cars);
     }
 }

@@ -8,13 +8,12 @@ public class RenterInfoConfiguration : IEntityTypeConfiguration<RenterInfo>
 {
     public void Configure(EntityTypeBuilder<RenterInfo> builder)
     {
-        builder.ToTable("Renter_Info");
+        builder.ToTable("Renter_Infos");
 
         builder.HasKey(e => e.Id);
 
         builder.Property(e => e.DriversLicenseIdent)
-            .HasMaxLength(100)
-            .IsRequired(false);
+            .HasMaxLength(100);
 
         builder.Property(e => e.Pesel)
             .HasMaxLength(11)
@@ -40,8 +39,7 @@ public class RenterInfoConfiguration : IEntityTypeConfiguration<RenterInfo>
             .IsRequired();
 
         builder.Property(e => e.ApartmentNumber)
-            .HasMaxLength(10)
-            .IsRequired(false);
+            .HasMaxLength(10);
 
         builder.Property(e => e.City)
             .HasMaxLength(50)

@@ -10,5 +10,6 @@ public record EditCarVm(
     FuelType FuelType,
     int SeatCount,
     int DoorCount,
-    CarBodyType BodyType
+    CarBodyType BodyType,
+    List<int> ImageIds
 );

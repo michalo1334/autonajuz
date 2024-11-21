@@ -1,5 +1,4 @@
 using AutoNaJuz.Model.Car;
-using AutoNaJuz.ViewModels.CarRental;
 
 namespace AutoNaJuz.ViewModels.Car;
 
@@ -12,6 +11,5 @@ public sealed record GetCarVm(
     int SeatCount,
     int DoorCount,
     CarBodyType BodyType,
-    IEnumerable<GetCarFeatureVm> Features,
-    IEnumerable<GetCarRentalVm> Rentals
+    List<int> ImageIds
 );
