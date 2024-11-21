@@ -57,22 +57,6 @@ public class CarRentalsController(
         return NoContent();
     }
     
-    [HttpGet("byCar/{carId}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<GetCarRentalVm>>?> GetAllByCarId(int carId)
-    {
-        var carRentals = await carRentalsService.GetAllByCarId(carId);
-        return Ok(carRentals);
-    }
-    
-    [HttpGet("byRenter/{renterId}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<GetCarRentalVm>>?> GetAllByRenterId(int renterId)
-    {
-        var carRentals = await carRentalsService.GetAllByRenterId(renterId);
-        return Ok(carRentals);
-    }
-    
     [HttpGet("{id}/renter")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

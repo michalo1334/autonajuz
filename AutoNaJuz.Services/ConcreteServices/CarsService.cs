@@ -4,10 +4,10 @@ using AutoNaJuz.DAL.Data;
 using AutoNaJuz.Model.Car;
 using AutoNaJuz.Services.Interfaces;
 using AutoNaJuz.ViewModels.Car;
-using AutoNaJuz.ViewModels.CarRental;
+using AutoNaJuz.ViewModels.Image;
 using Microsoft.EntityFrameworkCore;
 
-namespace AutoNaJuz.Services;
+namespace AutoNaJuz.Services.ConcreteServices;
 
 public class CarsService(
     AppDbContext context,
@@ -16,8 +16,13 @@ public class CarsService(
 {
     public async Task<int> Create(CreateCarVm car)
     {
+        var idSet = car.ImageIds.ToHashSet();
+        
         var carEntity = mapper.Map<Car>(car);
+        
         var entry = context.Cars.Add(carEntity);
+        entry.Entity.UpdateImages(await context.CarImages.Where(i => idSet.Contains(i.Id)).ToListAsync());
+        
         await context.SaveChangesAsync();
         return entry.Entity.Id;
     }
@@ -26,11 +31,25 @@ public class CarsService(
     {
         var id = car.Id;
 
-        var carEntity = await context.Cars.FindAsync(id);
+        var carEntity = await context.Cars
+            .Include(e => e.Images)
+            .FirstOrDefaultAsync(e => e.Id == id);
         if (carEntity == null)
             return;
-
-        mapper.Map(car, carEntity);
+        
+        carEntity.Update(
+            car.Title,
+            car.Transmission,
+            car.ProductionYear,
+            car.FuelType,
+            car.SeatCount,
+            car.DoorCount,
+            car.BodyType
+        );
+        carEntity.UpdateImages(await context.CarImages
+            .Where(i => car.ImageIds.Contains(i.Id))
+            .ToListAsync());
+        
         await context.SaveChangesAsync();
     }
 
@@ -44,12 +63,23 @@ public class CarsService(
         await context.SaveChangesAsync();
     }
 
+    public async Task<IEnumerable<ImageVm>> GetImagesByCarId(int id)
+    {
+        return await context.Cars
+            .Include(c => c.Images)
+            .Where(c => c.Id == id)
+            .SelectMany(c => c.Images)
+            .Select(i => new ImageVm(i.Id, i.MimeType))
+            .ToListAsync();
+    }
+
     public async Task<IEnumerable<GetCarVm>> GetAll(Expression<Func<Car, bool>>? predicate = null)
     {
         return (await context.Cars
                 .AsNoTracking()
                 .Include(c => c.Features)
                 .Include(c => c.Rentals)
+                .Include(c => c.Images)
                 .Where(predicate ?? (c => true))
                 .Select(e => new
                 {
@@ -62,7 +92,8 @@ public class CarsService(
                     e.DoorCount,
                     e.BodyType,
                     e.Features,
-                    e.Rentals
+                    e.Rentals,
+                    e.Images
                 })
                 .ToListAsync())
             .Select(c => new GetCarVm(
@@ -74,8 +105,7 @@ public class CarsService(
                 c.SeatCount,
                 c.DoorCount,
                 c.BodyType,
-                c.Features.Select(e => new GetCarFeatureVm(e.Id, e.Title)),
-                c.Rentals.Select(e => new GetCarRentalVm(e.Id, e.CarId, e.RenterId, e.PerHourCost, e.PerDayCost, e.From, e.To, e.Notes))
+                c.Images.Select(i => i.Id).ToList()
             ));
     }
 
