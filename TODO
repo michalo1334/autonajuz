@@ -1,0 +1,4 @@
+deploy.yaml action - fix nginx wrong copy (/nginx/nginx ???)
+
+database on dev server in docker - use external volume???
+automate deploying on fresh server (certificates, external volume, ssh keys etc)

@@ -14,6 +14,7 @@ function loadRenters() {
                 const row = document.createElement('tr');
 
                 row.innerHTML = `
+                    <td>${renter.id}</td>
                     <td>${renter.firstName} ${renter.lastName}</td>
                     <td>${renter.drivingLicenseIdent}</td>
                     <td>${renter.pesel}</td>
