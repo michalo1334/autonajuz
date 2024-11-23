@@ -7,7 +7,7 @@ namespace AutoNaJuz.Services.ConcreteServices
     {
         private readonly SmtpClient _smtpClient;
 
-        public EmailService(string host, int port, bool enableSsl, string username, string password)
+        public EmailService(string host, int port, bool enableSsl, string? username, string password)
         {
             _smtpClient = new SmtpClient(host, port)
             {

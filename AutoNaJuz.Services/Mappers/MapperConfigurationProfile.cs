@@ -12,8 +12,6 @@ public class MapperConfigurationProfile : Profile
 {
     public MapperConfigurationProfile()
     {
-        CreateMap<CarRental, EditCarRentalVm>()
-            .ReverseMap();
         CreateMap<CarRental, CreateCarRentalVm>()
             .ReverseMap()
             .ConstructUsing(e => CarRental.Create(e.CarId,
@@ -23,9 +21,7 @@ public class MapperConfigurationProfile : Profile
                 e.From,
                 e.To,
                 e.Notes));
-        
-        CreateMap<Car, EditCarVm>()
-            .ReverseMap();
+
         CreateMap<Car, CreateCarVm>()
             .ReverseMap()
             .ConstructUsing(e => Car.Create(e.Title,
@@ -35,9 +31,7 @@ public class MapperConfigurationProfile : Profile
                 e.SeatCount,
                 e.DoorCount,
                 e.BodyType));
-
-        CreateMap<RenterInfo, EditRenterInfoVm>()
-            .ReverseMap();
+        
         CreateMap<RenterInfo, CreateRenterInfoVm>()
             .ReverseMap()
             .ConstructUsing(e => RenterInfo.Create(e.DrivingLicenseIdent,

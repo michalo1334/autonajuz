@@ -1,12 +1,8 @@
-using System.Text.Json.Serialization;
-
 namespace AutoNaJuz.Model.Car;
 
 public class Car
 {
-    [JsonConstructor]
-    public Car(
-        int id,
+    public Car(int id,
         string title,
         TransmissionType transmission,
         DateTime productionYear,
@@ -25,18 +21,6 @@ public class Car
         BodyType = bodyType;
     }
 
-    public Car(
-        string title,
-        TransmissionType transmission,
-        DateTime productionYear,
-        FuelType fuelType,
-        int seatCount,
-        int doorCount,
-        CarBodyType bodyType)
-        : this(default, title, transmission, productionYear, fuelType, seatCount, doorCount, bodyType)
-    {
-    }
-
     public static Car Create(
         string title,
         TransmissionType transmission,
@@ -47,15 +31,14 @@ public class Car
         CarBodyType bodyType)
     {
         return new Car(
-            0,
+            default,
             title,
             transmission,
             productionYear,
             fuelType,
             seatCount,
             doorCount,
-            bodyType
-        );
+            bodyType);
     }
 
     public void Update(
@@ -75,6 +58,11 @@ public class Car
         DoorCount = doorCount;
         BodyType = bodyType;
     }
+    
+    public void UpdateImages(IEnumerable<CarImage.CarImage> images)
+    {
+        Images = images.ToList();
+    }
 
     public int Id { get; set; }
 
@@ -89,4 +77,5 @@ public class Car
     //Navigation properties
     public IList<CarFeature> Features { get; set; } = [];
     public IList<CarRental.CarRental> Rentals { get; set; } = [];
+    public IList<CarImage.CarImage> Images { get; set; } = [];
 }

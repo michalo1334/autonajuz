@@ -16,5 +16,11 @@ app.MapGet("/", async context =>
     await context.Response.SendFileAsync("wwwroot/index.html");
     
 });
+app.MapGet("/rent", async context =>
+{
+    context.Response.ContentType = "text/html";
+    await context.Response.SendFileAsync("wwwroot/rentMail.html");
+    
+});
 
 app.Run();

@@ -7,10 +7,10 @@ ENV ASPNETCORE_URLS=http://+:2123
 USER app
 
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG configuration=Release
+ARG configuration=Debug
 WORKDIR /src
 
-# Install Node.js (version 20.x)
+# Install Node.js (version 22.x)
 RUN apt-get update && \
     apt-get install -y curl gnupg && \
     curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
@@ -20,6 +20,10 @@ COPY ["AutoNaJuz.Web/AutoNaJuz.Web.csproj", "AutoNaJuz.Web/"]
 RUN dotnet restore "AutoNaJuz.Web/AutoNaJuz.Web.csproj"
 COPY . .
 WORKDIR "/src/AutoNaJuz.Web"
+
+# **Perform Replacement in app.js**
+# UGLY, parametrize it (npm script and config?)
+RUN sed -i "s|const API_URL = '.*';|const API_URL = 'https://api.dev.michalo.works/api';|" wwwroot/apiUrls.js
 
 RUN dotnet build "AutoNaJuz.Web.csproj" -c $configuration -o /app/build
 

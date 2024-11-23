@@ -1,8 +1,5 @@
 services:
   autonajuzapi:
-    build:
-      args:
-        - configuration=Debug
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
@@ -11,9 +8,6 @@ services:
       - debug
 
   autonajuzweb:
-    build:
-      args:
-        - configuration=Debug
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
