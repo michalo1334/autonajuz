@@ -4,6 +4,7 @@ using AutoNaJuz.Model.User;
 using AutoNaJuz.Services.ConcreteServices;
 using AutoNaJuz.Services.Interfaces;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -113,6 +114,11 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
 
 app.UseCors("AllowAllOrigins");
 

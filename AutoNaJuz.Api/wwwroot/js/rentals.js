@@ -2,7 +2,7 @@
 
 function loadRentals() {
     clearContent();
-    fetch(`${API_BASE_URL}/CarRentals`)
+    fetch(`${API_URL}/CarRentals`)
         .then(response => response.json())
         .then(rentals => {
             const contentDiv = document.getElementById('content');
@@ -40,7 +40,7 @@ function loadRentals() {
 window.loadRentals = loadRentals;
 
 window.editRental = function (rentalId) {
-    fetch(`${API_BASE_URL}/CarRentals/${rentalId}`)
+    fetch(`${API_URL}/CarRentals/${rentalId}`)
         .then(response => response.json())
         .then(rental => {
             openRentalForm(rental);
@@ -58,8 +58,8 @@ function openRentalForm(rental = {}) {
 
     // Fetch cars and renters for selection
     Promise.all([
-        fetch(`${API_BASE_URL}/Cars`).then(res => res.json()),
-        fetch(`${API_BASE_URL}/RenterInfos`).then(res => res.json())
+        fetch(`${API_URL}/Cars`).then(res => res.json()),
+        fetch(`${API_URL}/RenterInfos`).then(res => res.json())
     ]).then(([cars, renters]) => {
         const form = document.getElementById('data-form');
         form.innerHTML = `
@@ -114,7 +114,7 @@ function openRentalForm(rental = {}) {
 }
 
 function addRental(rentalData) {
-    fetch(`${API_BASE_URL}/CarRentals`, {
+    fetch(`${API_URL}/CarRentals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(rentalData),
@@ -130,7 +130,7 @@ function addRental(rentalData) {
 }
 
 function updateRental(rentalId, rentalData) {
-    fetch(`${API_BASE_URL}/CarRentals`, {
+    fetch(`${API_URL}/CarRentals`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: rentalId, ...rentalData }),
@@ -147,7 +147,7 @@ function updateRental(rentalId, rentalData) {
 
 window.deleteRental = function (rentalId) {
     if (confirm('Are you sure you want to delete this rental?')) {
-        fetch(`${API_BASE_URL}/CarRentals/${rentalId}`, { method: 'DELETE' })
+        fetch(`${API_URL}/CarRentals/${rentalId}`, { method: 'DELETE' })
             .then(response => {
                 if (response.status === 204) {
                     loadRentals();

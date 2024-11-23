@@ -1,6 +1,6 @@
 // app.js remains largely the same with an addition for the Images navigation
 
-const API_BASE_URL = 'https://localhost:7092/api';
+const API_URL = 'https://localhost:3123/api';
 
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();

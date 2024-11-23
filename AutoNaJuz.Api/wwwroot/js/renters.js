@@ -2,7 +2,7 @@
 
 function loadRenters() {
     clearContent();
-    fetch(`${API_BASE_URL}/RenterInfos`)
+    fetch(`${API_URL}/RenterInfos`)
         .then(response => response.json())
         .then(renters => {
             const contentDiv = document.getElementById('content');
@@ -39,7 +39,7 @@ function loadRenters() {
 window.loadRenters = loadRenters;
 
 window.editRenter = function (renterId) {
-    fetch(`${API_BASE_URL}/RenterInfos/${renterId}`)
+    fetch(`${API_URL}/RenterInfos/${renterId}`)
         .then(response => response.json())
         .then(renter => {
             openRenterForm(renter);
@@ -116,7 +116,7 @@ function openRenterForm(renter = {}) {
 }
 
 function addRenter(renterData) {
-    fetch(`${API_BASE_URL}/RenterInfos`, {
+    fetch(`${API_URL}/RenterInfos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(renterData),
@@ -132,7 +132,7 @@ function addRenter(renterData) {
 }
 
 function updateRenter(renterId, renterData) {
-    fetch(`${API_BASE_URL}/RenterInfos`, {
+    fetch(`${API_URL}/RenterInfos`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: renterId, ...renterData }),
@@ -149,7 +149,7 @@ function updateRenter(renterId, renterData) {
 
 window.deleteRenter = function (renterId) {
     if (confirm('Are you sure you want to delete this renter?')) {
-        fetch(`${API_BASE_URL}/RenterInfos/${renterId}`, { method: 'DELETE' })
+        fetch(`${API_URL}/RenterInfos/${renterId}`, { method: 'DELETE' })
             .then(response => {
                 if (response.status === 204) {
                     loadRenters();
@@ -168,7 +168,7 @@ window.toggleRenterRentals = function (renterId, button) {
         existingRentalRow.remove();
         button.textContent = 'Show Rentals';
     } else {
-        fetch(`${API_BASE_URL}/CarRentals/byRenter/${renterId}`)
+        fetch(`${API_URL}/CarRentals/byRenter/${renterId}`)
             .then(response => response.json())
             .then(rentals => {
                 const rentalRow = document.createElement('tr');

@@ -10,7 +10,7 @@ let totalSlides = 0;
 // Function to load cars
 function loadCars() {
     clearContent();
-    fetch(`${API_BASE_URL}/Cars`)
+    fetch(`${API_URL}/Cars`)
         .then(response => response.json())
         .then(cars => {
             const contentDiv = document.getElementById('content');
@@ -48,7 +48,7 @@ function loadCars() {
 
 // Function to edit a car
 window.editCar = function (carId) {
-    fetch(`${API_BASE_URL}/Cars/${carId}`)
+    fetch(`${API_URL}/Cars/${carId}`)
         .then(response => response.json())
         .then(car => {
             openCarForm(car);
@@ -156,7 +156,7 @@ function openCarForm(car = {}) {
 
 // Function to add a new car
 function addCar(carData) {
-    fetch(`${API_BASE_URL}/Cars`, {
+    fetch(`${API_URL}/Cars`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(carData),
@@ -174,7 +174,7 @@ function addCar(carData) {
 
 // Function to update an existing car
 function updateCar(carId, carData) {
-    fetch(`${API_BASE_URL}/Cars/${carId}`, {
+    fetch(`${API_URL}/Cars/${carId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: carId, ...carData }),
@@ -193,7 +193,7 @@ function updateCar(carId, carData) {
 // Function to delete a car
 window.deleteCar = function (carId) {
     if (confirm('Are you sure you want to delete this car?')) {
-        fetch(`${API_BASE_URL}/Cars/${carId}`, { method: 'DELETE' })
+        fetch(`${API_URL}/Cars/${carId}`, { method: 'DELETE' })
             .then(response => {
                 if (response.status === 204) {
                     loadCars();
@@ -214,7 +214,7 @@ window.toggleCarRentals = function (carId, button) {
         existingRentalRow.remove();
         button.textContent = 'Show Rentals';
     } else {
-        fetch(`${API_BASE_URL}/Cars/${carId}/Rentals`)
+        fetch(`${API_URL}/Cars/${carId}/Rentals`)
             .then(response => response.json())
             .then(rentals => {
                 const rentalRow = document.createElement('tr');
@@ -233,7 +233,7 @@ window.toggleCarRentals = function (carId, button) {
 // Function to show images of a specific car in a carousel modal (existing functionality)
 window.showCarImages = function(carId, carTitle) {
     // Fetch images for the specific car
-    fetch(`${API_BASE_URL}/Cars/${carId}/images`)
+    fetch(`${API_URL}/Cars/${carId}/images`)
         .then(response => response.json())
         .then(images => {
             if (images.length === 0) {
@@ -299,7 +299,7 @@ function openCarouselModal(images, carTitle) {
     // Populate carousel with images
     images.forEach((image, index) => {
         const imgElement = document.createElement('img');
-        imgElement.src = `${API_BASE_URL}/Images/${image.id}/blob`;
+        imgElement.src = `${API_URL}/Images/${image.id}/blob`;
         imgElement.alt = `Image ${index + 1} of ${carTitle}`;
         imgElement.classList.add('carousel-image');
         carouselSlide.appendChild(imgElement);
@@ -394,7 +394,7 @@ function displaySelectedImages() {
 
     selectedImageIds.forEach(imageId => {
         const imgElement = document.createElement('img');
-        imgElement.src = `${API_BASE_URL}/Images/${imageId}/blob`;
+        imgElement.src = `${API_URL}/Images/${imageId}/blob`;
         imgElement.alt = `Image ID ${imageId}`;
         imgElement.classList.add('selected-image-thumbnail');
         container.appendChild(imgElement);
@@ -415,7 +415,7 @@ function openImageSelectionModal() {
     imageListContainer.innerHTML = ''; // Clear previous images
 
     // Fetch all available images
-    fetch(`${API_BASE_URL}/Images`)
+    fetch(`${API_URL}/Images`)
         .then(response => response.json())
         .then(images => {
             if (images.length === 0) {
@@ -429,7 +429,7 @@ function openImageSelectionModal() {
 
                 // Create thumbnail image
                 const img = document.createElement('img');
-                img.src = `${API_BASE_URL}/Images/${image.id}/blob`;
+                img.src = `${API_URL}/Images/${image.id}/blob`;
                 img.alt = `Image ID ${image.id}`;
 
                 // Create checkbox

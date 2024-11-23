@@ -1,6 +1,6 @@
 // /js/images.js
 
-const API_IMAGES_URL = `${API_BASE_URL}/Images`;
+const API_IMAGES_URL = `${API_URL}/Images`;
 
 function loadImages() {
     clearContent();
