@@ -63,5 +63,5 @@ jobs:
               cd /app &&
               docker compose pull &&
               docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug stop &&
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzapi autonajuzweb &&
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzweb autonajuzapi &&
               docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug up -d --no-recreate
