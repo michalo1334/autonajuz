@@ -39,7 +39,14 @@ services:
       - "1433:1433"
     networks:
       - app-network
+    volumes:
+      - mssql-data:/var/opt/mssql
+    restart: unless-stopped
 
 networks:
   app-network:
     name: app-network
+
+volumes:
+  mssql-data:
+    driver: local
