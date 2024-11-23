@@ -18,7 +18,7 @@ WORKDIR "/src/AutoNaJuz.Api"
 # **Perform Replacement in app.js**
 # UGLY, parametrize it (npm script and config?)
 RUN ls -la
-RUN sed -i "s|const API_URL = '.*';|const API_URL = 'https://api.dev.michalo.works/api';|" ./wwwroot//js/app.js
+RUN sed -i "s|const API_URL = '.*';|const API_URL = 'https://api.dev.michalo.works/api';|" ./wwwroot/js/app.js
 
 
 RUN dotnet build "AutoNaJuz.Api.csproj" -c $configuration -o /app/build
