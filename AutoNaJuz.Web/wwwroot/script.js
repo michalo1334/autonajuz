@@ -12,7 +12,7 @@ const modalYear = document.getElementById('modal-car-year')
 
 async function fetchCarsAndFilters() {
 	try {
-		const response = await fetch(`${LOCAL_API_URL}/Cars`)
+		const response = await fetch(`${API_URL}/Cars`)
 		if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`)
 		const cars = await response.json()
 		window.carsData = cars
