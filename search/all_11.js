@@ -5,9 +5,10 @@ var searchData=
   ['updateimages_2',['UpdateImages',['../classAutoNaJuz_1_1Model_1_1Car_1_1Car.html#ac5cf6af8c642ce05c7284999aedb2b9c',1,'AutoNaJuz::Model::Car::Car']]],
   ['useauthorization_3',['UseAuthorization',['../Program_8cs.html#af6f72d752b2e73aa0292f74bd13237ab',1,'Program.cs']]],
   ['usecors_4',['usecors',['../Program_8cs.html#aa5090fdb46c526cdd3ab0cfd3914702f',1,'UseCors(&quot;AllowAllOrigins&quot;):&#160;Program.cs'],['../Program_8cs.html#aed20e48fa1b71ac4dbe22507d1c57216',1,'UseCors(&quot;_apiOrigins&quot;):&#160;Program.cs']]],
-  ['usehttpsredirection_5',['UseHttpsRedirection',['../Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9',1,'Program.cs']]],
-  ['user_6',['User',['../classAutoNaJuz_1_1Model_1_1User_1_1User.html',1,'AutoNaJuz::Model::User']]],
-  ['user_2ecs_7',['User.cs',['../User_8cs.html',1,'']]],
-  ['userouting_8',['UseRouting',['../Program_8cs.html#a94c810d266751293a2d511a720a5625f',1,'Program.cs']]],
-  ['usestaticfiles_9',['UseStaticFiles',['../Program_8cs.html#a906a3ce545279a7a73941f1d7b64d7cf',1,'Program.cs']]]
+  ['useforwardedheaders_5',['UseForwardedHeaders',['../Program_8cs.html#a48e931d186d7d90fa419c71445ab8171',1,'Program.cs']]],
+  ['usehttpsredirection_6',['UseHttpsRedirection',['../Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9',1,'Program.cs']]],
+  ['user_7',['User',['../classAutoNaJuz_1_1Model_1_1User_1_1User.html',1,'AutoNaJuz::Model::User']]],
+  ['user_2ecs_8',['User.cs',['../User_8cs.html',1,'']]],
+  ['userouting_9',['UseRouting',['../Program_8cs.html#a94c810d266751293a2d511a720a5625f',1,'Program.cs']]],
+  ['usestaticfiles_10',['UseStaticFiles',['../Program_8cs.html#a906a3ce545279a7a73941f1d7b64d7cf',1,'Program.cs']]]
 ];

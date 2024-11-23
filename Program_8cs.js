@@ -24,6 +24,7 @@ var Program_8cs =
     [ "UseAuthorization", "Program_8cs.html#af6f72d752b2e73aa0292f74bd13237ab", null ],
     [ "UseCors", "Program_8cs.html#aed20e48fa1b71ac4dbe22507d1c57216", null ],
     [ "UseCors", "Program_8cs.html#aa5090fdb46c526cdd3ab0cfd3914702f", null ],
+    [ "UseForwardedHeaders", "Program_8cs.html#a48e931d186d7d90fa419c71445ab8171", null ],
     [ "UseHttpsRedirection", "Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9", null ],
     [ "UseRouting", "Program_8cs.html#a94c810d266751293a2d511a720a5625f", null ],
     [ "UseStaticFiles", "Program_8cs.html#a906a3ce545279a7a73941f1d7b64d7cf", null ],
