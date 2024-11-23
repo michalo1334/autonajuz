@@ -14,7 +14,6 @@
     </header>
 
     <main>
-
         <section id="reservation">
             <h2>Rezerwacja Samochodu</h2>
             <form id="reservation-form">
@@ -27,14 +26,12 @@
                 <button type="submit">Zarezerwuj</button>
             </form>
         </section>
+
         <section id="car-list">
             <h2>Dostępne Samochody</h2>
             <label class="filter-label">Filtruj według kategorii:</label>
             <select class="filter" id="filter">
                 <option value="all">Wszystkie</option>
-                <option value="sedan">Sedan</option>
-                <option value="suv">SUV</option>
-                <option value="sport">Sportowe</option>
             </select>
             <div id="cars">
                 <!-- Lista samochodów generowana dynamicznie -->
@@ -45,6 +42,25 @@
     <footer>
         <p class="footer">&copy; 2024 AutoNaJuż. Wszystkie prawa zastrzeżone.</p>
     </footer>
+
+    <!-- Modal -->
+    <div id="car-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-left">
+                <img id="modal-car-image" src="" alt="Zdjęcie samochodu">
+            </div>
+            <div class="modal-right">
+                <h3 id="modal-car-title">Tytuł</h3>
+                <p id="modal-car-transmission">Skrzynia: </p>
+                <p id="modal-car-seats">Miejsca: </p>
+                <p id="modal-car-doors">Drzwi: </p>
+                <p id="modal-car-fuel">Paliwo: </p>
+                <p id="modal-car-year">Rok produkcji: </p>
+                <button id="reserve-button">Zarezerwuj</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

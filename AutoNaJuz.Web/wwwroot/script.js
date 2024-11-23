@@ -1,61 +1,83 @@
-const cars = [
-	{ id: 1, name: 'Toyota Corolla', category: 'sedan', details: 'Komfortowy sedan z niskim spalaniem.' },
-	{ id: 2, name: 'BMW X5', category: 'suv', details: 'Luksusowy SUV idealny na każdą podróż.' },
-	{ id: 3, name: 'Porsche 911', category: 'sport', details: 'Sportowy samochód dla wymagających.' },
-]
-
 const carList = document.getElementById('cars')
 const filter = document.getElementById('filter')
-const form = document.getElementById('reservation-form')
+const modal = document.getElementById('car-modal')
+const modalClose = document.querySelector('.close-modal')
+const modalImage = document.getElementById('modal-car-image')
+const modalTitle = document.getElementById('modal-car-title')
+const modalTransmission = document.getElementById('modal-car-transmission')
+const modalSeats = document.getElementById('modal-car-seats')
+const modalDoors = document.getElementById('modal-car-doors')
+const modalFuel = document.getElementById('modal-car-fuel')
+const modalYear = document.getElementById('modal-car-year')
 
-// Funkcja do generowania listy samochodów
-function renderCars(category = 'all') {
-	carList.innerHTML = ''
-	const filteredCars = cars.filter(car => category === 'all' || car.category === category)
-	filteredCars.forEach(car => {
-		const carCard = document.createElement('div')
-		carCard.classList.add('car-card')
-		carCard.dataset.carId = car.id // Przypisanie ID samochodu
-		carCard.innerHTML = `
-            <h3>${car.name}</h3>
-            <p>${car.details}</p>
-        `
-		carList.appendChild(carCard)
+async function fetchCarsAndFilters() {
+	try {
+		const response = await fetch(`${LOCAL_API_URL}/Cars`)
+		if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`)
+		const cars = await response.json()
+		window.carsData = cars
 
-		// Dodaj obsługę kliknięcia na kartę samochodu
-		carCard.addEventListener('click', () => {
-			// Usuń poprzednią klasę 'selected' z innych kart
-			document.querySelectorAll('.car-card').forEach(card => card.classList.remove('selected'))
-			// Dodaj klasę 'selected' do klikniętej karty
-			carCard.classList.add('selected')
-			// Ustaw ID wybranego samochodu w ukrytym polu formularza
-			document.getElementById('selected-car-id').value = car.id
+		const bodyTypes = [...new Set(cars.map(car => car.bodyType.toLowerCase()))]
+		bodyTypes.forEach(bodyType => {
+			const option = document.createElement('option')
+			option.value = bodyType
+			option.textContent = bodyType
+			filter.appendChild(option)
 		})
-	})
+
+		renderCars(cars)
+	} catch (error) {
+		console.error('Błąd przy pobieraniu samochodów:', error)
+		carList.innerHTML = '<p>Nie udało się załadować samochodów.</p>'
+	}
 }
 
-// Obsługa filtrowania
-filter.addEventListener('change', () => {
-	renderCars(filter.value)
-})
-
-// Obsługa formularza rezerwacji
-form.addEventListener('submit', e => {
-	e.preventDefault()
-	const carId = document.getElementById('selected-car-id').value
-	const startDate = document.getElementById('start-date').value
-	const endDate = document.getElementById('end-date').value
-
-	if (!carId || !startDate || !endDate) {
-		alert('Proszę wypełnić wszystkie pola i wybrać samochód.')
+function renderCars(cars, category = 'all') {
+	const filteredCars = cars.filter(car => category === 'all' || car.category.toLowerCase() === category)
+	carList.innerHTML = ''
+	if (!filteredCars.length) {
+		carList.innerHTML = '<p>Brak samochodów w wybranej kategorii.</p>'
 		return
 	}
 
-	alert(`Samochód zarezerwowany! Szczegóły: 
-        - Samochód: ${cars.find(car => car.id == carId).name}
-        - Od: ${startDate} 
-        - Do: ${endDate}`)
+	filteredCars.forEach(car => {
+		const carCard = document.createElement('div')
+		carCard.classList.add('car-card')
+		carCard.dataset.carId = car.id
+		carCard.innerHTML = `
+            <h3>${car.title}</h3>
+            <p>Skrzynia: ${car.Transmission}</p>
+            <p>Miejsca: ${car.seatCount}</p>
+            <p>Drzwi: ${car.doorCount}</p>
+        `
+		carList.appendChild(carCard)
+	})
+}
+
+function openModal(car) {
+	modalImage.src = car.imageUrl || 'default.jpg'
+	modalTitle.textContent = car.title
+	modalTransmission.textContent = `Skrzynia: ${car.Transmission}`
+	modalSeats.textContent = `Miejsca: ${car.seatCount}`
+	modalDoors.textContent = `Drzwi: ${car.doorCount}`
+	modalFuel.textContent = `Paliwo: ${car.fuelType}`
+	modalYear.textContent = `Rok produkcji: ${car.productionYear}`
+	modal.classList.remove('hidden')
+}
+
+function closeModal() {
+	modal.classList.add('hidden')
+}
+
+carList.addEventListener('click', e => {
+	const carId = e.target.closest('.car-card')?.dataset.carId
+	if (!carId) return
+
+	const car = window.carsData.find(car => car.id === parseInt(carId))
+	if (car) openModal(car)
 })
 
-// Inicjalizacja
-renderCars()
+modalClose.addEventListener('click', closeModal)
+filter.addEventListener('change', () => renderCars(window.carsData, filter.value.toLowerCase()))
+
+document.addEventListener('DOMContentLoaded', fetchCarsAndFilters)
