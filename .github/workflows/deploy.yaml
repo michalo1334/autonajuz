@@ -1,40 +1,66 @@
-name: .NET Build
-
-# Trigger the workflow on push to any branch
+name: Deploy to DigitalOcean
 on:
   push:
     branches:
       - '*'
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # Check out the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # Set up .NET environment
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
+      - name: Set up Docker Build
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DigitalOcean Container Registry
+        run: echo "${{ secrets.DIGITAL_OCEAN_DOCKER_TOKEN }}" | docker login registry.digitalocean.com -u ${{ secrets.DIGITAL_OCEAN_USERNAME }} --password-stdin
+
+      - name: Build Docker images
+        run: |
+          docker build . --no-cache -f ./AutoNaJuz.Api/Dockerfile -t registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
+          docker build . --no-cache -f ./AutoNaJuz.Web/Dockerfile -t registry.digitalocean.com/auto-na-juz/auto-na-juz-web:debug
+
+      - name: Push Docker images
+        run: |
+          docker push registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
+          docker push registry.digitalocean.com/auto-na-juz/auto-na-juz-web:debug
+
+      - name: Set up SSH for rsync
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          # Add DigitalOcean host to known_hosts to prevent host key verification
+          ssh-keyscan -H ${{ secrets.DIGITAL_OCEAN_SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Copy nginx and docker-compose.dev directories
+        run: |
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" ./nginx/ ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/tmp/nginx/
+          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" ./docker-compose.dev/ ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/tmp/docker-compose.dev/
+
+      - name: Deploy to DigitalOcean
+        uses: appleboy/ssh-action@master
         with:
-          dotnet-version: '8.0.x' # Set the required .NET version for your project
+          host: ${{ secrets.DIGITAL_OCEAN_SSH_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
+          script: |
+            # Ensure /app directory exists
+              mkdir -p /app
 
-      # Set up Node.js environment
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22.x' # Set the required Node.js version for your project
+            # Move nginx/ directory to /app/nginx
+              sudo mv /tmp/nginx /app/nginx
 
-      # Restore dependencies
-      - name: Restore dependencies
-        run: dotnet restore
-
-      # Build the project
-      - name: Build the project
-        run: dotnet build --configuration Release --no-restore
-
-      # Run tests (if applicable)
-      - name: Run tests
-        run: dotnet test --no-restore --verbosity normal
+            # Move docker-compose.dev files to /app
+              sudo mv /tmp/docker-compose.dev/* /app/
+              sudo rm -rf /tmp/docker-compose.dev
+            
+            
+            # Deploy the application - recreate autonajuzapi and autonajuzweb on img update, mssql, nginx and certbot should be persistent
+              cd /app &&
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug stop &&
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzapi autonajuzweb &&
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug up -d --no-recreate --pull always

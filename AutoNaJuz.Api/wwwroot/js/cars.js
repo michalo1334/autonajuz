@@ -22,6 +22,7 @@ function loadCars() {
                 const row = document.createElement('tr');
 
                 row.innerHTML = `
+                    <td>${car.id}</td>
                     <td>${car.title}</td>
                     <td>${car.transmission}</td>
                     <td>${car.fuelType}</td>
