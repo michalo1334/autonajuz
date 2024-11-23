@@ -24,7 +24,7 @@ services:
     networks:
       - app-network
     environment:
-      - ASPNETCORE_URLS=http://+:2123
+      - ASPNETCORE_URLS=http://+:7001
       - API_BASE_URL=https://api.dev.michalo.works
     depends_on:
       - autonajuzapi
@@ -36,7 +36,7 @@ services:
       - SA_PASSWORD=YourStrong!Passw0rd
       - ACCEPT_EULA=Y
     ports:
-      - "1433:1433"
+      - '1433:1433'
     networks:
       - app-network
 

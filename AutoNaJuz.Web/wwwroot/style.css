@@ -75,6 +75,7 @@ h2 {
 .car-card:hover {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	transform: scale(1.05);
+	background-color: rgb(214, 213, 210);
 }
 
 form {
@@ -113,13 +114,13 @@ button:hover {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 400px;
+	width: 300px;
 	height: 400px;
 	background: #fff;
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 	z-index: 1000;
-	display: none;
+	display: hidden;
 }
 
 .modal.hidden {
@@ -128,18 +129,27 @@ button:hover {
 
 .modal-content {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	height: 100%;
 }
 
-.modal-left img {
+.modal-top img {
 	width: 100%;
 	height: auto;
 	border-radius: 4px;
 }
-
-.modal-right {
-	padding: 1rem;
+.modal-top {
+	height: 50%;
+	padding-bottom: 1em;
+}
+.modal-bottom {
+	width: 100%;
+	padding: 1em;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+.modal-bottom h3 {
+	text-align: center;
 }
 
 .close-modal {
@@ -147,6 +157,11 @@ button:hover {
 	top: 10px;
 	right: 10px;
 	cursor: pointer;
-	font-size: 1.5rem;
-	color: #333;
+	font-size: 4rem;
+	color: #494946;
+}
+
+.carphoto {
+	width: 200px;
+	height: auto;
 }

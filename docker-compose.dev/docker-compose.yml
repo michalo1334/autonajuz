@@ -5,8 +5,8 @@ services:
     image: nginx:stable
     restart: always
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
       - web-root:/var/www/html
       - ./nginx/conf.d:/etc/nginx/conf.d
@@ -41,7 +41,7 @@ services:
     networks:
       - app-network
     environment:
-      - ASPNETCORE_URLS=http://+:2123
+      - ASPNETCORE_URLS=http://+:7001
     depends_on:
       - autonajuzapi
   sqlserver:
@@ -51,7 +51,7 @@ services:
       - SA_PASSWORD=YourStrong!Passw0rd
       - ACCEPT_EULA=Y
     ports:
-      - "1433:1433"
+      - '1433:1433'
     networks:
       - app-network
 

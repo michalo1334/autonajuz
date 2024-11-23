@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 2123
+EXPOSE 7001
 
-ENV ASPNETCORE_URLS=http://+:2123
+ENV ASPNETCORE_URLS=http://+:7001
 
 USER app
 

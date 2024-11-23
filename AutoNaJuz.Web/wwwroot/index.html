@@ -47,69 +47,22 @@
     <div id="car-modal" class="modal hidden">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <div class="modal-left">
+            <div class="modal-top">
                 <img id="modal-car-image" src="" alt="Zdjęcie samochodu">
             </div>
-            <div class="modal-right">
+            <div class="modal-bottom">
                 <h3 id="modal-car-title">Tytuł</h3>
                 <p id="modal-car-transmission">Skrzynia: </p>
                 <p id="modal-car-seats">Miejsca: </p>
                 <p id="modal-car-doors">Drzwi: </p>
                 <p id="modal-car-fuel">Paliwo: </p>
                 <p id="modal-car-year">Rok produkcji: </p>
-                <button id="reserve-button">Zarezerwuj</button>
+
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
-
-    <h1>Wyślij e-mail</h1>
-    <form id="emailForm">
-        <label for="to">Do:</label>
-        <input type="email" id="to" name="to" required><br><br>
-
-        <label for="subject">Temat:</label>
-        <input type="text" id="subject" name="subject" required><br><br>
-
-        <label for="message">Wiadomość:</label><br>
-        <textarea id="message" name="message" rows="5" required></textarea><br><br>
-
-        <button type="submit">Wyślij e-mail</button>
-    </form>
-    <script>
-        document.getElementById('emailForm').addEventListener('submit', async function(event) {
-            
-            event.preventDefault();
-
-            const formData = new FormData(this);
-            const data = {
-                To: formData.get('to'),
-                Subject: formData.get('subject'),
-                Message: formData.get('message')
-            };
-
-            try {
-                const response = await fetch(`${API_URL}/Emails/send`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    alert('E-mail został wysłany pomyślnie!');
-                } else {
-                    alert('Wystąpił błąd przy wysyłaniu e-maila.');
-                }
-            } catch (error) {
-                console.error('Błąd:', error);
-                alert('Wystąpił błąd przy wysyłaniu e-maila.');
-            }
-        });
-    </script>
-
     <script src="apiUrls.js"></script>
 </body>
 
