@@ -1,8 +1,8 @@
-name: Deploy to DigitalOcean
+name: Deploy to DigitalOcean DEV
 on:
   push:
     branches:
-      - '*'
+      - 'dev'
   workflow_dispatch:
 
 jobs:
