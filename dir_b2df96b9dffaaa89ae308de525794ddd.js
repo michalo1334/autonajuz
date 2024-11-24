@@ -8,5 +8,7 @@ var dir_b2df96b9dffaaa89ae308de525794ddd =
     [ "20241111192340_Added_RenterInfo.Designer.cs", "20241111192340__Added__RenterInfo_8Designer_8cs.html", "20241111192340__Added__RenterInfo_8Designer_8cs" ],
     [ "20241120125344_Added_CarImage_CarFeature.cs", "20241120125344__Added__CarImage__CarFeature_8cs.html", "20241120125344__Added__CarImage__CarFeature_8cs" ],
     [ "20241120125344_Added_CarImage_CarFeature.Designer.cs", "20241120125344__Added__CarImage__CarFeature_8Designer_8cs.html", "20241120125344__Added__CarImage__CarFeature_8Designer_8cs" ],
+    [ "20241123212909_Added_Car_RentCost.cs", "20241123212909__Added__Car__RentCost_8cs.html", "20241123212909__Added__Car__RentCost_8cs" ],
+    [ "20241123212909_Added_Car_RentCost.Designer.cs", "20241123212909__Added__Car__RentCost_8Designer_8cs.html", "20241123212909__Added__Car__RentCost_8Designer_8cs" ],
     [ "AppDbContextModelSnapshot.cs", "AppDbContextModelSnapshot_8cs.html", "AppDbContextModelSnapshot_8cs" ]
 ];

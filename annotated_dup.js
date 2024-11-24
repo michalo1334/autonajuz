@@ -11,6 +11,7 @@ var annotated_dup =
         ] ],
         [ "Migrations", "namespaceAutoNaJuz_1_1DAL_1_1Migrations.html", [
           [ "Added_Car_CarRental_Identity", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity.html", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity" ],
+          [ "Added_Car_RentCost", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__RentCost.html", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__RentCost" ],
           [ "Added_CarImage_CarFeature", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__CarImage__CarFeature.html", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__CarImage__CarFeature" ],
           [ "Added_RenterInfo", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__RenterInfo.html", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__RenterInfo" ],
           [ "AppDbContextModelSnapshot", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot.html", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot" ],
@@ -33,6 +34,7 @@ var annotated_dup =
           [ "User", "classAutoNaJuz_1_1Model_1_1User_1_1User.html", null ]
         ] ],
         [ "Validators", "namespaceAutoNaJuz_1_1Model_1_1Validators.html", [
+          [ "CarFeatureValidator", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarFeatureValidator.html", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarFeatureValidator" ],
           [ "CarRentalValidator", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator" ],
           [ "CarValidator", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarValidator.html", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarValidator" ],
           [ "RenterInfoValidatior", "classAutoNaJuz_1_1Model_1_1Validators_1_1RenterInfoValidatior.html", "classAutoNaJuz_1_1Model_1_1Validators_1_1RenterInfoValidatior" ]

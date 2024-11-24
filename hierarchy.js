@@ -1,6 +1,7 @@
 var hierarchy =
 [
     [ "AbstractValidator", null, [
+      [ "AutoNaJuz.Model.Validators.CarFeatureValidator", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarFeatureValidator.html", null ],
       [ "AutoNaJuz.Model.Validators.CarRentalValidator", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html", null ],
       [ "AutoNaJuz.Model.Validators.CarValidator", "classAutoNaJuz_1_1Model_1_1Validators_1_1CarValidator.html", null ],
       [ "AutoNaJuz.Model.Validators.RenterInfoValidatior", "classAutoNaJuz_1_1Model_1_1Validators_1_1RenterInfoValidatior.html", null ]
@@ -25,6 +26,7 @@ var hierarchy =
     [ "Migration", null, [
       [ "AutoNaJuz.DAL.Migrations.Added_CarImage_CarFeature", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__CarImage__CarFeature.html", null ],
       [ "AutoNaJuz.DAL.Migrations.Added_Car_CarRental_Identity", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity.html", null ],
+      [ "AutoNaJuz.DAL.Migrations.Added_Car_RentCost", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__RentCost.html", null ],
       [ "AutoNaJuz.DAL.Migrations.Added_RenterInfo", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__RenterInfo.html", null ],
       [ "AutoNaJuz.DAL.Migrations.InitialCreate", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1InitialCreate.html", null ]
     ] ],

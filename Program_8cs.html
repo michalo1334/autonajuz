@@ -129,8 +129,8 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af55c8cc8a4c2e5d704cc2776bb64a14c" id="r_af55c8cc8a4c2e5d704cc2776bb64a14c"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#af55c8cc8a4c2e5d704cc2776bb64a14c">AddDbContext&lt; AppDbContext &gt;</a> (options=&gt; { options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;));options.EnableSensitiveDataLogging();})</td></tr>
-<tr class="separator:af55c8cc8a4c2e5d704cc2776bb64a14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1331cbf43d61a13416346ef45347f6f" id="r_aa1331cbf43d61a13416346ef45347f6f"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#aa1331cbf43d61a13416346ef45347f6f">AddDbContext&lt; AppDbContext &gt;</a> (options=&gt; { options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;), b=&gt; b.EnableRetryOnFailure(5));options.EnableSensitiveDataLogging();options.EnableDetailedErrors();})</td></tr>
+<tr class="separator:aa1331cbf43d61a13416346ef45347f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ed2027617464b5b770cacd3ec2f0eaa" id="r_a6ed2027617464b5b770cacd3ec2f0eaa"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a6ed2027617464b5b770cacd3ec2f0eaa">AddIdentity&lt; User, IdentityRole &gt;</a> (options=&gt; { options.Password.RequireDigit=false;options.Password.RequireLowercase=false;options.Password.RequireUppercase=false;options.Password.RequireNonAlphanumeric=false;options.Password.RequiredLength=1;options.User.RequireUniqueEmail=true;}) .AddEntityFrameworkStores&lt; AppDbContext &gt;()</td></tr>
 <tr class="separator:a6ed2027617464b5b770cacd3ec2f0eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c8105c98dba8898aed452ff99386fa9" id="r_a1c8105c98dba8898aed452ff99386fa9"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9">AddControllers</a> () .AddJsonOptions(options</td></tr>
@@ -145,8 +145,6 @@ Functions</h2></td></tr>
 <tr class="separator:ad7398d10169164e4fba8f51316a5fcb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a055c381cf41b189a73c82f23b7e35c20" id="r_a055c381cf41b189a73c82f23b7e35c20"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20">AddSwaggerGen</a> (c=&gt; { c.SwaggerDoc(&quot;v1&quot;, new OpenApiInfo { Title=&quot;AutoNaJuzAPI&quot;, Version=&quot;v1&quot; });c.AddSecurityDefinition(&quot;basic&quot;, new OpenApiSecurityScheme { Name=&quot;Authorization&quot;, Type=SecuritySchemeType.Http, Scheme=&quot;basic&quot;, In=ParameterLocation.Cookie, Description=&quot;Basic Authorization header using the Bearer scheme.&quot; });c.AddSecurityRequirement(new OpenApiSecurityRequirement { { new OpenApiSecurityScheme { Reference=new OpenApiReference { Type=ReferenceType.SecurityScheme, Id=&quot;basic&quot; } }, [] } });})</td></tr>
 <tr class="separator:a055c381cf41b189a73c82f23b7e35c20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbef64478008306f976b18de6d1b9e31" id="r_adbef64478008306f976b18de6d1b9e31"><td class="memItemLeft" align="right" valign="top">builder.Services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#adbef64478008306f976b18de6d1b9e31">AddCors</a> (options=&gt; { options.AddPolicy(name:&quot;_apiOrigins&quot;, policy=&gt; { policy.AllowAnyOrigin();policy.AllowAnyMethod();policy.AllowAnyHeader();});})</td></tr>
-<tr class="separator:adbef64478008306f976b18de6d1b9e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad614c2a51779c6df58f62fe994267a53" id="r_ad614c2a51779c6df58f62fe994267a53"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#ad614c2a51779c6df58f62fe994267a53">AddScoped&lt; ICarsService, CarsService &gt;</a> ()</td></tr>
 <tr class="separator:ad614c2a51779c6df58f62fe994267a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a598c3bca9c39cb29de14989cdebcfe51" id="r_a598c3bca9c39cb29de14989cdebcfe51"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a598c3bca9c39cb29de14989cdebcfe51">AddScoped&lt; ICarRentalsService, CarRentalsService &gt;</a> ()</td></tr>
@@ -163,8 +161,8 @@ Functions</h2></td></tr>
 <tr class="separator:a48e931d186d7d90fa419c71445ab8171"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5090fdb46c526cdd3ab0cfd3914702f" id="r_aa5090fdb46c526cdd3ab0cfd3914702f"><td class="memItemLeft" align="right" valign="top">app.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#aa5090fdb46c526cdd3ab0cfd3914702f">UseCors</a> (&quot;AllowAllOrigins&quot;)</td></tr>
 <tr class="separator:aa5090fdb46c526cdd3ab0cfd3914702f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c68c62ca918c5f8fa6c817576d80f6d" id="r_a1c68c62ca918c5f8fa6c817576d80f6d"><td class="memItemLeft" align="right" valign="top">db.Database.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a1c68c62ca918c5f8fa6c817576d80f6d">Migrate</a> ()</td></tr>
-<tr class="separator:a1c68c62ca918c5f8fa6c817576d80f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8526edca710fb100073bf2cab963165" id="r_ad8526edca710fb100073bf2cab963165"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#ad8526edca710fb100073bf2cab963165">if</a> (!<a class="el" href="Program_8cs.html#ad15062ccd853732e33af30576c845422">blockAutoMigrations</a>) db.Database.Migrate()</td></tr>
+<tr class="separator:ad8526edca710fb100073bf2cab963165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79a944c7f0e25196ca3c5a8638b919b9" id="r_a79a944c7f0e25196ca3c5a8638b919b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a79a944c7f0e25196ca3c5a8638b919b9">if</a> (app.Environment.IsDevelopment())</td></tr>
 <tr class="separator:a79a944c7f0e25196ca3c5a8638b919b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4d447fc3129a3aa301d736b8bd04ae9" id="r_aa4d447fc3129a3aa301d736b8bd04ae9"><td class="memItemLeft" align="right" valign="top">app.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#aa4d447fc3129a3aa301d736b8bd04ae9">UseHttpsRedirection</a> ()</td></tr>
@@ -173,8 +171,6 @@ Functions</h2></td></tr>
 <tr class="separator:a906a3ce545279a7a73941f1d7b64d7cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94c810d266751293a2d511a720a5625f" id="r_a94c810d266751293a2d511a720a5625f"><td class="memItemLeft" align="right" valign="top">app.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a94c810d266751293a2d511a720a5625f">UseRouting</a> ()</td></tr>
 <tr class="separator:a94c810d266751293a2d511a720a5625f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed20e48fa1b71ac4dbe22507d1c57216" id="r_aed20e48fa1b71ac4dbe22507d1c57216"><td class="memItemLeft" align="right" valign="top">app.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#aed20e48fa1b71ac4dbe22507d1c57216">UseCors</a> (&quot;_apiOrigins&quot;)</td></tr>
-<tr class="separator:aed20e48fa1b71ac4dbe22507d1c57216"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6f72d752b2e73aa0292f74bd13237ab" id="r_af6f72d752b2e73aa0292f74bd13237ab"><td class="memItemLeft" align="right" valign="top">app.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#af6f72d752b2e73aa0292f74bd13237ab">UseAuthorization</a> ()</td></tr>
 <tr class="separator:af6f72d752b2e73aa0292f74bd13237ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e2ee3170aa6279b68eefd1651f7d96c" id="r_a9e2ee3170aa6279b68eefd1651f7d96c"><td class="memItemLeft" align="right" valign="top">app.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a9e2ee3170aa6279b68eefd1651f7d96c">MapControllers</a> ()</td></tr>
@@ -194,6 +190,8 @@ Variables</h2></td></tr>
 <tr class="separator:a215a6ccc78b0c6e360778197851e09b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b225fcb720e4d5ed2bbf60e28a25e6d" id="r_a7b225fcb720e4d5ed2bbf60e28a25e6d"><td class="memItemLeft" align="right" valign="top">var&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a> = builder.Build()</td></tr>
 <tr class="separator:a7b225fcb720e4d5ed2bbf60e28a25e6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad15062ccd853732e33af30576c845422" id="r_ad15062ccd853732e33af30576c845422"><td class="memItemLeft" align="right" valign="top">var&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#ad15062ccd853732e33af30576c845422">blockAutoMigrations</a> = app.Configuration.GetValue&lt;bool&gt;(&quot;BlockAutoMigrations&quot;)</td></tr>
+<tr class="separator:ad15062ccd853732e33af30576c845422"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9717e7bbecb906637e86cef6da3d83c2" id="r_a9717e7bbecb906637e86cef6da3d83c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a9717e7bbecb906637e86cef6da3d83c2">return</a></td></tr>
 <tr class="separator:a9717e7bbecb906637e86cef6da3d83c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -210,7 +208,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00126">126</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00114">114</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -261,7 +259,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="abc0a3fb1c0b7aa6ea898aecab45921fe" name="abc0a3fb1c0b7aa6ea898aecab45921fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc0a3fb1c0b7aa6ea898aecab45921fe">&#9670;&#160;</a></span>AddCors() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#abc0a3fb1c0b7aa6ea898aecab45921fe">&#9670;&#160;</a></span>AddCors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -288,36 +286,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="adbef64478008306f976b18de6d1b9e31" name="adbef64478008306f976b18de6d1b9e31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbef64478008306f976b18de6d1b9e31">&#9670;&#160;</a></span>AddCors() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">builder.Services. AddCors </td>
-          <td>(</td>
-          <td class="paramtype">options&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">{ options.AddPolicy(name:&quot;_apiOrigins&quot;, policy=&gt; { policy.AllowAnyOrigin();policy.AllowAnyMethod();policy.AllowAnyHeader();});}&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af55c8cc8a4c2e5d704cc2776bb64a14c" name="af55c8cc8a4c2e5d704cc2776bb64a14c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af55c8cc8a4c2e5d704cc2776bb64a14c">&#9670;&#160;</a></span>AddDbContext&lt; AppDbContext &gt;()</h2>
+<a id="aa1331cbf43d61a13416346ef45347f6f" name="aa1331cbf43d61a13416346ef45347f6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1331cbf43d61a13416346ef45347f6f">&#9670;&#160;</a></span>AddDbContext&lt; AppDbContext &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +301,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">{ options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;));options.EnableSensitiveDataLogging();}&#160;</td>
+          <td class="paramtype">{ options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;), b=&gt; b.EnableRetryOnFailure(5));options.EnableSensitiveDataLogging();options.EnableDetailedErrors();}&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -547,8 +517,26 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ad8526edca710fb100073bf2cab963165" name="ad8526edca710fb100073bf2cab963165"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8526edca710fb100073bf2cab963165">&#9670;&#160;</a></span>if() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">if </td>
+          <td>(</td>
+          <td class="paramtype">!&#160;</td>
+          <td class="paramname"><em>blockAutoMigrations</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a79a944c7f0e25196ca3c5a8638b919b9" name="a79a944c7f0e25196ca3c5a8638b919b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79a944c7f0e25196ca3c5a8638b919b9">&#9670;&#160;</a></span>if()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a79a944c7f0e25196ca3c5a8638b919b9">&#9670;&#160;</a></span>if() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -563,16 +551,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00133">133</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  134</span>{</div>
-<div class="line"><span class="lineno">  135</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
-<div class="line"><span class="lineno">  136</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
-<div class="line"><span class="lineno">  137</span>    {</div>
-<div class="line"><span class="lineno">  138</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
-<div class="line"><span class="lineno">  139</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  140</span>    });</div>
-<div class="line"><span class="lineno">  141</span>}</div>
-<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00116">Program.cs:116</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00125">125</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  126</span>{</div>
+<div class="line"><span class="lineno">  127</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
+<div class="line"><span class="lineno">  129</span>    {</div>
+<div class="line"><span class="lineno">  130</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
+<div class="line"><span class="lineno">  131</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  132</span>    });</div>
+<div class="line"><span class="lineno">  133</span>}</div>
+<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00104">Program.cs:104</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -608,32 +596,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00159">159</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  160</span>{</div>
-<div class="line"><span class="lineno">  161</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
-<div class="line"><span class="lineno">  162</span>    {</div>
-<div class="line"><span class="lineno">  163</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
-<div class="line"><span class="lineno">  164</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
-<div class="line"><span class="lineno">  165</span>    });</div>
-<div class="line"><span class="lineno">  166</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00148">148</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
+<div class="line"><span class="lineno">  150</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
+<div class="line"><span class="lineno">  151</span>    {</div>
+<div class="line"><span class="lineno">  152</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
+<div class="line"><span class="lineno">  153</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
+<div class="line"><span class="lineno">  154</span>    });</div>
+<div class="line"><span class="lineno">  155</span>}</div>
 </div><!-- fragment -->
-</div>
-</div>
-<a id="a1c68c62ca918c5f8fa6c817576d80f6d" name="a1c68c62ca918c5f8fa6c817576d80f6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c68c62ca918c5f8fa6c817576d80f6d">&#9670;&#160;</a></span>Migrate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">db.Database. Migrate </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
 </div>
 </div>
 <a id="aaa3dbf02e269c3ef7e8546d290c6b3dd" name="aaa3dbf02e269c3ef7e8546d290c6b3dd"></a>
@@ -670,26 +641,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aed20e48fa1b71ac4dbe22507d1c57216" name="aed20e48fa1b71ac4dbe22507d1c57216"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed20e48fa1b71ac4dbe22507d1c57216">&#9670;&#160;</a></span>UseCors() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">app. UseCors </td>
-          <td>(</td>
-          <td class="paramtype">&quot;_apiOrigins&quot;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="aa5090fdb46c526cdd3ab0cfd3914702f" name="aa5090fdb46c526cdd3ab0cfd3914702f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa5090fdb46c526cdd3ab0cfd3914702f">&#9670;&#160;</a></span>UseCors() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5090fdb46c526cdd3ab0cfd3914702f">&#9670;&#160;</a></span>UseCors()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -788,7 +741,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00116">116</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00104">104</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+
+</div>
+</div>
+<a id="ad15062ccd853732e33af30576c845422" name="ad15062ccd853732e33af30576c845422"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad15062ccd853732e33af30576c845422">&#9670;&#160;</a></span>blockAutoMigrations</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">var blockAutoMigrations = app.Configuration.GetValue&lt;bool&gt;(&quot;BlockAutoMigrations&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00118">118</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -820,7 +789,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00157">157</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00146">146</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -852,7 +821,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00097">97</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00086">86</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>

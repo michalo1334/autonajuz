@@ -122,8 +122,7 @@ $(document).ready(function(){initNavTree('CarRentalValidator_8cs_source.html',''
 <div class="contents">
 <a href="CarRentalValidator_8cs.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>FluentValidation;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="foldopen" id="foldopen00003" data-start="{" data-end="}">
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="namespaceAutoNaJuz_1_1Model_1_1Validators.html">    3</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model_1_1Validators.html">AutoNaJuz.Model.Validators</a>;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceAutoNaJuz_1_1Model_1_1Validators.html">AutoNaJuz.Model.Validators</a>;</div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="foldopen" id="foldopen00005" data-start="{" data-end="};">
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html">    5</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html">CarRentalValidator</a> : AbstractValidator&lt;CarRental.CarRental&gt;</div>
@@ -131,25 +130,20 @@ $(document).ready(function(){initNavTree('CarRentalValidator_8cs_source.html',''
 <div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html#a4acc8eb9733c446eb11a1f8a2244acdd">    7</a></span>    <span class="keyword">public</span> <a class="code hl_function" href="classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html#a4acc8eb9733c446eb11a1f8a2244acdd">CarRentalValidator</a>()</div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    {</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        RuleFor(x =&gt; x)</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>            .Must(x =&gt; x.PerHourCost is not <span class="keyword">null</span> || x.PerDayCost is not <span class="keyword">null</span>)</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            .WithErrorCode(<span class="stringliteral">&quot;AtLeastOneCostTypeRequired&quot;</span>);</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        RuleFor(x =&gt; x.From)</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            .NotEmpty()</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            .LessThan(x =&gt; x.To)</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            .WithErrorCode(<span class="stringliteral">&quot;InvalidDateRange&quot;</span>);</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        RuleFor(x =&gt; x.Notes)</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            .MaximumLength(3000);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>        RuleFor(x =&gt; x.From)</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>            .NotEmpty()</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>            .LessThan(x =&gt; x.To)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            .WithErrorCode(<span class="stringliteral">&quot;InvalidDateRange&quot;</span>);</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        RuleFor(x =&gt; x.Notes)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            .MaximumLength(3000);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    }</div>
 </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>}</div>
-</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
 </div>
 <div class="ttc" id="aclassAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator_html"><div class="ttname"><a href="classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html">AutoNaJuz.Model.Validators.CarRentalValidator</a></div><div class="ttdef"><b>Definition</b> <a href="CarRentalValidator_8cs_source.html#l00005">CarRentalValidator.cs:6</a></div></div>
 <div class="ttc" id="aclassAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator_html_a4acc8eb9733c446eb11a1f8a2244acdd"><div class="ttname"><a href="classAutoNaJuz_1_1Model_1_1Validators_1_1CarRentalValidator.html#a4acc8eb9733c446eb11a1f8a2244acdd">AutoNaJuz.Model.Validators.CarRentalValidator.CarRentalValidator</a></div><div class="ttdeci">CarRentalValidator()</div><div class="ttdef"><b>Definition</b> <a href="CarRentalValidator_8cs_source.html#l00007">CarRentalValidator.cs:7</a></div></div>
-<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1Validators_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1Validators.html">AutoNaJuz.Model.Validators</a></div><div class="ttdef"><b>Definition</b> <a href="CarRentalValidator_8cs_source.html#l00003">CarRentalValidator.cs:3</a></div></div>
+<div class="ttc" id="anamespaceAutoNaJuz_1_1Model_1_1Validators_html"><div class="ttname"><a href="namespaceAutoNaJuz_1_1Model_1_1Validators.html">AutoNaJuz.Model.Validators</a></div><div class="ttdef"><b>Definition</b> <a href="CarFeatureValidator_8cs_source.html#l00004">CarFeatureValidator.cs:4</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
