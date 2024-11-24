@@ -11,11 +11,7 @@ public class CarRentalConfiguration : IEntityTypeConfiguration<CarRental>
         builder.ToTable("Car_Rentals");
 
         builder.HasKey(e => e.Id);
-
-        builder.Property(e => e.PerHourCost)
-            .HasPrecision(18, 2);
-        builder.Property(e => e.PerDayCost)
-            .HasPrecision(18, 2);
+        
         builder.Property(e => e.From);
         builder.Property(e => e.To);
         builder.Property(e => e.Notes)

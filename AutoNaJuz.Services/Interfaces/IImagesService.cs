@@ -5,9 +5,6 @@ namespace AutoNaJuz.Services.Interfaces;
 public interface IImagesService
 {
     public Task<IEnumerable<ImageVm>> GetAll();
-    
-    public Task<IEnumerable<ImageVm>> GetByIds(IList<int> ids);
-    public Task<IEnumerable<ImageVm>> GetByCarId(int carId);
 
     public Task<ImageVm?> GetById(int id);
     

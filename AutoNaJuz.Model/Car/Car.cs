@@ -9,7 +9,8 @@ public class Car
         FuelType fuelType,
         int seatCount,
         int doorCount,
-        CarBodyType bodyType)
+        CarBodyType bodyType,
+        decimal rentCostPerDay)
     {
         Id = id;
         Title = title;
@@ -19,6 +20,7 @@ public class Car
         SeatCount = seatCount;
         DoorCount = doorCount;
         BodyType = bodyType;
+        RentCostPerDay = rentCostPerDay;
     }
 
     public static Car Create(
@@ -28,7 +30,8 @@ public class Car
         FuelType fuelType,
         int seatCount,
         int doorCount,
-        CarBodyType bodyType)
+        CarBodyType bodyType,
+        decimal rentCostPerDay)
     {
         return new Car(
             default,
@@ -38,7 +41,8 @@ public class Car
             fuelType,
             seatCount,
             doorCount,
-            bodyType);
+            bodyType,
+            rentCostPerDay);
     }
 
     public void Update(
@@ -48,7 +52,8 @@ public class Car
         FuelType fuelType,
         int seatCount,
         int doorCount,
-        CarBodyType bodyType)
+        CarBodyType bodyType,
+        decimal rentCostPerDay)
     {
         Title = title;
         Transmission = transmission;
@@ -57,11 +62,17 @@ public class Car
         SeatCount = seatCount;
         DoorCount = doorCount;
         BodyType = bodyType;
+        RentCostPerDay = rentCostPerDay;
     }
     
     public void UpdateImages(IEnumerable<CarImage.CarImage> images)
     {
         Images = images.ToList();
+    }
+    
+    public void UpdateFeatures(IEnumerable<CarFeature> features)
+    {
+        Features = features.ToList();
     }
 
     public int Id { get; set; }
@@ -73,6 +84,8 @@ public class Car
     public int SeatCount { get; private set; }
     public int DoorCount { get; private set; }
     public CarBodyType BodyType { get; private set; }
+    
+    public decimal RentCostPerDay { get; private set; }
 
     //Navigation properties
     public IList<CarFeature> Features { get; set; } = [];

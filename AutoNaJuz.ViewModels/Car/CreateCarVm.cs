@@ -10,5 +10,7 @@ public sealed record CreateCarVm(
     int SeatCount,
     int DoorCount,
     CarBodyType BodyType,
-    List<int> ImageIds
+    decimal RentCostPerDay,
+    List<int> ImageIds,
+    List<int> FeatureIds
 );

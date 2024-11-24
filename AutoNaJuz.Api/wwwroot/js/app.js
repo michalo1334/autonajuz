@@ -27,6 +27,11 @@ function setupNavigation() {
         e.preventDefault();
         loadImages();
     });
+    
+    document.getElementById('nav-features').addEventListener('click', (e) => {
+        e.preventDefault();
+        loadFeatures();
+    });
 }
 
 function clearContent() {

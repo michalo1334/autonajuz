@@ -17,8 +17,9 @@ var services = builder.Services;
 // Configure database context
 services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"), b => b.EnableRetryOnFailure(5));
     options.EnableSensitiveDataLogging();
+    options.EnableDetailedErrors();
 });
 
 // Configure Identity with disabled password requirements
@@ -75,18 +76,6 @@ services.AddSwaggerGen(c =>
     });
 });
 
-//Add cors
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: "_apiOrigins",
-        policy  =>
-        {
-            policy.AllowAnyOrigin();
-            policy.AllowAnyMethod();
-            policy.AllowAnyHeader();
-        });
-});
-
 // Register application services
 services.AddScoped<ICarsService, CarsService>();
 services.AddScoped<ICarRentalsService, CarRentalsService>();
@@ -102,7 +91,6 @@ builder.Services.AddSingleton<EmailService>(_ => new EmailService(
     smtpSettings["Username"],
     smtpSettings["Password"] ?? string.Empty));
 
-//dodany nowy AddCors pod działanie maila z web
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins", policy =>
@@ -126,7 +114,11 @@ app.UseCors("AllowAllOrigins");
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    
+    var blockAutoMigrations = app.Configuration.GetValue<bool>("BlockAutoMigrations");
+    
+    if (!blockAutoMigrations)
+        db.Database.Migrate();
 }
 
 // Configure the HTTP request pipeline.
@@ -143,9 +135,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
-//Enable CORS
-app.UseCors("_apiOrigins");
 
 
 app.UseAuthorization(); // Enable authentication

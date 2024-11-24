@@ -21,7 +21,12 @@ public class CarsService(
         var carEntity = mapper.Map<Car>(car);
         
         var entry = context.Cars.Add(carEntity);
-        entry.Entity.UpdateImages(await context.CarImages.Where(i => idSet.Contains(i.Id)).ToListAsync());
+        entry.Entity.UpdateImages(await context.CarImages
+            .Where(i => idSet.Contains(i.Id))
+            .ToListAsync());
+        entry.Entity.UpdateFeatures(await context.CarFeatures
+            .Where(f => car.FeatureIds.Contains(f.Id))
+            .ToListAsync());
         
         await context.SaveChangesAsync();
         return entry.Entity.Id;
@@ -33,6 +38,7 @@ public class CarsService(
 
         var carEntity = await context.Cars
             .Include(e => e.Images)
+            .Include(e => e.Features)
             .FirstOrDefaultAsync(e => e.Id == id);
         if (carEntity == null)
             return;
@@ -44,10 +50,14 @@ public class CarsService(
             car.FuelType,
             car.SeatCount,
             car.DoorCount,
-            car.BodyType
+            car.BodyType,
+            car.RentCostPerDay
         );
         carEntity.UpdateImages(await context.CarImages
             .Where(i => car.ImageIds.Contains(i.Id))
+            .ToListAsync());
+        carEntity.UpdateFeatures(await context.CarFeatures
+            .Where(f => car.FeatureIds.Contains(f.Id))
             .ToListAsync());
         
         await context.SaveChangesAsync();
@@ -73,10 +83,51 @@ public class CarsService(
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<CarFeatureVm>> GetAllFeatures() =>
+        await context.CarFeatures
+            .Select(f => new CarFeatureVm(f.Id, f.Title))
+            .ToListAsync();
+
+    public async Task<CarFeatureVm?> GetFeatureById(int id)
+    {
+        return await context.CarFeatures
+            .Where(f => f.Id == id)
+            .Select(f => new CarFeatureVm(f.Id, f.Title))
+            .FirstOrDefaultAsync();
+    }
+
+    public async Task<int> CreateFeature(string title)
+    {
+        var entity = CarFeature.Create(title);
+        
+        var entry = context.CarFeatures.Add(entity);
+        await context.SaveChangesAsync();
+        return entry.Entity.Id;
+    }
+
+    public async Task UpdateFeature(int id, string title)
+    {
+        var entity = await context.CarFeatures.FindAsync(id);
+        if (entity == null)
+            return;
+        
+        entity.Update(title);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task DeleteFeature(int id)
+    {
+        var entity = await context.CarFeatures.FindAsync(id);
+        if (entity == null)
+            return;
+        
+        context.CarFeatures.Remove(entity);
+        await context.SaveChangesAsync();
+    }
+
     public async Task<IEnumerable<GetCarVm>> GetAll(Expression<Func<Car, bool>>? predicate = null)
     {
         return (await context.Cars
-                .AsNoTracking()
                 .Include(c => c.Features)
                 .Include(c => c.Rentals)
                 .Include(c => c.Images)
@@ -91,6 +142,7 @@ public class CarsService(
                     e.SeatCount,
                     e.DoorCount,
                     e.BodyType,
+                    e.RentCostPerDay,
                     e.Features,
                     e.Rentals,
                     e.Images
@@ -105,7 +157,9 @@ public class CarsService(
                 c.SeatCount,
                 c.DoorCount,
                 c.BodyType,
-                c.Images.Select(i => i.Id).ToList()
+                c.RentCostPerDay,
+                c.Images.Select(i => i.Id).ToList(),
+                c.Features.Select(f => new CarFeatureVm(f.Id, f.Title)).ToList()
             ));
     }
 

@@ -11,5 +11,7 @@ public record EditCarVm(
     int SeatCount,
     int DoorCount,
     CarBodyType BodyType,
-    List<int> ImageIds
+    decimal RentCostPerDay,
+    List<int> ImageIds,
+    List<int> FeatureIds
 );

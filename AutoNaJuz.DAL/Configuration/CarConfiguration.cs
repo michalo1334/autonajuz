@@ -21,6 +21,8 @@ public class CarConfiguration : IEntityTypeConfiguration<Car>
         builder.Property(e => e.SeatCount);
         builder.Property(e => e.DoorCount);
         builder.Property(e => e.BodyType);
+        builder.Property(e => e.RentCostPerDay)
+            .HasPrecision(18, 2);
 
         builder.HasMany(e => e.Features)
             .WithMany(e => e.Cars);
