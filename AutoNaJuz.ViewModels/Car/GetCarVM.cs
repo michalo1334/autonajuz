@@ -11,5 +11,7 @@ public sealed record GetCarVm(
     int SeatCount,
     int DoorCount,
     CarBodyType BodyType,
-    List<int> ImageIds
+    decimal RentCostPerDay,
+    List<int> ImageIds,
+    List<CarFeatureVm> Features
 );

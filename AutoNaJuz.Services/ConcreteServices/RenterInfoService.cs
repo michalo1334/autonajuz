@@ -15,7 +15,6 @@ public class RenterInfoService(
     public async Task<IEnumerable<GetRenterInfoVm>> GetAll(Expression<Func<RenterInfo, bool>>? predicate = null)
     {
         return (await context.RenterInfos
-                .AsNoTracking()
                 .Where(predicate ?? (c => true))
                 .Select(e => new
                 {

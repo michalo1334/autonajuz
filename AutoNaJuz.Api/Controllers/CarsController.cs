@@ -147,6 +147,64 @@ public class CarsController(
         return Ok(images);
     }
     
+    [HttpGet("features")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<CarFeatureVm>>> GetAllFeatures()
+    {
+        var features = await carsService.GetAllFeatures();
+        return Ok(features);
+    }
+    
+    [HttpGet("features/{id}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<CarFeatureVm>> GetFeature(int id)
+    {
+        var feature = await carsService.GetFeatureById(id);
+        if (feature == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(feature);
+    }
+    
+    [HttpPost("features")]
+    public async Task<ActionResult<int>> CreateFeature([FromBody] CarFeatureVm request)
+    {
+        var id = await carsService.CreateFeature(request.Title);
+        return CreatedAtAction(nameof(CreateFeature), new { id }, id);
+    }
+    
+    [HttpPut("features/{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> UpdateFeature(int id, [FromBody] CarFeatureVm request)
+    {
+        var exists = (await carsService.GetFeatureById(id))?.Id != null;
+        if (!exists)
+        {
+            return BadRequest();
+        }
+
+        await carsService.UpdateFeature(id, request.Title);
+        return NoContent();
+    }
+    
+    [HttpDelete("features/{id}")]
+    public async Task<IActionResult> DeleteFeature(int id)
+    {
+        var feature = await carsService.GetFeatureById(id);
+        if (feature == null)
+        {
+            return BadRequest();
+        }
+
+        await carsService.DeleteFeature(id);
+        return NoContent();
+    }
+    
+    
     /// <summary>
     /// Seeds the car database.
     /// </summary>

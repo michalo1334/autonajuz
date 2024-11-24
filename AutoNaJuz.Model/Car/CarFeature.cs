@@ -11,9 +11,9 @@ public class CarFeature
         Title = title;
     }
 
-    public static CarFeature Create(int id, string title)
+    public static CarFeature Create(string title)
     {
-        return new CarFeature(id, title);
+        return new CarFeature(default, title);
     }
 
     public void Update(string title)
@@ -21,7 +21,7 @@ public class CarFeature
         Title = title;
     }
 
-    public int Id { get; private set; }
+    public int Id { get; set; }
 
     public string Title { get; private set; }
 

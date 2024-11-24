@@ -16,8 +16,6 @@ public class MapperConfigurationProfile : Profile
             .ReverseMap()
             .ConstructUsing(e => CarRental.Create(e.CarId,
                 e.RenterId,
-                e.PerHourCost,
-                e.PerDayCost,
                 e.From,
                 e.To,
                 e.Notes));
@@ -30,7 +28,8 @@ public class MapperConfigurationProfile : Profile
                 e.FuelType,
                 e.SeatCount,
                 e.DoorCount,
-                e.BodyType));
+                e.BodyType,
+                e.RentCostPerDay));
         
         CreateMap<RenterInfo, CreateRenterInfoVm>()
             .ReverseMap()

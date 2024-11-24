@@ -30,6 +30,8 @@ function loadCars() {
                     <td>${car.seatCount}</td>
                     <td>${car.doorCount}</td>
                     <td>${car.bodyType}</td>
+                    <td>${car.rentCostPerDay}</td>
+                    <td>${car.features.map(e => `<p>${e.title}</p>`).join('\n')}</td>
                     <td>
                         <button class="btn" onclick="editCar(${car.id})">Edit</button>
                         <button class="btn" onclick="deleteCar(${car.id})">Delete</button>
@@ -105,37 +107,41 @@ function openCarForm(car = {}) {
             <option value="Van" ${car.bodyType === 'Van' ? 'selected' : ''}>Van</option>
             <option value="Combi" ${car.bodyType === 'Combi' ? 'selected' : ''}>Combi</option>
         </select>
+        
+        <label>Rent cost per day:</label>
+        <input type="number" name="rentCostPerDay" value="${car.rentCostPerDay || ''}" step="0.01" required>
 
-        <!-- Select Images Button and Selected Images Container -->
-        <div class="form-group">
-            <label>Associated Images:</label>
-            <button type="button" id="select-images-button" class="btn">Select Images</button>
-            <div id="selected-images-container">
-                <!-- Selected image thumbnails will be displayed here -->
-            </div>
-        </div>
+        <label>Features:</label>
+        <select name="features" id="features-select" multiple>
+            <!-- Options will be populated dynamically -->
+        </select>
 
         <button type="submit" class="btn">${car.id ? 'Update Car' : 'Add Car'}</button>
         <button type="button" class="btn" onclick="loadCars()">Cancel</button>
     `;
 
-    // Initialize selectedImageIds with existing image associations (if editing)
-    if (car.imageIds && Array.isArray(car.imageIds)) {
-        selectedImageIds = [...car.imageIds];
-        displaySelectedImages();
-    } else {
-        selectedImageIds = [];
-    }
-
-    // Event listener for "Select Images" button
-    document.getElementById('select-images-button').addEventListener('click', () => {
-        openImageSelectionModal();
-    });
+    // Populate features multiselect
+    fetch(`${API_URL}/Cars/features`)
+        .then(response => response.json())
+        .then(features => {
+            const featuresSelect = document.getElementById('features-select');
+            features.forEach(feature => {
+                const option = document.createElement('option');
+                option.value = feature.id;
+                option.textContent = feature.title;
+                if (car.features && car.features.some(e => feature.id === e.id)) {
+                    option.selected = true;
+                }
+                featuresSelect.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching features:', error));
 
     // Handle form submission
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const formData = new FormData(form);
+        const selectedFeatures = Array.from(formData.getAll('features')).map(Number);
         const carData = {
             title: formData.get('title'),
             transmission: formData.get('transmission'),
@@ -144,6 +150,8 @@ function openCarForm(car = {}) {
             seatCount: parseInt(formData.get('seatCount')),
             doorCount: parseInt(formData.get('doorCount')),
             bodyType: formData.get('bodyType'),
+            rentCostPerDay: parseFloat(formData.get('rentCostPerDay')),
+            featureIds: selectedFeatures,
             imageIds: selectedImageIds.length > 0 ? selectedImageIds : [], // Associate images
         };
 

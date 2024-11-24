@@ -19,5 +19,8 @@ public class CarValidator : AbstractValidator<Car.Car>
 
         RuleFor(x => x.DoorCount)
             .GreaterThan(0);
+        
+        RuleFor(x => x.RentCostPerDay)
+            .GreaterThanOrEqualTo(0m);
     }
 }

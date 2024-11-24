@@ -46,15 +46,12 @@ public class CarRentalsService(
     public async Task<IEnumerable<GetCarRentalVm>> GetAll(Expression<Func<CarRental, bool>>? predicate = null)
     {
         return (await context.CarRentals
-                .AsNoTracking()
                 .Where(predicate ?? (c => true))
                 .Select(e => new
                 {
                     e.Id,
                     e.CarId,
                     e.RenterId,
-                    e.PerHourCost,
-                    e.PerDayCost,
                     e.From,
                     e.To,
                     e.Notes
@@ -64,8 +61,6 @@ public class CarRentalsService(
                 c.Id,
                 c.CarId,
                 c.RenterId,
-                c.PerHourCost,
-                c.PerDayCost,
                 c.From,
                 c.To,
                 c.Notes
