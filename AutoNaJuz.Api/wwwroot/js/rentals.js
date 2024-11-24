@@ -79,12 +79,6 @@ function openRentalForm(rental = {}) {
             <label>To:</label>
             <input type="date" name="to" value="${rental.to ? rental.to.split('T')[0] : ''}" required>
 
-            <label>Per Hour Cost:</label>
-            <input type="number" name="perHourCost" step="0.01" value="${rental.perHourCost || ''}">
-
-            <label>Per Day Cost:</label>
-            <input type="number" name="perDayCost" step="0.01" value="${rental.perDayCost || ''}">
-
             <label>Notes:</label>
             <textarea name="notes">${rental.notes || ''}</textarea>
 
@@ -99,8 +93,6 @@ function openRentalForm(rental = {}) {
                 renterId: parseInt(formData.get('renterId')),
                 from: formData.get('from'),
                 to: formData.get('to'),
-                perHourCost: formData.get('perHourCost') ? parseFloat(formData.get('perHourCost')) : null,
-                perDayCost: formData.get('perDayCost') ? parseFloat(formData.get('perDayCost')) : null,
                 notes: formData.get('notes'),
             };
 

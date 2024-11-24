@@ -14,4 +14,10 @@ public interface ICarsService
     Task Update(EditCarVm car);
     Task Delete(int id);
     Task<IEnumerable<ImageVm>> GetImagesByCarId(int id);
+
+    Task<IEnumerable<CarFeatureVm>> GetAllFeatures();
+    Task<CarFeatureVm?> GetFeatureById(int id);
+    Task<int> CreateFeature(string title);
+    Task UpdateFeature(int id, string title);
+    Task DeleteFeature(int id);
 }

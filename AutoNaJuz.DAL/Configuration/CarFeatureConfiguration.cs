@@ -14,8 +14,5 @@ public class CarFeatureConfiguration : IEntityTypeConfiguration<CarFeature>
 
         builder.Property(c => c.Title)
             .HasMaxLength(4000);
-        
-        builder.HasMany(c => c.Cars)
-            .WithMany(c => c.Features);
     }
 }
