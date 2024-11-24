@@ -32,7 +32,6 @@ services:
       - app-network
     environment:
       - ASPNETCORE_URLS=http://+:3123
-      - ConnectionStrings__MsSql=Server=sqlserver,1433;Database=appDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;
     depends_on:
       - sqlserver
   autonajuzweb:
@@ -48,7 +47,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: sqlserver
     environment:
-      - SA_PASSWORD=YourStrong!Passw0rd
+      - SA_PASSWORD=TjdwVjdkVjhmN3p4Q0E9PQo
       - ACCEPT_EULA=Y
     ports:
       - '1433:1433'
