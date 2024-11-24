@@ -18,8 +18,6 @@ function loadRentals() {
                     <td>${rental.renterId}</td>
                     <td>${new Date(rental.from).toLocaleDateString()}</td>
                     <td>${new Date(rental.to).toLocaleDateString()}</td>
-                    <td>${rental.perHourCost}</td>
-                    <td>${rental.perDayCost}</td>
                     <td>${rental.notes || ''}</td>
                     <td>
                         <button class="btn" onclick="editRental(${rental.id})">Edit</button>

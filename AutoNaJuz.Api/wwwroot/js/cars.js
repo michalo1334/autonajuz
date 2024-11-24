@@ -30,8 +30,6 @@ function loadCars() {
                     <td>${car.seatCount}</td>
                     <td>${car.doorCount}</td>
                     <td>${car.bodyType}</td>
-                    <td>${car.rentCostPerDay}</td>
-                    <td>${car.features.map(e => `<p>${e.title}</p>`).join('\n')}</td>
                     <td>
                         <button class="btn" onclick="editCar(${car.id})">Edit</button>
                         <button class="btn" onclick="deleteCar(${car.id})">Delete</button>
