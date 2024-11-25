@@ -61,7 +61,7 @@ jobs:
             
             # Deploy the application - recreate autonajuzapi and autonajuzweb on img update, mssql, nginx and certbot should be persistent
               cd /app &&
-              docker compose pull &&
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug stop &&
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzweb autonajuzapi &&
+              docker compose pull
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug stop
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzweb autonajuzapi
               docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug up -d --no-recreate

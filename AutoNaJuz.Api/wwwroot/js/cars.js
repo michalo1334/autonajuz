@@ -30,6 +30,8 @@ function loadCars() {
                     <td>${car.seatCount}</td>
                     <td>${car.doorCount}</td>
                     <td>${car.bodyType}</td>
+                    <td>${car.rentCostPerDay}</td>
+                    <td>${car.features.map(e => `<p>${e.title}</p>`).join('\n')}</td>
                     <td>
                         <button class="btn" onclick="editCar(${car.id})">Edit</button>
                         <button class="btn" onclick="deleteCar(${car.id})">Delete</button>
@@ -109,6 +111,14 @@ function openCarForm(car = {}) {
         <label>Rent cost per day:</label>
         <input type="number" name="rentCostPerDay" value="${car.rentCostPerDay || ''}" step="0.01" required>
 
+        <!-- Select Images Button and Selected Images Container -->
+        <div class="form-group">
+            <label>Associated Images:</label>
+            <button type="button" id="select-images-button" class="btn">Select Images</button>
+            <div id="selected-images-container">
+                <!-- Selected image thumbnails will be displayed here -->
+            </div>
+        </div>
         <label>Features:</label>
         <select name="features" id="features-select" multiple>
             <!-- Options will be populated dynamically -->
@@ -118,6 +128,18 @@ function openCarForm(car = {}) {
         <button type="button" class="btn" onclick="loadCars()">Cancel</button>
     `;
 
+    // Initialize selectedImageIds with existing image associations (if editing)
+    if (car.imageIds && Array.isArray(car.imageIds)) {
+        selectedImageIds = [...car.imageIds];
+        displaySelectedImages();
+    } else {
+        selectedImageIds = [];
+    }
+
+    // Event listener for "Select Images" button
+    document.getElementById('select-images-button').addEventListener('click', () => {
+        openImageSelectionModal();
+    });
     // Populate features multiselect
     fetch(`${API_URL}/Cars/features`)
         .then(response => response.json())
