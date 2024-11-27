@@ -4,6 +4,14 @@ on:
     branches:
       - 'dev'
   workflow_dispatch:
+    inputs: 
+      build_and_push_docker_images:
+        description: 'Build and push Docker images'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+        default: 'true'
 
 jobs:
   deploy:
@@ -18,16 +26,14 @@ jobs:
       - name: Login to DigitalOcean Container Registry
         run: echo "${{ secrets.DIGITAL_OCEAN_DOCKER_TOKEN }}" | docker login registry.digitalocean.com -u ${{ secrets.DIGITAL_OCEAN_USERNAME }} --password-stdin
 
-      - name: Build Docker images
+      - if: ${{ github.event.inputs.build_and_push_docker_images == 'true' }}
+        name: Build and push Docker images
         run: |
           docker build . --no-cache -f ./AutoNaJuz.Api/Dockerfile -t registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
           docker build . --no-cache -f ./AutoNaJuz.Web/Dockerfile -t registry.digitalocean.com/auto-na-juz/auto-na-juz-web:debug
-
-      - name: Push Docker images
-        run: |
           docker push registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
           docker push registry.digitalocean.com/auto-na-juz/auto-na-juz-web:debug
-
+          
       - name: Set up SSH for rsync
         run: |
           mkdir -p ~/.ssh
@@ -52,16 +58,19 @@ jobs:
               mkdir -p /app
 
             # Move nginx/ directory to /app/nginx
-              sudo mv /tmp/nginx /app/nginx
+            # sudo mv /tmp/nginx /app/nginx
 
             # Move docker-compose.dev files to /app
               sudo mv /tmp/docker-compose.dev/* /app/
               sudo rm -rf /tmp/docker-compose.dev
             
-            
-            # Deploy the application - recreate autonajuzapi and autonajuzweb on img update, mssql, nginx and certbot should be persistent
-              cd /app &&
+            cd ~/app
+            # Pull the latest images
               docker compose pull
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug stop
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzweb autonajuzapi
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug up -d --no-recreate
+      
+            # Stop and remove only the API and web containers
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml stop autonajuzapi autonajuzweb
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzapi autonajuzweb
+      
+            # Recreate the API and web containers with the latest images
+              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug up -d --no-deps --force-recreate autonajuzapi autonajuzweb
