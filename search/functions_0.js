@@ -12,7 +12,8 @@ var searchData=
   ['addscoped_3c_20icarsservice_2c_20carsservice_20_3e_9',['AddScoped&lt; ICarsService, CarsService &gt;',['../Program_8cs.html#ad614c2a51779c6df58f62fe994267a53',1,'Program.cs']]],
   ['addscoped_3c_20iimagesservice_2c_20imagesservice_20_3e_10',['AddScoped&lt; IImagesService, ImagesService &gt;',['../Program_8cs.html#a9cf742619dde93bb4d5f0876aff5f59e',1,'Program.cs']]],
   ['addscoped_3c_20irenterinfoservice_2c_20renterinfoservice_20_3e_11',['AddScoped&lt; IRenterInfoService, RenterInfoService &gt;',['../Program_8cs.html#a5f39322dc1b6875c8eca2f7e8b4b4dd5',1,'Program.cs']]],
-  ['addsingleton_3c_20emailservice_20_3e_12',['AddSingleton&lt; EmailService &gt;',['../Program_8cs.html#a36f91f38cde6b7ef751df33ad6db17ae',1,'Program.cs']]],
-  ['addswaggergen_13',['AddSwaggerGen',['../Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20',1,'Program.cs']]],
-  ['appdbcontext_14',['AppDbContext',['../namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292',1,'AutoNaJuz::DAL::Data']]]
+  ['addscoped_3c_20iseederservice_2c_20seederservice_20_3e_12',['AddScoped&lt; ISeederService, SeederService &gt;',['../Program_8cs.html#a5fcc027f84826c3783c9dce0ba7c1edf',1,'Program.cs']]],
+  ['addsingleton_3c_20emailservice_20_3e_13',['AddSingleton&lt; EmailService &gt;',['../Program_8cs.html#a36f91f38cde6b7ef751df33ad6db17ae',1,'Program.cs']]],
+  ['addswaggergen_14',['AddSwaggerGen',['../Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20',1,'Program.cs']]],
+  ['appdbcontext_15',['AppDbContext',['../namespaceAutoNaJuz_1_1DAL_1_1Data.html#ac35d412ede8855af7349b7402c3a9292',1,'AutoNaJuz::DAL::Data']]]
 ];

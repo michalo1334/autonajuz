@@ -13,6 +13,7 @@ var Program_8cs =
     [ "AddScoped< ICarsService, CarsService >", "Program_8cs.html#ad614c2a51779c6df58f62fe994267a53", null ],
     [ "AddScoped< IImagesService, ImagesService >", "Program_8cs.html#a9cf742619dde93bb4d5f0876aff5f59e", null ],
     [ "AddScoped< IRenterInfoService, RenterInfoService >", "Program_8cs.html#a5f39322dc1b6875c8eca2f7e8b4b4dd5", null ],
+    [ "AddScoped< ISeederService, SeederService >", "Program_8cs.html#a5fcc027f84826c3783c9dce0ba7c1edf", null ],
     [ "AddSingleton< EmailService >", "Program_8cs.html#a36f91f38cde6b7ef751df33ad6db17ae", null ],
     [ "AddSwaggerGen", "Program_8cs.html#a055c381cf41b189a73c82f23b7e35c20", null ],
     [ "if", "Program_8cs.html#ad8526edca710fb100073bf2cab963165", null ],

@@ -153,6 +153,8 @@ Functions</h2></td></tr>
 <tr class="separator:a5f39322dc1b6875c8eca2f7e8b4b4dd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cf742619dde93bb4d5f0876aff5f59e" id="r_a9cf742619dde93bb4d5f0876aff5f59e"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a9cf742619dde93bb4d5f0876aff5f59e">AddScoped&lt; IImagesService, ImagesService &gt;</a> ()</td></tr>
 <tr class="separator:a9cf742619dde93bb4d5f0876aff5f59e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fcc027f84826c3783c9dce0ba7c1edf" id="r_a5fcc027f84826c3783c9dce0ba7c1edf"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a5fcc027f84826c3783c9dce0ba7c1edf">AddScoped&lt; ISeederService, SeederService &gt;</a> ()</td></tr>
+<tr class="separator:a5fcc027f84826c3783c9dce0ba7c1edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36f91f38cde6b7ef751df33ad6db17ae" id="r_a36f91f38cde6b7ef751df33ad6db17ae"><td class="memItemLeft" align="right" valign="top">builder.Services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a36f91f38cde6b7ef751df33ad6db17ae">AddSingleton&lt; EmailService &gt;</a> (_=&gt; new EmailService(<a class="el" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[&quot;Host&quot;] ?? string.Empty, int.Parse(<a class="el" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[&quot;Port&quot;] ?? string.Empty), bool.Parse(<a class="el" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[&quot;EnableSsl&quot;] ?? string.Empty), <a class="el" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[&quot;Username&quot;], <a class="el" href="Program_8cs.html#a215a6ccc78b0c6e360778197851e09b7">smtpSettings</a>[&quot;Password&quot;] ?? string.Empty))</td></tr>
 <tr class="separator:a36f91f38cde6b7ef751df33ad6db17ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc0a3fb1c0b7aa6ea898aecab45921fe" id="r_abc0a3fb1c0b7aa6ea898aecab45921fe"><td class="memItemLeft" align="right" valign="top">builder.Services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#abc0a3fb1c0b7aa6ea898aecab45921fe">AddCors</a> (options=&gt; { options.AddPolicy(&quot;AllowAllOrigins&quot;, policy=&gt; { policy.AllowAnyOrigin() .AllowAnyMethod() .AllowAnyHeader();});})</td></tr>
@@ -208,7 +210,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00114">114</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00115">115</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -461,6 +463,23 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a5fcc027f84826c3783c9dce0ba7c1edf" name="a5fcc027f84826c3783c9dce0ba7c1edf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fcc027f84826c3783c9dce0ba7c1edf">&#9670;&#160;</a></span>AddScoped&lt; ISeederService, SeederService &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">services. AddScoped&lt; ISeederService, SeederService &gt; </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a36f91f38cde6b7ef751df33ad6db17ae" name="a36f91f38cde6b7ef751df33ad6db17ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36f91f38cde6b7ef751df33ad6db17ae">&#9670;&#160;</a></span>AddSingleton&lt; EmailService &gt;()</h2>
 
@@ -551,16 +570,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00125">125</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  126</span>{</div>
-<div class="line"><span class="lineno">  127</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
-<div class="line"><span class="lineno">  128</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
-<div class="line"><span class="lineno">  129</span>    {</div>
-<div class="line"><span class="lineno">  130</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
-<div class="line"><span class="lineno">  131</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  132</span>    });</div>
-<div class="line"><span class="lineno">  133</span>}</div>
-<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00104">Program.cs:104</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00126">126</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
+<div class="line"><span class="lineno">  128</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
+<div class="line"><span class="lineno">  130</span>    {</div>
+<div class="line"><span class="lineno">  131</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
+<div class="line"><span class="lineno">  132</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  133</span>    });</div>
+<div class="line"><span class="lineno">  134</span>}</div>
+<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00105">Program.cs:105</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -596,14 +615,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00148">148</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  149</span>{</div>
-<div class="line"><span class="lineno">  150</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
-<div class="line"><span class="lineno">  151</span>    {</div>
-<div class="line"><span class="lineno">  152</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
-<div class="line"><span class="lineno">  153</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
-<div class="line"><span class="lineno">  154</span>    });</div>
-<div class="line"><span class="lineno">  155</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00149">149</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  150</span>{</div>
+<div class="line"><span class="lineno">  151</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
+<div class="line"><span class="lineno">  152</span>    {</div>
+<div class="line"><span class="lineno">  153</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
+<div class="line"><span class="lineno">  154</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
+<div class="line"><span class="lineno">  155</span>    });</div>
+<div class="line"><span class="lineno">  156</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -741,7 +760,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00104">104</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00105">105</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -757,7 +776,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00118">118</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00119">119</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -789,7 +808,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00146">146</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00147">147</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -821,7 +840,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00086">86</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00087">87</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
