@@ -8,6 +8,8 @@ namespace AutoNaJuz.Services.Interfaces;
 public interface ICarsService
 {
     Task<IEnumerable<GetCarVm>> GetAll(Expression<Func<Car, bool>>? predicate = null);
+    Task<IEnumerable<GetCarVm>> GetAll(string? search, bool? onlyAvailable, DateTime? availableFrom, DateTime? availableTo);
+    
     Task<GetCarVm?> GetById(int id);
 
     Task<int> Create(CreateCarVm car);

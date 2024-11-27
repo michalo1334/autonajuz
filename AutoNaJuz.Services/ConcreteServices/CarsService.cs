@@ -162,6 +162,52 @@ public class CarsService(
                 c.Features.Select(f => new CarFeatureVm(f.Id, f.Title)).ToList()
             ));
     }
+    
+    public async Task<IEnumerable<GetCarVm>> GetAll(string? search, bool? onlyAvailable, DateTime? availableFrom, DateTime? availableTo)
+    {
+        var query = context.Cars
+            .Include(c => c.Features)
+            .Include(c => c.Rentals)
+            .Include(c => c.Images)
+            .AsQueryable();
+        
+        if (!string.IsNullOrWhiteSpace(search)) 
+            query = query.Where(c => c.Title.Contains(search));
+        
+        if (onlyAvailable == true)
+            query = query.Where(c => c.Rentals.All(r => r.To < availableFrom || r.From > availableTo));
+        
+        return (await query
+                .Select(e => new
+                {
+                    e.Id,
+                    e.Title,
+                    e.Transmission,
+                    e.ProductionYear,
+                    e.FuelType,
+                    e.SeatCount,
+                    e.DoorCount,
+                    e.BodyType,
+                    e.RentCostPerDay,
+                    e.Features,
+                    e.Rentals,
+                    e.Images
+                })
+                .ToListAsync())
+            .Select(c => new GetCarVm(
+                c.Id,
+                c.Title,
+                c.Transmission,
+                c.ProductionYear,
+                c.FuelType,
+                c.SeatCount,
+                c.DoorCount,
+                c.BodyType,
+                c.RentCostPerDay,
+                c.Images.Select(i => i.Id).ToList(),
+                c.Features.Select(f => new CarFeatureVm(f.Id, f.Title)).ToList()
+            ));
+    }
 
     public async Task<GetCarVm?> GetById(int id)
     {

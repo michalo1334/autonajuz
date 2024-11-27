@@ -10,28 +10,25 @@ namespace AutoNaJuz.Api.Controllers;
 [ApiController]
 public class CarsController(
     ICarsService carsService,
-    ICarRentalsService carRentalsService) : ControllerBase
+    ICarRentalsService carRentalsService,
+    ISeederService seederService) : ControllerBase
 {
-    /// <summary>
-    /// Retrieves all cars.
-    /// </summary>
-    /// <param name="search">Search term.</param>
-    /// <param name="byBrand">Filter by brand.</param>
-    /// <param name="byType">Filter by type.</param>
-    /// <returns>List of cars.</returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<GetCarVm>>> GetAll(string? search, string? byBrand, string? byType)
+    public async Task<ActionResult<IEnumerable<GetCarVm>>> GetAll(
+        string? search,
+        bool? onlyAvailable,
+        DateTime? availableFrom,
+        DateTime? availableTo)
     {
-        var cars = await carsService.GetAll();
+        var cars = await carsService.GetAll(
+            search,
+            onlyAvailable,
+            availableFrom,
+            availableTo);
         return Ok(cars);
     }
-
-    /// <summary>
-    /// Retrieves a car by ID.
-    /// </summary>
-    /// <param name="id">Car ID.</param>
-    /// <returns>Car object.</returns>
+    
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -45,12 +42,7 @@ public class CarsController(
 
         return Ok(carVm);
     }
-
-    /// <summary>
-    /// Creates a new car.
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns>ID of the created car.</returns>
+    
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<ActionResult<int>> New([FromBody] CreateCarVm request)
@@ -58,13 +50,7 @@ public class CarsController(
         var id = await carsService.Create(request);
         return CreatedAtAction(nameof(New), new { id }, id);
     }
-
-    /// <summary>
-    /// Updates an existing car.
-    /// </summary>
-    /// <param name="id">Car ID.</param>
-    /// <param name="request"></param>
-    /// <returns>Action result.</returns>
+    
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -126,7 +112,15 @@ public class CarsController(
             return BadRequest();
         }
 
-        var rentalId = await carRentalsService.Create(request with { CarId = id });
+        int rentalId;
+        try
+        {
+            rentalId = await carRentalsService.Create(request with { CarId = id });
+        }
+        catch (InvalidOperationException e)
+        {
+            return UnprocessableEntity(e.Message);
+        }
         return CreatedAtAction(nameof(Rent), new { id = rentalId }, rentalId);
     }
 
@@ -211,9 +205,13 @@ public class CarsController(
     /// <returns>Action result.</returns>
     [HttpPost("seed")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public IActionResult Seed()
+    public async Task<IActionResult> Seed()
     {
-        // Replace with actual data seeding logic
+        await seederService.SeedCars();
+        await seederService.SeedCarFeatures();
+        await seederService.SeedRenterInfos();
+        await seederService.AssignFeaturesToCars();
+        
         return NoContent();
     }
 }

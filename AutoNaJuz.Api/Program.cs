@@ -81,6 +81,7 @@ services.AddScoped<ICarsService, CarsService>();
 services.AddScoped<ICarRentalsService, CarRentalsService>();
 services.AddScoped<IRenterInfoService, RenterInfoService>();
 services.AddScoped<IImagesService, ImagesService>();
+services.AddScoped<ISeederService, SeederService>();
 
 // Add Email service
 var smtpSettings = builder.Configuration.GetSection("SmtpSettings");

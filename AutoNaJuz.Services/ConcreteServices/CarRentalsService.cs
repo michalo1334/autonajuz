@@ -15,6 +15,9 @@ public class CarRentalsService(
 {
     public async Task<int> Create(CreateCarRentalVm carRental)
     {
+        if (!CanBeRentedInThePeriod(carRental.CarId, carRental.From, carRental.To))
+            throw new InvalidOperationException("Car is already rented in this period");
+        
         var carRentalEntity = mapper.Map<CarRental>(carRental);
         var entry = context.CarRentals.Add(carRentalEntity);
         await context.SaveChangesAsync();
@@ -28,8 +31,18 @@ public class CarRentalsService(
         var carRentalEntity = await context.CarRentals.FindAsync(id);
         if (carRentalEntity == null)
             return;
+        
+        if (!CanBeRentedInThePeriod(carRental.CarId, carRental.From, carRental.To))
+            throw new InvalidOperationException("CarAlreadyRented");
 
-        mapper.Map(carRental, carRentalEntity);
+        carRentalEntity.Update(
+            carRental.CarId,
+            carRental.RenterId,
+            carRental.From,
+            carRental.To,
+            carRental.Notes
+        );
+        
         await context.SaveChangesAsync();
     }
 
@@ -80,5 +93,10 @@ public class CarRentalsService(
     public async Task<GetCarRentalVm?> GetById(int id)
     {
         return (await GetAll(e => e.Id == id)).FirstOrDefault();
+    }
+    
+    public bool CanBeRentedInThePeriod(int carId, DateTime from, DateTime to)
+    {
+        return !context.CarRentals.Any(e => e.CarId == carId && e.From < to && e.To > from);
     }
 }
