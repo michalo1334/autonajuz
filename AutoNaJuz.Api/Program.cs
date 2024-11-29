@@ -17,7 +17,8 @@ var services = builder.Services;
 // Configure database context
 services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"), b => b.EnableRetryOnFailure(5));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"), 
+        b => b.EnableRetryOnFailure(10, TimeSpan.FromSeconds(3), null));
     options.EnableSensitiveDataLogging();
     options.EnableDetailedErrors();
 });
