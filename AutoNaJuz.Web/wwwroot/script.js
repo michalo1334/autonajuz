@@ -34,7 +34,7 @@ function renderCars(cars, category = 'all') {
       <p>Skrzynia: ${car.transmission}</p>
       <p>Miejsca: ${car.seatCount}</p>
       <p>Drzwi: ${car.doorCount}</p>
-      <img class="carphoto" src="${API_URL}/images/${car.imageIds}/blob" alt="${car.title}">
+      <img class="carphoto" src="${API_URL}/images/${car.imageIds ? 3 : car.imageIds[0]}/blob" alt="${car.title}">
     `
 		carList.appendChild(carCard)
 	})
@@ -42,7 +42,7 @@ function renderCars(cars, category = 'all') {
 
 // Funkcja otwierająca modal z pełnymi danymi samochodu
 function openModal(car) {
-	modalImage.src = `${API_URL}/images/${car.imageIds}/blob` || 'default.jpg'
+	modalImage.src = `${API_URL}/images/${car.imageIds ? 3 : car.imageIds[0]}/blob` || 'default.jpg'
 	modalTitle.textContent = car.title
 	modalTransmission.textContent = `Skrzynia: ${car.transmission}`
 	modalSeats.textContent = `Miejsca: ${car.seatCount}`
