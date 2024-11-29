@@ -4,7 +4,7 @@ var Program_8cs =
     [ "AddAutoMapper", "Program_8cs.html#abdba3bdd34b7fa7dba9c824ac602d630", null ],
     [ "AddControllers", "Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9", null ],
     [ "AddCors", "Program_8cs.html#abc0a3fb1c0b7aa6ea898aecab45921fe", null ],
-    [ "AddDbContext< AppDbContext >", "Program_8cs.html#aa1331cbf43d61a13416346ef45347f6f", null ],
+    [ "AddDbContext< AppDbContext >", "Program_8cs.html#a6ff3404c4f46b5a885a9bdcf287d6978", null ],
     [ "AddEndpointsApiExplorer", "Program_8cs.html#ad7398d10169164e4fba8f51316a5fcb9", null ],
     [ "AddFluentValidationAutoValidation", "Program_8cs.html#ab314ceea65a37037f7d397101bf9e7ed", null ],
     [ "AddIdentity< User, IdentityRole >", "Program_8cs.html#a6ed2027617464b5b770cacd3ec2f0eaa", null ],

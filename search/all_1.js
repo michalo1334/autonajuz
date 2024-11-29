@@ -3,7 +3,7 @@ var searchData=
   ['addautomapper_0',['AddAutoMapper',['../Program_8cs.html#abdba3bdd34b7fa7dba9c824ac602d630',1,'Program.cs']]],
   ['addcontrollers_1',['AddControllers',['../Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9',1,'Program.cs']]],
   ['addcors_2',['AddCors',['../Program_8cs.html#abc0a3fb1c0b7aa6ea898aecab45921fe',1,'Program.cs']]],
-  ['adddbcontext_3c_20appdbcontext_20_3e_3',['AddDbContext&lt; AppDbContext &gt;',['../Program_8cs.html#aa1331cbf43d61a13416346ef45347f6f',1,'Program.cs']]],
+  ['adddbcontext_3c_20appdbcontext_20_3e_3',['AddDbContext&lt; AppDbContext &gt;',['../Program_8cs.html#a6ff3404c4f46b5a885a9bdcf287d6978',1,'Program.cs']]],
   ['added_5fcar_5fcarrental_5fidentity_4',['Added_Car_CarRental_Identity',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity.html',1,'AutoNaJuz::DAL::Migrations']]],
   ['added_5fcar_5frentcost_5',['Added_Car_RentCost',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__RentCost.html',1,'AutoNaJuz::DAL::Migrations']]],
   ['added_5fcarimage_5fcarfeature_6',['Added_CarImage_CarFeature',['../classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__CarImage__CarFeature.html',1,'AutoNaJuz::DAL::Migrations']]],

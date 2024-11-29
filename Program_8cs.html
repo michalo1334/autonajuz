@@ -129,8 +129,8 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa1331cbf43d61a13416346ef45347f6f" id="r_aa1331cbf43d61a13416346ef45347f6f"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#aa1331cbf43d61a13416346ef45347f6f">AddDbContext&lt; AppDbContext &gt;</a> (options=&gt; { options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;), b=&gt; b.EnableRetryOnFailure(5));options.EnableSensitiveDataLogging();options.EnableDetailedErrors();})</td></tr>
-<tr class="separator:aa1331cbf43d61a13416346ef45347f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ff3404c4f46b5a885a9bdcf287d6978" id="r_a6ff3404c4f46b5a885a9bdcf287d6978"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a6ff3404c4f46b5a885a9bdcf287d6978">AddDbContext&lt; AppDbContext &gt;</a> (options=&gt; { options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;), b=&gt; b.EnableRetryOnFailure(10, TimeSpan.FromSeconds(3), null));options.EnableSensitiveDataLogging();options.EnableDetailedErrors();})</td></tr>
+<tr class="separator:a6ff3404c4f46b5a885a9bdcf287d6978"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ed2027617464b5b770cacd3ec2f0eaa" id="r_a6ed2027617464b5b770cacd3ec2f0eaa"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a6ed2027617464b5b770cacd3ec2f0eaa">AddIdentity&lt; User, IdentityRole &gt;</a> (options=&gt; { options.Password.RequireDigit=false;options.Password.RequireLowercase=false;options.Password.RequireUppercase=false;options.Password.RequireNonAlphanumeric=false;options.Password.RequiredLength=1;options.User.RequireUniqueEmail=true;}) .AddEntityFrameworkStores&lt; AppDbContext &gt;()</td></tr>
 <tr class="separator:a6ed2027617464b5b770cacd3ec2f0eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c8105c98dba8898aed452ff99386fa9" id="r_a1c8105c98dba8898aed452ff99386fa9"><td class="memItemLeft" align="right" valign="top">services.&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="Program_8cs.html#a1c8105c98dba8898aed452ff99386fa9">AddControllers</a> () .AddJsonOptions(options</td></tr>
@@ -210,7 +210,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00115">115</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00116">116</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -288,8 +288,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa1331cbf43d61a13416346ef45347f6f" name="aa1331cbf43d61a13416346ef45347f6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1331cbf43d61a13416346ef45347f6f">&#9670;&#160;</a></span>AddDbContext&lt; AppDbContext &gt;()</h2>
+<a id="a6ff3404c4f46b5a885a9bdcf287d6978" name="a6ff3404c4f46b5a885a9bdcf287d6978"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ff3404c4f46b5a885a9bdcf287d6978">&#9670;&#160;</a></span>AddDbContext&lt; AppDbContext &gt;()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -303,7 +303,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">{ options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;), b=&gt; b.EnableRetryOnFailure(5));options.EnableSensitiveDataLogging();options.EnableDetailedErrors();}&#160;</td>
+          <td class="paramtype">{ options.UseSqlServer(builder.Configuration.GetConnectionString(&quot;MsSql&quot;), b=&gt; b.EnableRetryOnFailure(10, TimeSpan.FromSeconds(3), null));options.EnableSensitiveDataLogging();options.EnableDetailedErrors();}&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -570,16 +570,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00126">126</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  127</span>{</div>
-<div class="line"><span class="lineno">  128</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
-<div class="line"><span class="lineno">  129</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
-<div class="line"><span class="lineno">  130</span>    {</div>
-<div class="line"><span class="lineno">  131</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
-<div class="line"><span class="lineno">  132</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  133</span>    });</div>
-<div class="line"><span class="lineno">  134</span>}</div>
-<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00105">Program.cs:105</a></div></div>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00127">127</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  128</span>{</div>
+<div class="line"><span class="lineno">  129</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwagger();</div>
+<div class="line"><span class="lineno">  130</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.UseSwaggerUI(c =&gt;</div>
+<div class="line"><span class="lineno">  131</span>    {</div>
+<div class="line"><span class="lineno">  132</span>        c.SwaggerEndpoint(<span class="stringliteral">&quot;/swagger/v1/swagger.json&quot;</span>, <span class="stringliteral">&quot;My API V1&quot;</span>);</div>
+<div class="line"><span class="lineno">  133</span>        c.ConfigObject.TryItOutEnabled = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  134</span>    });</div>
+<div class="line"><span class="lineno">  135</span>}</div>
+<div class="ttc" id="aProgram_8cs_html_a7b225fcb720e4d5ed2bbf60e28a25e6d"><div class="ttname"><a href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a></div><div class="ttdeci">var app</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00106">Program.cs:106</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -615,14 +615,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00149">149</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  150</span>{</div>
-<div class="line"><span class="lineno">  151</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
-<div class="line"><span class="lineno">  152</span>    {</div>
-<div class="line"><span class="lineno">  153</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
-<div class="line"><span class="lineno">  154</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
-<div class="line"><span class="lineno">  155</span>    });</div>
-<div class="line"><span class="lineno">  156</span>}</div>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00150">150</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  151</span>{</div>
+<div class="line"><span class="lineno">  152</span>    <a class="code hl_variable" href="Program_8cs.html#a7b225fcb720e4d5ed2bbf60e28a25e6d">app</a>.MapGet(<span class="stringliteral">&quot;/&quot;</span>, async context =&gt;</div>
+<div class="line"><span class="lineno">  153</span>    {</div>
+<div class="line"><span class="lineno">  154</span>        context.Response.ContentType = <span class="stringliteral">&quot;text/html&quot;</span>;</div>
+<div class="line"><span class="lineno">  155</span>        await context.Response.SendFileAsync(<span class="stringliteral">&quot;wwwroot/simple_ui.html&quot;</span>);</div>
+<div class="line"><span class="lineno">  156</span>    });</div>
+<div class="line"><span class="lineno">  157</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -760,7 +760,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00105">105</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00106">106</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -776,7 +776,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00119">119</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00120">120</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -808,7 +808,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00147">147</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00148">148</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
@@ -840,7 +840,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00087">87</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Program_8cs_source.html#l00088">88</a> of file <a class="el" href="Program_8cs_source.html">Program.cs</a>.</p>
 
 </div>
 </div>
