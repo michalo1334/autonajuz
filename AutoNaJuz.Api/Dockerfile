@@ -14,6 +14,10 @@ WORKDIR /src
 # Declare build arguments
 ARG configuration=Release
 ARG DEV_API_URL
+ARG COMMIT_HASH
+ARG VERSION_MAJOR
+ARG VERSION_MINOR
+ARG VERSION_PATCH
 
 # Pass build arguments as environment variables
 ENV DOTNET_BUILD_CONFIGURATION=$configuration
@@ -30,7 +34,10 @@ WORKDIR "/src/AutoNaJuz.Api"
 RUN sed -i "s|const API_URL = '.*';|const API_URL = '${DEV_API_URL}';|" ./wwwroot/js/app.js
 
 RUN sed -i "s|const COMMIT_HASH = '.*';|const COMMIT_HASH = '${COMMIT_HASH}';|" ./wwwroot/js/app.js
-RUN sed -i "s|const COMMIT_NAME = '.*';|const COMMIT_NAME = '${COMMIT_NAME}';|" ./wwwroot/js/app.js
+
+RUN sed -i "s|const V_MAJOR = '.*';|const V_MAJOR = '${VERSION_MAJOR}';|" ./wwwroot/js/app.js
+RUN sed -i "s|const V_MINOR = '.*';|const V_MINOR = '${VERSION_MINOR}';|" ./wwwroot/js/app.js
+RUN sed -i "s|const V_PATCH = '.*';|const V_PATCH = '${VERSION_PATCH}';|" ./wwwroot/js/app.js
 
 # Build the project
 RUN dotnet build "AutoNaJuz.Api.csproj" -c ${configuration} -o /app/build
