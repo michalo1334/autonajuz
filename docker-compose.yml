@@ -39,8 +39,6 @@ services:
     depends_on:
       sqlserver:
         condition: service_healthy
-    volumes:
-      - ${DEV_VSDBG_VOLUME}
     profiles:
       - dev
       - prod
@@ -58,8 +56,6 @@ services:
       - COMMIT_HASH=${COMMIT_HASH}
     depends_on:
       - autonajuzapi
-    volumes:
-      - ${DEV_VSDBG_VOLUME}
     profiles:
       - dev
       - prod
