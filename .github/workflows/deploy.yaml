@@ -84,7 +84,7 @@ jobs:
           echo "VERSION_MAJOR=${VERSION_MAJOR}" >> $GITHUB_ENV
           echo "VERSION_MINOR=${VERSION_MINOR}" >> $GITHUB_ENV
           echo "VERSION_PATCH=${VERSION_PATCH}" >> $GITHUB_ENV
-          echo "ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}" >> $GITHUB_ENV
+          echo "ASPNETCORE_ENVIRONMENT=Development" >> $GITHUB_ENV
 
       - name: Debug Environment Variables
         run: |
@@ -156,7 +156,6 @@ jobs:
           username: ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}
           key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
           script: |
-            set -x  # Enable debugging
             cd /app
             set -a
             source .env_build
