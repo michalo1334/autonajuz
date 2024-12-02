@@ -1,6 +1,4 @@
 # docker-compose.yml
-version: '3.8'
-
 services:
 
   sqlserver:
@@ -27,7 +25,7 @@ services:
       - prod
 
   autonajuzapi:
-    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-api:${DEV_DOCKER_CONFIGURATION,,}
+    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-api:${LOWER_DEV_DOCKER_CONFIGURATION}
     container_name: autonajuzapi
     networks:
       - app-network
@@ -35,7 +33,6 @@ services:
       - ASPNETCORE_URLS=http://+:3123
       - ConnectionStrings__MsSql=Server=sqlserver,1433;Database=appDb;User Id=sa;Password=${SA_PASSWORD};TrustServerCertificate=true;
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
-      - COMMIT_NAME=${COMMIT_NAME}
       - COMMIT_HASH=${COMMIT_HASH}
     depends_on:
       sqlserver:
@@ -45,7 +42,7 @@ services:
       - prod
 
   autonajuzweb:
-    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-web:${DEV_DOCKER_CONFIGURATION,,}
+    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-web:${LOWER_DEV_DOCKER_CONFIGURATION}
     container_name: autonajuzweb
     networks:
       - app-network
@@ -53,7 +50,6 @@ services:
       - ASPNETCORE_URLS=http://+:2123
       - API_BASE_URL=${DEV_API_URL}
       - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
-      - COMMIT_NAME=${COMMIT_NAME}
       - COMMIT_HASH=${COMMIT_HASH}
     depends_on:
       - autonajuzapi
@@ -88,7 +84,7 @@ services:
       - certbot-var:/var/lib/letsencrypt
     depends_on:
       - nginx
-    command: certonly --webroot --webroot-path=/var/www/html --email michaloworks-domain-cert.frivolous189@aleeas.com --agree-tos --no-eff-email -d dev.michalo.works -d api.dev.michalo.works
+    command: certonly --webroot --webroot-path=/var/www/html --email your-email@example.com --agree-tos --no-eff-email -d dev.michalo.works -d api.dev.michalo.works
     networks:
       - app-network
     profiles:
