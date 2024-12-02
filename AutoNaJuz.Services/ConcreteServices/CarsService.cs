@@ -1,8 +1,10 @@
+using System.Globalization;
 using System.Linq.Expressions;
 using AutoMapper;
 using AutoNaJuz.DAL.Data;
 using AutoNaJuz.Model.Car;
 using AutoNaJuz.Services.Interfaces;
+using AutoNaJuz.Services.Pagination;
 using AutoNaJuz.ViewModels.Car;
 using AutoNaJuz.ViewModels.Image;
 using Microsoft.EntityFrameworkCore;
@@ -171,13 +173,10 @@ public class CarsService(
             .Include(c => c.Images)
             .AsQueryable();
         
-        if (!string.IsNullOrWhiteSpace(search)) 
-            query = query.Where(c => c.Title.Contains(search));
-        
         if (onlyAvailable == true)
             query = query.Where(c => c.Rentals.All(r => r.To < availableFrom || r.From > availableTo));
         
-        return (await query
+        var results = (await query
                 .Select(e => new
                 {
                     e.Id,
@@ -207,8 +206,20 @@ public class CarsService(
                 c.Images.Select(i => i.Id).ToList(),
                 c.Features.Select(f => new CarFeatureVm(f.Id, f.Title)).ToList()
             ));
-    }
+                
+        if (!string.IsNullOrWhiteSpace(search)) 
+            results = results.Where(c => 
+                c.Title.Contains(search) || 
+                c.Transmission.ToString().Contains(search) ||
+                c.FuelType.ToString().Contains(search) ||
+                c.BodyType.ToString().Contains(search) ||
+                c.DoorCount.ToString().Contains(search) ||
+                c.SeatCount.ToString().Contains(search) ||
+                c.ProductionYear.ToString(CultureInfo.InvariantCulture).Contains(search) ||
+                c.Features.Any(f => f.Title.Contains(search)));
 
+        return results;
+    }
     public async Task<GetCarVm?> GetById(int id)
     {
         return (await GetAll(e => e.Id == id)).FirstOrDefault();
