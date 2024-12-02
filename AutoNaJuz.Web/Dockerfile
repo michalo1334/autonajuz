@@ -1,5 +1,7 @@
 # AutoNaJuzWeb/Dockerfile
 
+# AutoNaJuzWeb/Dockerfile
+
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 EXPOSE 2123
@@ -36,7 +38,6 @@ WORKDIR "/src/AutoNaJuz.Web"
 RUN sed -i "s|const API_URL = '.*';|const API_URL = '${DEV_API_URL}';|" wwwroot/apiUrls.js
 
 RUN sed -i "s|const COMMIT_HASH = '.*';|const COMMIT_HASH = '${COMMIT_HASH}';|" ./wwwroot/apiUrls.js
-RUN sed -i "s|const COMMIT_NAME = '.*';|const COMMIT_NAME = '${COMMIT_NAME}';|" ./wwwroot/apiUrls.js
 
 # Build the project
 RUN dotnet build "AutoNaJuz.Web.csproj" -c ${configuration} -o /app/build
