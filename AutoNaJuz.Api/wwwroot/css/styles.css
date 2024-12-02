@@ -16,6 +16,16 @@ header h1 {
     margin: 0;
 }
 
+header h2 {
+    text-align: center;
+    margin: 0;
+}
+
+header h6 {
+    text-align: center;
+    margin: 0;
+}
+
 nav ul {
     display: flex;
     justify-content: center;
