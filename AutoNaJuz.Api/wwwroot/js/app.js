@@ -8,12 +8,6 @@ const V_MAJOR = '';
 const V_MINOR = '';
 const V_PATCH = '';
 
-const COMMIT_HASH = '';
-const COMMIT_NAME = '';
-const V_MAJOR = '';
-const V_MINOR = '';
-const V_PATCH = '';
-
 document.addEventListener('DOMContentLoaded', () => {
     setupNavigation();
     loadCars(); // Default view
