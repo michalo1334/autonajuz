@@ -20,11 +20,11 @@ ARG DEV_API_URL
 # Pass build arguments as environment variables
 ENV DOTNET_BUILD_CONFIGURATION=$configuration
 
-# Install Node.js (version 22.x)
-RUN apt-get update && \
-    apt-get install -y curl gnupg && \
-    curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
-    apt-get install -y nodejs
+# # Install Node.js (version 22.x)
+# RUN apt-get update && \
+#     apt-get install -y curl gnupg && \
+#     curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
+#     apt-get install -y nodejs
 
 # Copy and restore as distinct layers
 COPY ["AutoNaJuz.Web/AutoNaJuz.Web.csproj", "AutoNaJuz.Web/"]
@@ -43,7 +43,7 @@ RUN sed -i "s|const COMMIT_HASH = '.*';|const COMMIT_HASH = '${COMMIT_HASH}';|" 
 RUN dotnet build "AutoNaJuz.Web.csproj" -c ${configuration} -o /app/build
 
 # Install npm dependencies
-RUN npm install
+# RUN npm install
 
 FROM build AS publish
 # Use the same build argument for publishing
