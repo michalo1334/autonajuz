@@ -8,6 +8,11 @@ body {
 	padding: 0;
 	position: relative;
 	color: #333;
+	background-image: url(/Img/photo1.webp);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed; /* Tło będzie się trzymać stałego położenia */
 }
 
 body::before {
@@ -21,6 +26,7 @@ body::before {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+	background-attachment: fixed; /* Dodanie tej właściwości */
 	z-index: -1;
 }
 
@@ -32,14 +38,33 @@ header {
 
 header img {
 	max-width: 200px;
+	width: 100%;
 }
 
 main {
-	width: 1200px;
-	height: 80vh;
+	width: 100%;
+	min-height: 80vh; /* Użyj min-height zamiast height, aby element dostosowywał się do treści */
 	margin: 0 auto;
 	padding: 1rem;
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(255, 255, 255, 0.6);
+	box-sizing: border-box;
+	position: relative;
+	overflow: hidden; /* Ukrycie nadmiaru tła pseudo-elementu */
+}
+
+main::before {
+	content: '';
+	position: fixed; /* Przypięcie do viewportu */
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url(/Img/photo1.webp);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	z-index: -1; /* Warstwa za zawartością main */
+	pointer-events: none; /* Uniemożliwia interakcję z pseudo-elementem */
 }
 
 h2 {
@@ -70,6 +95,7 @@ h2 {
 	background: #fff;
 	cursor: pointer;
 	transition: 0.3s;
+	box-sizing: border-box;
 }
 
 .car-card:hover {
@@ -110,48 +136,66 @@ button:hover {
 }
 
 .modal {
+	display: hidden;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 300px;
-	height: 400px;
-	background: #fff;
+	width: 90%;
+	max-width: 600px;
+	background-color: #fff;
 	border-radius: 8px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 	z-index: 1000;
-	display: hidden;
-}
-
-.modal.hidden {
-	display: none;
+	overflow: hidden;
+	animation: fadeIn 0.3s ease-in-out;
+	padding: 2em;
 }
 
 .modal-content {
-	display: flex;
-	flex-direction: column;
-	height: 100%;
+	box-sizing: border-box;
 }
 
 .modal-top img {
+	display: flex;
+	justify-content: center;
 	width: 100%;
+	max-width: 300px;
 	height: auto;
 	border-radius: 4px;
-}
-.modal-top {
-	height: 50%;
-	padding-bottom: 1em;
-}
-.modal-bottom {
-	width: 100%;
-	padding: 1em;
-	font-weight: bold;
-	font-size: 1.2rem;
-}
-.modal-bottom h3 {
-	text-align: center;
+	margin: 0 auto;
 }
 
+.modal-top {
+	padding-top: 1em;
+	height: 20%;
+}
+
+.modal-bottom {
+	width: 100%;
+	font-weight: bold;
+	padding-top: 5em;
+	padding-bottom: 2em;
+	font-size: 1.2rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.modal-bottom h3 {
+	font-size: 2.4rem;
+	text-align: center;
+	text-transform: uppercase;
+	color: tomato;
+}
+.modal-bottom p {
+	font-size: 1.4rem;
+	padding-top: 1em;
+	margin: 0em 0em 0em 2em;
+	text-transform: uppercase;
+}
+.modal-bottom p span {
+	color: tomato;
+}
 .close-modal {
 	position: absolute;
 	top: 10px;
@@ -162,6 +206,121 @@ button:hover {
 }
 
 .carphoto {
-	width: 200px;
+	width: 100%;
 	height: auto;
+	border-radius: 4px;
+}
+
+#reservation {
+	display: flex;
+	justify-content: center; /* Wyśrodkowanie w poziomie */
+	align-items: center; /* Wyśrodkowanie w pionie */
+	width: 100%;
+	margin-top: 2rem;
+}
+
+#reservation form {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem; /* Odstępy między polami */
+	align-items: center;
+	width: 100%;
+	max-width: 500px;
+}
+
+#reservation input {
+	padding: 0.5rem;
+	font-size: 1.4rem;
+	width: 100%;
+	border-radius: 4px;
+	border: 1px solid #ccc;
+}
+
+.hidden {
+	display: none;
+}
+footer {
+	background-color: rgba(255, 255, 255, 0.8);
+	text-align: center;
+	color: black;
+	padding: 0.5em 0 0.5em 0;
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.pagination button {
+	background-color: #007bff;
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	margin: 0 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.pagination button:hover {
+	background-color: #0056b3;
+}
+
+.pagination .disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+	html {
+		font-size: 50%;
+	}
+
+	#cars {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.car-card {
+		width: 90%;
+		max-width: 300px;
+	}
+
+	#reservation form {
+		width: 100%;
+		padding: 1rem;
+	}
+
+	.modal-content {
+		padding: 1rem;
+	}
+
+	footer {
+		text-align: center;
+		padding: 1rem;
+		font-size: 1.2rem;
+	}
+}
+
+@media (max-width: 480px) {
+	#cars {
+		flex-direction: column;
+	}
+
+	.car-card {
+		width: 100%;
+	}
+
+	#reservation form {
+		width: 100%;
+		padding: 0.5rem;
+	}
+
+	#reservation input {
+		font-size: 1.2rem;
+	}
+
+	footer {
+		font-size: 1rem;
+		padding: 1rem;
+	}
 }
