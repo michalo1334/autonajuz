@@ -84,7 +84,7 @@ jobs:
           echo "VERSION_MAJOR=${VERSION_MAJOR}" >> $GITHUB_ENV
           echo "VERSION_MINOR=${VERSION_MINOR}" >> $GITHUB_ENV
           echo "VERSION_PATCH=${VERSION_PATCH}" >> $GITHUB_ENV
-          echo "ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}" >> $GITHUB_ENV
+          echo "ASPNETCORE_ENVIRONMENT=Development" >> $GITHUB_ENV
 
       - name: Debug Environment Variables
         run: |
@@ -147,26 +147,35 @@ jobs:
           rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" .env_build ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/app/.env_build
           rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" docker-compose.yml ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/app/docker-compose.yml
           rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" nginx/ ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/app/nginx/
-
-      - if: env.RESTART_SERVICES == 'true'
-        name: Deploy to DigitalOcean
-        uses: appleboy/ssh-action@v0.1.6  # Updated to the latest stable version
+      
+      - if: env.COPY_FILES == 'true'
+        name: Pull images
+        uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.DIGITAL_OCEAN_SSH_HOST }}
           username: ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}
           key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
           script: |
-            set -x  # Enable debugging
             cd /app
             set -a
             source .env_build
             set +a
-
-            # Pull latest images
-            if [ "${env.RESTART_SERVICES}" == "true" ]; then
-              docker pull registry.digitalocean.com/auto-na-juz/auto-na-juz-api:"${LOWER_DEV_DOCKER_CONFIGURATION}"
-              docker pull registry.digitalocean.com/auto-na-juz/auto-na-juz-web:"${LOWER_DEV_DOCKER_CONFIGURATION}"
-            fi
+            
+            docker pull registry.digitalocean.com/auto-na-juz/auto-na-juz-api:"${LOWER_DEV_DOCKER_CONFIGURATION}"
+            docker pull registry.digitalocean.com/auto-na-juz/auto-na-juz-web:"${LOWER_DEV_DOCKER_CONFIGURATION}"
+            
+      - if: env.RESTART_SERVICES == 'true'
+        name: Pull images
+        uses: appleboy/ssh-action@v0.1.6 
+        with:
+          host: ${{ secrets.DIGITAL_OCEAN_SSH_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
+          script: |
+            cd /app
+            set -a
+            source .env_build
+            set +a
             
             # Stop the specific services
             docker compose stop autonajuzapi autonajuzweb

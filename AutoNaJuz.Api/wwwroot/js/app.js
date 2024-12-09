@@ -1,6 +1,6 @@
 // app.js remains largely the same with an addition for the Images navigation
 
-const API_URL = 'https://localhost:3123/api'
+const API_URL = 'https://localhost:3123/api';
 
 const COMMIT_HASH = ''
 const COMMIT_NAME = ''
