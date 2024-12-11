@@ -485,7 +485,9 @@ async function sendRenterInfo(userData) {
 			},
 			body: JSON.stringify({
 				id: 0,
-				fullname: userData.name,
+				fullName: userData.name,
+				phone: userData.phone,
+				email: userData.email,
 			}),
 		})
 
