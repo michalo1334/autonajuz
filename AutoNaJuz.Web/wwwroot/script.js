@@ -354,17 +354,22 @@ sortFilter.addEventListener('change', () => {
 // Funkcja wysyłająca dane rezerwacji na serwer (API)
 async function sendReservationEmail(userData, carData) {
 	const emailData = {
-		name: userData.name,
-		email: userData.email,
-		phone: userData.phone,
-		carTitle: carData.title,
-		rentStartDate: userData.startDate,
-		rentEndDate: userData.endDate,
-		totalPrice: userData.totalPrice,
+		to: userData.email,
+		subject: 'Potwierdzenie rezerwacji samochodu',
+		message: `Dziękujemy za rezerwację samochodu ${carData.title} w naszym serwisie. Poniżej znajdziesz szczegóły rezerwacji:
+		<ul>
+			<li>Imię i nazwisko: ${userData.name}</li>
+			<li>E-mail: ${userData.email}</li>
+			<li>Telefon: ${userData.phone}</li>
+			<li>Samochód: ${carData.title}</li>
+			<li>Data rozpoczęcia: ${userData.startDate}</li>
+			<li>Data zakończenia: ${userData.endDate}</li>
+			<li>Cena całkowita: ${userData.totalPrice}</li>
+		</ul>`,
 	}
 
 	try {
-		const response = await fetch('/api/Emails/send', {
+		const response = await fetch(`${API_URL}/Emails/send`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
