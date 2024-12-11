@@ -464,17 +464,56 @@ userInfoForm.addEventListener('submit', async function (e) {
 		startDate: globalStartDate,
 		endDate: globalEndDate,
 		totalPrice: rentalCost,
+		// Możesz dodać więcej danych np. adres, PESEL, numer prawa jazdy itp.
 	}
 
 	// Wysyłanie danych użytkownika na endpoint /api/RenterInfos
 	await sendRenterInfo(userData)
 
-	// Wysyłanie rezerwacji na endpoint /api/cars/{carId}/rent
+	// Inne funkcje, np. wysyłanie rezerwacji
 	await sendCarReservation(window.selectedCar.id, userData)
 
-	// Wysłanie potwierdzenia e-mail (opcjonalne)
+	// Potwierdzenie rezerwacji na e-mail
 	await sendReservationEmail(userData, window.selectedCar)
 })
+async function sendRenterInfo(userData) {
+	try {
+		const response = await fetch('/api/RenterInfos', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				id: 0,
+				drivingLicenseIdent: userData.licenseId || '', // Przykład - jeśli użytkownik posiada numer prawa jazdy
+				pesel: userData.pesel || '', // Przykład - jeżeli potrzebujesz numer PESEL
+				birthDate: new Date().toISOString(), // Tutaj np. data urodzenia
+				firstName: userData.name,
+				lastName: userData.lastName,
+				street: userData.address || '', // Adres użytkownika
+				buildingNumber: userData.buildingNumber || '',
+				apartmentNumber: userData.apartmentNumber || '',
+				city: userData.city || '',
+				postalCode: userData.postalCode || '',
+			}),
+		})
+
+		if (!response.ok) {
+			const errorText = await response.text()
+			throw new Error(`Błąd przy wysyłaniu danych użytkownika: ${errorText}`)
+		}
+
+		const responseData = await response.json()
+		if (responseData.success) {
+			console.log('Dane użytkownika zostały pomyślnie zapisane.')
+		} else {
+			alert('Wystąpił problem podczas zapisywania danych użytkownika.')
+		}
+	} catch (error) {
+		console.error('Błąd API:', error)
+		alert('Wystąpił problem. Spróbuj ponownie później.')
+	}
+}
 
 document.addEventListener('DOMContentLoaded', () => {
 	setMinDate(startDateInput)
@@ -482,5 +521,3 @@ document.addEventListener('DOMContentLoaded', () => {
 	fetchCarsAndFilters()
 	updateTotalCost() // Wywołanie funkcji przy inicjalizacji, by sprawdzić daty i zablokować przycisk
 })
-console.log('User data:', userData)
-console.log('Car data:', carData)
