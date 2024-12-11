@@ -14,36 +14,34 @@
     </header>
 
     <main>
-        <section id="reservation">
-            <h2>Rezerwacja Samochodu</h2>
-            <form id="reservation-form">
-                <label for="start-date">Data rozpoczęcia:</label>
-                <input type="date" id="start-date" required>
-
-                <label for="end-date">Data zakończenia:</label>
-                <input type="date" id="end-date" required>
-
-                <button type="submit">Zarezerwuj</button>
-            </form>
-        </section>
-
         <section id="car-list">
             <h2>Dostępne Samochody</h2>
             <label class="filter-label">Filtruj według kategorii:</label>
             <select class="filter" id="filter">
                 <option value="all">Wszystkie</option>
             </select>
+            <label class="filter-label">Sortuj według:</label>
+            <select class="filter" id="sort-filter">
+                <option value="name-asc">Nazwa A-Z</option>
+                <option value="name-desc">Nazwa Z-A</option>
+                <option value="price-asc">Cena rosnąco</option>
+                <option value="price-desc">Cena malejąco</option>
+            </select>
+
             <div id="cars">
                 <!-- Lista samochodów generowana dynamicznie -->
+            </div>
+            <div id="pagination" class="pagination">
+                <!-- Przyciski paginacji zostaną dodane dynamicznie za pomocą JavaScript -->
             </div>
         </section>
     </main>
 
     <footer>
-        <p class="footer">&copy; 2024 AutoNaJuż. Wszystkie prawa zastrzeżone.</p>
+        <p class="footer" id="footer">&copy; 2024 AutoNaJuż. Wszystkie prawa zastrzeżone.</p>
     </footer>
 
-    <!-- Modal -->
+    <!-- Modal 1: Rezerwacja samochodu -->
     <div id="car-modal" class="modal hidden">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -52,15 +50,68 @@
             </div>
             <div class="modal-bottom">
                 <h3 id="modal-car-title">Tytuł</h3>
-                <p id="modal-car-transmission">Skrzynia: </p>
-                <p id="modal-car-seats">Miejsca: </p>
-                <p id="modal-car-doors">Drzwi: </p>
-                <p id="modal-car-fuel">Paliwo: </p>
-                <p id="modal-car-year">Rok produkcji: </p>
-
+                <p id="modal-car-transmission"><strong>Skrzynia:</strong> Automatyczna</p>
+                <p id="modal-car-seats"><strong>Miejsca:</strong> 5</p>
+                <p id="modal-car-doors"><strong>Drzwi:</strong> 4</p>
+                <p id="modal-car-fuel"><strong>Paliwo:</strong> Benzyna</p>
+                <p id="modal-car-year"><strong>Rok produkcji:</strong> 2022</p>
+                <p id="modal-price-day"><strong>Cena za dobę:</strong> 150 zł</p>
             </div>
+            <section id="reservation">
+                <form id="reservation-form">
+                    <label for="start-date">Data rozpoczęcia rezerwacji:</label>
+                    <input type="date" id="start-date" required>
+                    <label for="end-date">Data zakończenia rezerwacji:</label>
+                    <input type="date" id="end-date" required>
+                    <p id="date-error" style="color: red;"></p>
+                    <label id="total-cost-label"><strong>Koszt wynajmu:</strong> <span id="total-cost">0
+                            zł</span></label>
+                    <button type="submit" id="reserve-button">Zarezerwuj</button>
+                </form>
+            </section>
         </div>
     </div>
+
+    <!-- Modal 2: Dane użytkownika -->
+    <div id="user-info-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Dane użytkownika</h3>
+            <form id="user-info-form">
+                <label for="name">Imię i nazwisko:</label>
+                <input type="text" id="name" placeholder="Wprowadź imię i nazwisko" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Wprowadź email" required>
+
+                <label for="phone">Telefon:</label>
+                <input type="tel" id="phone" placeholder="Wprowadź numer telefonu" required>
+
+                <label for="total-price">Koszt wynajmu:</label>
+                <input type="text" id="total-price" readonly>
+
+                <!-- Checkboxy potwierdzeń -->
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="age-confirmation" required>
+                        Potwierdzam, że ukończyłem 18 lat
+                    </label>
+                </div>
+
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" id="rodo-confirmation" required>
+                        Zapoznałem się z <a href="regulamin.html">regulaminem
+                            RODO</a>
+                    </label>
+                </div>
+
+                <button type="submit">Potwierdź</button>
+            </form>
+        </div>
+    </div>
+
+
 
     <script src="script.js"></script>
     <script src="apiUrls.js"></script>

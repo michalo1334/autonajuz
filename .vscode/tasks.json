@@ -4,7 +4,7 @@
         {
             "label": "docker-compose: sqlserver",
             "type": "shell",
-            "command": " docker compose -f docker-compose.yml -f docker-compose.dev.yml  --profile debug-nodocker up -d",
+            "command": " docker compose -f docker-compose.yml --profile dev-local up -d",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
@@ -13,7 +13,7 @@
         {
             "label": "docker-compose: debug",
             "type": "shell",
-            "command": "docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug up -d --force-recreate --no-deps autonajuzapi autonajuzweb",
+            "command": "docker compose -f docker-compose.yml --profile debug up -d --force-recreate --no-deps autonajuzapi autonajuzweb",
             "options": {
                 "cwd": "${workspaceFolder}"
             },

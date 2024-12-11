@@ -1,17 +1,30 @@
-name: Deploy to DigitalOcean DEV
+# .github/workflows/deploy.yml
+
+name: Deploy Web & API to DigitalOcean (DEV)
+
+
 on:
   push:
     branches:
       - 'dev'
   workflow_dispatch:
-    inputs: 
-      build_and_push_docker_images:
-        description: 'Build and push Docker images'
-        type: choice
-        options:
-          - 'true'
-          - 'false'
-        default: 'true'
+    inputs:
+      api_docker:
+        description: 'Build and push API Image'
+        type: boolean
+        default: true
+      web_docker:
+        description: 'Build and push Web Image'
+        type: boolean
+        default: true
+      copy_files_to_remote:
+        description: 'Copy files to remote server'
+        type: boolean
+        default: true
+      restart_services:
+        description: 'Restart services on remote server'
+        type: boolean
+        default: true
 
 jobs:
   deploy:
@@ -20,57 +33,160 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Docker Build
-        uses: docker/setup-buildx-action@v1
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Set up .env_build file from repository
+        run: |
+          if [ ! -f .env_build ]; then
+            echo ".env_build file not found in the repository. Exiting."
+            exit 1
+          fi
+
+      - name: Set up VERSION file from repository
+        run: |
+          if [ ! -f VERSION ]; then
+              echo "VERSION file not found in the repository. Exiting."
+              exit 1
+          fi 
+
+      - name: Inject sensitive variables into .env_build
+        run: |
+          echo "SA_PASSWORD=${{ secrets.SA_PASSWORD }}" >> .env_build
+
+      - name: Set environment variables based on trigger type
+        id: set_vars
+        run: |
+          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
+            echo "Triggered by workflow_dispatch"
+            echo "BUILD_WEB=${{ github.event.inputs.web_docker }}" >> $GITHUB_ENV
+            echo "BUILD_API=${{ github.event.inputs.api_docker }}" >> $GITHUB_ENV
+            echo "COPY_FILES=${{ github.event.inputs.copy_files_to_remote }}" >> $GITHUB_ENV
+            echo "RESTART_SERVICES=${{ github.event.inputs.restart_services }}" >> $GITHUB_ENV
+          else
+            echo "Triggered by push"
+            echo "BUILD_WEB=true" >> $GITHUB_ENV
+            echo "BUILD_API=true" >> $GITHUB_ENV
+            echo "COPY_FILES=true" >> $GITHUB_ENV
+            echo "RESTART_SERVICES=true" >> $GITHUB_ENV
+          fi
+
+      - name: Export environment variables from .env_build
+        run: |
+          set -a
+          source .env_build
+          source VERSION
+          set +a
+          
+          echo "DEV_DOCKER_CONFIGURATION=${DEV_DOCKER_CONFIGURATION}" >> $GITHUB_ENV
+          echo "DEV_API_URL=${DEV_API_URL}" >> $GITHUB_ENV
+          echo "COMMIT_HASH=${GITHUB_SHA}" >> $GITHUB_ENV
+          echo "VERSION_MAJOR=${VERSION_MAJOR}" >> $GITHUB_ENV
+          echo "VERSION_MINOR=${VERSION_MINOR}" >> $GITHUB_ENV
+          echo "VERSION_PATCH=${VERSION_PATCH}" >> $GITHUB_ENV
+          echo "ASPNETCORE_ENVIRONMENT=Development" >> $GITHUB_ENV
+
+      - name: Debug Environment Variables
+        run: |
+          echo "DEV_DOCKER_CONFIGURATION=${DEV_DOCKER_CONFIGURATION}"
+          echo "DEV_API_URL=${DEV_API_URL}"
+          echo "COMMIT_HASH=${COMMIT_HASH}"
+          echo "VERSION_MAJOR=${VERSION_MAJOR}"
+          echo "VERSION_MINOR=${VERSION_MINOR}"
+          echo "VERSION_PATCH=${VERSION_PATCH}"
+          echo "ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}"
+          echo "LOWER_DEV_DOCKER_CONFIGURATION=${LOWER_DEV_DOCKER_CONFIGURATION}"
+
+      - name: Set lowercase Docker configuration
+        run: |
+          LOWER_DEV_DOCKER_CONFIGURATION=$(echo "${DEV_DOCKER_CONFIGURATION}" | tr '[:upper:]' '[:lower:]')
+          echo "LOWER_DEV_DOCKER_CONFIGURATION=${LOWER_DEV_DOCKER_CONFIGURATION}" >> $GITHUB_ENV
+
+      - name: Append additional variables to .env_build
+        run: |
+          echo "ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}" >> .env_build
+          echo "COMMIT_HASH=${COMMIT_HASH}" >> .env_build
+          echo "LOWER_DEV_DOCKER_CONFIGURATION=${LOWER_DEV_DOCKER_CONFIGURATION}" >> .env_build
 
       - name: Login to DigitalOcean Container Registry
         run: echo "${{ secrets.DIGITAL_OCEAN_DOCKER_TOKEN }}" | docker login registry.digitalocean.com -u ${{ secrets.DIGITAL_OCEAN_USERNAME }} --password-stdin
 
-      - if: ${{ github.event.inputs.build_and_push_docker_images == 'true' }}
-        name: Build and push Docker images
+      - if: env.BUILD_WEB == 'true'
+        name: Build and push AutoNaJuzWeb Docker Image
         run: |
-          docker build . --no-cache -f ./AutoNaJuz.Api/Dockerfile -t registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
-          docker build . --no-cache -f ./AutoNaJuz.Web/Dockerfile -t registry.digitalocean.com/auto-na-juz/auto-na-juz-web:debug
-          docker push registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
-          docker push registry.digitalocean.com/auto-na-juz/auto-na-juz-web:debug
-          
+          docker buildx build . \
+            -f ./AutoNaJuz.Web/Dockerfile \
+            --build-arg configuration="${DEV_DOCKER_CONFIGURATION}" \
+            --build-arg DEV_API_URL="${DEV_API_URL}" \
+            -t registry.digitalocean.com/auto-na-juz/auto-na-juz-web:"${LOWER_DEV_DOCKER_CONFIGURATION}" \
+            --push
+
+      - if: env.BUILD_API == 'true'
+        name: Build and push AutoNaJuzApi Docker Image
+        run: |
+          set -x
+          docker buildx build . \
+            -f ./AutoNaJuz.Api/Dockerfile \
+            --build-arg configuration="${DEV_DOCKER_CONFIGURATION}" \
+            --build-arg DEV_API_URL="${DEV_API_URL}" \
+            --build-arg COMMIT_HASH="${COMMIT_HASH}" \
+            --build-arg VERSION_MAJOR="${VERSION_MAJOR}" \
+            --build-arg VERSION_MINOR="${VERSION_MINOR}" \
+            --build-arg VERSION_PATCH="${VERSION_PATCH}" \
+            -t registry.digitalocean.com/auto-na-juz/auto-na-juz-api:"${LOWER_DEV_DOCKER_CONFIGURATION}" \
+            --push
+
       - name: Set up SSH for rsync
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          # Add DigitalOcean host to known_hosts to prevent host key verification
-          ssh-keyscan -H ${{ secrets.DIGITAL_OCEAN_SSH_HOST }} >> ~/.ssh/known_hosts
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
 
-      - name: Copy nginx and docker-compose.dev directories
+      - if: env.COPY_FILES == 'true'
+        name: Copy files to remote server
         run: |
-          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" ./nginx/ ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/tmp/nginx/
-          rsync -avz -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=yes" ./docker-compose.dev/ ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/tmp/docker-compose.dev/
-
-      - name: Deploy to DigitalOcean
-        uses: appleboy/ssh-action@master
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" .env_build ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/app/.env_build
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" docker-compose.yml ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/app/docker-compose.yml
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" nginx/ ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}@${{ secrets.DIGITAL_OCEAN_SSH_HOST }}:/app/nginx/
+      
+      - if: env.COPY_FILES == 'true'
+        name: Pull images
+        uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.DIGITAL_OCEAN_SSH_HOST }}
           username: ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}
           key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
           script: |
-            # Ensure /app directory exists
-              mkdir -p /app
-
-            # Move nginx/ directory to /app/nginx
-            # sudo mv /tmp/nginx /app/nginx
-
-            # Move docker-compose.dev files to /app
-              sudo mv /tmp/docker-compose.dev/* /app/
-              sudo rm -rf /tmp/docker-compose.dev
+            cd /app
+            set -a
+            source .env_build
+            set +a
             
-            cd ~/app
-            # Pull the latest images
-              docker compose pull
-      
-            # Stop and remove only the API and web containers
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml stop autonajuzapi autonajuzweb
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml rm --force autonajuzapi autonajuzweb
-      
-            # Recreate the API and web containers with the latest images
-              docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile debug up -d --no-deps --force-recreate autonajuzapi autonajuzweb
+            docker pull registry.digitalocean.com/auto-na-juz/auto-na-juz-api:"${LOWER_DEV_DOCKER_CONFIGURATION}"
+            docker pull registry.digitalocean.com/auto-na-juz/auto-na-juz-web:"${LOWER_DEV_DOCKER_CONFIGURATION}"
+            
+      - if: env.RESTART_SERVICES == 'true'
+        name: Pull images
+        uses: appleboy/ssh-action@v0.1.6 
+        with:
+          host: ${{ secrets.DIGITAL_OCEAN_SSH_HOST }}
+          username: ${{ secrets.DIGITAL_OCEAN_SSH_USERNAME }}
+          key: ${{ secrets.DIGITAL_OCEAN_SSH_PRIVATE_KEY }}
+          script: |
+            cd /app
+            set -a
+            source .env_build
+            set +a
+            
+            # Stop the specific services
+            docker compose stop autonajuzapi autonajuzweb
+
+            # Remove the specific containers
+            docker compose rm -f autonajuzapi autonajuzweb
+            
+            # Start the services with the new images
+            docker compose up -d --no-deps --force-recreate autonajuzapi autonajuzweb
+
+            # Restart NGINX
+            docker compose restart nginx
+
+            echo "Deployment completed successfully."

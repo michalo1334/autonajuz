@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using AutoNaJuz.Services.Interfaces;
+using AutoNaJuz.Services.Pagination;
 using AutoNaJuz.ViewModels.Car;
 using AutoNaJuz.ViewModels.CarRental;
 using AutoNaJuz.ViewModels.Image;
@@ -27,6 +28,28 @@ public class CarsController(
             availableFrom,
             availableTo);
         return Ok(cars);
+    }
+    
+    [HttpGet("paginated")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<Paginated<GetCarVm>>> GetAllPaginated(
+        int? pageIndex,
+        int? pageSize,
+        string? search,
+        bool? onlyAvailable,
+        DateTime? availableFrom,
+        DateTime? availableTo)
+    {
+        var cars = await carsService.GetAll(
+            search,
+            onlyAvailable,
+            availableFrom,
+            availableTo);
+
+        var getCarVms = cars.ToList();
+        
+        var paginated = getCarVms.Paginate(pageIndex ?? 1, pageSize ?? getCarVms.Count);
+        return Ok(paginated);
     }
     
     [HttpGet("{id}")]

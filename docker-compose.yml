@@ -1,40 +1,17 @@
-version: '3.8'
-
+# docker-compose.yml
 services:
-  autonajuzapi:
-    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
-    container_name: autonajuzapi
-    build:
-      context: .
-      dockerfile: AutoNaJuz.Api/Dockerfile
-    networks:
-      - app-network
-    environment:
-      - ASPNETCORE_URLS=http://+:3123
-      - ConnectionStrings__MsSql=Server=sqlserver,1433;Database=appDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=true;
-    depends_on:
-      - sqlserver
-
-  autonajuzweb:
-    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-api:debug
-    container_name: autonajuzweb
-    build:
-      context: .
-      dockerfile: AutoNaJuz.Web/Dockerfile
-    networks:
-      - app-network
-    environment:
-      - ASPNETCORE_URLS=http://+:2123
-      - API_BASE_URL=https://api.dev.michalo.works
-    depends_on:
-      - autonajuzapi
 
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: sqlserver
     environment:
-      - SA_PASSWORD=YourStrong!Passw0rd
+      - SA_PASSWORD=${SA_PASSWORD}
       - ACCEPT_EULA=Y
+    healthcheck:
+      test: [ "CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P ${SA_PASSWORD} -Q 'SELECT 1' -N -C" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     ports:
       - '1433:1433'
     networks:
@@ -42,11 +19,87 @@ services:
     volumes:
       - mssql-data:/var/opt/mssql
     restart: unless-stopped
+    profiles:
+      - dev-local
+      - dev
+      - prod
+
+  autonajuzapi:
+    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-api:${LOWER_DEV_DOCKER_CONFIGURATION}
+    container_name: autonajuzapi
+    networks:
+      - app-network
+    environment:
+      - ASPNETCORE_URLS=http://+:3123
+      - ConnectionStrings__MsSql=Server=sqlserver,1433;Database=appDb;User Id=sa;Password=${SA_PASSWORD};TrustServerCertificate=true;
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - COMMIT_HASH=${COMMIT_HASH}
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    profiles:
+      - dev
+      - prod
+
+  autonajuzweb:
+    image: registry.digitalocean.com/auto-na-juz/auto-na-juz-web:${LOWER_DEV_DOCKER_CONFIGURATION}
+    container_name: autonajuzweb
+    networks:
+      - app-network
+    environment:
+      - ASPNETCORE_URLS=http://+:2123
+      - API_BASE_URL=${DEV_API_URL}
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
+      - COMMIT_HASH=${COMMIT_HASH}
+    depends_on:
+      - autonajuzapi
+    profiles:
+      - dev
+      - prod
+
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - web-root:/var/www/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    networks:
+      - app-network
+    profiles:
+      - dev
+      - prod
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - web-root:/var/www/html
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+    depends_on:
+      - nginx
+    command: certonly --webroot --webroot-path=/var/www/html --email your-email@example.com --agree-tos --no-eff-email -d dev.michalo.works -d api.dev.michalo.works
+    networks:
+      - app-network
+    profiles:
+      - dev
+      - prod
 
 networks:
   app-network:
     name: app-network
+    driver: bridge
+    external: true
 
 volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
   mssql-data:
     driver: local
