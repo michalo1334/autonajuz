@@ -361,9 +361,9 @@ async function sendReservationEmail(userData, carData) {
 			<li>E-mail: ${userData.email}</li>
 			<li>Telefon: ${userData.phone}</li>
 			<li>Samochód: ${carData.title}</li>
-			<li>Data rozpoczęcia: ${userData.startDate}</li>
-			<li>Data zakończenia: ${userData.endDate}</li>
-			<li>Cena całkowita: ${userData.totalPrice}</li>
+			<li>Data rozpoczęcia: ${userData.startDateInput}</li>
+			<li>Data zakończenia: ${userData.endDateInput}</li>
+			<li>Cena całkowita: ${userData.totalPrice} zł</li>
 		</ul>`,
 	}
 
