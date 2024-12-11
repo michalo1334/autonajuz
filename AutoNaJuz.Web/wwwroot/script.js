@@ -424,7 +424,7 @@ async function sendReservationEmail(userData, carData) {
 
 async function sendCarReservation(carId, userData) {
 	try {
-		const response = await fetch(`${API_URL}cars/${carId}/rent`, {
+		const response = await fetch(`${API_URL}/cars/${carId}/rent`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -478,7 +478,7 @@ userInfoForm.addEventListener('submit', async function (e) {
 })
 async function sendRenterInfo(userData) {
 	try {
-		const response = await fetch('/api/RenterInfos', {
+		const response = await fetch(`${API_URL}/RenterInfos`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
