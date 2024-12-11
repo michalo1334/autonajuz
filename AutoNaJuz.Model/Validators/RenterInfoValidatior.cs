@@ -2,18 +2,18 @@ using FluentValidation;
 
 namespace AutoNaJuz.Model.Validators;
 
-public class RenterInfoValidatior : AbstractValidator<RenterInfo>
+public class RenterInfoValidatior : AbstractValidator<RenterInfo.RenterInfo>
 {
     public RenterInfoValidatior()
     {
-        RuleFor(x => x.DriversLicenseIdent)
+        RuleFor(x => x.Phone)
             .NotEmpty()
-            .WithMessage("Drivers license ID is required.");
+            .MaximumLength(20);
 
-        RuleFor(x => x.Pesel)
+        RuleFor(x => x.Email);
+        
+        RuleFor(x => x.FullName)
             .NotEmpty()
-            .WithMessage("PESEL is required.")
-            .Must((info, _) => info.IsPeselValid())
-            .WithMessage("PESEL is invalid.");
+            .MaximumLength(100);
     }
 }

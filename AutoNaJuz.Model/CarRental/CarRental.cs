@@ -62,5 +62,5 @@ public class CarRental
 
     //Navigation properties
     public Car.Car Car { get; set; } = default!;
-    public RenterInfo Renter { get; set; } = default!;
+    public RenterInfo.RenterInfo Renter { get; set; } = default!;
 }

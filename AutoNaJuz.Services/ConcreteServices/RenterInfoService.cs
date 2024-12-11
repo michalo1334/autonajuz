@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 using AutoMapper;
 using AutoNaJuz.DAL.Data;
 using AutoNaJuz.Model;
+using AutoNaJuz.Model.RenterInfo;
 using AutoNaJuz.Services.Interfaces;
 using AutoNaJuz.ViewModels.RenterInfo;
 using Microsoft.EntityFrameworkCore;
@@ -19,30 +20,16 @@ public class RenterInfoService(
                 .Select(e => new
                 {
                     e.Id,
-                    e.FirstName,
-                    e.LastName,
-                    e.BirthDate,
-                    e.DriversLicenseIdent,
-                    e.Pesel,
-                    e.Street,
-                    e.BuildingNumber,
-                    e.ApartmentNumber,
-                    e.PostalCode,
-                    e.City,
+                    e.Phone,
+                    e.Email,
+                    e.FullName
                 })
                 .ToListAsync())
                 .Select(e => new GetRenterInfoVm(
                     e.Id,
-                    e.DriversLicenseIdent,
-                    e.Pesel,
-                    e.BirthDate,
-                    e.FirstName,
-                    e.LastName,
-                    e.Street,
-                    e.BuildingNumber,
-                    e.ApartmentNumber,
-                    e.City,
-                    e.PostalCode
+                    e.Phone,
+                    e.Email,
+                    e.FullName
                 ));
     }
 

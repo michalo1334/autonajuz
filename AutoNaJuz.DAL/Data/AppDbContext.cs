@@ -2,6 +2,7 @@ using AutoNaJuz.Model;
 using AutoNaJuz.Model.Car;
 using AutoNaJuz.Model.CarImage;
 using AutoNaJuz.Model.CarRental;
+using AutoNaJuz.Model.RenterInfo;
 using AutoNaJuz.Model.User;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

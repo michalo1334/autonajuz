@@ -1,5 +1,6 @@
 using System.Linq.Expressions;
 using AutoNaJuz.Model;
+using AutoNaJuz.Model.RenterInfo;
 using AutoNaJuz.ViewModels.RenterInfo;
 
 namespace AutoNaJuz.Services.Interfaces;

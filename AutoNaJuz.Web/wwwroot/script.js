@@ -404,13 +404,8 @@ async function sendReservationEmail(userData, carData) {
 			},
 			body: JSON.stringify(emailData),
 		})
-
-		if (!response.ok) {
-			throw new Error('Błąd podczas wysyłania e-maila!')
-		}
-
-		const responseData = await response.json()
-		if (responseData.success) {
+		
+		if (response.ok) {
 			alert('Rezerwacja została pomyślnie wysłana na e-mail.')
 			closeUserInfoModal() // Zamykamy modal po sukcesie
 		} else {
@@ -424,20 +419,15 @@ async function sendReservationEmail(userData, carData) {
 
 async function sendCarReservation(carId, userData) {
 	try {
-		const response = await fetch(`${API_URL}/api/cars/${carId}/rent`, {
+		const response = await fetch(`${API_URL}/cars/${carId}/rent`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(userData),
 		})
-
-		if (!response.ok) {
-			throw new Error(`Błąd rezerwacji! Status: ${response.status}`)
-		}
-
-		const responseData = await response.json()
-		if (responseData.success) {
+		
+		if (response.ok) {
 			alert('Rezerwacja została pomyślnie wysłana.')
 			closeUserInfoModal() // Zamykamy modal po sukcesie
 		} else {

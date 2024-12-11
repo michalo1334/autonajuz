@@ -1,4 +1,5 @@
 using AutoNaJuz.Model;
+using AutoNaJuz.Model.RenterInfo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,42 +12,15 @@ public class RenterInfoConfiguration : IEntityTypeConfiguration<RenterInfo>
         builder.ToTable("Renter_Infos");
 
         builder.HasKey(e => e.Id);
+        
+        builder.Property(e => e.Phone)
+            .IsRequired()
+            .HasMaxLength(20);
 
-        builder.Property(e => e.DriversLicenseIdent)
+        builder.Property(e => e.Email);
+        
+        builder.Property(e => e.FullName)
+            .IsRequired()
             .HasMaxLength(100);
-
-        builder.Property(e => e.Pesel)
-            .HasMaxLength(11)
-            .IsRequired();
-
-        builder.Property(e => e.BirthDate)
-            .IsRequired();
-
-        builder.Property(e => e.FirstName)
-            .HasMaxLength(50)
-            .IsRequired();
-
-        builder.Property(e => e.LastName)
-            .HasMaxLength(50)
-            .IsRequired();
-
-        builder.Property(e => e.Street)
-            .HasMaxLength(100)
-            .IsRequired();
-
-        builder.Property(e => e.BuildingNumber)
-            .HasMaxLength(10)
-            .IsRequired();
-
-        builder.Property(e => e.ApartmentNumber)
-            .HasMaxLength(10);
-
-        builder.Property(e => e.City)
-            .HasMaxLength(50)
-            .IsRequired();
-
-        builder.Property(e => e.PostalCode)
-            .HasMaxLength(10)
-            .IsRequired();
     }
 }
