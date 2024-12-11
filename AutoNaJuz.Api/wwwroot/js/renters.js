@@ -15,11 +15,9 @@ function loadRenters() {
 
                 row.innerHTML = `
                     <td>${renter.id}</td>
-                    <td>${renter.firstName} ${renter.lastName}</td>
-                    <td>${renter.drivingLicenseIdent}</td>
-                    <td>${renter.pesel}</td>
-                    <td>${new Date(renter.birthDate).toLocaleDateString()}</td>
-                    <td>${renter.street} ${renter.buildingNumber}, ${renter.city}, ${renter.postalCode}</td>
+                    <td>${renter.fullName}</td>
+                    <td>${renter.email}</td>
+                    <td>${renter.phone}</td>
                     <td>
                         <button class="btn" onclick="editRenter(${renter.id})">Edit</button>
                         <button class="btn" onclick="deleteRenter(${renter.id})">Delete</button>
@@ -58,35 +56,14 @@ function openRenterForm(renter = {}) {
 
     const form = document.getElementById('data-form');
     form.innerHTML = `
-        <label>First Name:</label>
-        <input type="text" name="firstName" value="${renter.firstName || ''}" required>
+        <label>Full Name</label>
+        <input type="text" name="fullName" value="${renter.fullName || ''}" required>
 
-        <label>Last Name:</label>
-        <input type="text" name="lastName" value="${renter.lastName || ''}" required>
+        <label>Email:</label>
+        <input type="text" name="email" value="${renter.email || ''}" required>
 
-        <label>Driving License ID:</label>
-        <input type="text" name="drivingLicenseIdent" value="${renter.drivingLicenseIdent || ''}" required>
-
-        <label>PESEL:</label>
-        <input type="text" name="pesel" value="${renter.pesel || ''}" required>
-
-        <label>Birth Date:</label>
-        <input type="date" name="birthDate" value="${renter.birthDate ? renter.birthDate.split('T')[0] : ''}" required>
-
-        <label>Street:</label>
-        <input type="text" name="street" value="${renter.street || ''}">
-
-        <label>Building Number:</label>
-        <input type="text" name="buildingNumber" value="${renter.buildingNumber || ''}">
-
-        <label>Apartment Number:</label>
-        <input type="text" name="apartmentNumber" value="${renter.apartmentNumber || ''}">
-
-        <label>City:</label>
-        <input type="text" name="city" value="${renter.city || ''}">
-
-        <label>Postal Code:</label>
-        <input type="text" name="postalCode" value="${renter.postalCode || ''}">
+        <label>Phone</label>
+        <input type="text" name="phone" value="${renter.phone || ''}" required>
 
         <button type="submit" class="btn">${renter.id ? 'Update Renter' : 'Add Renter'}</button>
         <button type="button" class="btn" onclick="loadRenters()">Cancel</button>
@@ -96,16 +73,9 @@ function openRenterForm(renter = {}) {
         e.preventDefault();
         const formData = new FormData(form);
         const renterData = {
-            firstName: formData.get('firstName'),
-            lastName: formData.get('lastName'),
-            drivingLicenseIdent: formData.get('drivingLicenseIdent'),
-            pesel: formData.get('pesel'),
-            birthDate: formData.get('birthDate'),
-            street: formData.get('street'),
-            buildingNumber: formData.get('buildingNumber'),
-            apartmentNumber: formData.get('apartmentNumber'),
-            city: formData.get('city'),
-            postalCode: formData.get('postalCode'),
+            fullName: formData.get('fullName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
         };
 
         if (renter.id) {
