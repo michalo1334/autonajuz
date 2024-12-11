@@ -23,6 +23,8 @@ const totalPriceInput = document.getElementById('total-price')
 const carsPerPage = 8 // Liczba samochodów na stronie
 let currentPage = 1 // Aktualna strona
 let rentalCost = 0 // Zmienna globalna do przechowywania kosztu wynajmu
+let globalStartDate = null //zmienne do przechowywania dat
+let globalEndDate = null
 
 // Funkcja do wyciągania tylko roku z daty (jeśli data jest w pełnym formacie)
 function getYearFromDate(dateString) {
@@ -96,6 +98,10 @@ function closeModal() {
 	endDateInput.value = ''
 	totalCostLabel.textContent = 'Koszt wynajmu: 0 zł'
 	totalPriceInput.value = '0 zł'
+
+	// Resetowanie globalnych dat
+	globalStartDate = null
+	globalEndDate = null
 
 	// Zablokowanie przycisku rezerwacji
 	reserveButton.disabled = true
@@ -174,8 +180,8 @@ function setMinDate(input) {
 
 // Funkcja aktualizująca minimalną datę zakończenia na podstawie daty rozpoczęcia
 function updateMinEndDate() {
-	if (startDateInput.value) {
-		endDateInput.min = startDateInput.value
+	if (globalStartDate) {
+		endDateInput.min = globalStartDate
 	}
 }
 
@@ -192,8 +198,12 @@ function updateTotalCost() {
 	const startDate = startDateInput.value.trim()
 	const endDate = endDateInput.value.trim()
 
+	// Aktualizacja zmiennych globalnych
+	globalStartDate = startDate || null
+	globalEndDate = endDate || null
+
 	// Sprawdzenie, czy obie daty są wprowadzone
-	if (!startDate || !endDate) {
+	if (!globalStartDate || !globalEndDate) {
 		dateErrorLabel.textContent = 'Proszę o zaznaczenie daty rozpoczęcia i zakończenia!'
 		totalCostLabel.textContent = 'Koszt wynajmu: 0 zł'
 		totalPriceInput.value = '0 zł'
@@ -201,8 +211,8 @@ function updateTotalCost() {
 		return
 	}
 
-	const start = new Date(startDate)
-	const end = new Date(endDate)
+	const start = new Date(globalStartDate)
+	const end = new Date(globalEndDate)
 
 	// Sprawdzamy poprawność dat
 	if (isNaN(start.getTime()) || isNaN(end.getTime()) || start >= end) {
@@ -215,7 +225,7 @@ function updateTotalCost() {
 	}
 
 	// Obliczamy liczbę dni i koszt wynajmu
-	const days = calculateDays(startDate, endDate)
+	const days = calculateDays(globalStartDate, globalEndDate)
 	const selectedCar = window.selectedCar
 
 	if (selectedCar && days > 0) {
@@ -236,7 +246,10 @@ function updateTotalCost() {
 ;[startDateInput, endDateInput].forEach(input =>
 	input.addEventListener('change', () => {
 		if (input === startDateInput) {
+			globalStartDate = startDateInput.value
 			updateMinEndDate() // Zaktualizowanie minimalnej daty zakończenia
+		} else if (input === endDateInput) {
+			globalEndDate = endDateInput.value
 		}
 		updateTotalCost() // Zaktualizowanie całkowitego kosztu
 	})
@@ -384,21 +397,20 @@ userInfoForm.addEventListener('submit', async function (e) {
 	const userName = document.getElementById('name').value
 	const userEmail = document.getElementById('email').value
 	const userPhone = document.getElementById('phone').value
-	const startDate = document.getElementById('start-date').value
-	const endDate = document.getElementById('end-date').value
 
 	const userData = {
 		name: userName,
 		email: userEmail,
 		phone: userPhone,
-		startDate: startDate,
-		endDate: endDate,
+		startDate: globalStartDate,
+		endDate: globalEndDate, 
 		totalPrice: totalPriceInput.value,
 	}
 
 	// Wysłanie danych rezerwacji do API
 	await sendReservationEmail(userData, window.selectedCar)
 })
+
 document.addEventListener('DOMContentLoaded', () => {
 	setMinDate(startDateInput)
 	setMinDate(endDateInput)
