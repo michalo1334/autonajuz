@@ -195,15 +195,12 @@ function calculateDays(startDate, endDate) {
 }
 
 function updateTotalCost() {
-	const startDate = startDateInput.value.trim()
-	const endDate = endDateInput.value.trim()
-
-	// Aktualizacja zmiennych globalnych
-	globalStartDate = startDate || null
-	globalEndDate = endDate || null
+	// Teraz używamy globalnych zmiennych
+	const startDate = globalStartDate
+	const endDate = globalEndDate
 
 	// Sprawdzenie, czy obie daty są wprowadzone
-	if (!globalStartDate || !globalEndDate) {
+	if (!startDate || !endDate) {
 		dateErrorLabel.textContent = 'Proszę o zaznaczenie daty rozpoczęcia i zakończenia!'
 		totalCostLabel.textContent = 'Koszt wynajmu: 0 zł'
 		totalPriceInput.value = '0 zł'
@@ -211,8 +208,8 @@ function updateTotalCost() {
 		return
 	}
 
-	const start = new Date(globalStartDate)
-	const end = new Date(globalEndDate)
+	const start = new Date(startDate)
+	const end = new Date(endDate)
 
 	// Sprawdzamy poprawność dat
 	if (isNaN(start.getTime()) || isNaN(end.getTime()) || start >= end) {
@@ -225,7 +222,7 @@ function updateTotalCost() {
 	}
 
 	// Obliczamy liczbę dni i koszt wynajmu
-	const days = calculateDays(globalStartDate, globalEndDate)
+	const days = calculateDays(startDate, endDate)
 	const selectedCar = window.selectedCar
 
 	if (selectedCar && days > 0) {
@@ -242,19 +239,21 @@ function updateTotalCost() {
 	}
 }
 
-// Listener do aktualizacji kosztu przy zmianie dat
+// Nasłuchiwanie zmian daty i aktualizacja globalnych zmiennych
 ;[startDateInput, endDateInput].forEach(input =>
 	input.addEventListener('change', () => {
 		if (input === startDateInput) {
-			globalStartDate = startDateInput.value
+			// Ustawienie daty rozpoczęcia w zmiennej globalnej
+			globalStartDate = startDateInput.value.trim()
 			updateMinEndDate() // Zaktualizowanie minimalnej daty zakończenia
 		} else if (input === endDateInput) {
-			globalEndDate = endDateInput.value
+			// Ustawienie daty zakończenia w zmiennej globalnej
+			globalEndDate = endDateInput.value.trim()
 		}
 		updateTotalCost() // Zaktualizowanie całkowitego kosztu
 	})
 )
-// Funkcja otwierająca modal z formularzem danych rezerwującego
+
 // Funkcja otwierająca modal z formularzem danych rezerwującego
 function openUserInfoModal() {
 	closeModal() // Zamknięcie modalu samochodu, jeśli jest otwarty
