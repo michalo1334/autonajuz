@@ -103,9 +103,6 @@ function closeModal() {
 	globalStartDate = null
 	globalEndDate = null
 
-	// Zablokowanie przycisku rezerwacji
-	reserveButton.disabled = true
-
 	// Usunięcie komunikatu o błędzie daty
 	dateErrorLabel.textContent = ''
 }
@@ -196,6 +193,7 @@ function calculateDays(startDate, endDate) {
 
 function updateTotalCost() {
 	// Teraz używamy globalnych zmiennych
+
 	const startDate = globalStartDate
 	const endDate = globalEndDate
 
@@ -243,14 +241,13 @@ function updateTotalCost() {
 ;[startDateInput, endDateInput].forEach(input =>
 	input.addEventListener('change', () => {
 		if (input === startDateInput) {
-			// Ustawienie daty rozpoczęcia w zmiennej globalnej
-			globalStartDate = startDateInput.value.trim()
-			updateMinEndDate() // Zaktualizowanie minimalnej daty zakończenia
+			globalStartDate = startDateInput.value.trim() // Zapisujemy datę rozpoczęcia
 		} else if (input === endDateInput) {
-			// Ustawienie daty zakończenia w zmiennej globalnej
-			globalEndDate = endDateInput.value.trim()
+			globalEndDate = endDateInput.value.trim() // Zapisujemy datę zakończenia
 		}
-		updateTotalCost() // Zaktualizowanie całkowitego kosztu
+		startDateInput.value = globalStartDate
+		endDateInput.value = globalEndDate
+		updateTotalCost() // Aktualizujemy koszt
 	})
 )
 
@@ -262,7 +259,10 @@ function openUserInfoModal() {
 	// Wyczyść pola daty przed otwarciem formularza
 	startDateInput.value = ''
 	endDateInput.value = ''
-
+	// Ustawienie wartości w polach formularza
+	document.getElementById('start-date').value = globalStartDate || ''
+	document.getElementById('end-date').value = globalEndDate || ''
+	totalPriceInput.value = rentalCost > 0 ? `${rentalCost} zł` : '0 zł'
 	// Używamy globalnej zmiennej rentalCost do ustawienia wartości kosztu
 	if (rentalCost > 0) {
 		totalPriceInput.value = `${rentalCost} zł` // Ustawiamy koszt wynajmu w polu formularza
@@ -312,7 +312,32 @@ function sortCars(cars, sortBy) {
 			return cars
 	}
 }
+// Funkcja rezerwacji samochodu
+async function rentCar(carId) {
+	const endpoint = `${API_URL}/cars/${carId}/rent`
 
+	try {
+		const response = await fetch(endpoint, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+
+		if (!response.ok) {
+			const errorText = await response.text()
+			console.error('Błąd przy rezerwacji samochodu:', errorText)
+			throw new Error(`Rezerwacja nie powiodła się. Status: ${response.status}`)
+		}
+
+		const data = await response.json()
+		console.log('Rezerwacja udana:', data)
+		alert('Samochód został zarezerwowany pomyślnie!')
+	} catch (error) {
+		console.error('Błąd rezerwacji:', error)
+		alert('Wystąpił problem podczas rezerwacji. Spróbuj ponownie później.')
+	}
+}
 // Zaktualizowana funkcja renderująca samochody
 function renderCars(cars, category = 'all', page = 1, sortBy = 'name-asc') {
 	const filteredCars = cars.filter(car => category === 'all' || car.bodyType.toLowerCase() === category)
@@ -355,16 +380,20 @@ async function sendReservationEmail(userData, carData) {
 	const emailData = {
 		to: userData.email,
 		subject: 'Potwierdzenie rezerwacji samochodu',
-		message: `Dziękujemy za rezerwację samochodu ${carData.title} w naszym serwisie. Poniżej znajdziesz szczegóły rezerwacji:
-		<ul>
-			<li>Imię i nazwisko: ${userData.name}</li>
-			<li>E-mail: ${userData.email}</li>
-			<li>Telefon: ${userData.phone}</li>
-			<li>Samochód: ${carData.title}</li>
-			<li>Data rozpoczęcia: ${userData.startDate}</li>
-			<li>Data zakończenia: ${userData.endDate}</li>
-			<li>Cena całkowita: ${userData.totalPrice}</li>
-		</ul>`,
+		message: `
+            Dziękujemy za rezerwację samochodu ${
+							carData.title
+						} w naszym serwisie. Poniżej znajdziesz szczegóły rezerwacji:
+            <ul>
+                <li>Imię i nazwisko: ${userData.name}</li>
+                <li>E-mail: ${userData.email}</li>
+                <li>Telefon: ${userData.phone}</li>
+                <li>Samochód: ${carData.title}</li>
+                <li>Data rozpoczęcia: ${globalStartDate || 'Brak daty'}</li>
+                <li>Data zakończenia: ${globalEndDate.value || 'Brak daty'}</li>
+                <li>Cena całkowita: ${userData.totalPrice} zł</li>
+            </ul>
+        `,
 	}
 
 	try {
@@ -392,9 +421,10 @@ async function sendReservationEmail(userData, carData) {
 		alert('Wystąpił problem. Spróbuj ponownie później.')
 	}
 }
+
 async function sendCarReservation(carId, userData) {
 	try {
-		const response = await fetch(`${API_URL}/api/cars/${carId}/rent`, {
+		const response = await fetch(`${API_URL}cars/${carId}/rent`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -436,7 +466,10 @@ userInfoForm.addEventListener('submit', async function (e) {
 		totalPrice: rentalCost,
 	}
 
-	// Wysyłanie danych rezerwacji do endpointu API
+	// Wysyłanie danych użytkownika na endpoint /api/RenterInfos
+	await sendRenterInfo(userData)
+
+	// Wysyłanie rezerwacji na endpoint /api/cars/{carId}/rent
 	await sendCarReservation(window.selectedCar.id, userData)
 
 	// Wysłanie potwierdzenia e-mail (opcjonalne)
@@ -449,3 +482,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	fetchCarsAndFilters()
 	updateTotalCost() // Wywołanie funkcji przy inicjalizacji, by sprawdzić daty i zablokować przycisk
 })
+console.log('User data:', userData)
+console.log('Car data:', carData)
