@@ -6,6 +6,7 @@ namespace AutoNaJuz.Services.ConcreteServices
     public class EmailService
     {
         private readonly SmtpClient _smtpClient;
+        private const string DefaultSenderName = "Auto na Już";
 
         public EmailService(string host, int port, bool enableSsl, string? username, string password)
         {
@@ -20,10 +21,10 @@ namespace AutoNaJuz.Services.ConcreteServices
         {
             try
             {
+                string fromEmail = (_smtpClient.Credentials as NetworkCredential)?.UserName ?? "default@example.com";
                 var mailMessage = new MailMessage
                 {
-                    From = new MailAddress((_smtpClient.Credentials as NetworkCredential)?.UserName ??
-                                           "default@example.com"),
+                    From = new MailAddress(fromEmail, DefaultSenderName), // Stała nazwa nadawcy
                     Subject = subject,
                     Body = body,
                     IsBodyHtml = true
