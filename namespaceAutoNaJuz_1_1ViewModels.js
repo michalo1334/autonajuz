@@ -15,8 +15,8 @@ var namespaceAutoNaJuz_1_1ViewModels =
       [ "ImageVm", "namespaceAutoNaJuz_1_1ViewModels_1_1Image.html#a0b521550737abd037d1eac2279c49c4b", null ]
     ] ],
     [ "RenterInfo", "namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html", [
-      [ "CreateRenterInfoVm", "namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html#a93c19726502dc0956e62f31303e0704b", null ],
-      [ "EditRenterInfoVm", "namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html#a99091f5ffc5bfaa25432b3da11e4a7ee", null ],
-      [ "GetRenterInfoVm", "namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html#a4dab96c6ca3a54084994732842947ee4", null ]
+      [ "CreateRenterInfoVm", "namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html#ad86eb1dc8011ebcae2dc50474dd24c5b", null ],
+      [ "EditRenterInfoVm", "namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html#ab07e285dc3ef7b647c758ceec84357b7", null ],
+      [ "GetRenterInfoVm", "namespaceAutoNaJuz_1_1ViewModels_1_1RenterInfo.html#aa36a5dcf40e80b0b1b7fd9f28f426be2", null ]
     ] ]
 ];

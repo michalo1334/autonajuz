@@ -141,12 +141,12 @@ Collaboration diagram for AutoNaJuz.DAL.Configuration.RenterInfoConfiguration:</
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0eca7590af1628ae07cfe485665cf7ec" id="r_a0eca7590af1628ae07cfe485665cf7ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1RenterInfoConfiguration.html#a0eca7590af1628ae07cfe485665cf7ec">Configure</a> (EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1RenterInfo.html">RenterInfo</a> &gt; <a class="el" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>)</td></tr>
+<tr class="memitem:a0eca7590af1628ae07cfe485665cf7ec" id="r_a0eca7590af1628ae07cfe485665cf7ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAutoNaJuz_1_1DAL_1_1Configuration_1_1RenterInfoConfiguration.html#a0eca7590af1628ae07cfe485665cf7ec">Configure</a> (EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1RenterInfo_1_1RenterInfo.html">RenterInfo</a> &gt; <a class="el" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>)</td></tr>
 <tr class="separator:a0eca7590af1628ae07cfe485665cf7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="RenterInfoConfiguration_8cs_source.html#l00007">7</a> of file <a class="el" href="RenterInfoConfiguration_8cs_source.html">RenterInfoConfiguration.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="RenterInfoConfiguration_8cs_source.html#l00008">8</a> of file <a class="el" href="RenterInfoConfiguration_8cs_source.html">RenterInfoConfiguration.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a0eca7590af1628ae07cfe485665cf7ec" name="a0eca7590af1628ae07cfe485665cf7ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0eca7590af1628ae07cfe485665cf7ec">&#9670;&#160;</a></span>Configure()</h2>
@@ -160,7 +160,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void AutoNaJuz.DAL.Configuration.RenterInfoConfiguration.Configure </td>
           <td>(</td>
-          <td class="paramtype">EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1RenterInfo.html">RenterInfo</a> &gt;&#160;</td>
+          <td class="paramtype">EntityTypeBuilder&lt; <a class="el" href="classAutoNaJuz_1_1Model_1_1RenterInfo_1_1RenterInfo.html">RenterInfo</a> &gt;&#160;</td>
           <td class="paramname"><em>builder</em></td><td>)</td>
           <td></td>
         </tr>
@@ -172,49 +172,22 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="RenterInfoConfiguration_8cs_source.html#l00009">9</a> of file <a class="el" href="RenterInfoConfiguration_8cs_source.html">RenterInfoConfiguration.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   10</span>    {</div>
-<div class="line"><span class="lineno">   11</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.ToTable(<span class="stringliteral">&quot;Renter_Infos&quot;</span>);</div>
-<div class="line"><span class="lineno">   12</span> </div>
-<div class="line"><span class="lineno">   13</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasKey(e =&gt; e.Id);</div>
-<div class="line"><span class="lineno">   14</span> </div>
-<div class="line"><span class="lineno">   15</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.DriversLicenseIdent)</div>
-<div class="line"><span class="lineno">   16</span>            .HasMaxLength(100);</div>
-<div class="line"><span class="lineno">   17</span> </div>
-<div class="line"><span class="lineno">   18</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Pesel)</div>
-<div class="line"><span class="lineno">   19</span>            .HasMaxLength(11)</div>
-<div class="line"><span class="lineno">   20</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   21</span> </div>
-<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.BirthDate)</div>
-<div class="line"><span class="lineno">   23</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.FirstName)</div>
-<div class="line"><span class="lineno">   26</span>            .HasMaxLength(50)</div>
-<div class="line"><span class="lineno">   27</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   28</span> </div>
-<div class="line"><span class="lineno">   29</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.LastName)</div>
-<div class="line"><span class="lineno">   30</span>            .HasMaxLength(50)</div>
-<div class="line"><span class="lineno">   31</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   32</span> </div>
-<div class="line"><span class="lineno">   33</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Street)</div>
-<div class="line"><span class="lineno">   34</span>            .HasMaxLength(100)</div>
-<div class="line"><span class="lineno">   35</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   36</span> </div>
-<div class="line"><span class="lineno">   37</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.BuildingNumber)</div>
-<div class="line"><span class="lineno">   38</span>            .HasMaxLength(10)</div>
-<div class="line"><span class="lineno">   39</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.ApartmentNumber)</div>
-<div class="line"><span class="lineno">   42</span>            .HasMaxLength(10);</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.City)</div>
-<div class="line"><span class="lineno">   45</span>            .HasMaxLength(50)</div>
-<div class="line"><span class="lineno">   46</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.PostalCode)</div>
-<div class="line"><span class="lineno">   49</span>            .HasMaxLength(10)</div>
-<div class="line"><span class="lineno">   50</span>            .IsRequired();</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="RenterInfoConfiguration_8cs_source.html#l00010">10</a> of file <a class="el" href="RenterInfoConfiguration_8cs_source.html">RenterInfoConfiguration.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>    {</div>
+<div class="line"><span class="lineno">   12</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.ToTable(<span class="stringliteral">&quot;Renter_Infos&quot;</span>);</div>
+<div class="line"><span class="lineno">   13</span> </div>
+<div class="line"><span class="lineno">   14</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.HasKey(e =&gt; e.Id);</div>
+<div class="line"><span class="lineno">   15</span>        </div>
+<div class="line"><span class="lineno">   16</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Phone)</div>
+<div class="line"><span class="lineno">   17</span>            .IsRequired()</div>
+<div class="line"><span class="lineno">   18</span>            .HasMaxLength(20);</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.Email);</div>
+<div class="line"><span class="lineno">   21</span>        </div>
+<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a>.Property(e =&gt; e.FullName)</div>
+<div class="line"><span class="lineno">   23</span>            .IsRequired()</div>
+<div class="line"><span class="lineno">   24</span>            .HasMaxLength(100);</div>
+<div class="line"><span class="lineno">   25</span>    }</div>
 <div class="ttc" id="aProgram_8cs_html_a2f78352277081c620fd4cf92a5ce15e5"><div class="ttname"><a href="Program_8cs.html#a2f78352277081c620fd4cf92a5ce15e5">builder</a></div><div class="ttdeci">var builder</div><div class="ttdef"><b>Definition</b> <a href="Program_8cs_source.html#l00012">Program.cs:12</a></div></div>
 </div><!-- fragment -->
 </div>

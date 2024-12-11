@@ -28,10 +28,11 @@ var hierarchy =
       [ "AutoNaJuz.DAL.Migrations.Added_Car_CarRental_Identity", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__CarRental__Identity.html", null ],
       [ "AutoNaJuz.DAL.Migrations.Added_Car_RentCost", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__Car__RentCost.html", null ],
       [ "AutoNaJuz.DAL.Migrations.Added_RenterInfo", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Added__RenterInfo.html", null ],
+      [ "AutoNaJuz.DAL.Migrations.Changed_RenterInfo", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1Changed__RenterInfo.html", null ],
       [ "AutoNaJuz.DAL.Migrations.InitialCreate", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1InitialCreate.html", null ]
     ] ],
     [ "ModelSnapshot", null, [
       [ "AutoNaJuz.DAL.Migrations.AppDbContextModelSnapshot", "classAutoNaJuz_1_1DAL_1_1Migrations_1_1AppDbContextModelSnapshot.html", null ]
     ] ],
-    [ "AutoNaJuz.Model.RenterInfo", "classAutoNaJuz_1_1Model_1_1RenterInfo.html", null ]
+    [ "AutoNaJuz.Model.RenterInfo.RenterInfo", "classAutoNaJuz_1_1Model_1_1RenterInfo_1_1RenterInfo.html", null ]
 ];

@@ -140,22 +140,22 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="AppDbContext_8cs_source.html#l00011">11</a> of file <a class="el" href="AppDbContext_8cs_source.html">AppDbContext.cs</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   12</span>    : IdentityDbContext&lt;User&gt;(options)</div>
-<div class="line"><span class="lineno">   13</span>{</div>
-<div class="line"><span class="lineno">   14</span>    <span class="keyword">public</span> DbSet&lt;Car&gt; Cars { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><span class="lineno">   15</span>    <span class="keyword">public</span> DbSet&lt;CarFeature&gt; CarFeatures { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><span class="lineno">   16</span>    <span class="keyword">public</span> DbSet&lt;CarImage&gt; CarImages { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><span class="lineno">   17</span>    <span class="keyword">public</span> DbSet&lt;CarRental&gt; CarRentals { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><span class="lineno">   18</span>    <span class="keyword">public</span> DbSet&lt;RenterInfo&gt; RenterInfos { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><span class="lineno">   19</span> </div>
-<div class="line"><span class="lineno">   20</span>    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnModelCreating(ModelBuilder modelBuilder)</div>
-<div class="line"><span class="lineno">   21</span>    {</div>
-<div class="line"><span class="lineno">   22</span>        base.OnModelCreating(modelBuilder);</div>
-<div class="line"><span class="lineno">   23</span> </div>
-<div class="line"><span class="lineno">   24</span>        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);</div>
-<div class="line"><span class="lineno">   25</span>    }</div>
-<div class="line"><span class="lineno">   26</span>}</div>
+<p class="definition">Definition at line <a class="el" href="AppDbContext_8cs_source.html#l00012">12</a> of file <a class="el" href="AppDbContext_8cs_source.html">AppDbContext.cs</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>    : IdentityDbContext&lt;User&gt;(options)</div>
+<div class="line"><span class="lineno">   14</span>{</div>
+<div class="line"><span class="lineno">   15</span>    <span class="keyword">public</span> DbSet&lt;Car&gt; Cars { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><span class="lineno">   16</span>    <span class="keyword">public</span> DbSet&lt;CarFeature&gt; CarFeatures { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><span class="lineno">   17</span>    <span class="keyword">public</span> DbSet&lt;CarImage&gt; CarImages { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keyword">public</span> DbSet&lt;CarRental&gt; CarRentals { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><span class="lineno">   19</span>    <span class="keyword">public</span> DbSet&lt;RenterInfo&gt; RenterInfos { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> OnModelCreating(ModelBuilder modelBuilder)</div>
+<div class="line"><span class="lineno">   22</span>    {</div>
+<div class="line"><span class="lineno">   23</span>        base.OnModelCreating(modelBuilder);</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);</div>
+<div class="line"><span class="lineno">   26</span>    }</div>
+<div class="line"><span class="lineno">   27</span>}</div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

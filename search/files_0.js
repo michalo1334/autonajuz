@@ -9,5 +9,7 @@ var searchData=
   ['20241120125344_5fadded_5fcarimage_5fcarfeature_2ecs_6',['20241120125344_Added_CarImage_CarFeature.cs',['../20241120125344__Added__CarImage__CarFeature_8cs.html',1,'']]],
   ['20241120125344_5fadded_5fcarimage_5fcarfeature_2edesigner_2ecs_7',['20241120125344_Added_CarImage_CarFeature.Designer.cs',['../20241120125344__Added__CarImage__CarFeature_8Designer_8cs.html',1,'']]],
   ['20241123212909_5fadded_5fcar_5frentcost_2ecs_8',['20241123212909_Added_Car_RentCost.cs',['../20241123212909__Added__Car__RentCost_8cs.html',1,'']]],
-  ['20241123212909_5fadded_5fcar_5frentcost_2edesigner_2ecs_9',['20241123212909_Added_Car_RentCost.Designer.cs',['../20241123212909__Added__Car__RentCost_8Designer_8cs.html',1,'']]]
+  ['20241123212909_5fadded_5fcar_5frentcost_2edesigner_2ecs_9',['20241123212909_Added_Car_RentCost.Designer.cs',['../20241123212909__Added__Car__RentCost_8Designer_8cs.html',1,'']]],
+  ['20241211192603_5fchanged_5frenterinfo_2ecs_10',['20241211192603_Changed_RenterInfo.cs',['../20241211192603__Changed__RenterInfo_8cs.html',1,'']]],
+  ['20241211192603_5fchanged_5frenterinfo_2edesigner_2ecs_11',['20241211192603_Changed_RenterInfo.Designer.cs',['../20241211192603__Changed__RenterInfo_8Designer_8cs.html',1,'']]]
 ];

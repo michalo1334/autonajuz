@@ -58,7 +58,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "20241020182104__InitialCreate_8Designer_8cs.html",
-"classAutoNaJuz_1_1Model_1_1CarRental_1_1CarRental.html#a6861679422d7ebd44e04fe8551d49506"
+"classAutoNaJuz_1_1Model_1_1CarImage_1_1CarImage.html#a82ec13335ae6e6615669201088bab412"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
