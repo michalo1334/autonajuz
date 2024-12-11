@@ -2,6 +2,7 @@ using AutoMapper;
 using AutoNaJuz.Model;
 using AutoNaJuz.Model.Car;
 using AutoNaJuz.Model.CarRental;
+using AutoNaJuz.Model.RenterInfo;
 using AutoNaJuz.ViewModels.Car;
 using AutoNaJuz.ViewModels.CarRental;
 using AutoNaJuz.ViewModels.RenterInfo;
@@ -33,15 +34,8 @@ public class MapperConfigurationProfile : Profile
         
         CreateMap<RenterInfo, CreateRenterInfoVm>()
             .ReverseMap()
-            .ConstructUsing(e => RenterInfo.Create(e.DrivingLicenseIdent,
-                e.Pesel,
-                e.BirthDate,
-                e.FirstName,
-                e.LastName,
-                e.Street,
-                e.BuildingNumber,
-                e.ApartmentNumber,
-                e.City,
-                e.PostalCode));
+            .ConstructUsing(e => RenterInfo.Create(e.Phone,
+                e.Email,
+                e.FullName));
     }
 }
