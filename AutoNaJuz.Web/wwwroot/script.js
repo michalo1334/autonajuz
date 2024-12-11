@@ -278,8 +278,8 @@ async function sendCarReservation(carId, userData) {
 	try {
 		const reservationData = {
 			renterId: userData.renterId,
-			startDate: userData.startDate,
-			endDate: userData.endDate,
+			from: userData.startDate,
+			to: userData.endDate,
 			totalPrice: userData.totalPrice
 		};
 
