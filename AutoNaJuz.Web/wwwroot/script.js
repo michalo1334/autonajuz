@@ -485,16 +485,7 @@ async function sendRenterInfo(userData) {
 			},
 			body: JSON.stringify({
 				id: 0,
-				drivingLicenseIdent: userData.licenseId || '', // Przykład - jeśli użytkownik posiada numer prawa jazdy
-				pesel: userData.pesel || '', // Przykład - jeżeli potrzebujesz numer PESEL
-				birthDate: new Date().toISOString(), // Tutaj np. data urodzenia
-				firstName: userData.name,
-				lastName: userData.lastName,
-				street: userData.address || '', // Adres użytkownika
-				buildingNumber: userData.buildingNumber || '',
-				apartmentNumber: userData.apartmentNumber || '',
-				city: userData.city || '',
-				postalCode: userData.postalCode || '',
+				fullname: userData.name,
 			}),
 		})
 
