@@ -243,14 +243,11 @@ function updateTotalCost() {
 ;[startDateInput, endDateInput].forEach(input =>
 	input.addEventListener('change', () => {
 		if (input === startDateInput) {
-			// Ustawienie daty rozpoczęcia w zmiennej globalnej
-			globalStartDate = startDateInput.value.trim()
-			updateMinEndDate() // Zaktualizowanie minimalnej daty zakończenia
+			globalStartDate = startDateInput.value.trim() // Zapisujemy datę rozpoczęcia
 		} else if (input === endDateInput) {
-			// Ustawienie daty zakończenia w zmiennej globalnej
-			globalEndDate = endDateInput.value.trim()
+			globalEndDate = endDateInput.value.trim() // Zapisujemy datę zakończenia
 		}
-		updateTotalCost() // Zaktualizowanie całkowitego kosztu
+		updateTotalCost() // Aktualizujemy koszt
 	})
 )
 
@@ -355,16 +352,20 @@ async function sendReservationEmail(userData, carData) {
 	const emailData = {
 		to: userData.email,
 		subject: 'Potwierdzenie rezerwacji samochodu',
-		message: `Dziękujemy za rezerwację samochodu ${carData.title} w naszym serwisie. Poniżej znajdziesz szczegóły rezerwacji:
-		<ul>
-			<li>Imię i nazwisko: ${userData.name}</li>
-			<li>E-mail: ${userData.email}</li>
-			<li>Telefon: ${userData.phone}</li>
-			<li>Samochód: ${carData.title}</li>
-			<li>Data rozpoczęcia: ${userData.startDateInput}</li>
-			<li>Data zakończenia: ${userData.endDateInput}</li>
-			<li>Cena całkowita: ${userData.totalPrice} zł</li>
-		</ul>`,
+		message: `
+            Dziękujemy za rezerwację samochodu ${
+							carData.title
+						} w naszym serwisie. Poniżej znajdziesz szczegóły rezerwacji:
+            <ul>
+                <li>Imię i nazwisko: ${userData.name}</li>
+                <li>E-mail: ${userData.email}</li>
+                <li>Telefon: ${userData.phone}</li>
+                <li>Samochód: ${carData.title}</li>
+                <li>Data rozpoczęcia: ${globalStartDate || 'Brak daty'}</li>
+                <li>Data zakończenia: ${globalEndDate || 'Brak daty'}</li>
+                <li>Cena całkowita: ${userData.totalPrice} zł</li>
+            </ul>
+        `,
 	}
 
 	try {
@@ -392,6 +393,7 @@ async function sendReservationEmail(userData, carData) {
 		alert('Wystąpił problem. Spróbuj ponownie później.')
 	}
 }
+
 async function sendCarReservation(carId, userData) {
 	try {
 		const response = await fetch(`${API_URL}/api/cars/${carId}/rent`, {
