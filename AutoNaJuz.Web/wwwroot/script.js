@@ -25,7 +25,7 @@ let currentPage = 1 // Aktualna strona
 let rentalCost = 0 // Zmienna globalna do przechowywania kosztu wynajmu
 let globalStartDate = null //zmienne do przechowywania dat
 let globalEndDate = null
-
+let renterID = null
 // Funkcja do wyciągania tylko roku z daty (jeśli data jest w pełnym formacie)
 function getYearFromDate(dateString) {
 	const date = new Date(dateString)
@@ -96,7 +96,7 @@ function closeModal() {
 	// Resetowanie dat w formularzu rezerwacji
 	startDateInput.value = ''
 	endDateInput.value = ''
-	totalCostLabel.textContent = 'Koszt wynajmu: 0 zł'
+	totalCostLabel.textContent = ': 0 zł'
 	totalPriceInput.value = '0 zł'
 
 	// Resetowanie globalnych dat
@@ -390,7 +390,7 @@ async function sendReservationEmail(userData, carData) {
                 <li>Telefon: ${userData.phone}</li>
                 <li>Samochód: ${carData.title}</li>
                 <li>Data rozpoczęcia: ${globalStartDate || 'Brak daty'}</li>
-                <li>Data zakończenia: ${globalEndDate.value || 'Brak daty'}</li>
+                <li>Data zakończenia: ${globalEndDate || 'Brak daty'}</li>
                 <li>Cena całkowita: ${userData.totalPrice} zł</li>
             </ul>
         `,
@@ -464,6 +464,8 @@ userInfoForm.addEventListener('submit', async function (e) {
 		startDate: globalStartDate,
 		endDate: globalEndDate,
 		totalPrice: rentalCost,
+		renterId: renterID,
+
 		// Możesz dodać więcej danych np. adres, PESEL, numer prawa jazdy itp.
 	}
 
@@ -497,6 +499,7 @@ async function sendRenterInfo(userData) {
 		}
 
 		const responseData = await response.json()
+		renterID = responseData
 		if (responseData.success) {
 			console.log('Dane użytkownika zostały pomyślnie zapisane.')
 		} else {
