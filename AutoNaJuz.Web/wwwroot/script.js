@@ -259,7 +259,10 @@ function openUserInfoModal() {
 	// Wyczyść pola daty przed otwarciem formularza
 	startDateInput.value = ''
 	endDateInput.value = ''
-
+	// Ustawienie wartości w polach formularza
+	document.getElementById('start-date').value = globalStartDate || ''
+	document.getElementById('end-date').value = globalEndDate || ''
+	totalPriceInput.value = rentalCost > 0 ? `${rentalCost} zł` : '0 zł'
 	// Używamy globalnej zmiennej rentalCost do ustawienia wartości kosztu
 	if (rentalCost > 0) {
 		totalPriceInput.value = `${rentalCost} zł` // Ustawiamy koszt wynajmu w polu formularza
@@ -451,3 +454,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	fetchCarsAndFilters()
 	updateTotalCost() // Wywołanie funkcji przy inicjalizacji, by sprawdzić daty i zablokować przycisk
 })
+console.log('User data:', userData)
+console.log('Car data:', carData)
