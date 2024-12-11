@@ -424,7 +424,7 @@ async function sendReservationEmail(userData, carData) {
 
 async function sendCarReservation(carId, userData) {
 	try {
-		const response = await fetch(`${API_URL}/api/cars/${carId}/rent`, {
+		const response = await fetch(`${API_URL}cars/${carId}/rent`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
