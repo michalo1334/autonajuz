@@ -393,12 +393,37 @@ async function sendReservationEmail(userData, carData) {
 		alert('Wystąpił problem. Spróbuj ponownie później.')
 	}
 }
+async function sendCarReservation(carId, userData) {
+	try {
+		const response = await fetch(`${API_URL}/api/cars/${carId}/rent`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(userData),
+		})
+
+		if (!response.ok) {
+			throw new Error(`Błąd rezerwacji! Status: ${response.status}`)
+		}
+
+		const responseData = await response.json()
+		if (responseData.success) {
+			alert('Rezerwacja została pomyślnie wysłana.')
+			closeUserInfoModal() // Zamykamy modal po sukcesie
+		} else {
+			alert('Wystąpił problem podczas rezerwacji.')
+		}
+	} catch (error) {
+		console.error('Błąd API:', error)
+		alert('Wystąpił problem. Spróbuj ponownie później.')
+	}
+}
 
 // Nasłuchiwanie na kliknięcie przycisku „Potwierdź” w formularzu danych użytkownika
 userInfoForm.addEventListener('submit', async function (e) {
 	e.preventDefault()
 
-	// Pobieranie danych z formularza użytkownika
 	const userName = document.getElementById('name').value
 	const userEmail = document.getElementById('email').value
 	const userPhone = document.getElementById('phone').value
@@ -408,11 +433,14 @@ userInfoForm.addEventListener('submit', async function (e) {
 		email: userEmail,
 		phone: userPhone,
 		startDate: globalStartDate,
-		endDate: globalEndDate, 
-		totalPrice: totalPriceInput.value,
+		endDate: globalEndDate,
+		totalPrice: rentalCost,
 	}
 
-	// Wysłanie danych rezerwacji do API
+	// Wysyłanie danych rezerwacji do endpointu API
+	await sendCarReservation(window.selectedCar.id, userData)
+
+	// Wysłanie potwierdzenia e-mail (opcjonalne)
 	await sendReservationEmail(userData, window.selectedCar)
 })
 
