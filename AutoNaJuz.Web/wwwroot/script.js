@@ -103,9 +103,6 @@ function closeModal() {
 	globalStartDate = null
 	globalEndDate = null
 
-	// Zablokowanie przycisku rezerwacji
-	reserveButton.disabled = true
-
 	// Usunięcie komunikatu o błędzie daty
 	dateErrorLabel.textContent = ''
 }
@@ -196,6 +193,7 @@ function calculateDays(startDate, endDate) {
 
 function updateTotalCost() {
 	// Teraz używamy globalnych zmiennych
+
 	const startDate = globalStartDate
 	const endDate = globalEndDate
 
@@ -247,6 +245,8 @@ function updateTotalCost() {
 		} else if (input === endDateInput) {
 			globalEndDate = endDateInput.value.trim() // Zapisujemy datę zakończenia
 		}
+		startDateInput.value = globalStartDate
+		endDateInput.value = globalEndDate
 		updateTotalCost() // Aktualizujemy koszt
 	})
 )
@@ -312,7 +312,32 @@ function sortCars(cars, sortBy) {
 			return cars
 	}
 }
+// Funkcja rezerwacji samochodu
+async function rentCar(carId) {
+	const endpoint = `${API_URL}/cars/${carId}/rent`
 
+	try {
+		const response = await fetch(endpoint, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+
+		if (!response.ok) {
+			const errorText = await response.text()
+			console.error('Błąd przy rezerwacji samochodu:', errorText)
+			throw new Error(`Rezerwacja nie powiodła się. Status: ${response.status}`)
+		}
+
+		const data = await response.json()
+		console.log('Rezerwacja udana:', data)
+		alert('Samochód został zarezerwowany pomyślnie!')
+	} catch (error) {
+		console.error('Błąd rezerwacji:', error)
+		alert('Wystąpił problem podczas rezerwacji. Spróbuj ponownie później.')
+	}
+}
 // Zaktualizowana funkcja renderująca samochody
 function renderCars(cars, category = 'all', page = 1, sortBy = 'name-asc') {
 	const filteredCars = cars.filter(car => category === 'all' || car.bodyType.toLowerCase() === category)
@@ -365,7 +390,7 @@ async function sendReservationEmail(userData, carData) {
                 <li>Telefon: ${userData.phone}</li>
                 <li>Samochód: ${carData.title}</li>
                 <li>Data rozpoczęcia: ${globalStartDate || 'Brak daty'}</li>
-                <li>Data zakończenia: ${globalEndDate || 'Brak daty'}</li>
+                <li>Data zakończenia: ${globalEndDate.value || 'Brak daty'}</li>
                 <li>Cena całkowita: ${userData.totalPrice} zł</li>
             </ul>
         `,
@@ -441,7 +466,10 @@ userInfoForm.addEventListener('submit', async function (e) {
 		totalPrice: rentalCost,
 	}
 
-	// Wysyłanie danych rezerwacji do endpointu API
+	// Wysyłanie danych użytkownika na endpoint /api/RenterInfos
+	await sendRenterInfo(userData)
+
+	// Wysyłanie rezerwacji na endpoint /api/cars/{carId}/rent
 	await sendCarReservation(window.selectedCar.id, userData)
 
 	// Wysłanie potwierdzenia e-mail (opcjonalne)
